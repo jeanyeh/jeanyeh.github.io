@@ -64,7 +64,7 @@
 				margin-right: 0;
 				font-weight: bold;
 				}			
-			tab { padding-left:30em}
+			tab { padding-left:60em}
 			tab1 { padding-left:40em}
 			tab2 { padding-left:41.5em}
 		</style>
@@ -72,9 +72,9 @@
 	<BODY>
 		<div id='player'>
 			<h1> 
-			Please set the chips on the chip-board! 
-			<label style='font-size:16;font-weight: normal'>non-settled chips number = </label>
-			<input id='remain' value=6 size="1" readonly />
+			請點選棋盤放置棋子！
+			<label style='font-size:16;font-weight: normal'>還有 
+			<input id='remain' value=6 size="1" readonly />個棋子需要放置</label>
 			</h1>
 		</div>
 		<div id='board'>
@@ -82,24 +82,23 @@
 			<div class='chip selected'>2</div>
 		</div>
 		<br>
+		<input type='submit' value='上一步' onclick='prev()'/>
+		<input type='submit' value='重設' onclick='reset()' />
+		<br><br>
+		輸入棋盤大小（
+		<label>N= </label><input id='N' value=8 maxlength="2" size="1"/>），以及可放置的棋子個數（
+		<label>k= </label><input id='k' value=6 maxlength="2" size="1"/>）後，可
+		<input type='submit' value='開始新遊戲' onclick='new_game()' /> 。
 
-		<input type='submit' value='New Game' onclick='new_game()' />
-		<label>N= </label><input id='N' value=8 maxlength="2" size="1"/>
-		<label>, k= </label><input id='k' value=6 maxlength="2" size="1"/>
-		<tab>
-			<input type='submit' value='Prev' onclick='prev()'/>
-			<input type='submit' value='Reset' onclick='reset()' />
-		</tab>
 		<br><br>
 
 		<div id='rule'>
-			There's a 1*<font style='font-weight: bold;color:red'>N</font> chip-borad with 
-			<font style='font-weight: bold;color:red'>k</font> chips on it.
+			<font style='font-weight: bold'>規則：</font><br>
+			長度為 N 的棋盤上有 k 個棋子。
 			<br>
-			Two players, Alice and Bob, take turns moving one of these chips to the
-			next empty cell on its left.
+			Alice 跟 Bob 輪流選取一個棋子，並將棋子移至它左邊的空格。
 			<br>
-			To end this game, the player who places any chip on the most left cell win!
+			贏家是將棋子移至最左邊的棋格者。
 		</div>
 
 
@@ -187,10 +186,10 @@
 			function player(){
 				if ( action_list.length%2 )
 					document.getElementById('player').innerHTML = 
-					`<h1 style='color:blue'> Now is Player B\'s turn </h1>`;
+					`<h1 style='color:blue'> 請 Bob 移動棋子</h1>`;
 				else
 					document.getElementById('player').innerHTML = 
-					`<h1 style='color:red'> Now is Player A\'s turn </h1>`;
+					`<h1 style='color:red'> 請 Alice 移動棋子 </h1>`;
 			}
 			function prev() {
 				if ( action_list.length ) {
@@ -212,10 +211,10 @@
 			function win() {
 				if ( action_list.length%2 )
 					document.getElementById('player').innerHTML = 
-					`<h1 style='color:red'>Congrats! Player A win!!! </h1>`;
+					`<h1 style='color:red'>恭喜！ Alice 贏了！！  </h1>`;
 				else
 					document.getElementById('player').innerHTML = 
-					`<h1 style='color:blue'>Congrats! Player B win!!! </h1>`;
+					`<h1 style='color:blue'>恭喜！ Bob 贏了！！ </h1>`;
 			}
 
 			function new_game() {
