@@ -1,0 +1,230 @@
+<HTML>
+	<HEAD>
+		<style>
+			BODY {
+				/*background-image: url("https://i.stack.imgur.com/jGlzr.png");*/
+				background-color	: #eae0ff;
+			}
+			.chip {
+				width		: 100px;
+				height		: 120px;
+				border		: 2px solid black;
+				display		: inline-block;
+				font-size	: 30;
+				text-align	: center;
+			}
+
+			.selected {
+				/*background-image	: url("http://www.clker.com/cliparts/9/k/b/s/z/c/button-black-md.png");
+ 				background-position	: center;
+				background-repeat	: no-repeat;
+				background-size		: cover;
+				background-color	: #ff99ff;*/
+			}
+			.wooden {
+				background-image: url("https://i.stack.imgur.com/jGlzr.png");
+			}
+			.pink {
+				background-color: #ff99ff;
+			}
+			.pick {
+				height		: 80px;
+				width		: 80px;
+				border-radius	: 50%;
+				text-align	: center;
+				vertical-align	: middle;
+				font-size	: 500%;
+				position	: relative;
+				/*display: inline-block;*/
+				margin		: 5%;
+				box-shadow	: inset -10px -10px 100px #000, 
+						  10px 10px 20px black, 
+						  inset 0px 0px 10px black;
+				background-color: red;
+				top		: -78px;/*-9px;*/
+
+			}
+			.pick::after {
+				background-color: rgba(255, 255, 255, 0.3);
+				content		: '';
+				height		: 45%;
+				width		: 12%;
+				position	: absolute;
+				top		: 4%;
+				left		: 15%;
+				border-radius	: 50%;
+				transform	: rotate(40deg);
+			}
+			ht { 
+				/*display: block;*/
+				font-size: 2em;
+				margin-top: 0.68em;
+				margin-bottom: 0.67em;
+				margin-left: 0;
+				margin-right: 0;
+				font-weight: bold;
+				}			
+			tab { padding-left:60em}
+			tab1 { padding-left:40em}
+			tab2 { padding-left:41.5em}
+		</style>
+	</HEAD>
+	<BODY>
+		<div id='player'>
+			<h1> 
+			請點選棋盤放置棋子！
+			<label style='font-size:16;font-weight: normal'>還有 
+			<input id='remain' value=6 size="1" readonly />個棋子需要放置</label>
+			</h1>
+		</div>
+		<div id='board'>
+			<div class='chip'>1</div>
+			<div class='chip selected'>2</div>
+		</div>
+		<br>
+		<input type='submit' value='上一步' onclick='prev()'/>
+		<input type='submit' value='重設' onclick='reset()' />
+		<br><br>
+		輸入棋盤大小（
+		<label>N= </label><input id='N' value=8 maxlength="2" size="1"/>），以及可放置的棋子個數（
+		<label>k= </label><input id='k' value=6 maxlength="2" size="1"/>）後，可
+		<input type='submit' value='開始新遊戲' onclick='new_game()' /> 。
+
+		<br><br>
+
+		<div id='rule'>
+			<font style='font-weight: bold'>規則：</font><br>
+			長度為 N 的棋盤上有 k 個棋子。
+			<br>
+			Alice 跟 Bob 輪流選取一個棋子，並將棋子移至它左邊的空格。
+			<br>
+			贏家是將棋子移至最左邊的棋格者。
+		</div>
+
+
+		<script>
+			const query_string = new URLSearchParams(window.location.search);
+			const N = query_string.get('N') || '8';
+			const k = query_string.get('k') || '3';
+
+			document.getElementById('N').value = N;
+			document.getElementById('k').value = k;
+			document.getElementById('remain').value = k;
+
+			var end=0;
+
+			/*var chips = '';*/
+			var chips = `<div id='i_1' class='chip wooden' onclick='selected(this)'>
+					1 <br><br> <font style='color:white'>GOAL</font>
+				     	<div id='chip_1' class=''></div>
+				     </div>`;
+			for (var i = 1; i < parseInt(N); ++i) {
+				chips += `<div id='i_${i+1}' class='chip wooden' onclick='selected(this)'>${i+1}<br><br><br>
+					  	<div id='chip_${i+1}' class=''></div>
+					  </div>`;
+			}
+			document.getElementById('board').innerHTML = chips;
+
+			var action_list = new Array();
+			function selected( dom ) {
+				var nr = parseInt(dom.id.substr(2));
+				if (document.getElementsByClassName('selected').length == k && end!=1) {
+					console.log( dom );
+					console.log( dom.id );
+					console.log( nr );
+
+					if (dom.classList.contains('selected')) {
+						dom.classList.toggle('selected');
+						document.getElementById('chip_' + nr).classList.toggle('pick');
+						for (var i=nr-1; i >= 1 ; --i) {
+							var dom_2 = document.getElementById('i_' + i);
+							var dom_chip2 = document.getElementById('chip_' + i);
+							if ( ! dom_2.classList.contains('selected') ) {
+								dom_2.classList.toggle('selected');
+								dom_chip2.classList.toggle('pick');
+
+								action_list.push([nr, i]);
+								console.log(action_list);
+								console.log(i);
+								if (i == 1) {
+								end=1;
+								win();
+								}
+								break;
+							}
+						}	
+						if ( end != 1 ) {
+							player();	
+						}			
+					}
+				} else if( nr != 1 && end != 1 ) {
+					dom.classList.toggle('selected');
+					var dom_chip2 = document.getElementById('chip_' + nr);
+					dom_chip2.classList.toggle('pick');
+
+					var remain = k - document.getElementsByClassName('selected').length;
+					document.getElementById('remain').value = remain ;
+
+					if ( remain == 0) {
+						var selected_list = new Array();
+
+						for (var i = 2; i <= N; ++i) {
+							var dom_2 = document.getElementById('i_' + i);
+
+							if (dom_2.classList.contains('selected')) {
+								selected_list.push( i );
+							}
+						}
+						player();
+						/* initial history */
+						console.log( selected_list );
+						selected_list = selected_list.join(',');
+						console.log( selected_list );
+					}
+				}
+			}
+			function player(){
+				if ( action_list.length%2 )
+					document.getElementById('player').innerHTML = 
+					`<h1 style='color:blue'> 請 Bob 移動棋子</h1>`;
+				else
+					document.getElementById('player').innerHTML = 
+					`<h1 style='color:red'> 請 Alice 移動棋子 </h1>`;
+			}
+			function prev() {
+				if ( action_list.length ) {
+					var last_action = action_list.pop();
+
+					document.getElementById('i_' + last_action[0]).classList.toggle('selected');
+					document.getElementById('chip_' + last_action[0]).classList.toggle('pick');
+					document.getElementById('i_' + last_action[1]).classList.toggle('selected');
+					document.getElementById('chip_' + last_action[1]).classList.toggle('pick');
+					end=0;
+					player();
+				}
+			}
+
+			function reset() {
+				while ( action_list.length ) prev();
+			}
+
+			function win() {
+				if ( action_list.length%2 )
+					document.getElementById('player').innerHTML = 
+					`<h1 style='color:red'>恭喜！ Alice 贏了！！  </h1>`;
+				else
+					document.getElementById('player').innerHTML = 
+					`<h1 style='color:blue'>恭喜！ Bob 贏了！！ </h1>`;
+			}
+
+			function new_game() {
+				var N = document.getElementById('N').value;
+				var k = document.getElementById('k').value;
+
+				window.location = '?N=' + N + '&k=' + k;
+				end=0;
+			}
+		</script>
+	</BODY>
+</HTML>
+
