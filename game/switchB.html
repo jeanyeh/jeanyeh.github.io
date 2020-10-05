@@ -1,4 +1,3 @@
-
 <HTML>
 	<HEAD>
 		<style>
@@ -318,7 +317,7 @@
 				3. 按下
 				<input type='submit' value='Start Game' onclick='start_game()' />
 				後開始遊戲。 <br>
-				4. 當棋子全亮時贏得遊戲！
+				4. 當棋子全亮時贏得遊戲！還有<input id='remain' value="" size="1" readonly />個
 			</div>
 			<div id='player' style="float:left"></div>
 		</div>
@@ -440,10 +439,12 @@
 				document.getElementById('LB_' + i + '_' + j).classList.toggle('off');
 				if (document.getElementById('LB_' + i + '_' + j).classList.contains('on')){
 					remain=remain-1;
+					document.getElementById('remain').value = remain ;
 					console.log( remain );
 				}
 				if (document.getElementById('LB_' + i + '_' + j).classList.contains('off')){
 					remain=remain+1;
+					document.getElementById('remain').value = remain ;
 					console.log( remain );
 				}
 				win();
@@ -471,9 +472,9 @@
 			}
 			function win() {
 				if ( remain==0 ){
-					document.getElementById('player').innerHTML = 
+					/*document.getElementById('player').innerHTML = 
 					`<div style='color:red; font-size:36pt' >Congrats! You win!!! </div>`;
-					end=1;
+					end=1;*/
 				}
 			}
 			function start_game() {
