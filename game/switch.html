@@ -1,0 +1,73 @@
+
+<!doctype html>
+<HTML>
+<HEAD>
+	<TITLE>Game II</TITLE>
+	<style>
+		#game {
+			display		: inline-block;
+			background	: #999;
+		}
+
+		.cell {
+			width	: 80px;
+			height	: 80px;
+			margin	: 0 4px 0 0;
+			display	: inline-block;
+			background	: black;
+		} 
+
+		.cell.flip {
+			background	: yellow;
+		}
+	</style>
+</HEAD>
+<BODY>
+	<script>
+		function GenerateGame(siz) {
+			var dom = document.getElementById('game');
+
+			for (var i = 0; i < siz; i++) {
+				var row = document.createElement('div');
+				row.className = 'row';
+
+				for (var j = 0; j < siz; j++) {
+					var cell = document.createElement('span');
+					cell.className = 'cell';
+					cell.id = `cell_${i}_${j}`;
+					cell.onclick = function(ev) {
+						var dom_id = this.id;
+
+						var x = parseInt(dom_id.split('_')[1]);
+						var y = parseInt(dom_id.split('_')[2]);
+
+						if (document.getElementById(`cell_${x-1}_${y}`) != undefined) {
+							document.getElementById(`cell_${x-1}_${y}`).classList.toggle('flip');
+						}
+
+						if (document.getElementById(`cell_${x+1}_${y}`) != undefined) {
+							document.getElementById(`cell_${x+1}_${y}`).classList.toggle('flip');
+						}
+
+						if (document.getElementById(`cell_${x}_${y-1}`) != undefined) {
+							document.getElementById(`cell_${x}_${y-1}`).classList.toggle('flip');
+						}
+						if (document.getElementById(`cell_${x}_${y+1}`) != undefined) {
+							document.getElementById(`cell_${x}_${y+1}`).classList.toggle('flip');
+						}
+						if (document.getElementById(`cell_${x}_${y}`) != undefined) {
+							document.getElementById(`cell_${x}_${y}`).classList.toggle('flip');
+						}
+					}
+
+					row.appendChild(cell);
+				}
+				dom.appendChild(row);
+			}
+		}
+	</script>
+	<div id='game'></div>
+	<script>GenerateGame(5)</script>
+</BODY>
+</HTML>
+
