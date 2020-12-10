@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{systeme} %\systeme*{2x_1+x_2+x_3=0, -x_2+x_3=0}
+
+%%%%%%%%%%%%%%%%%%%這是中文專區%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fontspec}   %加這個就可以設定字體
+\usepackage{xeCJK}       %讓中英文字體分開設置
+%\setCJKmainfont{標楷體} %設定中文為系統上的字型，而英文不去更動，使用原TeX字型
+\setCJKmainfont{新細明體}
+\XeTeXlinebreaklocale "zh"             %這兩行一定要加，中文才能自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt     %這兩行一定要加，中文才能自動換行
+\defaultCJKfontfeatures{AutoFakeBold=6,AutoFakeSlant=.4} %以後不用再設定粗斜
+\newCJKfontfamily\Kai{標楷體}       %定義指令\Kai則切換成標楷體
+\newCJKfontfamily\Hei{微軟正黑體}   %定義指令\Hei則切換成正黑體
+\newCJKfontfamily\NewMing{新細明體} %定義指令\NewMing則切換成新細明體
+%隨時可以變換字型{\Kai 這個是標楷體}，{\Hei 黑體}，回到預設字體。
+%\textbf{粗體boldface 12345中文字{\Kai 楷粗}}正常Normal 12345中文字
+%\textit{斜體italic 12345中文字{\Hei 黑斜}}正常Normal 12345中文字
+%%%%%%%%%%%%%%%%%%%中文專區結束%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%% begin def of Augmented matrix %%%%%%%%%%
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+%example:
+%\begin{amatrix}{2}
+%   1 & 2 & 3 \\  a & b & c
+%\end{amatrix}
+%%%%%%%%% end def of Augmented matrix %%%%%%%%%%%%
+
+
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\hwnumber{11}                  % <-- homework number
+\newcommand\dueday{2019/10/03}
+\newcommand\course{應數一  線性代數}
+\newcommand\NetIDa{葉均承}           % <-- NetID of person #1
+\newcommand\NetIDb{Jean Yeh}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Week \hwnumber}}
+\rhead{\course }%\\ 截止日期: \dueday}
+\lfoot{}
+\cfoot{}
+\rfoot{\small page \thepage\ of \pageref{LastPage}}
+\headsep 1.5em
+
+\begin{document}
+
+\begin{center}
+沒有星號題的答案見課本後面
+\end{center}
+
+
+
+\textbf{Section 3-3} 
+ 
+課本 proble: 5, 9, 11, 13, 19, 22*
+
+\begin{enumerate}
+\item[22] T F F T T F F T T T
+\end{enumerate}
+
+
+\end{document}
