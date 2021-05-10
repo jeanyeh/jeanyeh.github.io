@@ -1,5 +1,3 @@
-# 應數一 線性代數 Spring 2021
-
 ## Section 7.2 Matrix Representations and Similarity
 
 ### Extra exercises
