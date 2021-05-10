@@ -33,4 +33,7 @@ Let $A$ and $R$ be similar $n \times$ matrices, so that $R=C^{-1}AC$ for some in
 
 ![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
 
-$$x_{1,2} = -b\frac{\sqrt{b^2-4\cdot a \cdot c}{2a}$$
+
+https://tex-image-link-generator.herokuapp.com/
+
+https://gist.github.com/ngshya/11a7dcb864da8a9d1a3bf1f167b60829
