@@ -1,8 +1,8 @@
 # K = 1, 共 2 個
 
-For type: ee=**0**, eo=**1**, oe=**1**, oo=**0**, we have **1** many
+### For type: ee=**0**, eo=**1**, oe=**1**, oo=**0**, we have **1** many
+### For type: ee=**1**, eo=**0**, oe=**0**, oo=**1**, we have **1** many
 
-For type: ee=**1**, eo=**0**, oe=**0**, oo=**1**, we have **1** many
 
 1.   **[(1, 3), (2, 4)]**, ee= **1**, eo= **0**, oe= **0**, oo= **1**
 
@@ -11,11 +11,10 @@ For type: ee=**1**, eo=**0**, oe=**0**, oo=**1**, we have **1** many
 
 # K = 2, 共 28 個
 
-For type: ee=**0**, eo=**2**, oe=**2**, oo=**0**, we have **5** many
+### For type: ee=**0**, eo=**2**, oe=**2**, oo=**0**, we have **5** many
+### For type: ee=**1**, eo=**1**, oe=**1**, oo=**1**, we have **18** many
+### For type: ee=**2**, eo=**0**, oe=**0**, oo=**2**, we have **5** many
 
-For type: ee=**1**, eo=**1**, oe=**1**, oo=**1**, we have **18** many
-
-For type: ee=**2**, eo=**0**, oe=**0**, oo=**2**, we have **5** many
 
 1.   **[(1, 3), (2, 4), (5, 7), (6, 8)]**, ee= **2**, eo= **0**, oe= **0**, oo= **2**
 
@@ -76,13 +75,10 @@ For type: ee=**2**, eo=**0**, oe=**0**, oo=**2**, we have **5** many
 
 # K = 3, 共 1112 個
 
-For type: ee=**0**, eo=**3**, oe=**3**, oo=**0**, we have **61** many
-
-For type: ee=**1**, eo=**2**, oe=**2**, oo=**1**, we have **495** many
-
-For type: ee=**2**, eo=**1**, oe=**1**, oo=**2**, we have **495** many
-
-For type: ee=**3**, eo=**0**, oe=**0**, oo=**3**, we have **61** many
+### For type: ee=**0**, eo=**3**, oe=**3**, oo=**0**, we have **61** many
+### For type: ee=**1**, eo=**2**, oe=**2**, oo=**1**, we have **495** many
+### For type: ee=**2**, eo=**1**, oe=**1**, oo=**2**, we have **495** many
+### For type: ee=**3**, eo=**0**, oe=**0**, oo=**3**, we have **61** many
 
 
 1.   **[(1, 3), (2, 4), (5, 7), (6, 8), (9, 11), (10, 12)]**, ee= **3**, eo= **0**, oe= **0**, oo= **3**
