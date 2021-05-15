@@ -160,11 +160,11 @@
   </tr>
 </table>
 
-https://oeis.org/A186491
+[https://oeis.org/A186491](https://oeis.org/A186491)
 
-https://oeis.org/A186492
+[https://oeis.org/A186492](https://oeis.org/A186492)
 
-https://oeis.org/A000364
+[https://oeis.org/A000364](https://oeis.org/A000364)
 
 #
 # K = 1, 共 2 個
