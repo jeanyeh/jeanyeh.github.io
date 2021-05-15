@@ -1,43 +1,166 @@
-# K = 1, 共 2 個
+<table border="10" >
+  <tr align="center" > 
+    <td>k</td>
+    <td>total</td>
+    <td>many</td>
+    <td>ee</td>
+    <td>eo</td>
+    <td>oe</td>  
+    <td>oo</td> 
+  </tr>
+  <tr>
+    <td align="center" rowspan="2"><b>k=1</b></td>
+    <td align="center" rowspan="2">2</td>
+    <td><b>1</b></td> 
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>  
+    <td>0</td>
+  </tr>
+  <tr>
+    <td><b>1</b></td> 
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>  
+    <td>1</td>
+  </tr>
+  <tr>
+    <td align="center" rowspan="3"><b>k=2</b></td>
+    <td align="center" rowspan="3">28</td>
+    <td><b>5</b></td> 
+    <td>0</td>
+    <td>2</td>
+    <td>2</td>  
+    <td>0</td>
+  </tr>
+  <tr>
+    <td><b>18</b></td> 
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>  
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><b>5</b></td> 
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>  
+    <td>2</td>
+  </tr>
+  <tr>
+    <td align="center" rowspan="4"><b>k=3</b></td>
+    <td align="center" rowspan="4">1,112</td>
+    <td><b>61</b></td> 
+    <td>0</td>
+    <td>3</td>
+    <td>3</td>  
+    <td>0</td>
+  </tr>
+  <tr>
+    <td><b>495</b></td> 
+    <td>1</td>
+    <td>2</td>
+    <td>2</td>  
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><b>496</b></td> 
+    <td>2</td>
+    <td>1</td>
+    <td>1</td>  
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><b>61</b></td> 
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>  
+    <td>3</td>
+  </tr>
+  <tr>
+    <td align="center" rowspan="5"><b>k=4</b></td>
+    <td align="center" rowspan="5">87,568</td>
+    <td><b>1,385</b></td> 
+    <td>0</td>
+    <td>4</td>
+    <td>4</td>  
+    <td>0</td>
+  </tr>
+  <tr>
+    <td><b>20,244</b></td> 
+    <td>1</td>
+    <td>3</td>
+    <td>3</td>  
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><b>44,310</b></td> 
+    <td>2</td>
+    <td>2</td>
+    <td>2</td>  
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><b>20,244</b></td> 
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>  
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><b>1,385</b></td> 
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>  
+    <td>4</td>
+  </tr>
+  <tr>
+    <td align="center" rowspan="6"><b>k=5</b></td>
+    <td align="center" rowspan="6">11,447,072</td>
+    <td><b>50,521</b></td> 
+    <td>0</td>
+    <td>5</td>
+    <td>5</td>  
+    <td>0</td>
+  </tr>
+  <tr>
+    <td><b>1,167,885</b></td> 
+    <td>1</td>
+    <td>4</td>
+    <td>4</td>  
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><b>4,505,130</b></td> 
+    <td>2</td>
+    <td>3</td>
+    <td>3</td>  
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><b>4,505,130</b></td> 
+    <td>3</td>
+    <td>2</td>
+    <td>2</td>  
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><b>1,167,885</b></td> 
+    <td>4</td>
+    <td>1</td>
+    <td>1</td>  
+    <td>4</td>
+  </tr>
+  <tr>
+    <td><b>50,521</b></td> 
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>  
+    <td>5</td>
+  </tr>
+</table>
 
-### For type: ee=**0**, eo=**1**, oe=**1**, oo=**0**, we have **1** elements
-### For type: ee=**1**, eo=**0**, oe=**0**, oo=**1**, we have **1** elements
 
-
-# K = 2, 共 28 個
-
-### For type: ee=**0**, eo=**2**, oe=**2**, oo=**0**, we have **5** elements
-### For type: ee=**1**, eo=**1**, oe=**1**, oo=**1**, we have **18** elements
-### For type: ee=**2**, eo=**0**, oe=**0**, oo=**2**, we have **5** elements
-
-
-# K = 3, 共 1,112 個
-
-### For type: ee=**0**, eo=**3**, oe=**3**, oo=**0**, we have **61** elements
-### For type: ee=**1**, eo=**2**, oe=**2**, oo=**1**, we have **495** elements
-### For type: ee=**2**, eo=**1**, oe=**1**, oo=**2**, we have **495** elements
-### For type: ee=**3**, eo=**0**, oe=**0**, oo=**3**, we have **61** elements
-
-# K = 4, 共 87,568 個
-
-### For type ee=**0**, eo=**4**, oe=**4**, oo=**0**, we have **1,385** elements
-### For type ee=**1**, eo=**3**, oe=**3**, oo=**1**, we have **20,244** elements
-### For type ee=**2**, eo=**2**, oe=**2**, oo=**2**, we have **44,310** elements
-### For type ee=**3**, eo=**1**, oe=**1**, oo=**3**, we have **20,244** elements
-### For type ee=**4**, eo=**0**, oe=**0**, oo=**4**, we have **1,385** elements
-
-
-# K = 5, 共 11,447,072 個
-
-### For type ee=**0**, eo=**5**, oe=**5**, oo=**0**, we have **50,521** elements
-### For type ee=**1**, eo=**4**, oe=**4**, oo=**1**, we have **1,167,885** elements
-### For type ee=**2**, eo=**3**, oe=**3**, oo=**2**, we have **4,505,130** elements
-### For type ee=**3**, eo=**2**, oe=**2**, oo=**3**, we have **4,505,130** elements
-### For type ee=**4**, eo=**1**, oe=**1**, oo=**4**, we have **1,167,885** elements
-### For type ee=**5**, eo=**0**, oe=**0**, oo=**5**, we have **50,521** elements
-
-
-#
 #
 # K = 1, 共 2 個
 
