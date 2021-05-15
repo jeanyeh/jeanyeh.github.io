@@ -157,12 +157,14 @@
   <td>1</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>180</b></td>
   <td>1</td>
   <td>2</td>
   <td>1</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>1</b></td>
   <td>0</td>
   <td>4</td>
@@ -176,6 +178,7 @@
   <td>2</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>26</b></td>
   <td>0</td>
   <td>3</td>
@@ -189,6 +192,7 @@
   <td>3</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>66</b></td>
   <td>0</td>
   <td>2</td>
@@ -218,12 +222,14 @@
   <td>0</td>
   <td>3</td>
 </tr>
+<tr align="center">
   <td align="right"><b>585</b></td>
   <td>2</td>
   <td>2</td>
   <td>0</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>31</b></td>
   <td>1</td>
   <td>4</td>
@@ -237,12 +243,14 @@
   <td>1</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>686</b></td>
   <td>1</td>
   <td>3</td>
   <td>1</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>1</b></td>
   <td>0</td>
   <td>5</td>
@@ -256,12 +264,14 @@
   <td>2</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>2436</b></td>
   <td>1</td>
   <td>2</td>
   <td>2</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>57</b></td>
   <td>0</td>
   <td>4</td>
@@ -275,6 +285,7 @@
   <td>3</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>302</b></td>
   <td>0</td>
   <td>3</td>
@@ -288,6 +299,7 @@
   <td>4</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>302</b></td>
   <td>0</td>
   <td>2</td>
@@ -317,12 +329,14 @@
   <td>0</td>
   <td>3</td>
 </tr>
+<tr align="center">
   <td align="right"><b>3150</b></td>
   <td>2</td>
   <td>3</td>
   <td>0</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>63</b></td>
   <td>1</td>
   <td>5</td>
@@ -336,18 +350,21 @@
   <td>1</td>
   <td>3</td>
 </tr>
+<tr align="center">
   <td align="right"><b>22050</b></td>
   <td>2</td>
   <td>2</td>
   <td>1</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>2394</b></td>
   <td>1</td>
   <td>4</td>
   <td>1</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>1</b></td>
   <td>0</td>
   <td>6</td>
@@ -361,12 +378,14 @@
   <td>2</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>14994</b></td>
   <td>1</td>
   <td>3</td>
   <td>2</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>120</b></td>
   <td>0</td>
   <td>5</td>
@@ -380,12 +399,14 @@
   <td>3</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>24024</b></td>
   <td>1</td>
   <td>2</td>
   <td>3</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>1191</b></td>
   <td>0</td>
   <td>4</td>
@@ -399,6 +420,7 @@
   <td>4</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>2416</b></td>
   <td>0</td>
   <td>3</td>
@@ -412,6 +434,7 @@
   <td>5</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>1191</b></td>
   <td>0</td>
   <td>2</td>
@@ -441,18 +464,21 @@
   <td>0</td>
   <td>4</td>
 </tr>
+<tr align="center">
   <td align="right"><b>59850</b></td>
   <td>3</td>
   <td>2</td>
   <td>0</td>
   <td>3</td>
 </tr>
+<tr align="center">
   <td align="right"><b>15309</b></td>
   <td>2</td>
   <td>4</td>
   <td>0</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>127</b></td>
   <td>1</td>
   <td>6</td>
@@ -466,18 +492,21 @@
   <td>1</td>
   <td>3</td>
 </tr>
+<tr align="center">
   <td align="right"><b>175014</b></td>
   <td>2</td>
   <td>3</td>
   <td>1</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>7932</b></td>
   <td>1</td>
   <td>5</td>
   <td>1</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>1</b></td>
   <td>0</td>
   <td>7</td>
@@ -491,18 +520,21 @@
   <td>2</td>
   <td>3</td>
 </tr>
+<tr align="center">
   <td align="right"><b>460404</b></td>
   <td>2</td>
   <td>2</td>
   <td>2</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>80907</b></td>
   <td>1</td>
   <td>4</td>
   <td>2</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>247</b></td>
   <td>0</td>
   <td>6</td>
@@ -516,12 +548,14 @@
   <td>3</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>224512</b></td>
   <td>1</td>
   <td>3</td>
   <td>3</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>4293</b></td>
   <td>0</td>
   <td>5</td>
@@ -535,12 +569,14 @@
   <td>4</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>196197</b></td>
   <td>1</td>
   <td>2</td>
   <td>4</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>15619</b></td>
   <td>0</td>
   <td>4</td>
@@ -554,6 +590,7 @@
   <td>5</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>15619</b></td>
   <td>0</td>
   <td>3</td>
@@ -567,6 +604,7 @@
   <td>6</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>4293</b></td>
   <td>0</td>
   <td>2</td>
@@ -585,6 +623,211 @@
   <td>0</td>
   <td>0</td>
   <td>8</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td rowspan="29"><b>k=9</b></td>
+  <td rowspan="29">34459425</td>
+  <td align="right"><b>396900</b></td>
+  <td>4</td>
+  <td>1</td>
+  <td>0</td>
+  <td>4</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>595350</b></td>
+  <td>3</td>
+  <td>3</td>
+  <td>0</td>
+  <td>3</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>69930</b></td>
+  <td>2</td>
+  <td>5</td>
+  <td>0</td>
+  <td>2</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>255</b></td>
+  <td>1</td>
+  <td>7</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>496125</b></td>
+  <td>4</td>
+  <td>0</td>
+  <td>1</td>
+  <td>4</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>3307500</b></td>
+  <td>3</td>
+  <td>2</td>
+  <td>1</td>
+  <td>3</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1214325</b></td>
+  <td>2</td>
+  <td>4</td>
+  <td>1</td>
+  <td>2</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>25440</b></td>
+  <td>1</td>
+  <td>6</td>
+  <td>1</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>8</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>4299750</b></td>
+  <td>3</td>
+  <td>1</td>
+  <td>2</td>
+  <td>3</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>5159700</b></td>
+  <td>2</td>
+  <td>3</td>
+  <td>2</td>
+  <td>2</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>401445</b></td>
+  <td>1</td>
+  <td>5</td>
+  <td>2</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>502</b></td>
+  <td>0</td>
+  <td>7</td>
+  <td>2</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1323000</b></td>
+  <td>3</td>
+  <td>0</td>
+  <td>3</td>
+  <td>3</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>7096950</b></td>
+  <td>2</td>
+  <td>2</td>
+  <td>3</td>
+  <td>2</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1772850</b></td>
+  <td>1</td>
+  <td>4</td>
+  <td>3</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>14608</b></td>
+  <td>0</td>
+  <td>6</td>
+  <td>3</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>3222450</b></td>
+  <td>2</td>
+  <td>1</td>
+  <td>4</td>
+  <td>2</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>2664825</b></td>
+  <td>1</td>
+  <td>3</td>
+  <td>4</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>88234</b></td>
+  <td>0</td>
+  <td>5</td>
+  <td>4</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>382725</b></td>
+  <td>2</td>
+  <td>0</td>
+  <td>5</td>
+  <td>2</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1416060</b></td>
+  <td>1</td>
+  <td>2</td>
+  <td>5</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>156190</b></td>
+  <td>0</td>
+  <td>4</td>
+  <td>5</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>241635</b></td>
+  <td>1</td>
+  <td>1</td>
+  <td>6</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>88234</b></td>
+  <td>0</td>
+  <td>3</td>
+  <td>6</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>9330</b></td>
+  <td>1</td>
+  <td>0</td>
+  <td>7</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>14608</b></td>
+  <td>0</td>
+  <td>2</td>
+  <td>7</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>502</b></td>
+  <td>0</td>
+  <td>1</td>
+  <td>8</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>9</td>
   <td>0</td>
 </tr>
 </table>
