@@ -1,3 +1,597 @@
+<h1>Perfect Matching of (2k)</h1>
+
+[oeis.org search for the first 8 items](https://oeis.org/search?q=1%2C+3%2C+15%2C+105%2C+945%2C+10395%2C+135135%2C+2027025&sort=&language=&go=Search)
+
+<table>
+<tr align="center"> 
+  <td>k</td>
+  <td>total</td>
+  <td>many</td>
+  <td>ee</td>
+  <td>eo</td>
+  <td>oe</td>
+  <td>oo</td> 
+</tr>
+<tr align="center">
+  <td><b>k=1</b></td>
+  <td>1</td>
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td rowspan="3"><b>k=2</b></td>
+  <td rowspan="3">3</td>
+  <td align="right"><b>1</b></td>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>1</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>2</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td rowspan="5"><b>k=3</b></td>
+  <td rowspan="5">15</td>
+  <td align="right"><b>3</b></td>
+  <td>1</td>
+  <td>1</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>6</b></td>
+  <td>1</td>
+  <td>0</td>
+  <td>1</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>2</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>4</b></td>
+  <td>0</td>
+  <td>1</td>
+  <td>2</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>3</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td rowspan="8"><b>k=4</b></td>
+  <td rowspan="8">105</td>
+  <td align="right"><b>9</b></td>
+  <td>2</td>
+  <td>0</td>
+  <td>0</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>7</b></td>
+  <td>1</td>
+  <td>2</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>40</b></td>
+  <td>1</td>
+  <td>1</td>
+  <td>1</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>3</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>25</b></td>
+  <td>1</td>
+  <td>0</td>
+  <td>2</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>11</b></td>
+  <td>0</td>
+  <td>2</td>
+  <td>2</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>11</b></td>
+  <td>0</td>
+  <td>1</td>
+  <td>3</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>4</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td rowspan="11"><b>k=5</b></td>
+  <td rowspan="11">945</td>
+  <td align="right"><b>90</b></td>
+  <td>2</td>
+  <td>1</td>
+  <td>0</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>15</b></td>
+  <td>1</td>
+  <td>3</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>135</b></td>
+  <td>2</td>
+  <td>0</td>
+  <td>1</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>180</b></td>
+  <td>1</td>
+  <td>2</td>
+  <td>1</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>4</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>315</b></td>
+  <td>1</td>
+  <td>1</td>
+  <td>2</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>26</b></td>
+  <td>0</td>
+  <td>3</td>
+  <td>2</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>90</b></td>
+  <td>1</td>
+  <td>0</td>
+  <td>3</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>66</b></td>
+  <td>0</td>
+  <td>2</td>
+  <td>3</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>26</b></td>
+  <td>0</td>
+  <td>1</td>
+  <td>4</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>5</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td rowspan="15"><b>k=6</b></td>
+  <td rowspan="15">10395</td>
+  <td align="right"><b>225</b></td>
+  <td>3</td>
+  <td>0</td>
+  <td>0</td>
+  <td>3</td>
+</tr>
+  <td align="right"><b>585</b></td>
+  <td>2</td>
+  <td>2</td>
+  <td>0</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>31</b></td>
+  <td>1</td>
+  <td>4</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>2205</b></td>
+  <td>2</td>
+  <td>1</td>
+  <td>1</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>686</b></td>
+  <td>1</td>
+  <td>3</td>
+  <td>1</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>5</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1260</b></td>
+  <td>2</td>
+  <td>0</td>
+  <td>2</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>2436</b></td>
+  <td>1</td>
+  <td>2</td>
+  <td>2</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>57</b></td>
+  <td>0</td>
+  <td>4</td>
+  <td>2</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1946</b></td>
+  <td>1</td>
+  <td>1</td>
+  <td>3</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>302</b></td>
+  <td>0</td>
+  <td>3</td>
+  <td>3</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>301</b></td>
+  <td>1</td>
+  <td>0</td>
+  <td>4</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>302</b></td>
+  <td>0</td>
+  <td>2</td>
+  <td>4</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>57</b></td>
+  <td>0</td>
+  <td>1</td>
+  <td>5</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>6</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td rowspan="19"><b>k=7</b></td>
+  <td rowspan="19">135135</td>
+  <td align="right"><b>4725</b></td>
+  <td>3</td>
+  <td>1</td>
+  <td>0</td>
+  <td>3</td>
+</tr>
+  <td align="right"><b>3150</b></td>
+  <td>2</td>
+  <td>3</td>
+  <td>0</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>63</b></td>
+  <td>1</td>
+  <td>5</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>6300</b></td>
+  <td>3</td>
+  <td>0</td>
+  <td>1</td>
+  <td>3</td>
+</tr>
+  <td align="right"><b>22050</b></td>
+  <td>2</td>
+  <td>2</td>
+  <td>1</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>2394</b></td>
+  <td>1</td>
+  <td>4</td>
+  <td>1</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>6</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>31500</b></td>
+  <td>2</td>
+  <td>1</td>
+  <td>2</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>14994</b></td>
+  <td>1</td>
+  <td>3</td>
+  <td>2</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>120</b></td>
+  <td>0</td>
+  <td>5</td>
+  <td>2</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>9450</b></td>
+  <td>2</td>
+  <td>0</td>
+  <td>3</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>24024</b></td>
+  <td>1</td>
+  <td>2</td>
+  <td>3</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>1191</b></td>
+  <td>0</td>
+  <td>4</td>
+  <td>3</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>10479</b></td>
+  <td>1</td>
+  <td>1</td>
+  <td>4</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>2416</b></td>
+  <td>0</td>
+  <td>3</td>
+  <td>4</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>966</b></td>
+  <td>1</td>
+  <td>0</td>
+  <td>5</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>1191</b></td>
+  <td>0</td>
+  <td>2</td>
+  <td>5</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>120</b></td>
+  <td>0</td>
+  <td>1</td>
+  <td>6</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>7</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td rowspan="24"><b>k=8</b></td>
+  <td rowspan="24">2027025</td>
+  <td align="right"><b>11025</b></td>
+  <td>4</td>
+  <td>0</td>
+  <td>0</td>
+  <td>4</td>
+</tr>
+  <td align="right"><b>59850</b></td>
+  <td>3</td>
+  <td>2</td>
+  <td>0</td>
+  <td>3</td>
+</tr>
+  <td align="right"><b>15309</b></td>
+  <td>2</td>
+  <td>4</td>
+  <td>0</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>127</b></td>
+  <td>1</td>
+  <td>6</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>189000</b></td>
+  <td>3</td>
+  <td>1</td>
+  <td>1</td>
+  <td>3</td>
+</tr>
+  <td align="right"><b>175014</b></td>
+  <td>2</td>
+  <td>3</td>
+  <td>1</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>7932</b></td>
+  <td>1</td>
+  <td>5</td>
+  <td>1</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>7</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>103950</b></td>
+  <td>3</td>
+  <td>0</td>
+  <td>2</td>
+  <td>3</td>
+</tr>
+  <td align="right"><b>460404</b></td>
+  <td>2</td>
+  <td>2</td>
+  <td>2</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>80907</b></td>
+  <td>1</td>
+  <td>4</td>
+  <td>2</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>247</b></td>
+  <td>0</td>
+  <td>6</td>
+  <td>2</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>345114</b></td>
+  <td>2</td>
+  <td>1</td>
+  <td>3</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>224512</b></td>
+  <td>1</td>
+  <td>3</td>
+  <td>3</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>4293</b></td>
+  <td>0</td>
+  <td>5</td>
+  <td>3</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>62559</b></td>
+  <td>2</td>
+  <td>0</td>
+  <td>4</td>
+  <td>2</td>
+</tr>
+  <td align="right"><b>196197</b></td>
+  <td>1</td>
+  <td>2</td>
+  <td>4</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>15619</b></td>
+  <td>0</td>
+  <td>4</td>
+  <td>4</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>51780</b></td>
+  <td>1</td>
+  <td>1</td>
+  <td>5</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>15619</b></td>
+  <td>0</td>
+  <td>3</td>
+  <td>5</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>3025</b></td>
+  <td>1</td>
+  <td>0</td>
+  <td>6</td>
+  <td>1</td>
+</tr>
+  <td align="right"><b>4293</b></td>
+  <td>0</td>
+  <td>2</td>
+  <td>6</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>247</b></td>
+  <td>0</td>
+  <td>1</td>
+  <td>7</td>
+  <td>0</td>
+</tr>
+<tr align="center">
+  <td align="right"><b>1</b></td>
+  <td>0</td>
+  <td>0</td>
+  <td>8</td>
+  <td>0</td>
+</tr>
+</table>
+
+
+
+
 # k = 1, 共 1 個
 
 For type ee=**0**, eo=**0**, oe=**1**, oo=**0**, we have **1** elements
