@@ -1,5 +1,5 @@
-<table border="10" >
-  <tr align="center" style="border: solid;"> 
+<table border="10" style="border: solid;">
+  <tr align="center"> 
     <td>k</td>
     <td>total</td>
     <td>many</td>
@@ -8,7 +8,6 @@
     <td>oe</td>  
     <td>oo</td> 
   </tr>
-  <tr><td></td></tr>
   <tr>
     <td align="center" rowspan="2"><b>k=1</b></td>
     <td align="center" rowspan="2">2</td>
@@ -25,7 +24,6 @@
     <td>0</td>  
     <td>1</td>
   </tr>
-  <tr><td></td></tr>
   <tr>
     <td align="center" rowspan="3"><b>k=2</b></td>
     <td align="center" rowspan="3">28</td>
@@ -49,7 +47,6 @@
     <td>0</td>  
     <td>2</td>
   </tr>
-  <tr><td></td></tr>
   <tr>
     <td align="center" rowspan="4"><b>k=3</b></td>
     <td align="center" rowspan="4">1,112</td>
@@ -80,7 +77,6 @@
     <td>0</td>  
     <td>3</td>
   </tr>
-  <tr><td></td></tr>
   <tr>
     <td align="center" rowspan="5"><b>k=4</b></td>
     <td align="center" rowspan="5">87,568</td>
@@ -118,7 +114,6 @@
     <td>0</td>  
     <td>4</td>
   </tr>
-  <tr><td></td></tr>
   <tr>
     <td align="center" rowspan="6"><b>k=5</b></td>
     <td align="center" rowspan="6">11,447,072</td>
