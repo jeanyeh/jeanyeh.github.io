@@ -60,6 +60,7 @@
   <td>1</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>1</b></td>
   <td>0</td>
   <td>2</td>
@@ -89,6 +90,7 @@
   <td>0</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>7</b></td>
   <td>1</td>
   <td>2</td>
@@ -102,6 +104,7 @@
   <td>1</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>1</b></td>
   <td>0</td>
   <td>3</td>
@@ -115,6 +118,7 @@
   <td>2</td>
   <td>1</td>
 </tr>
+<tr align="center">
   <td align="right"><b>11</b></td>
   <td>0</td>
   <td>2</td>
@@ -144,6 +148,7 @@
   <td>0</td>
   <td>2</td>
 </tr>
+<tr align="center">
   <td align="right"><b>15</b></td>
   <td>1</td>
   <td>3</td>
