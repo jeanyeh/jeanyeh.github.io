@@ -1,4 +1,4 @@
-<table style="border: solid;">
+<table>
   <tr align="center"> 
     <td>k</td>
     <td>total</td>
