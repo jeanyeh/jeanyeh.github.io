@@ -64,7 +64,7 @@
     <td>1</td>
   </tr>
   <tr>
-    <td align="right"><b>496</b></td> 
+    <td align="right"><b>495</b></td> 
     <td>2</td>
     <td>1</td>
     <td>1</td>  
