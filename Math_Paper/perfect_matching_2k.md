@@ -2,6 +2,8 @@
 
 [oeis.org search for the first 8 items](https://oeis.org/search?q=1%2C+3%2C+15%2C+105%2C+945%2C+10395%2C+135135%2C+2027025&sort=&language=&go=Search)
 
+https://colab.research.google.com/drive/1Km-hnOGIdDOSQnOYMAsi8J41VMM_iUNm?authuser=5
+
 <table>
 <tr align="center"> 
   <td>k</td>
