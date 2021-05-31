@@ -1,8 +1,47 @@
+<html>
+<head>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+
+<body>
 
 <title>Perfect Matching of 2k</title>
 
 <h1>Perfect Matching of (2k)</h1>
 
+
+<h1>定義：</h1>
+<ul>
+
+  <li>Perfect Matching of [2n]:<br>A set partition of [2n] with blocks (disjoint nonempty subsets) of size exactly 2. Let $\mathit{M}_{2n}$ be the set of matchings of [2n], and let $M \in \mathit{M}_{2n}$. The standard form of $M$ is a list of blocks $\{(i_1, j_1), (i_2, j_2), ..., (i_n, j_n) \}$ such that $i_r < j_r$ for all $1\leq r\leq n$ and $1=i_1 < i_2 < ... < i_n$. </li><br>
+
+  <li>$ee(\rho)$ =
+    #$\{i \mid \rho(i) \mbox{ is even and }  \rho(i+1) \mbox{ is even}\}$ </li><br>
+
+  <li>$eo(\rho)$ =
+    #$\{i \mid \rho(i) \mbox{ is even and }  \rho(i+1) \mbox{ is odd}\}$ </li><br>
+
+  <li>$oe(\rho)$ =
+    #$\{i \mid \rho(i) \mbox{ is odd and }  \rho(i+1) \mbox{ is even}\}$ </li><br>
+
+  <li>$oo(\rho)$ =
+    #$\{i \mid \rho(i) \mbox{ is odd and }  \rho(i+1) \mbox{ is odd}\}$ </li><br>
+</ul>
+
+
+<hr>
 
 目錄：
 <ul>

@@ -1,6 +1,50 @@
+<html>
+<head>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+
+<body>
+
 <title>Perfect Matching of 4k</title>
 
 <h1>Perfect Matching of 4k</h1>
+
+<h1>定義：</h1>
+
+<ul>
+
+  <li>Perfect Matching of [2n]:<br>A set partition of [2n] with blocks (disjoint nonempty subsets) of size exactly 2. Let $\mathit{M}_{2n}$ be the set of matchings of [2n], and let $M \in \mathit{M}_{2n}$. The standard form of $M$ is a list of blocks $\{(i_1, j_1), (i_2, j_2), ..., (i_n, j_n) \}$ such that $i_r < j_r$ for all $1\leq r\leq n$ and $1=i_1 < i_2 < ... < i_n$. </li><br>
+
+  <li>Ascending/descending:<br> If $(i_s, j_s)$ is a block of $M$, then we say that $i_s$ (response. $j_s$) is as ascending (rep. a descending) entry of $M$.</li><br>
+
+  <li>$h_k$:<br> Let $h_k$ be the number of perfect matching of [4k] such that $2i-1$ and $2i$ are either both ascending or both depending for every $i \in [2k]$. </li><br>
+
+  <li>$ee(\rho)$ =
+    #$\{i \mid \rho(i) \mbox{ is even and }  \rho(i+1) \mbox{ is even}\}$ </li><br>
+
+  <li>$eo(\rho)$ =
+    #$\{i \mid \rho(i) \mbox{ is even and }  \rho(i+1) \mbox{ is odd}\}$ </li><br>
+
+  <li>$oe(\rho)$ =
+    #$\{i \mid \rho(i) \mbox{ is odd and }  \rho(i+1) \mbox{ is even}\}$ </li><br>
+
+  <li>$oo(\rho)$ =
+    #$\{i \mid \rho(i) \mbox{ is odd and }  \rho(i+1) \mbox{ is odd}\}$ </li><br>
+</ul>
+
+<hr>
       
 目錄：
 <ul>
@@ -20,7 +64,7 @@
       <table  border="1" cellpadding="5" style="text-align:center;">
   <tr align="center"> 
     <td>k</td>
-    <td>total</td>
+    <td>$h_k$</td>
     <td>number</td>
     <td>ee</td>
     <td>eo</td>
@@ -184,7 +228,7 @@
 <hr>
 <h1><span id="data">Data</span></h1>
 
-<h1 id="k--1-共-2-個">K = 1, 共 2 個</h1>
+<h1 >K = 1, $h_k$ =  2 </h1>
 
 <h3 id="for-type-ee0-eo1-oe1-oo0-we-have-1-elements">For type: ee=<strong>0</strong>, eo=<strong>1</strong>, oe=<strong>1</strong>, oo=<strong>0</strong>, we have <strong>1</strong> elements</h3>
 <h3 id="for-type-ee1-eo0-oe0-oo1-we-have-1-elements">For type: ee=<strong>1</strong>, eo=<strong>0</strong>, oe=<strong>0</strong>, oo=<strong>1</strong>, we have <strong>1</strong> elements</h3>
@@ -198,7 +242,7 @@
   </li>
 </ol>
 
-<h1 id="k--2-共-28-個">K = 2, 共 28 個</h1>
+<h1 ">K = 2, $h_k$ = 28 </h1>
 
 <h3 id="for-type-ee0-eo2-oe2-oo0-we-have-5-elements">For type: ee=<strong>0</strong>, eo=<strong>2</strong>, oe=<strong>2</strong>, oo=<strong>0</strong>, we have <strong>5</strong> elements</h3>
 <h3 id="for-type-ee1-eo1-oe1-oo1-we-have-18-elements">For type: ee=<strong>1</strong>, eo=<strong>1</strong>, oe=<strong>1</strong>, oo=<strong>1</strong>, we have <strong>18</strong> elements</h3>
@@ -291,7 +335,7 @@
   </li>
 </ol>
 
-<h1 id="k--3-共-1112-個">K = 3, 共 1112 個</h1>
+<h1 ">K = 3, $h_k$ = 1112 </h1>
 
 <h3 id="for-type-ee0-eo3-oe3-oo0-we-have-61-elements">For type: ee=<strong>0</strong>, eo=<strong>3</strong>, oe=<strong>3</strong>, oo=<strong>0</strong>, we have <strong>61</strong> elements</h3>
 <h3 id="for-type-ee1-eo2-oe2-oo1-we-have-495-elements">For type: ee=<strong>1</strong>, eo=<strong>2</strong>, oe=<strong>2</strong>, oo=<strong>1</strong>, we have <strong>495</strong> elements</h3>
@@ -3637,7 +3681,7 @@
   </li>
 </ol>
 
-<h1 id="k--4-共-87568-個">K = 4, 共 87568 個</h1>
+<h1 >K = 4, $h_k$ =  87568 </h1>
 
 <h3 id="for-type-ee0-eo4-oe4-oo0-we-have-1385-elements">For type ee=<strong>0</strong>, eo=<strong>4</strong>, oe=<strong>4</strong>, oo=<strong>0</strong>, we have <strong>1,385</strong> elements</h3>
 <h3 id="for-type-ee1-eo3-oe3-oo1-we-have-20244-elements">For type ee=<strong>1</strong>, eo=<strong>3</strong>, oe=<strong>3</strong>, oo=<strong>1</strong>, we have <strong>20,244</strong> elements</h3>

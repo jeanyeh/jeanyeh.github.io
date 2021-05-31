@@ -22,13 +22,19 @@ MathJax = {
 
 <h1>SimSun Permutation</h1>
 
-定義：
+<h1>定義：</h1>
 <ul>
-  <li>SimSun Permutation：$\mathbb{S}_n$ in words, no double descent</li>
+    <li>SimSun Permutation of [n]： A permutation $\rho \in \mathbb{S}_n$ is simsun if for all $k \leq n$, the subword of $\rho$ restricted to [k] does not have three consecutive decreasing elements. </li><br>
+
+  <li>o_des($\rho$) = # $\{i \mid \rho(i): \mbox{ odd and } \rho(i)> \rho(i+1) \}$</li><br>
+
+  <li>e_des($\rho$) = # $\{i \mid \rho(i): \mbox{ even and } \rho(i)> \rho(i+1) \}$</li><br>
+
 </ul>
 
+<hr>
 
-目錄：
+<h1>目錄：</h1>
 <ul>
   <li><a href="#total">總數</a></li>
   <li><a href="#category">分項</a></li>
@@ -40,7 +46,7 @@ MathJax = {
 <h1><span id="total">總數</span></h1>
 <table border="1" cellpadding="5" style="text-align:center;">
 <tr>
-  <td>k</td> <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td> <td>9</td>  <td>10</td>  <td>11</td> 
+  <td>n</td> <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td> <td>9</td>  <td>10</td>  <td>11</td> 
 </tr>
 
 <tr>
@@ -65,7 +71,7 @@ MathJax = {
 <table border="1" cellpadding="5" style="text-align:center;">
 
 <tr>
-	<td>k</td>
+	<td>n</td>
 	<td>total</td>
 	<td>numbers</td><td>o_des</td><td>e_des</td>
 </tr>
