@@ -1,0 +1,182 @@
+
+<HTML>
+  <HEAD>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <style>
+    body {
+      /*background-image: url("https://i.stack.imgur.com/jGlzr.png");*/
+      background-color  : #eae0ff;
+    }
+
+    label {
+      margin-right : 10px;
+    }
+
+    #board {
+      display : flex;
+      justify-content : flex-start;
+    }
+
+    .chip {
+      width  : 100px;
+      height : 120px;
+
+      display : flex;
+      margin  : 2px;
+      padding : 2px;
+
+      border : 2px solid black;
+      background-image: url("https://i.stack.imgur.com/jGlzr.png");
+
+      align-items     : center;
+      justify-content : space-around;
+    }
+
+    .chess {
+      height : 80px;
+      width  : 80px;
+
+      display  : inline-block;
+      border-radius  : 50%;
+    }
+
+    .light {
+      background-color : #f2f2f2;
+    }
+
+    .dark {
+      background-color : #222222;
+    }
+  </style>
+  </HEAD>
+
+
+  <BODY>
+    <div id='board'>
+    </div>
+
+    <button class='btn' onclick='regret_chess()'>悔棋</button>
+    <button class='btn' onclick='init(3)'>重設</button>
+    <br>
+
+    <div>
+      
+    </div>
+
+    <br>
+    <font style='font-weight: bold'>目前步數：</font> <span id="game-steps-value"></span> <span id="loss"></span>
+    <br>
+    <br>
+
+    <div id='rule'>
+			<font style='font-weight: bold'>規則：</font><br>
+			1. 棋子只能在棋盤中移動，且一格最多擺放一個棋子。<br>
+      2. 向左或向右移動時，每次最多跨越兩個棋子。<br>
+      <font style='font-weight: bold'>目標：</font><br>十步內將三顆白棋放到最左邊！
+		</div>
+
+    <script>
+
+      function insert_chip(color) {
+        let chip = document.createElement('div');
+
+        chip.className = 'chip wooden';
+        chip.onclick = on_move_chess;
+
+        if (color !== undefined) {
+          // only set color if it is defined
+          chip.innerHTML = `<span class='chess ${color}'></span>`;
+        }
+
+        document.getElementById('board').appendChild(chip);
+      }
+
+      function init_board(size) {
+        insert_chip();
+        for (let i = 0; i < size; i++) { insert_chip('dark'); }
+        for (let i = 0; i < size; i++) { insert_chip('light'); }
+      }
+
+      function on_move_chess() {
+        let chess_pos = index_of_chess(this);
+
+        if (chess_pos == space_pos) {
+          // click the space chip
+          return ;
+        }
+
+        if (Math.abs(chess_pos - space_pos) > 3) {
+          return ;
+        }
+
+        swap_chess(chess_pos);
+        gameStepsValue = document.getElementById("game-steps-value");
+        gameStepsValue.textContent = game_steps;
+        check_steps();
+      }
+
+      function swap_chess(chess_pos, regret=false) {
+        let chess = document.getElementById('board').children[chess_pos];
+        let space = document.getElementById('board').children[space_pos];
+
+        if (!regret) move_history.push(space_pos);
+        space.appendChild(chess.children[0]);
+        space_pos = chess_pos;
+        game_steps += 1;
+      }
+
+      function regret_chess() {
+        let regret_pos = move_history.pop();
+        if (regret_pos === undefined) { return ; }
+
+        swap_chess(regret_pos, true);
+
+        game_steps -= 2;
+        gameStepsValue = document.getElementById("game-steps-value");
+        gameStepsValue.textContent = game_steps;
+        check_steps();
+      }
+
+      function check_steps() {
+        if (game_steps > 10) {
+          document.getElementById('loss').innerHTML = 
+					`<h1 style='color:red'> 超過 十步 囉！</h1>`;
+        }
+        if (game_steps < 11) {
+          document.getElementById('loss').innerHTML = 
+					``;
+        }
+      }
+
+      function index_of_chess(dom) {
+        let chips = document.getElementById('board').children;
+        for (let i = 0; i < chips.length; i++) {
+          if (chips[i] === dom) { return i; }
+        }
+        return -1;
+      }
+
+      function init(default_size) {
+        const query_string = new URLSearchParams(window.location.search);
+        const size = query_string.get('size') || default_size;
+
+        document.getElementById('board').innerHTML = '';
+
+        space_pos = 0;
+        move_history = [];
+        init_board(size);
+
+        game_steps = 0;
+        var gameStepsValue = document.getElementById("game-steps-value");
+        gameStepsValue.textContent = game_steps;
+      }
+
+      var space_pos = 0;
+      var move_history = [];
+      var game_steps = 0;
+      init(3)
+
+    </script>
+  </BODY>
+</HTML>
+

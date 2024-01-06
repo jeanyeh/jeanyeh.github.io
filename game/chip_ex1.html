@@ -73,11 +73,7 @@
 	</HEAD>
 	<BODY>
 		<div id='player'>
-			<h1> 
-			請點選棋盤放置棋子！
-			<label style='font-size:16;font-weight: normal'>還有 
-			<input id='remain' value=6 size="1" readonly />個棋子需要放置</label>
-			</h1>
+			<h1 style='color:red'> 請 Alice 移動棋子 </h1>
 		</div>
 		<div id='board'>
 			<div class='chip'>1</div>
@@ -86,21 +82,16 @@
 		<br>
 		<input type='submit' value='上一步' onclick='prev()'/>
 		<input type='submit' value='重設' onclick='reset()' />
-		<br><br>
-		輸入棋盤大小（
-		<label>N= </label><input id='N' value=8 maxlength="2" size="1"/>），以及可放置的棋子個數（
-		<label>k= </label><input id='k' value=6 maxlength="2" size="1"/>）後，可
-		<input type='submit' value='開始新遊戲' onclick='new_game()' /> 。
 
 		<br><br>
 
 		<div id='rule'>
 			<font style='font-weight: bold'>規則：</font><br>
-			長度為 N 的棋盤上有 k 個棋子。
+			長度為 8 的棋盤上有 3 個棋子，放置在第 4, 6, 8 格。
 			<br>
-			Alice 跟 Bob 輪流選取一個棋子，並將棋子移至它左邊的空格。
+			Alice 跟 Bob 輪流選取一個棋子，並將棋子移至離它最近的左邊的空格。
 			<br>
-			贏家是將棋子移至最左邊的棋格者。
+			贏家是將棋子移至『GOAL』的棋格者。
 		</div>
 
 
@@ -109,9 +100,8 @@
 			const N = query_string.get('N') || '8';
 			const k = query_string.get('k') || '3';
 
-			document.getElementById('N').value = N;
-			document.getElementById('k').value = k;
-			document.getElementById('remain').value = k;
+
+			var remain = k;
 
 			var end=0;
 
@@ -121,9 +111,16 @@
 				     	<div id='chip_1' class=''></div>
 				     </div>`;
 			for (var i = 1; i < parseInt(N); ++i) {
-				chips += `<div id='i_${i+1}' class='chip wooden' onclick='selected(this)'>${i+1}<br><br><br>
+				if (i==3 || i==5 || i==7 ) {
+				  chips += `<div id='i_${i+1}' class='chip wooden selected' onclick='selected(this)'>${i+1}<br><br><br>
+					  	<div id='chip_${i+1}' class='pick'></div>
+					  </div>`;
+				}
+				else {
+				  chips += `<div id='i_${i+1}' class='chip wooden' onclick='selected(this)'>${i+1}<br><br><br>
 					  	<div id='chip_${i+1}' class=''></div>
 					  </div>`;
+				}
 			}
 			document.getElementById('board').innerHTML = chips;
 
@@ -219,14 +216,14 @@
 					`<h1 style='color:blue'>恭喜！ Bob 贏了！！ </h1>`;
 			}
 
-			function new_game() {
-				var N = document.getElementById('N').value;
-				var k = document.getElementById('k').value;
-
-				window.location = '?N=' + N + '&k=' + k;
-				end=0;
-			}
 		</script>
+
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <br>
+        <a href='index.html'>
+          (回首頁)
+        </a>
+      </footer>	
 	</BODY>
 </HTML>
 

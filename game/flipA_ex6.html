@@ -44,13 +44,7 @@
 				text-align	: center;
 				float		: left;
 			}
-			.selected {
-				/*background-image	: url("http://www.clker.com/cliparts/9/k/b/s/z/c/button-black-md.png");
- 				background-position	: center;
-				background-repeat	: no-repeat;
-				background-size		: cover;
-				background-color	: #ff99ff;*/
-			}
+
 			.wooden {
 				background-image: url("https://i.stack.imgur.com/jGlzr.png");
 			}
@@ -210,14 +204,7 @@
 	<BODY>
 		<div>
 			<div style="float:left">
-				1. 請輸入棋盤大小（<label>N= </label><input id='N' value=5 maxlength="2" size="1"/>）後按下
-				<input type='submit' value='New Game' onclick='new_game()' />
-				確定棋盤。<br>
-				2. 請隨意點選棋子，設置初始狀態。<br>
-				3. 按下
-				<input type='submit' value='Start Game' onclick='start_game()' />
-				後開始遊戲。 <br>
-				4. 當棋子全亮時贏得遊戲！還有<input id='remain' value="" size="1" readonly />個
+				<font style="font-size: 2em; font-weight: bolder">當棋子全亮時贏得遊戲！證明能否辦到！</font> <a href="index.html">(回首頁)</a>
 			</div>
 			<div id='player' style="float:left"></div>
 		</div>
@@ -231,11 +218,11 @@
 		<div style="clear:both">
 		<div id='operator_l' class='side'>
 			<div class='chip'>1</div>
-			<div class='chip selected'>2</div>
+
 		</div>
 		<div id='board' style="float:left">
 			<div class='chip'>1</div>
-			<div class='chip selected'>2</div>
+
 		</div>
 		</div>
 
@@ -245,20 +232,31 @@
 
 		<script>
 			const query_string = new URLSearchParams(window.location.search);
-			const N = query_string.get('N') || '5';
-			document.getElementById('N').value = N;
+			const N = 4
 
-			var start=1;
+
+			var start=0;
 			var end=0;
-			var remain=N*N;
 
 			var chips = ``;
 			for (var i = 1; i <= parseInt(N); ++i) {
 				for (var j = 1; j <= parseInt(N); ++j) {
-				chips += `<div id='i_${i}_${j}' class='chip wooden' onclick='selected(this)'>
+				        if ( (i == 1 && j == 3)||(i == 1 && j == 4) ||
+                                             (i == 1 && j == 1)||(i == 2 && j == 4) ||
+                                             (i == 2 && j == 1)||(i == 2 && j == 3) ||
+                                             (i == 3 && j == 2)||(i == 4 && j == 4) ||
+                                             (i == 4 && j == 1)||(i == 4 && j == 3) ){
+				        	chips += `<div id='i_${i}_${j}' class='chip wooden' >
+					  	<div id='LB_${i}_${j}' class='on'></div>
+				        	</div>`;
+				        	/*(${i},${j})<br><br><br>*/
+				        }
+				        else {
+				        	chips += `<div id='i_${i}_${j}' class='chip wooden' >
 					  	<div id='LB_${i}_${j}' class='off'></div>
-					  </div>`;
-				/*(${i},${j})<br><br><br>*/
+				        	</div>`;
+				        	/*(${i},${j})<br><br><br>*/
+				        }
 				}
 				chips += `<br>`
 			}
@@ -282,20 +280,7 @@
 
 			var action_list = new Array();
 
-			function selected( dom ) {
-				var nrI = getI(dom.id);
-				var nrJ = getJ(dom.id);
-				if( start==1 && end != 1 ) {
-					dom.classList.toggle('selected');
-					bulbStatus(nrI,nrJ);
-					/*console.log( dom );
-					console.log( dom.id );
-					console.log( nrI );
-					console.log( nrJ );
-					console.log( start );
-					console.log( remain );*/
-				} 
-			}
+			
 			function clicked_t( dom ) {
 				var nrI = getI(dom.id);
 				var nrJ = getJ(dom.id);
@@ -317,17 +302,6 @@
 			function bulbStatus(i,j){
 				document.getElementById('LB_' + i + '_' + j).classList.toggle('on');
 				document.getElementById('LB_' + i + '_' + j).classList.toggle('off');
-				if (document.getElementById('LB_' + i + '_' + j).classList.contains('on')){
-					remain=remain-1;
-					document.getElementById('remain').value = remain ;
-					console.log( remain );
-				}
-				if (document.getElementById('LB_' + i + '_' + j).classList.contains('off')){
-					remain=remain+1;
-					document.getElementById('remain').value = remain ;
-					console.log( remain );
-				}
-				win();
 			}
 			function extractWord(str, char, pos)
 			{
@@ -349,22 +323,6 @@
 				console.log(extractWord(str, '_','a'),'_','a');
 				console.log(extractWord(extractWord(str, '_','a'),'_','a'));*/
 				return extractWord(extractWord(str, '_','a'),'_','a');
-			}
-			function win() {
-				if ( remain==0 ){
-					/*document.getElementById('player').innerHTML = 
-					`<div style='color:red; font-size:36pt' >Congrats! You win!!! </div>`;
-					end=1;*/
-				}
-			}
-			function start_game() {
-				start=0;
-			}
-			function new_game() {
-				var N = document.getElementById('N').value;
-
-				window.location = '?N=' + N ;
-				end=0;
 			}
 
 		</script>

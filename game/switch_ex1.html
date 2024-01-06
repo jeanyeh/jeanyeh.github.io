@@ -4,6 +4,7 @@
 <HTML>
 <HEAD>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
 	<TITLE>Game II</TITLE>
 	<style>
 		#game {
@@ -71,6 +72,9 @@
 				}
 				dom.appendChild(row);
 			}
+	  
+			document.getElementById(`cell_${1}_${1}`).classList.toggle('flip');
+
 		}
 	</script>
 
@@ -78,23 +82,21 @@
 	<div>
 	  <span class="term">
 	    <font style="font-size: 1.2em;">
-今有排列成 5*5 方陣的燈泡，其控制開關發生了點小故障：當按下某一個燈泡的開關後，不止此燈泡本身會改變狀態（從亮變暗，或是從暗變亮），而且與此燈泡相鄰（指位於『同行且相鄰』或『同列且相鄰』）的燈泡也會改變狀態。<br> <br> 若一開始所有的燈泡都是暗的，而經過一系列的開關操作之後，恰只有一個燈泡是亮的。求這個亮著的燈泡的所有可能位置
+今有排列成 5*5 方陣的燈泡，其控制開關發生了點小故障：當按下某一個燈泡的開關後，不止此燈泡本身會改變狀態（從亮變暗，或是從暗變亮），而且與此燈泡相鄰（指位於『同行且相鄰』或『同列且相鄰』）的燈泡也會改變狀態。<br> <br> 若一開始的燈泡狀態如下，是否能在經過一系列的開關操作之後，將所有燈泡點亮？
 	    </font>
 	  </span>
 	</div>
 	<div id='game'></div>
-	<script>GenerateGame(5)</script>
-	
-<br>	
+	<script>GenerateGame(5)
 
+	</script>
 
-      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+      <!--footer class='fixed-bottom text-center text-muted overflow-hidden'>
         <br>
-        <a href="switch_sol.html">(燈泡問題解)</a> 
-        <!--a href='index.html'>
+        <a href='index.html'>
           (回首頁)
-        </a--S>
-      </footer>	
+        </a>
+      </footer-->	
 
 </BODY>
 </HTML>
