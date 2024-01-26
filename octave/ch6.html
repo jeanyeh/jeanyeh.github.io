@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+<title>Ch5</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        margin-top: 20px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+
+    /* ul {
+          list-style-type: none;
+        } */
+
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #FFFFFF;
+        /* #f9f2f4; */
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+<body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 6 Orthogonality
+        </span>
+
+        <span class='termheader'>
+            目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#6-2">6-2. QR 分解</a>
+            </li>
+            <li><a href="#6-5">6-5. The least square method 以及畫圖</a>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="5-1">
+        <span class='termheader'>
+            Ch 6
+        </span>
+
+        <div class='info'>
+            這章的內容中，Octave能幫上的忙大概就只有基礎的矩陣計算、1-2的向量內外積、2-2的nullspace的basis。剩下的都需要你們自行判斷居多。
+        </div>
+
+        <!-- QR 分解-->
+        <div id="6-2"> 
+            <div class='termheader'>
+                QR 分解
+            </div>
+
+            <div class='info'>
+                我其實是希望你們用課本上的方法做出QR分解的，現在這邊只是教一個讓你們拿來對答案用的方法而已。
+            </div>
+
+            <div class='info'>
+                這個指令的主要用法是 <code>[Q, R] = qr(A)</code>，指令中的Q跟R就是我們要的。
+                稍微注意一下，關於QR分解，如果矩陣A是正方形矩陣的話，標準一向是統一的。
+                但在A是 $m \times n$ 時，有兩派標準。
+                第一派是我們課本上的做法，要求 Q 是$m \times n$ ，且 R 是 $n \times n$。
+                第二派是Octave上的做法，要求 Q 是$m \times m$ ，且 R 是 $m \times n$。
+            </div>
+
+            <br>            
+            
+            <pre>
+                <code-input>
+                    A = [1, 1; 0, 1; 1, 1]
+                    [Q, R] = qr(A)
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    A =
+
+                        1   1
+                        0   1
+                        1   1
+
+                    Q =
+
+                        -0.707106781186547                   0  -0.707106781186547
+                                        0   1.000000000000000                   0
+                        -0.707106781186547                   0   0.707106781186547
+
+                    R =
+
+                        -1.414213562373095  -1.414213562373095
+                                        0   1.000000000000000
+                                        0                   0
+                </code-output>
+            </pre>
+
+        </div>
+
+        <!-- The least square method -->
+        <div id="6-5">
+            <div class='termheader'>
+                The least square method
+            </div>
+
+            <span class="'info">
+                這部分我不打算認真教學，因為我希望你們真的學會課本上的操作，然後使用矩陣的方法解決。
+                不過我還是稍微提一下，在octave裡已經有許多成熟的逼近方法，單單是The least square method就有不止一種，有興趣的人可以參考一下<a href="https://docs.octave.org/v4.0.1/Linear-Least-Squares.html">這個網頁</a>。
+            </span>
+
+
+            <div class='termheader'>
+                畫圖
+            </div>
+
+            <span class="'info">
+                這部分我不打算細教，講個觀念，然後給範例讓你們直接用就好了。畫圖主要是用<code>plot(x,y)</code>這個指令。
+                其中的 x, y都是向量。假設 $x=[x_1, x_2, ..., x_n]$，而 $y=[y_1, y_2, ..., y_n]$，
+                則畫出來的會是n個點$(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)$，並且用折線連起來，舉例來說
+            </span>
+
+            <pre>
+                <code-input>
+                    a = [2; 4; 5; 6]
+                    b = [6.5; 8.5; 11.0; 12.5]
+                    plot(a,b)
+                </code-input>
+            </pre>
+
+            就會畫出像是下面這樣的折線圖。
+
+            <div class="pic">
+                <img src="image/ch6-5-1.png" width="400" class="img-fluid" alt="折線圖">
+            </div>
+
+            而如果用 plot(a,b,"o") 會只畫出點，而不是折線，並且用o來表示點的位置。(p.s. plot(a,b,"*") 會是用*來表示點)
+
+ 
+            <pre>
+                <code-input>
+                    a = [2; 4; 5; 6]
+                    b = [6.5; 8.5; 11.0; 12.5]
+                    plot(a,b, "o")
+                </code-input>
+            </pre>
+
+            就會畫出像是下面這樣的點圖。
+
+            <div class="pic">
+                <img src="image/ch6-5-2.png" width="400" class="img-fluid" alt="點圖">
+            </div>
+
+            而函數圖的畫法是先給出x軸的範圍，密密的標上點，然後用y=f(x)的形式列出y軸座標，然後再畫出線即可。
+            這邊要教一個表示法，<code>a:b:c</code>，這是表示一連串的值，開始是a，然後每間隔b會給一個直，直到超過c就停。舉例來說：
+
+            <pre>
+                <code-input>
+                    5:2:16
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    ans =
+
+                        5    7    9   11   13   15
+                </code-output>
+            </pre>
+
+            另外，在y=f(x)的寫法時，次方的部分要用 <code>.^</code> 而不只是<code>^</code>。這是一個叫做『element-by-element power operator』的特殊用法。
+            有興趣的可以看<a href="https://docs.octave.org/v6.4.0/Arithmetic-Ops.html">這個網站</a>，或是查關鍵字『octave 元素對元素 點次方 點乘』可以找到更多資訊。
+            所以若是想畫出$y=2x^4+7x^3+8x+2$在範圍$-4\leq x\leq 2$的話，是以下這樣的。提醒一下，在式子最後加上分號，可以讓octave不要把結果印出來，免得列出太多無用資訊。
+        
+            <pre>
+                <code-input>
+                    x=[-4:0.01:2];
+                    y=2*x.^4+7*x.^3+8*x+2;
+                    plot(x,y)
+                </code-input>
+            </pre>
+
+            輸出結果
+
+            <div class="pic">
+                <img src="image/ch6-5-3.png" width="400" class="img-fluid" alt="點圖">
+            </div>
+        
+        </div>
+
+
+
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁 </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

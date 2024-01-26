@@ -1,0 +1,310 @@
+
+<!doctype html>
+<html>
+  <head>
+
+    <title>Octave 教學</title>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
+      crossorigin='anonymous'
+    />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [
+                    ['$', '$'],
+                    ['\\(', '\\)']
+                ]
+            }
+        };
+    </script>
+    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+
+    <style>
+      body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+      }
+
+      .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em; 
+        color: Maroon;
+        font-weight: bolder;
+      }
+
+      .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.2em; 
+        font-weight: bolder
+      }
+
+      .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+      }
+
+      /* ul {
+        list-style-type: none;
+      } */
+
+      footer {
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+
+
+  
+  <body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+      <span class='header'>
+        <font style="font-size: 1.5em;">Octave 教學 </font>   
+        (純粹以線性代數課角度出發)
+      </span>
+    </div>
+
+
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        寫在開始之前
+      </span>
+
+      <span class="'info">
+        這邊要特別告知一件事，<font style=" color: red">Octave求出來的數值解都是近似解</font>，我們只能要求呈現出來的是分數形式或是小數形式，
+        所以若求出來的值為無理數的時候，除非使用精確的符號形式，否則我們是無法得到切確值的。
+      </span>
+    </div>
+
+
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        如何開始 <a href="ch0.html">(教學)</a>
+      </span>
+
+      介紹octave的網頁版使用方式
+
+    </div>
+
+
+    <!-- Ch 1 -->
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        Ch 1 Vectors, Matrices, and Linear System
+        <a href="ch1.html">(教學)</a>
+      </span>
+
+      <ul>
+        <li>
+          1-1. <a href="ch1_1.html">(範例)</a> <br>
+               如何建構變數以及如何計算、如何建構 row and column vectors
+        </li>
+
+        <li>
+          1-2. <a href="ch1_2.html">(範例)</a> <br>
+               向量的 dot product, norm、三角函數計算
+        </li>
+
+        <li>
+          1-3. <a href="ch1_3.html">(範例)</a> <br>
+               如何建構矩陣以及加減乘的計算、建構 zero matrix、建構 identity matrix、建構矩陣的 transpose matrix
+        </li>
+
+        <li>
+          1-4. <a href="ch1_4.html">(範例)</a> <br>
+               找尋矩陣的 reduced row-echelon form (rref)
+        </li>
+
+        <li>
+          1-5. <a href="ch1_5.html">(範例)</a> <br>
+               找矩陣的 inverse 以及 解方程式
+        </li>
+
+        <li>
+          1-6.  <br>
+               利用 1-3 教的 rref 求解，並代值確定答案是否算對
+        </li>
+
+      </ul>
+
+    </div>
+
+
+
+    <!-- Ch 2 -->
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        Ch 2 Dimension, Rank, and Linear Transformation
+        <a href="ch2.html">(教學)</a>
+      </span>
+
+      <ul>
+        <li>
+          2-1. <br>
+               利用 1-3 教的 rref 得知集合是否 linearly independent
+        </li>
+
+        <li>
+          2-2. <a href="ch2_2.html">(範例)</a> <br>
+               計算 rank of matrix
+        </li>
+
+        <li>
+          2-3. <a href="ch2_3.html">(範例)</a> <br>
+               基本上也只能用到找inverse，以及簡單的矩陣乘法。
+        </li>
+
+      </ul>
+
+    </div>
+
+
+ 
+    <!-- CH 3 -->
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        Ch 3 Vector Space
+      </span>
+
+      <ul>
+        這章節沒有額外的octave技巧，會用到的計算方式都已經在前面兩章介紹過了。
+      </ul>
+
+    </div>
+
+
+
+ 
+    <!-- Ch 4 -->
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        Ch 4 Determinants
+        <a href="ch4.html">(教學)</a>
+      </span>
+
+      <ul>
+        <li>
+          4-1.  <a href="ch4_1.html">(範例)</a> <br>
+          計算矩陣的determinant, 以及向量們的cross product，還有解方程式
+        </li>
+
+        <li>
+          4-2. 4-3. 4-4.<br>
+          這幾節沒有額外的octave技巧，會用到的計算方式都已經在前面幾章介紹過了。
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- Ch 5 -->
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        Ch 5 Eigenvalues and Eigenvectors
+        <a href="ch5.html">(教學)</a>
+      </span>
+
+      <ul>
+        <li>
+          5-1. <a href="ch5_1.html">(範例)</a> <br>
+          求出矩陣的characteristic polynomial，以及計算矩陣的eigenvalue和eigenvector
+        </li>
+
+        <li>
+          5-2. <a href="ch5_2.html">(範例)</a> <br>
+          判斷矩陣是否能夠diagonalize
+        </li>
+
+        <li>
+          5-3.  <br>
+          這節沒有額外的octave技巧，會用到的計算方式都已經在前面幾章介紹過了。
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- Ch 6 -->
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        Ch 6 Orthogonality
+        <a href="ch6.html">(教學)</a>
+      </span>
+
+      <ul>
+        <li>
+          6-5. <a href="ch6_5.html">(範例)</a> <br>
+          做計算，以及畫圖
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- Ch 7 -->
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        Ch 7 Changes of Basis
+      </span>
+
+      <ul>
+        這章節沒有額外的octave技巧，會用到的計算方式都已經在前面幾章介紹過了。
+      </ul>
+
+    </div>
+
+    <!-- Ch 9 -->
+    <div class='w-100 d-inline-flex flex-column p-3'> 
+      <span class='termheader'>
+        Ch 9 Complex Scalar
+        <a href="ch9.html">(教學)</a>
+      </span>
+
+      <ul>
+        <li>
+          9-1.  <br>
+          這個我覺得不需要特別解習題，請直接看教學就可以了。
+        </li>
+
+        <li>
+          9-2. <a href="ch9_2.html">(範例)</a> <br>
+          向量的dot product，矩陣的conjugate transpose。
+        </li>
+
+        <li>
+          9-3. <a href="ch9_3.html">(範例)</a> <br>
+          Unitarily diagonalizable，以及創建有變數的矩陣，用來算normal。
+        </li>
+
+        <li>
+          9-4. <a href="ch9_4.html">(範例)</a> <br>
+          Jordan canonical form。
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div>
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <a href='../index.html'>
+          (回個人首頁)
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>

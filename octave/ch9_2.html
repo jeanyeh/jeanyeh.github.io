@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+<title>ch 9-3</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+    
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+    
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+    
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+    /* ul {
+        list-style-type: none;
+      } */
+    
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+    
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f9f2f4;
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+    
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+    
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+
+
+<body>
+
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 9-2 Diagonalization
+        </span>
+
+        <span class="term">
+            在看習題解答前，建議先觀看<a href="ch9.html">Ch9的教學</a>。
+        </span>
+
+        <span class='termheader'>
+            習題目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#p9">9</a></li>
+            <li><a href="#p23">23</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p9">
+        <span class='termheader'>
+          Problem 9
+        </span> 
+  
+        <span class='question'>
+            Solve the linear system $Az=\begin{bmatrix}i\\1+i\\i\end{bmatrix}$ if 
+            $A=\begin{bmatrix} 
+             1&i&1-i\\1&1&1+i\\0&-1+i&1
+            \end{bmatrix}$
+        </span>
+
+            <pre>
+                <code-input>
+                    format rat
+                    A = [1, i, 1-i; 1, 1, 1+i; 0, -1+i, 1]
+                    inv(A) * [i; 1+i; i]
+                </code-input>
+            </pre>
+
+            <pre>
+            <code-output>
+                A =
+
+                    1 +         0i          0 +         1i          1 -         1i
+                    1 +         0i          1 +         0i          1 +         1i
+                    0 +         0i         -1 +         1i          1 +         0i
+
+                ans =
+
+                   -7/10 +      9/10i
+                    9/10 -      3/10i
+                    3/5  -       1/5i
+            </code-output>
+            </pre>
+
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p23">
+        <span class='termheader'>
+          Problem 23
+        </span> 
+  
+        <span class='question'>
+            Find a vector of length 2 parallel to $[i, 1-i, 1+i, 1-i]$
+        </span>
+  
+        <span class="'info">
+            長度2的平行向量，只要先除以向量的長度，得到單位向量後，再乘以2即可。
+       </span>
+        
+        <pre>
+            <code-input>
+                v = [i, 1-i, 1+i, 1-i]
+                u = v / norm( v ) * 2
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                v =
+
+                    0 + 1i   1 - 1i   1 + 1i   1 - 1i
+
+                u =
+
+                        0 + 0.7559i   0.7559 - 0.7559i   0.7559 + 0.7559i   0.7559 - 0.7559i
+            </code-output>
+        </pre>
+
+        <span class="answer">
+            這數字有點兒醜，我們可以試試這樣：
+        </span>
+
+        <pre>
+            <code-input>
+                v = [i, 1-i, 1+i, 1-i]
+                norm( v )^2
+                u = v * 2
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                v =
+
+                    0 + 1i   1 - 1i   1 + 1i   1 - 1i
+
+                ans = 7.0000
+                u =
+
+                    0 + 2i   2 - 2i   2 + 2i   2 - 2i
+            </code-output>
+        </pre>
+
+        <span class="answer">
+            所以就知道答案是 $[\frac{2i}{\sqrt{7}}, \frac{2-2i}{\sqrt{7}}, \frac{2+2i}{\sqrt{7}}, \frac{2-2i}{\sqrt{7}}]$
+        </span>
+
+        或者是你也可以使用精確的符號形式
+
+        <pre>
+            <code-input>
+                v = sym([i, 1-i, 1+i, 1-i])
+                u = simplify( v / norm( v ) * 2 )
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                v = (sym) [ⅈ  1 - ⅈ  1 + ⅈ  1 - ⅈ]  (1×4 matrix)
+                u = (sym 1×4 matrix)
+
+                    ⎡2⋅√7⋅ⅈ  2⋅√7⋅(1 - ⅈ)  2⋅√7⋅(1 + ⅈ)  2⋅√7⋅(1 - ⅈ)⎤
+                    ⎢──────  ────────────  ────────────  ────────────⎥
+                    ⎣  7          7             7             7      ⎦
+            </code-output>
+        </pre>
+
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁  </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

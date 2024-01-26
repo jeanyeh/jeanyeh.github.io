@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+<title>Octave 教學</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+    
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+    
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+    
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+    /* ul {
+        list-style-type: none;
+      } */
+    
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+    
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f9f2f4;
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+    
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+    
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+
+
+<body>
+
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 1-2 the norm and the dot product
+        </span>
+
+        <span class="term">
+            在看習題解答前，建議先觀看<a href="ch1.html">Ch1的教學</a>。
+        </span>
+
+        <span class='termheader'>
+            習題目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#p5">5</a></li>
+            <li><a href="#p11">11</a></li>
+            <li><a href="#p29">29</a></li>
+            <li><a href="#p33">33</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p5">
+        <span class='termheader'>
+          Problem 5
+        </span> 
+  
+        <span class='question'>
+            給定 $\vec{u}=[-1, 3, 4], \vec{v}=[2, 1, -1], \vec{w}=[-2, -1, 3]$ 找 $\|3\vec{u}-\vec{v}+2\vec{w}\|$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                u = [-1, 3, 4]
+                v = [2, 1, -1]
+                w = [-2, -1, 3]
+                norm( 3 * u - v + 2 * w )
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                u =
+
+                    -1   3   4
+
+                v =
+
+                    2   1  -1
+
+                w =
+
+                    -2  -1   3
+
+                ans = 21.863
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此可知 $\|3\vec{u}-\vec{v}+2\vec{w}\|=21.863$。
+            但注意，這只是近似值，通常考試時，會需要算出切確的無理數，這時你可以求norm的平方而不只是norm。
+            輸入
+        </span>
+
+        <pre>
+            <code-input>
+                norm( 3 * u - v + 2 * w ) ^2
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                ans = 478
+            </code-output>
+        </pre> 
+
+        <span class="answer">
+            由此可知 $\|3\vec{u}-\vec{v}+2\vec{w}\|=\sqrt{478}$。
+        </span>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p11">
+        <span class='termheader'>
+          Problem 11
+        </span> 
+  
+        <span class='question'>
+            給定 $\vec{u}=[-1, 3, 4], \vec{v}=[2, 1, -1], \vec{w}=[-2, -1, 3]$， 
+            找 $(\vec{u}+\vec{v})\cdot \vec{w}$
+        </span>
+  
+        <br> 
+        輸入以下程式碼，注意這次我在三個向量後面都加上了分號（；），因爲我覺得不需要印出三個向量的值，我已經知道了。
+        <pre>
+            <code-input>
+                u = [-1, 3, 4];
+                v = [2, 1, -1];
+                w = [-2, -1, 3];
+                dot( u + v , w )
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                ans = 3
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此可知 $(\vec{u}+\vec{v})\cdot \vec{w} = 3$。
+        </span>
+  
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p29">
+        <span class='termheader'>
+          Problem 29
+        </span> 
+  
+        <span class='question'>
+            給定兩項量 $[10, 4, -1, 8], [-5, -2, 3, -4]$，判斷此二者的關係是平行、垂直或都不是。
+            若他們是平行，請判斷此二著為同向或反向。
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                dot( [10, 4, -1, 8], [-5, -2, 3, -4] )
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                ans = -93
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由於這兩個向量並不是常數倍，所以不是平行。由於上面octave的內積計算結果不為零，所以不垂直。由此可知這兩個向量不垂直也不平行。
+        </span>
+  
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p33">
+        <span class='termheader'>
+          Problem 33
+        </span> 
+  
+        <span class='question'>
+            請找出在$\mathbb{R}^3$空間中從點$(2, -1, 3)$到點$(4, 1, -2)$的距離。
+        </span>
+  
+        <br> 
+        我們知道兩點的距離，即為從一點到另一點的向量的長度。輸入
+        <pre>
+            <code-input>
+                norm( [2, -1, 3] - [4, 1, -2] )
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                ans = 5.7446
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此可知此兩點距離為5.7446，或由第5題的技巧，可得距離為$\sqrt{33}$。
+        </span>
+  
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁  </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

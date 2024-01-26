@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+<title>Octave 教學</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+    
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+    
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+    
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+    /* ul {
+        list-style-type: none;
+      } */
+    
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+    
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f9f2f4;
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+    
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+    
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+
+
+<body>
+
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 4-1 Areas, Volumes, and Cross Products
+        </span>
+
+        <span class="term">
+            在看習題解答前，建議先觀看<a href="ch4.html">Ch4的教學</a>。
+        </span>
+
+        <span class='termheader'>
+            習題目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#p7">7</a></li>
+            <li><a href="#p15">15</a></li>
+            <li><a href="#p29">29</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p7">
+        <span class='termheader'>
+          Problem 7
+        </span> 
+  
+        <span class='question'>
+            Find the indicated determinant.
+            $$\begin{vmatrix} 
+             2&-5&3\\1&3&4\\-2&3&7
+            \end{vmatrix}$$
+        </span>
+  
+        輸入
+        <pre>
+            <code-input>
+                det( [2, -5, 3; 1, 3, 4; -2, 3, 7] )
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                ans = 120
+            </code-output>
+        </pre>
+
+        <span class="answer">
+            那麼就知道矩陣的determinant為120。
+        </span>
+
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p15">
+        <span class='termheader'>
+          Problem 15
+        </span> 
+  
+        <span class='question'>
+            Find $\vec{a}\times \vec{b}$
+            $$\vec{a}=-\vec{i}+2\vec{j}+4\vec{k}, ~
+            \vec{b}=2\vec{i}-4\vec{j}-8\vec{k}, $$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                a = [-1, 2, 4]
+                b = [2, -4, -8]
+                cross( a, b )
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                a =
+
+                    -1   2   4
+
+                b =
+
+                    2  -4  -8
+
+                ans =
+
+                    0   0   0
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            所以 $\vec{a}\times \vec{b}=[0, 0, 0]$
+        </span>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p29">
+        <span class='termheader'>
+          Problem 29
+        </span> 
+  
+        <span class='question'>
+            The triangle in the plane $\mathbb{R}^2$ bounded by the lines $y=x$, $y=-3x+8$, and $3y+5x=0$.
+        </span>
+
+        <span class="answer">
+            這題可以利用octave解出兩線交點。
+        </span>
+
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                F1 = @(x) x - ( -3 * x +8 )
+                x1 = fzero( F1, 0 )
+                y1 = -3 * x1 +8
+
+                F2 = @(x) ( -3 * x +8 ) - ( 0 -5 * x )/3
+                x2 = fzero( F2, 0 )
+                y2 = -3 * x2 +8
+
+                F3 = @(x) x - ( 0 -5 * x )/3
+                x3 = fzero( F3, 0 )
+                y3 = ( 0 -5 * x3 )/3
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                F1 =
+
+                    @(x) x - (-3 * x + 8)
+
+                x1 = 2
+                y1 = 2
+
+                F2 =
+
+                    @(x) (-3 * x + 8) - (0 - 5 * x) / 3
+
+                x2 = 6
+                y2 = -10
+
+                F3 =
+
+                    @(x) x - (0 - 5 * x) / 3
+
+                x3 = 0
+                y3 = 0
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            所以三角形的三個頂點分別為$(2, 2), (6, -10), (0, 0)$。接著就只要利用Example 1的方法求出determinant，
+                再取絕對值即為此三角形的兩倍。
+        </span>
+
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                a = [x2, y2] - [x1, y1]
+                b = [x3, y3] - [x1, y1]
+                det( [ a; b ] ) / 2
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                a =
+
+                    4  -12
+
+                b =
+
+                    -2  -2
+
+                ans = -16
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            所以三角形的面積為 16。
+        </span>
+    </div>
+    <hr>
+
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁  </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

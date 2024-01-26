@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+<title>Octave 教學</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+    
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+    
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+    
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+    /* ul {
+        list-style-type: none;
+      } */
+    
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+    
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f9f2f4;
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+    
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+    
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+
+
+<body>
+
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 2-2 the rank of a matrix
+        </span>
+
+        <span class="term">
+            在看習題解答前，建議先觀看<a href="ch2.html">Ch2的教學</a>。
+        </span>
+
+        <span class='termheader'>
+            習題目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#p3">3</a></li>
+            <li><a href="#p7">7</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <hr>
+
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p3">
+        <span class='termheader'>
+          Problem 3
+        </span> 
+  
+        <span class='question'>
+            For the given matrix below, find 
+            (a) the rank of the matrix, 
+            (b) a basis for the row space, 
+            (c) a basis for the column space, and 
+            (d) a basis for the nullspace.
+            $$\begin{bmatrix} 
+             0&6&6&3\\
+             1&2&1&1\\
+             4&1&-3&4\\
+             1&3&2&0
+            \end{bmatrix}$$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                A = [0, 6, 6, 3; 1, 2, 1, 1;4, 1, -3, 4; 1, 3, 2, 0]
+                rank( A )
+                rref( A )
+                null( A )
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    0   6   6   3
+                    1   2   1   1
+                    4   1  -3   4
+                    1   3   2   0
+
+                ans = 3
+
+                ans =
+
+                    1   0  -1   0
+                    0   1   1   0
+                    0   0   0   1
+                    0   0   0   0
+
+                ans =
+
+                    -5.7735e-01
+                     5.7735e-01
+                    -5.7735e-01
+                    -4.9960e-16
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            (a) 由 rank(A) = 3 ，我們可知 the rank of the matrix 為 3 。<br><br>
+            (b) 由 rref( A ) 的結果，a basis for the row space 就直接取rref(A)中非零向量的row vectors就好，所以有一組是 
+            $\{[1, 0, -1, 0], [0, 1, 1, 0], [0, 0, 0, 1]\}$<br><br>
+            (c) 由 rref( A ) 的結果，a basis for the column space 就看rref(A)中pivot在哪幾個column，然後取對應的A中的column vectors即可。<br><br>
+            (d) 由 rref( A ) 的結果，計算出結果。
+            或是因為觀察到null(A)的向量有個關係，前三項的值幾乎一樣，差個正負號而已，
+            第四項幾乎是0，所以猜測一下，代回驗證可得 $\begin{bmatrix}1\\-1\\1\\0\end{bmatrix}$ <br><br>
+        </span>
+
+        <span class="answer">
+            這裡順便幫大家回憶一下，如果想要取這些向量，該如何著手。
+        </span>
+
+        <pre>
+            <code-input>
+                R=rref( A );
+                display("basis of the row space")
+                R(1,:)
+                R(2,:)
+                R(3,:)
+                display("basis of the column space")
+                A(:,1)
+                A(:,2)
+                A(:,4)
+                a = null(A);
+                display("basis of the nullspace")
+                null(A) / a(1)
+                display("check")
+                n=[1; -1; 1; 0]
+                A*n
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                basis of the row space
+                ans =
+
+                    1   0  -1   0
+
+                ans =
+
+                    0   1   1   0
+
+                ans =
+
+                    0   0   0   1
+
+                basis of the column space
+                ans =
+
+                    0
+                    1
+                    4
+                    1
+
+                ans =
+
+                    6
+                    2
+                    1
+                    3
+
+                ans =
+
+                    3
+                    1
+                    4
+                    0
+
+                basis of the nullspace
+                ans =
+
+                     1.0000e+00
+                    -1.0000e+00
+                     1.0000e+00
+                     8.6533e-16
+
+                check
+                n =
+
+                     1
+                    -1
+                     1
+                     0
+
+                ans =
+
+                    0
+                    0
+                    0
+                    0
+            </code-output>
+        </pre> 
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p7">
+        <span class='termheader'>
+          Problem 7
+        </span> 
+  
+        <span class='question'>
+            Determine whether the given matrix is invertible, by finding its rank.
+            $$\begin{bmatrix} 
+             0&-9&-9& 2\\
+             1& 2& 1& 1\\
+             4& 1&-3& 4\\
+             1& 3& 2& 0
+            \end{bmatrix}$$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                A = [0, -9, -9, 2;1, 2, 1, 1;4, 1, -3, 4;1, 3, 2, 0]
+                rank( A )
+                inv( A )
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    0         -9         -9          2
+                    1          2          1          1
+                    4          1         -3          4
+                    1          3          2          0
+
+                ans = 3
+
+                warning: matrix singular to machine precision, rcond = 1.4803e-17
+                ans =
+
+                    *          *          *          *
+                    *          *          *          *
+                    *          *          *          *
+                   1/14       12/7      -3/14       -6/7
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            因為矩陣是$4 \times 4$的，第一個ans告知我們矩陣的rank為$3 \neq 4$，所以此矩陣沒有inverse matrix。
+            後面第二個答案前面的warming也告知了此矩陣是 singular的。
+        </span>
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁  </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<title>Ch4</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        margin-top: 20px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+
+    /* ul {
+          list-style-type: none;
+        } */
+
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+
+    .info {
+        /* background-color: #FFFFFF; */
+        padding: 2px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        /* font-size: 105%; */
+    }
+
+    .pic {
+        /* background-color: #FFFFFF; */
+        padding: 2px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        /* font-size: 105%; */
+    }
+    
+
+</style>
+</head>
+
+<body>
+
+  <div class='w-100 d-inline-flex flex-column p-3'>
+    <span class='header'>
+      Ch 0 如何開始
+    </span>
+
+    <span class='termheader'>
+      有用的連結：
+    </span>
+      
+    <ul>
+      <li><a href="https://octave-online.net/">octave-online 的網頁</a></li>
+      <li><a href="https://octave.org/">OCTAVE 的官方網頁</a></li>
+      <li><a href="https://zh.wikipedia.org/zh-tw/GNU_Octave">wikipedia 的 OCTAVE 介紹</a></li>
+      <li><a href="https://wiki.octave.org/Publications_using_Octave#Books">多本 OCTAVE 的介紹書（英文）</a></li>
+      <li><a href="https://wiki.octave.org/Video_tutorials">多個 OCTAVE 的介紹影片（英文）</a></li>
+      <li><a href="https://wiki.octave.org/Octave_Basics">常用符號表列</a></li>
+    </ul>
+
+    <hr>
+
+    <div class="info"> 
+      打開<a href="https://octave-online.net/">octave-online 的網頁</a>後，所見如下圖。<br>
+      圖中標示 1 號區塊的是輸入窗格，也就是輸入指令的地方，而指令的計算結果會呈現在圖中標示 2 號的區塊（結果窗格）。<br>
+      標示 3 號的則是登入的位置，如果你只是打算簡單的當個計算機使用，是不需要登入的。
+      <div class="pic">
+        <img src="image/ch0_intro.png" class="img-fluid" alt="Intro Environment">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="info"> 
+      當你註冊並登入後，你會看到 OCtave 的介面長相不太一樣了，這也是登入的優勢：Octave 允許用戶儲存先前用過的檔案，也能夠運行一個比較長的程式碼。<br><br>
+      圖中標示 1 號的位置就是所有已儲存的檔案，同時也是新增或上傳現有檔案的位置。<br>
+      圖中標示 2 號的位置則是編寫檔案內容的位置，下面給一個範例。
+      <div class="pic">
+        <img src="image/ch0_intro_demo.png" class="img-fluid" alt="Intro Environment, demo">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="info"> 
+      這是運行範例：在標號 1 的位置，可見我有一個檔案名為 “demo.m” （注意副檔名均為 .m）。<br>
+      而標號 2 的區域則是 demo.m 檔案裡已經編寫完畢的程式碼（簡單算兩個矩陣相乘），記得每次編寫完畢都要『儲存』之後再按『run』，這樣在標號 3 的區域呈現的才會是你標寫後的程式碼的結果。
+      <div class="pic">
+        <img src="image/ch0_intro_signin.png" class="img-fluid" alt="Intro Environment, signin">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="info"> 
+      當然 Octave 有可以安裝在桌機上的版本，就可以不用開網頁運算了，如果有比較大的計算需求，推薦使用桌機版的。<br>
+      但是這邊就不詳細介紹了，畢竟這只是線代的 Octave 教學，目的只是讓你們可以有個方便驗算答案的方法而已。
+    </div>
+
+  </div>
+
+<!-- footer -->
+  <div>
+    <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <a href="./index.html"> 回 Octave 教學首頁 </a>
+    </footer>
+  </div>
+</body>
+
+</html>
+<!doctype html>

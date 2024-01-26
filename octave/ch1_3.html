@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+<title>Octave 教學</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+    
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+    
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+    
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+    /* ul {
+        list-style-type: none;
+      } */
+    
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+    
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f9f2f4;
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+    
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+    
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+
+
+<body>
+
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 1-3 matrices and their algebra
+        </span>
+
+        <span class="term">
+            在看習題解答前，建議先觀看<a href="ch1.html">Ch1的教學</a>。
+        </span>
+
+        <span class='termheader'>
+            習題目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#p1">1</a></li>
+            <li><a href="#p3">3</a></li>
+            <li><a href="#p4">4</a></li>
+            <li><a href="#p7">7</a></li>
+            <li><a href="#p15">15</a></li>
+            <li><a href="#p17">17</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p1">
+        <span class='termheader'>
+          Problem 1
+        </span> 
+  
+        <span class='question'>
+            給定矩陣 
+            $$A=\begin{bmatrix}-2&1&3\\4&0&-1\end{bmatrix}$$
+            求 $3A$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                A = [-2, 1, 3; 4, 0, -1]
+                3 * A
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    -2   1   3
+                     4   0  -1
+
+                ans =
+
+                    -6    3    9
+                    12    0   -3
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此可知 $3A=\begin{bmatrix}-6&3&9\\12&0&-3\end{bmatrix}$
+        </span>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p3">
+        <span class='termheader'>
+          Problem 3
+        </span> 
+  
+        <span class='question'>
+            給定矩陣 
+            $$A=\begin{bmatrix}-2&1&3\\4&0&-1\end{bmatrix}, 
+            B=\begin{bmatrix}4&1&-2\\5&-1&3\end{bmatrix}$$
+            求 $A+B$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                A = [-2, 1, 3; 4, 0, -1]
+                B = [4, 1, -2; 5, -1, 3]
+                A + B
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    -2   1   3
+                     4   0  -1
+
+                B =
+
+                    4   1  -2
+                    5  -1   3
+
+                ans =
+
+                    2   2   1
+                    9  -1   2
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此可知 $A+B=\begin{bmatrix}2&2&1\\9&-1&2\end{bmatrix}$
+        </span>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p4">
+        <span class='termheader'>
+          Problem 4
+        </span> 
+  
+        <span class='question'>
+            給定矩陣 
+            $$
+            B=\begin{bmatrix}4&1&-2\\5&-1&3\end{bmatrix}, 
+            C=\begin{bmatrix}2&-1\\0&6\\-3&2\end{bmatrix} $$
+            求 $B+C$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                B = [4, 1, -2; 5, -1, 3]
+                C = [2, -1; 0, 6; -3, 2]
+                B + C
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                B =
+
+                    4   1  -2
+                    5  -1   3
+
+                C =
+
+                     2  -1
+                     0   6
+                    -3   2
+
+                error: operator +: nonconformant arguments (op1 is 2x3, op2 is 3x2)
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此錯誤訊息可知道，$2 \times 3$ 矩陣跟 $3 \times 2$ 矩陣無法相加。
+        </span>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p7">
+        <span class='termheader'>
+          Problem 7
+        </span> 
+  
+        <span class='question'>
+            給定矩陣 
+            $$A=\begin{bmatrix}-2&1&3\\4&0&-1\end{bmatrix}, 
+            B=\begin{bmatrix}4&1&-2\\5&-1&3\end{bmatrix}$$
+            求 $AB$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                A = [-2, 1, 3; 4, 0, -1]
+                B = [4, 1, -2; 5, -1, 3]
+                A * B
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    -2   1   3
+                     4   0  -1
+
+                B =
+
+                    4   1  -2
+                    5  -1   3
+
+                error: operator *: nonconformant arguments (op1 is 2x3, op2 is 2x3)
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此錯誤訊息可知道，$2 \times 3$ 矩陣跟 $2 \times 3$ 矩陣無法相乘。
+        </span>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p15">
+        <span class='termheader'>
+          Problem 15
+        </span> 
+  
+        <span class='question'>
+            給定矩陣 
+            $$A=\begin{bmatrix}-2&1&3\\4&0&-1\end{bmatrix}$$
+            求 $(A^T)A$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                A = [-2, 1, 3; 4, 0, -1]
+                A' * A
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    -2   1   3
+                     4   0  -1
+
+                ans =
+
+                    20   -2  -10
+                    -2    1    3
+                   -10    3   10
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此可知 $(A^T)A=\begin{bmatrix}20&-2&-10\\-2&1&3\\-10&3&10\end{bmatrix}$
+        </span>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p17">
+        <span class='termheader'>
+          Problem 17
+        </span> 
+  
+        <span class='question'>
+            給定矩陣 
+            $$A=\begin{bmatrix}2&0&0\\0&-1&0\\0&0&1\end{bmatrix}$$
+            求 $A^2$ 及 $A^7$
+        </span>
+  
+        <br> 
+        輸入
+        <pre>
+            <code-input>
+                A = [2, 0, 0; 0, -1, 0; 0, 0, 1]
+                A^2
+                A^7
+            </code-input>
+        </pre> 
+        
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    2   0   0
+                    0  -1   0
+                    0   0   1
+
+                ans =
+
+                    4   0   0
+                    0   1   0
+                    0   0   1
+
+                ans =
+
+                      128     0     0
+                        0    -1     0
+                        0     0     1
+            </code-output>
+        </pre> 
+  
+        <span class="answer">
+            由此可知 $A^2=\begin{bmatrix}4&0&0\\0&1&0\\0&0&1\end{bmatrix}$, 
+            $A^7=\begin{bmatrix}128&0&0\\0&-1&0\\0&0&1\end{bmatrix}$
+        </span>
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁  </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

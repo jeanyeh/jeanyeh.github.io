@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+<title>Ch5</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        margin-top: 20px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+
+    /* ul {
+          list-style-type: none;
+        } */
+
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #FFFFFF;
+        /* #f9f2f4; */
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+<body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 5 Eigenvalues and Eigenvectors
+        </span>
+
+        <span class='termheader'>
+            目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#5-1">5-1. 計算矩陣的eigenvalue 以及 eigenvector</a>
+                <ul>
+                    <li><a href="#5-1-1">Eigenvalue</a></li>
+                    <li><a href="#5-1-2">Eigenvalue 以及 Eigenvector</a></li>
+                    <li><a href="#5-1-3">Characteristic polynomial</a></li>
+                </ul>
+            </li>
+            <li><a href="#5-2">5-2. 將矩陣diagnalize</a>
+                <ul>
+                    <li><a href="#5-2-1">Diagnalization</a></li>
+                    <li><a href="#5-2-2">Algebraic Multiplicity</a></li>
+                    <li><a href="#5-2-3">Geometric Multiplicity</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="5-1">
+        <span class='termheader'>
+            Ch 5-1
+        </span>
+
+        <!-- eigenvalue-->
+        <div id="5-1-1"> 
+            <div class='termheader'>
+                Eigenvalue
+            </div>
+
+            <div class='info'>
+                求矩陣的eigenvalue 以及 eigenvector，利用到的指令就是<code>eig( )</code>
+            </div>
+
+            <div class='info'>
+                這個指令很特別的一點是，這是你們學到的第一個需要設定輸出格式的指令。如果同學有興趣的話，可以使用<code>help eig</code>或<code>doc eig</code>來查詢更多資訊。
+                或是點選 <a href="https://octave.sourceforge.io/octave/function/eig.html">(連結)</a> 查看。
+            </div>
+
+            <br>
+
+            <div class='info'>
+                如果在使用<code>eig( )</code>的時候，不指定輸出格式，則只會得到矩陣的eigenvalues，如下面的例子。<br><br>
+                對了！由於是新學期，怕同學已經忘記如何輸入矩陣，請看<a href="http://teach.nknu.edu.tw/chunchenyeh/octave/ch1.html#1-3">教學</a>
+            </div>
+            
+            
+            <pre>
+                <code-input>
+                    A = [-2, 0, 0; -5, -2, -5; 5, 0, 3]
+                    eig( A )
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    A =
+
+                        -2   0   0
+                        -5  -2  -5
+                         5   0   3
+
+                    ans =
+
+                        -2
+                         3
+                        -2
+                </code-output>
+            </pre>
+
+            <span class="answer">
+                輸出的-2, 3, -2 即為eigenvalues，注意這邊的-2為重根。
+            </span>
+        </div>
+
+        <!-- eigenvalue 以及 eigenvector -->
+        <div id="5-1-2">
+            <div class='termheader'>
+                Eigenvalue 以及 Eigenvector
+            </div>
+
+            <span class="'info">
+                剛剛提到了，不指定輸出格式，便只能得到eigenvalues，所以很明顯的，如果想求eigenvectors，必須要指定輸出格式為兩個變數才行，使用方法如下，注意這裡的lambda跟Ｖ是自己命名的，你也可以隨便打成[a, b]。
+            </span>
+
+            <pre>
+                <code-input>
+                    A = [-2, 0, 0; -5, -2, -5; 5, 0, 3]
+                    [V, lambda] = eig (A)
+                </code-input>
+            </pre>
+
+            可以得到答案
+
+            <pre>
+            <code-output>
+                A =
+
+                    -2   0   0
+                    -5  -2  -5
+                     5   0   3
+
+                V =
+
+                    0        0        0.7071
+                    1.0000  -0.7071        0
+                    0        0.7071  -0.7071
+
+                lambda =
+
+                Diagonal Matrix
+
+                    -2   0   0
+                     0   3   0
+                     0   0  -2
+            </code-output>
+            </pre>
+
+            <div class="'info">
+            這邊得到的V是eigenvectors，而lambda是它對應的eigenvalues。
+            lambda的輸出格式是對角線矩陣，在其對角線上的數字們就是eigenvalues，而V會是一個跟A同樣尺寸的矩陣，他的每一個column都是一個A矩陣的eigenvector，而lambda中對應的column上的數字就是對應的eigenvalue。
+            這邊我們可以驗證一下。
+            （幫大家回憶一下我們在<a href="http://teach.nknu.edu.tw/chunchenyeh/octave/ch1.html#1-3"> 前面說過的 </a>，
+            <code>V(:,1)</code>就是V矩陣的第1個column，而<code>lambda(1,1)</code>就是lambda矩陣在(1, 1)位置上的數字。）
+            </div>
+
+            <pre>
+                <code-input>
+                    A * V(:,1)
+                    lambda(1,1) * V(:,1)
+                </code-input>
+            </pre>
+
+            可以看出來確實值是一樣的。
+
+            <pre>
+            <code-output>
+                ans =
+
+                     0
+                    -2
+                     0
+
+                ans =
+
+                     0
+                    -2
+                     0
+            </code-output>
+            </pre>
+        </div>
+
+        <!-- the characteristic polynomial-->
+        <div id="5-1-3"> 
+            <div class='termheader'>
+                Characteristic polynomial
+            </div>
+
+            <div class='info'>
+                求矩陣的characteristic polynomial，利用到的指令就是<code>poly( )</code>
+            </div>
+
+            <div class='info'>
+                注意一下這個指令的輸出結果雖然是一個多項式，但他是以向量的方式呈現的。他輸出的向量由右到左的數字分別為：多項式的常數項、一次項、二次項...
+            </div>
+
+
+            <pre>
+                <code-input>
+                    A = [-2, 0, 0; -5, -2, -5; 5, 0, 3]
+                    poly( A )
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    A =
+
+                        -2   0   0
+                        -5  -2  -5
+                         5   0   3
+
+                    ans =
+
+                        1    1   -8  -12
+                </code-output>
+            </pre>
+
+            <span class="answer">
+                輸出的 [1    1   -8  -12] 表示矩陣 A 的 characteristic polynomial 是 $\lambda^3+\lambda^2-8\lambda-12$。
+            </span>
+        </div>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="5-2">
+        <span class='termheader'>
+            Ch 5-2
+        </span>
+
+        <!-- eigenvalue 以及 eigenvector -->
+        <div id="5-2-1">
+            <div class='termheader'>
+                Eigenvalue 以及 Eigenvector
+            </div>
+
+            <span class="'info">
+                其實如果你感覺敏銳的話，就會發現其實這節的內容我們在上一節已經教過了。若是給定一個矩陣$A$，希望找到一個invertible矩陣$C$跟一個diagoanal矩陣$D$，使得$D=C^{-1}AC$。
+                只要在使用<code>eig()</code>時，像是如下：
+            </span>
+
+            <pre>
+                <code-input>
+                    A = [-2, 0, 0; -5, -2, -5; 5, 0, 3]
+                    [C, D] = eig (A)
+                </code-input>
+            </pre>
+
+            就可以得到一個invertible矩陣$C$跟一個diagoanal矩陣$D$，使得$D=C^{-1}AC$。
+
+            <pre>
+            <code-output>
+                A =
+
+                    -2   0   0
+                    -5  -2  -5
+                     5   0   3
+
+                C =
+
+                    0        0        0.7071
+                    1.0000  -0.7071        0
+                    0        0.7071  -0.7071
+
+                D =
+
+                    -2   0   0
+                     0   3   0
+                     0   0  -2
+            </code-output>
+            </pre>
+
+            <div class="'info">
+            你可以檢查一下
+            </div>
+
+            <pre>
+                <code-input>
+                    inv(C) * A * C
+                </code-input>
+            </pre>
+
+            可以看出來結果確實跟$D$是一樣的。
+
+            <pre>
+            <code-output>
+                ans =
+
+                       -2.0000   0        0
+                        0        3.0000  -0.0000
+                        0        0       -2.0000
+            </code-output>
+            </pre>
+        </div>
+
+        <div id="5-2-2">
+            <div class='termheader'>
+                Algebraic Multiplicity
+            </div>
+
+            <span class="'info">
+                其實這節的內容我們在之前已經教過了，且有兩種做法。<br>
+                1. 當我們使用<code>eig (A)</code>時，會給出所有的eigenvalue，也就是說我們直接數個數就好。<br>
+                2. 我們也可以使用<code>poly(A)</code>，並計算出characteristic polynomial的根即可。 
+            </span>
+
+            <pre>
+                <code-input>
+                    A = [-2, 0, 0; -5, -2, -5; 5, 0, 3]
+                    eig (A)
+                </code-input>
+            </pre>
+
+            就可以得到一個invertible矩陣$C$跟一個diagoanal矩陣$D$，使得$D=C^{-1}AC$。
+
+            <pre>
+            <code-output>
+                A =
+
+                    -2   0   0
+                    -5  -2  -5
+                     5   0   3
+
+                ans =
+
+                     -2
+                      3
+                     -2
+            </code-output>
+            </pre>
+
+            <div class="'info">
+            所以$A$有eigenvalue -2, -2, 3，其中3的algebraic multiplicity 為1，且-2的algebraic multiplicity 為2。
+            </div>
+        </div>
+
+        <div id="5-2-3">
+            <div class='termheader'>
+                Geometric Multiplicity
+            </div>
+
+            <span class="'info">
+                這個其實只要使用<code>rref()</code>求出$rref(A-\lambda I)$即可輕易算出。順便幫大家回憶一下，<code>eye(n)</code>就是$n \times n$的identity matrix。<br>
+
+                這裡我們使用跟前一個觀念的同一個例子。
+            </span>
+
+            <pre>
+                <code-input>
+                    A = [-2, 0, 0; -5, -2, -5; 5, 0, 3]
+                    rref( A - (-2)*eye(3) )
+                    rref( A - (3)*eye(3) )
+                </code-input>
+            </pre>
+
+            就可以得到$rref(A- (-2) I)$跟$rref(A-3 I)$。
+
+            <pre>
+            <code-output>
+                A =
+
+                    -2   0   0
+                    -5  -2  -5
+                     5   0   3
+
+                ans =
+
+                    1   0   1
+                    0   0   0
+                    0   0   0
+
+                ans =
+
+                    1   0   0
+                    0   1   1
+                    0   0   0
+            </code-output>
+            </pre>
+
+            <div class="'info">
+                因為$rref(A-(-2)I)$只有一個pivot，所以eigenspace $E_{(-2)}$ 的dimension為2，也就是說$\lambda=3$的geometric multiplicity 為2。
+                因為$rref(A-3I)$有兩個pivot，所以eigenspace $E_{3}$ 的dimension為1，也就是說$\lambda=3$的geometric multiplicity 為1。
+            </div>
+        </div>
+
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁 </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

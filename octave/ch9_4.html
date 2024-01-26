@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+<title>ch 9-4</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+    
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+    
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+    
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+    /* ul {
+        list-style-type: none;
+      } */
+    
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+    
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f9f2f4;
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+    
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+    
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+
+
+<body>
+
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 9-4 Jordan canonical form
+        </span>
+
+        <span class="term">
+            在看習題解答前，建議先觀看<a href="ch9.html">Ch9的教學</a>。
+        </span>
+
+        <span class='termheader'>
+            習題目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#p19">19</a></li>
+            <li><a href="#p24">24</a></li>
+            <li><a href="#p29">29</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p19">
+        <span class='termheader'>
+          Problem 19
+        </span> 
+  
+        <span class='question'>
+            Find a Jordan canonical form and a Jordan basis for the given matrix.
+            $\begin{bmatrix} 
+             2&5&0&0&0\\
+             0&2&0&0&0\\
+             0&0&-1&0&-1\\
+             0&0&0&-1&0\\
+             0&0&0&0&-1
+            \end{bmatrix}$
+        </span>
+
+        <pre>
+        <code-input>
+            A = sym([2 5 0 0 1;0 2 0 0 0;0 0 -1 0 0;0 0 0 -1 0;0 0 0 0 -1])
+            [V, J] = jordan(A)
+        </code-input>
+        </pre>
+
+        就可以得到:
+
+        <pre>
+        <code-output>
+            A = (sym 5×5 matrix)
+
+                ⎡2  5  0   0   0 ⎤
+                ⎢                ⎥
+                ⎢0  2  0   0   0 ⎥
+                ⎢                ⎥
+                ⎢0  0  -1  0  -1 ⎥
+                ⎢                ⎥
+                ⎢0  0  0   -1  0 ⎥
+                ⎢                ⎥
+                ⎣0  0  0   0   -1⎦
+
+            V = (sym 5×5 matrix)
+
+                ⎡0  0   0    5  0⎤
+                ⎢                ⎥
+                ⎢0  0   0    0  1⎥
+                ⎢                ⎥
+                ⎢-1 0   0    0  0⎥
+                ⎢                ⎥
+                ⎢0  0   1    0  0⎥
+                ⎢                ⎥
+                ⎣0  1   0    0  0⎦
+
+            J = (sym 5×5 matrix)
+
+                ⎡-1  1   0   0  0⎤
+                ⎢                ⎥
+                ⎢0   -1  0   0  0⎥
+                ⎢                ⎥
+                ⎢0   0   -1  0  0⎥
+                ⎢                ⎥
+                ⎢0   0   0   2  1⎥
+                ⎢                ⎥
+                ⎣0   0   0   0  2⎦
+        </code-output>
+        </pre>
+
+        讓我們檢查一下
+
+        <pre>
+            <code-input>
+                b1=V(:,1)
+                b2=V(:,2)
+                b3=V(:,3)
+                b4=V(:,4)
+                b5=V(:,5)
+                ( A * b1 ) - ( (-1) * b1 )
+                ( A * b2 ) - ( (-1) * b2 + b1 )
+                ( A * b3 ) - ( (-1) * b3 )
+                ( A * b4 ) - (   2  * b4 )
+                ( A * b5 ) - (   2  * b5 + b4 )
+            </code-input>
+        </pre>
+
+        就可以得到:
+
+        <pre>
+        <code-output>
+            b1 = (sym 5×1 matrix)
+
+                ⎡0 ⎤
+                ⎢  ⎥
+                ⎢0 ⎥
+                ⎢  ⎥
+                ⎢-1⎥
+                ⎢  ⎥
+                ⎢0 ⎥
+                ⎢  ⎥
+                ⎣0 ⎦
+
+            b2 = (sym 5×1 matrix)
+
+                ⎡0⎤
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎣1⎦
+
+            b3 = (sym 5×1 matrix)
+
+                ⎡0⎤
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢1⎥
+                ⎢ ⎥
+                ⎣0⎦
+
+            b4 = (sym 5×1 matrix)
+
+                ⎡5⎤
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎣0⎦
+
+            b5 = (sym 5×1 matrix)
+
+                ⎡0⎤
+                ⎢ ⎥
+                ⎢1⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎣0⎦
+
+            ans = (sym 5×1 matrix)
+
+                ⎡0⎤
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎣0⎦
+
+            ans = (sym 5×1 matrix)
+
+                ⎡0⎤
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎣0⎦
+
+            ans = (sym 5×1 matrix)
+
+                ⎡0⎤
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎣0⎦
+
+            ans = (sym 5×1 matrix)
+
+                ⎡0⎤
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎣0⎦
+
+            ans = (sym 5×1 matrix)
+
+                ⎡0⎤
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎢0⎥
+                ⎢ ⎥
+                ⎣0⎦
+        </code-output>
+        </pre>
+
+        <span class="'info">
+            所以這些 $\vec{b}_1, \vec{b}_2, \vec{b}_3, \vec{b}_4, \vec{b}_5$ 確實是我們要的 Jordan basis。
+       </span>
+
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p24">
+        <span class='termheader'>
+          Problem 24
+        </span> 
+  
+        <span class='question'>
+            Let $A=\begin{bmatrix}0&1&0&0\\0&0&1&0\\0&0&0&1\\0&0&0&0\end{bmatrix}$, Compute $A^2, A^3$ and $A^4$.
+        </span>
+        
+        <pre>
+            <code-input>
+                A = [0 1 0 0 ; 0 0 1 0; 0 0 0 1; 0 0 0 0]
+                A^2
+                A^3
+                A^4
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    0   1   0   0
+                    0   0   1   0
+                    0   0   0   1
+                    0   0   0   0
+
+                ans =
+
+                    0   0   1   0
+                    0   0   0   1
+                    0   0   0   0
+                    0   0   0   0
+
+                ans =
+
+                    0   0   0   1
+                    0   0   0   0
+                    0   0   0   0
+                    0   0   0   0
+
+                ans =
+
+                    0   0   0   0
+                    0   0   0   0
+                    0   0   0   0
+                    0   0   0   0
+            </code-output>
+        </pre>
+
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p29">
+        <span class='termheader'>
+          Problem 29
+        </span> 
+  
+        <span class='question'>
+            Let $A=\begin{bmatrix}-1&1&0&0&0\\0&-1&1&0&0\\0&0&-1&0&0\\0&0&0&i&0\\0&0&0&0&i\end{bmatrix}$.
+            Find a polynomial in $A$ (that is the sum of terms $a_jA^j$ with a term $a_0I$)
+            that gives the zero matrix.
+        </span>
+        
+        <pre>
+            <code-input>
+                A = [-1 1 0 0 0; 0 -1 1 0 0; 0 0 -1 0 0;0 0 0 i 0; 0 0 0 0 i ]
+                poly(A)
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    -1 + 0i   1 + 0i   0 + 0i   0 + 0i   0 + 0i
+                    0 + 0i  -1 + 0i   1 + 0i   0 + 0i   0 + 0i
+                    0 + 0i   0 + 0i  -1 + 0i   0 + 0i   0 + 0i
+                    0 + 0i   0 + 0i   0 + 0i   0 + 1i   0 + 0i
+                    0 + 0i   0 + 0i   0 + 0i   0 + 0i   0 + 1i
+
+                ans =
+
+                    1 + 0i   3 - 2i   2 - 6i  -2 - 6i  -3 - 2i  -1 + 0i
+            </code-output>
+        </pre>
+
+        <span class="info">
+            意思是$A$的charistic polynomial是$p_A(x)=x^5 + (3-2i)x^4+(2-6i)x^3+(-2-6i)x^2+(-3-2i)x+(-1)$。或是你直接只用來驗證自己的答案也可以。
+            因此$A^5 + (3-2i)A^4+(2-6i)A^3+(-2-6i)A^2+(-3-2i)A+(-1)I$就會是零矩陣。讓我們檢查一下：
+        </span>
+
+        <pre>
+            <code-input>
+                A^5 + (3-2*i) * A^4 + (2-6*i) * A^3 + (-2-6*i) * A^2 + (-3-2*i) * A + (-1) * eye(5)
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                ans =
+
+                    0   0   0   0   0
+                    0   0   0   0   0
+                    0   0   0   0   0
+                    0   0   0   0   0
+                    0   0   0   0   0
+            </code-output>
+        </pre>
+
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁  </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

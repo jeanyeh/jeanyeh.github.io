@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+   <title>Ch2</title>
+  <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+  
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  
+  <script>
+      MathJax = {
+          tex: {
+              inlineMath: [
+                  ['$', '$'],
+                  ['\\(', '\\)']
+              ]
+          }
+      };
+  </script>
+  
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+  
+  <style>
+      body {
+          font-family: Monaco, Arial, Helvetica, sans-serif;
+          background-color: #f6f1f9;
+      }
+      
+      .header {
+          /* margin-left: 4%; */
+          margin-bottom: 20px;
+          font-size: 1.5em;
+          color: Maroon;
+          font-weight: bolder;
+      }
+      
+      .termheader {
+          /* margin-left: 4%; */
+          margin-bottom: 5px;
+          color: Maroon;
+          font-size: 1.2em;
+          font-weight: bolder
+      }
+      
+      .term {
+          margin-left: 4%;
+          margin-bottom: 20px;
+      }
+      /* ul {
+          list-style-type: none;
+        } */
+      
+      .question {
+          /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+          background-color: #FFFFFF;
+          padding: 0.5em 0.5em 0.5em 1em;
+          margin-top: 5px;
+          margin-bottom: 5px;
+          font-size: 105%;
+          /* display: block; */
+          color: #111;
+          border-radius: 10px 10px 10px 10px;
+      }
+  
+      footer {
+          margin-bottom: 15px;
+      }
+      
+      code {
+          font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+          background-color: #FFFFFF; /* #f9f2f4; */
+          padding: 2px;
+          font-size: 105%;
+          color: #c7254e;
+      }
+      
+      code-input {
+          font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+          background-color: #000000;
+          padding: 0.5em 0.5em 0.5em 1em;
+          margin-top: 1em;
+          font-size: 105%;
+          display: block;
+          color: #FFFFFF;
+      }
+      
+      code-output {
+          font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+          background-color: #f2f2f2;
+          border: 1px solid #eee;
+          border-left: 4px solid #707070;
+          max-width: 100%;
+          overflow: auto;
+          padding: 0.5em 0.5em 0.5em 1em;
+          word-wrap: break-word;
+          display: block;
+          margin-top: 1em;
+          color: #111;
+      }
+  </style>
+</head>
+
+<body>
+   <div class='w-100 d-inline-flex flex-column p-3'>
+      <span class='header'>
+          Ch 2 Dimension, Rank, and Linear Transformations
+      </span>
+
+      <span class='termheader'>
+          目錄：
+      </span>
+
+
+      <ul>
+        <li><a href="#2-2">2-2. 求矩陣的rank以及null space 的 basis</a>
+            <ul>
+                <li><a href="#2-2-1">矩陣的rank</a></li>
+                <li><a href="#2-2-2">矩陣的null space 的 basis 及 nullity</a></li>
+            </ul>
+        </li>
+      </ul>
+   </div>
+ 
+   <hr>
+
+   <div class='w-100 d-inline-flex flex-column p-3' id="2-2">
+        <span class='termheader'>
+            Ch 2-2
+        </span> 
+
+        <!-- 矩陣的rank-->
+        <div id="2-2-1"> 
+            <div class='termheader'>
+                矩陣的rank
+            </div>
+
+            <span class='info'>
+                求矩陣的rank，利用到的指令相當的好記，就是<code>rank( )</code>
+            </span>
+
+            <br> 
+            舉例來說，如果想找矩陣A的rank，只要像下面這樣即可。
+            <pre>
+                <code-input>
+                    A = [0, -9, -9, 2;1, 2, 1, 1;4, 1, -3, 4;1, 3, 2, 0]
+                    rank( A )
+                </code-input>
+            </pre> 
+            
+            輸出結果
+            <pre>
+                <code-output>
+                    A =
+
+                        0         -9         -9          2
+                        1          2          1          1
+                        4          1         -3          4
+                        1          3          2          0
+
+                    ans = 3
+                </code-output>
+            </pre> 
+
+            <span class="answer">
+                那麼就知道矩陣的rank為3。
+            </span>
+        </div>
+
+        <!-- 矩陣的null space 的 basis-->
+        <div id="2-2-2"> 
+            <div class='termheader'>
+                矩陣的null space 的 basis 及 nullity
+            </div>
+
+            <div class='info'>
+                求矩陣的null space 的 basis，利用到的指令就是<code>null( )</code> 或是 <code>rref( )</code>
+            </div>
+
+            <div class='info'>
+                首先，在課堂上教的方法就是先求出 rref(A) ，所以這個部分可以去看1-3的rref()教學，或是直接去看2-2的實作範例。我在這邊主要是要介紹null(A)。
+            </div>
+
+            <br>
+
+            <div class='info'>
+                基本上使用<code>null( )</code>後，我們可以直接得到一組null(A)的basis 。
+                （如果你已經有Ch6的背景知識，那我可以更近一步地告訴你，這會是一組orthonormal basis）
+                但是由於平常的作業或考試時，我們要求的是求出切確的值，可是這種算出來的會是basis會是以近似值來呈現的，所以建議只當作是用來檢查的手段就好。
+
+            </div>
+            
+            
+            <pre>
+                <code-input>
+                    A = [0, 6, 6, 3; 1, 2, 1, 1;4, 1, -3, 4; 1, 3, 2, 0]
+                    rref( A )
+                    null( A )
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    A =
+
+                        0   6   6   3
+                        1   2   1   1
+                        4   1  -3   4
+                        1   3   2   0
+
+                    ans =
+
+                        1   0  -1   0
+                        0   1   1   0
+                        0   0   0   1
+                        0   0   0   0
+
+                    ans =
+
+                        -5.7735e-01
+                         5.7735e-01
+                        -5.7735e-01
+                        -4.9960e-16
+                </code-output>
+            </pre>
+
+            <span class="answer">
+                由於rref(A)中有三個pivots，所以很明顯的，A的nullity為 4-3=1。同時，你也可以從null(A)只有一個元素這件事看出，nullity為1。
+            </span>
+        </div>
+    </div>
+   <hr>
+
+   <div>
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+          <a href="./index.html"> 回 Octave 教學首頁  </a>
+      </footer>
+  </div>
+</body>
+
+</html>
+<!doctype html>

@@ -1,0 +1,1020 @@
+<!doctype html>
+<html>
+<title>Ch4</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        margin-top: 20px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+
+    /* ul {
+          list-style-type: none;
+        } */
+
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+    code {
+          font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+          background-color: #FFFFFF; /* #f9f2f4; */
+          padding: 2px;
+          font-size: 105%;
+          color: #c7254e;
+      }
+
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+<body>
+
+   <!-- 標題目錄 -->
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+         Ch 1 Vectors, Matrices, and Linear System
+        </span>
+
+        <span class='termheader'>
+            目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#1-1">1-1. 如何建構變數以及如何計算、介紹常用的函數、如何建構 row and column vectors</a></li>
+               <ul>
+                  <li><a href="#1-1-1">簡單的計算</a></li>
+                  <li><a href="#1-1-2">常用的函數</a></li>
+                  <li><a href="#1-1-3">分號的用途 </a></li>
+                  <li><a href="#1-1-4">如何建構變數</a></li>
+                  <li><a href="#1-1-5">如何建構 row and column vectors</a></li>
+                  <li><a href="#1-1-6">如何調整 vectors</a></li>
+              </ul>
+            
+            <li><a href="#1-2">1-2. 向量的 dot product, norm、三角函數計算</a></li>
+               <ul>
+                  <li><a href="#2-1-1">向量的 dot product</a></li>
+                  <li><a href="#2-1-2">向量的長度（ norm / length / magnitude ）</a></li>
+                  <li><a href="#2-1-3">三角函數計算 </a></li>
+               </ul>
+
+            <li><a href="#1-3">1-3. 如何建構矩陣以及加減乘的計算、建構 zero matrix、建構 identity matrix、建構矩陣的 transpose matrix </a></li>
+            <li><a href="#1-4">1-4. 找尋矩陣的 reduced row-echelon form (rref)</a></li>
+            <li><a href="#1-5">1-5. 找矩陣的 inverse 以及 解方程式</a></li>
+        </ul>
+    </div>
+ 
+
+   <hr>
+
+   <div class='w-100 d-inline-flex flex-column p-3' id="1-1"> 
+      <span class='header'>
+         Ch 1 - 1
+      </span>
+
+      <!-- 簡單的計算 -->
+      <div id="1-1-1">
+      <div class='termheader'>
+         簡單的計算
+      </div>
+
+      <span class="info">
+         Octave 可以當作計算機使用，照一般的式子輸入運算符號加減乘除（<code>＋</code>、<code>−</code>、<code>＊</code>、<code>／</code>）與指數（<code>＾</code>），
+         在輸入窗格中輸入指令，再按下 enter 鍵， Octave 就會算出結果，並顯示在結果窗格。例如：想要計算 2 加上 3 乘以 5 的平方，則輸入
+      </span>
+
+      <pre>
+         <code-input>2 + 3 * 5^2 </code-input>
+      </pre>
+
+      輸入完成後，按下 enter 鍵， Octave 就會執行輸入的指令，接著輸出結果
+
+      <pre>
+         <code-output>ans = 77</code-output>
+      </pre>
+
+      <span class="info">
+         注意： Octave 一般會預設將結果儲存在變數 <code>ans</code> 中。<br><br>
+
+         Octave 也可以用括號來標示計算的優先順序，例如
+      </span>
+
+      <pre>
+         <code-input>( 2 + 3 ) * 7 </code-input>
+      </pre>
+      
+      輸出結果為
+
+      <pre>
+         <code-output>ans = 35</code-output>
+      </pre>
+
+      </div>
+
+      <!-- 常用的函數 -->
+      <div id="1-1-2">
+      <div class='termheader'>
+         常用的函數
+      </div>
+
+      <ul>
+         <li><code>cos()</code>: cos 函數，輸入值為角度（單位為徑度量） </li>
+         <li><code>cosd()</code>: cos 函數，輸入值為角度（單位為度度量） </li>
+         <li><code>sin()</code>: sin 函數，輸入值為角度（單位為徑度量） </li>
+         <li><code>sind()</code>: sin 函數，輸入值為角度（單位為度度量） </li>
+         <li><code>tan()</code>: tan 函數，輸入值為角度（單位為徑度量） </li>
+         <li><code>tand()</code>: tan 函數，輸入值為角度（單位為度度量） </li>
+         <li><code>acos()</code>: cos 的反函數，輸出值為角度（單位為徑度量） </li>
+         <li><code>acosd()</code>: cos 的反函數，輸出值為角度（單位為度度量） </li>
+         <li><code>asin()</code>: sin 的反函數，輸出值為角度（單位為徑度量） </li>
+         <li><code>asind()</code>: sin 的反函數，輸出值為角度（單位為度度量） </li>
+         <li><code>atan()</code>: tan 的反函數，輸出值為角度（單位為徑度量） </li>
+         <li><code>atand()</code>: tan 的反函數，輸出值為角度（單位為度度量） </li>
+         <li><code>exp()</code>: 指數函數 </li>
+         <li><code>log()</code>: 自然對數 </li>
+         <li><code>log10()</code>: 以10為底的對數 </li>
+         <li><code>abs()</code>: 絕對值 </li>
+         <li><code>sqrt()</code>: 平方根 </li>
+      </ul>
+
+      <span class="info">
+         另外還有兩個好用的指令，分別為 <code>help</code> 跟 <code>doc</code>，這兩個指令在有點不確定函數用法時很好用。
+         <code>help</code> 是簡單查詢，而 <code>doc</code> 是開啟 Octave 的線上參考手冊，除了解釋函數或指令，還會給出更多使用方法以及範例。
+         像是如果不記得 <code>cosd()</code> 這個函數的意思，就可以輸入
+      </span>
+
+      <pre>
+         <code-input>help cosd</code-input>
+      </pre>
+
+      然後得到以下結果
+
+      <pre>
+         <code-output> 
+            -- cosd (X)
+
+               Compute the cosine for each element of X in degrees.
+
+               Returns zero for elements where '(X-90)/180' is an integer
+         </code-output>
+      </pre>
+
+      </div>
+
+      <!-- 分號的用途 -->
+      <div id="1-1-3">
+      <div class='termheader'>
+         分號的用途
+      </div>
+
+      <span class="info">
+         另外，當某些運算你並不需要知道結果，或只是為了節省螢幕空間，可以在指令的最後加上分號 (<code>;</code>)
+         舉例來說，如果做這樣的計算
+      </span>
+
+      <pre>
+         <code-input>
+            a = 3
+            b = 5
+            c = 7
+            (a + b) * c
+      </code-input>
+      </pre>
+
+      然後得到以下四項結果
+
+      <pre>
+         <code-output>
+            a = 3
+
+            b = 5
+
+            c = 7
+
+            ans = 56
+         </code-output>
+      </pre>
+
+      但是
+
+      <pre>
+         <code-input>
+            a = 3;
+            b = 5;
+            c = 7;
+            (a + b) * c
+         </code-input>
+      </pre>
+
+      然後卻只會得到一項結果
+
+      <pre>
+         <code-output>
+            ans = 56
+         </code-output>
+      </pre>
+
+      </div>
+
+      <!-- 如何建構變數 -->
+      <div id="1-1-4">
+         <div class='termheader'>
+            如何建構變數
+         </div>
+
+
+         我們可以在 Octave 裡幫變數賦值，然後對變數做運算，例如：
+
+         <pre>
+            <code-input>
+               a = 3
+               b = (a + 7) / 6
+               c = a + b^2 
+            </code-input>
+         </pre>
+      </div>
+
+      <!-- 如何建構 row and column vectors -->
+      <div id="1-1-5">
+         <div class='termheader'>
+            如何建構 row and column vectors
+         </div>
+
+
+         用中括號包起來的一串數字即為 Octave 建構向量或是矩陣的方法，矩陣中的元素以逗號或是空白分隔，每個 row 之間已分號分隔。例如要產生一個 row vector，我們可以輸入這樣
+
+         <pre>
+            <code-input>
+               A = [0 1 3 -3] 
+            </code-input>
+         </pre>
+
+         或是輸入
+
+         <pre>
+            <code-input>
+               A = [0, 1, 3, -3] 
+            </code-input>
+         </pre>
+
+         都可以得到以下的結果
+
+         <pre>
+            <code-output>
+               A =
+
+                  0   1   3  -3
+            </code-output>
+         </pre>
+
+         若是輸入
+
+         <pre>
+            <code-input>
+               A = [0; 1; 3; -3] 
+            </code-input>
+         </pre>
+
+         則會得到
+
+         <pre>
+            <code-output>
+               A =
+
+                  0 
+                  1 
+                  3
+                 -3
+            </code-output>
+         </pre>
+
+      </div>
+
+      <!-- 如何調整 vectors -->
+      <div id="1-1-6">
+         <div class='termheader'>
+            如何調整 vectors
+         </div>
+
+         <span class="info">
+         Octave 幫向量的元素編號是從 1 號開始的，就像是我們在課堂上常做的假設 $\vec{a} = [a_1, a_2, a_3, a_4]$， 這裡的 $a_i$，在 Octave 裡會用 <code> a(i)</code> 來表示。 舉例來說：
+         </span>
+         
+         <pre>
+            <code-input>
+               A = [7 8 2 9] 
+               A(4)
+            </code-input>
+         </pre>
+
+         結果為
+
+         <pre>
+            <code-output>
+               A =
+
+                  7   8   2   9
+
+               ans = 9
+            </code-output>
+         </pre>
+
+         因此，我們也可以只更改向量中的某一個元素，例如，我們想把已知向量中的第3個元素換掉，我們可以這樣做。
+
+         <pre>
+            <code-input>
+               A = [7 8 2 9] 
+               A(3) = 1
+            </code-input>
+         </pre>
+
+         結果為
+
+         <pre>
+            <code-output>
+               A =
+
+                  7   8   2   9
+
+               A =
+
+                  7   8   1   9
+            </code-output>
+         </pre>
+
+      </div>
+   </div>
+
+   <hr>
+
+   <div class='w-100 d-inline-flex flex-column p-3' id="1-2"> 
+      <span class='header'>
+         Ch 1 - 2
+      </span>
+
+
+
+      <!-- 向量的 dot product -->
+      <div id="1-2-1">
+         <div class='termheader'>
+            向量的 dot product
+         </div>
+
+         <span class="info">
+            向量的 dot product 只要利用函數 <code> dot( , ) </code> 即可。可以直接放入兩個向量，或是令成變數再做內積都可以。
+            例如：我們想做兩個向量 $\vec{v}=[10, 4, -1, 8]$ 跟 $\vec{u} = [-5, -2, 3, -4]$ 的內積，那麼只要輸入
+         </span>
+
+         <pre>
+            <code-input>
+               dot( [10, 4, -1, 8], [-5, -2, 3, -4] )
+            </code-input>
+         </pre>
+
+         或是
+
+         <pre>
+            <code-input>
+               v = [10, 4, -1, 8]
+               u = [-5, -2, 3, -4]
+               dot(v, u)
+            </code-input>
+         </pre>
+
+         最終都可以得到答案
+
+         <pre>
+            <code-output>
+               ans = -93
+            </code-output>
+         </pre>
+      </div>
+
+      <!-- 向量的長度（ norm / length / magnitude ） -->
+      <div id="1-2-2">
+         <div class='termheader'>
+            向量的長度（ norm / length / magnitude ）
+         </div>
+
+         <span class="info">
+            向量的 dot product 只要利用函數 <code> norm() </code> 即可。一樣是可以直接放入向量，或是令成變數再放入都可以。
+            例如：我們想求向量 $\vec{v}=[10, 4, -1, 8]$ 的長度 $|\vec{v}|$，那麼只要輸入
+         </span>
+
+         <pre>
+            <code-input>
+               norm( [10, 4, -1, 8] )
+            </code-input>
+         </pre>
+
+         或是
+
+         <pre>
+            <code-input>
+               v = [10, 4, -1, 8]
+               dot( v )
+            </code-input>
+         </pre>
+
+         最終都可以得到答案
+
+         <pre>
+            <code-output>
+               ans = 13.454
+            </code-output>
+         </pre>
+
+         注意一下，由於長度須從開根號得到，所以這邊給出的值只是近似值，也就是 Octave 會把數值四捨五入到小數點後 3 位。（想要更改小數點後面的長度設定，請查閱 <code> format</code>）<br><br>
+
+         </div>
+
+         <!-- 三角函數計算 -->
+      <div id="1-2-3">
+         <div class='termheader'>
+            三角函數計算
+         </div>
+
+         <span class="info">
+            這個主要是用來計算兩個向量 $\vec{v}, \vec{u}$ 的夾角，公式是 
+            $$\cos(\theta)
+            =\frac{ \vec{v} \cdot \vec{u} }{ ( \vec{v} \cdot \vec{v} )( \vec{u} \cdot \vec{u} ) }
+            =\frac{ \vec{v} \cdot \vec{u} }{ | \vec{v} |^ 2 | \vec{u} |^2 }$$
+            $$\theta 
+            = \cos^{-1}\left( \frac{ \vec{v} \cdot \vec{u} }{ ( \vec{v} \cdot \vec{v} )( \vec{u} \cdot \vec{u} ) } \right)
+            = \cos^{-1}\left( \frac{ \vec{v} \cdot \vec{u} }{ | \vec{v} |^ 2 | \vec{u} |^2 } \right) $$
+
+            首先我們回憶 1-1 有提過的 $\cos$ 相關的函數，另外請記得 $\pi$ 的寫法就是 <code>pi</code>
+         </span>
+
+         <ul>
+            <li><code>cos()</code>: cos 函數，輸入值為角度（單位為徑度量） </li>
+            <li><code>cosd()</code>: cos 函數，輸入值為角度（單位為度度量） </li>
+            <li><code>acos()</code>: cos 的反函數，輸出值為角度（單位為徑度量） </li>
+            <li><code>acosd()</code>: cos 的反函數，輸出值為角度（單位為度度量） </li>
+         </ul>
+
+         <span class="info">
+         我們也知道 $\cos( 60^{\circ} ) = \cos(\frac{\pi}{3}) = 0.5$，因此
+
+         </span>
+
+         <pre>
+            <code-input>
+               cosd( 60 )
+               cos( pi / 3 )
+            </code-input>
+         </pre>
+
+         的結果為
+
+         <pre>
+            <code-output>
+               ans = 0.5000
+
+               ans = 0.5000
+            </code-output>
+         </pre>
+
+         <span class="info">
+            而求 $\cos^{-1}(0.5)$ 也是一樣有兩種：
+         </span>
+
+         <pre>
+            <code-input>
+               acosd( 0.5 )
+               acos( 0.5 )
+            </code-input>
+         </pre>
+
+         <span class="info">
+            第一個的結果表示的是 $60^{\circ}$，第二個的結果表示的是 $\frac{\pi}{3}$ 的近似值
+         </span>
+
+         <pre>
+            <code-output>
+               ans = 60.000
+
+               ans = 1.0472
+            </code-output>
+         </pre>
+      </div>
+
+   </div>
+
+   <hr>
+
+   <div class='w-100 d-inline-flex flex-column p-3' id="1-3"> 
+      <span class='header'>
+         Ch 1 - 3
+      </span>
+
+      <!-- 如何建構矩陣 ( matrix ) 以及加減乘的計算 -->
+      <div id="1-3-1">
+         <div class='termheader'>
+            如何建構矩陣 ( matrix ) 以及加減乘的計算
+         </div>
+
+         <span class="info">
+            像是在 1-2 中講過的， Octave 建構向量或是矩陣的方法就是用中括號包起來的一串數字，而矩陣中的元素以逗號或是空白分隔，每個 row 之間已分號分隔。像是這樣
+         </span>
+
+         <pre>
+            <code-input> 
+               A=[0 1 3 -3; 2 4 5 -1;4 -2 3 5] 
+            </code-input>
+         </pre>
+
+         就可以得到矩陣了
+
+         <pre>
+            <code-output>
+               A =
+
+                  0   1   3  -3
+                  2   4   5  -1
+                  4  -2   3   5
+            </code-output>
+         </pre>
+
+         <span class="info">
+            然後也跟 1-2 時一樣，矩陣內部元素也是有編號的，像是 
+            $A = 
+            \begin{bmatrix} 
+            a_{1,1} & a_{1,2} & ... & a_{1,n}\\
+            a_{2,1} & a_{2,2} & ... & a_{2,n}\\
+            \vdots & \vdots & \ddots & \vdots\\
+            a_{m,1} & a_{m,2} & ... & a_{m,n}\\
+            \end{bmatrix}$<br>
+            其中，在第 i 個 row，第 j 個 column 的元素 $a_{i,j}$，便是以 <code>A(i,j)</code> 來表示的。
+            像是剛剛上面那個例子中的矩陣 A ，他的 <code>A(2,3)</code> 的值就是 5 。 <br>
+
+            另外，如果想取出矩陣 A 的第 i 個 row vector，便可以用 <code>A(i,:)</code>，
+            如果想取出矩陣 A 的第 j 個 column vector，便可以用 <code>A(:,j)</code>
+            舉例來說：
+         </span>
+
+         <pre>
+            <code-input>
+               A = [0 1 3 -3; 2 4 5 -1;4 -2 3 5]
+               a = A(2,3)
+               v = A(:,3)
+               u = A(2,:)
+         </code-input>
+         </pre>
+
+
+         <pre>
+         <code-output>
+            A =
+
+            0   1   3  -3
+            2   4   5  -1
+            4  -2   3   5
+
+            a = 5
+
+            v =
+
+               3
+               5
+               3
+
+            u =
+
+               2   4   5  -1
+         </code-output>
+         </pre>
+
+         至於矩陣相乘、矩陣相加減、矩陣的常數乘法都很直觀。
+
+         <pre>
+         <code-input>
+         A = [0 1 3; 2 4 5;4 -2 3]
+         B = [3 1 3; 2 9 7;4 -6 3]
+         C = A + B
+         D = 5 * A
+         E = A * B
+         </code-input>
+         </pre>
+
+         <pre>
+         <code-output>
+         A =
+
+            0   1   3
+            2   4   5
+            4  -2   3
+
+         B =
+
+            3   1   3
+            2   9   7
+            4  -6   3
+
+         C =
+
+            3    2    6
+            4   13   12
+            8   -8    6
+
+         D =
+
+            0    5   15
+            10   20   25
+            20  -10   15
+
+         E =
+
+            14   -9   16
+            34    8   49
+            20  -32    7
+
+         </code-output>
+         </pre>
+
+         當你打完一個矩陣，但是忘記它的尺寸 (size) 的時候，你可以在 Octave 裡查詢，只要使用 <code>size()</code>就可以
+
+         <pre>
+         <code-input>
+         A = [0 1 3 8 1; 2 4 5 1 0;4 -2 3 6 7]
+         size(A)
+         </code-input>
+         </pre>
+
+         <pre>
+         <code-output>
+         A =
+
+            0   1   3   8   1
+            2   4   5   1   0
+            4  -2   3   6   7
+
+         ans =
+
+            3   5
+         </code-output>
+         </pre>
+
+   <br>
+   <font color="Maroon" style="font-size: 1.2em; font-weight: bolder;line-height: 40px">
+   如何建構 zero matrix 及 identity matrix
+   </font><br><br>
+
+   所謂的零矩陣（zero matrix），也就是所有元素都是 0 的矩陣，一個 $m \times n$ 的 zero matrix 即為 <code>zeros(m,n)</code>，
+   而一個 $n \times n$ 的 zero matrix 可以寫成 <code>zeros(n,n)</code> 或者是簡單的 <code>zeros(n)</code> 都可以。<br><br>
+
+   <pre>
+   <code-input>
+   A = zeros(2,4)
+   B = zeros(3)
+   </code-input>
+   </pre>
+
+   <pre>
+   <code-output>
+   A =
+
+      0   0   0   0
+      0   0   0   0
+
+   B =
+
+      0   0   0
+      0   0   0
+      0   0   0
+   </code-output>
+   </pre>
+
+
+   所謂的 identity matrix，根據我們課本上的定義，是一個 $n\times n$ 矩陣，其中主對角線 (左上到右下) 上的元素為 1 ，其餘的元素為 0 。
+   在 Octave 上會用 <code>eye(n)</code> 表示 $n\times n$ identity matrix 。
+   不過 Octave 也支援使用 <code>eye(m,n)</code> 形式的矩陣。同學們可以自己用來乘上其他矩陣試試。
+
+   <pre>
+   <code-input>
+   A = eye(3)
+   B = eye(2,4)
+   C = eye(4,2)
+   </code-input>
+   </pre>
+
+   <pre>
+   <code-output>
+   A =
+
+   Diagonal Matrix
+
+      1   0   0
+      0   1   0
+      0   0   1
+
+   B =
+
+   Diagonal Matrix
+
+      1   0   0   0
+      0   1   0   0
+
+   C =
+
+   Diagonal Matrix
+
+      1   0
+      0   1
+      0   0
+      0   0
+   </code-output>
+   </pre>
+
+   <br>
+   <font color="Maroon" style="font-size: 1.2em; font-weight: bolder;line-height: 40px">
+   如何建構矩陣的 transpose matrix
+   </font><br>
+
+   一個矩陣的 transpose matrix 就是把它的行列互換，而在 Octave 裡的表示方式就是使用 <code>transpose( )</code>，或是當矩陣裡的係數均為實數的時候，可以也可以只幫矩陣加上一個<code>'</code>
+
+   <pre>
+   <code-input>
+   A = [1 2 3 4]
+   B = transpose(A)
+   C = A'
+   </code-input>
+   </pre>
+
+   <pre>
+   <code-output>
+   A =
+
+      1   2   3   4
+
+   B =
+
+      1
+      2
+      3
+      4
+
+   C =
+
+      1
+      2
+      3
+      4
+   </code-output>
+   </pre>
+
+   </div>
+
+   <hr>
+
+   <div class='w-100 d-inline-flex flex-column p-3' id="1-4"> 
+   <font color="Maroon" style="font-size: 1.5em; font-weight: bolder;line-height: 40px">
+   <span id="1-4">Ch 1 - 4</span>
+   </font><br>
+
+
+   <font color="Maroon" style="font-size: 1.2em; font-weight: bolder;line-height: 40px">
+   找尋矩陣的 reduced row-echelon form (rref)
+   </font><br>
+
+   給定矩陣之後，只要使用<code>rref()</code> 即可找出矩陣的 reduced row-echelon form。像是 1-4 的習題第 5 題。只要輸入
+
+   <pre>
+   <code-input>
+   A = [-1 3 0 1 4;1 -3 0 0 -1;2 -6 2 4 0;0 0 1 3 -4]
+   rref(A)
+   </code-input>
+   </pre>
+
+   就可以輕鬆算出答案了。
+
+   <pre>
+   <code-output>
+   A =
+
+     -1   3   0   1   4
+      1  -3   0   0  -1
+      2  -6   2   4   0
+      0   0   1   3  -4
+
+   ans =
+
+      1  -3   0   0   0
+      0   0   1   0   0
+      0   0   0   1   0
+      0   0   0   0   1
+   </code-output>
+   </pre>
+
+   不過求聯立方方程組的解，這部分就還是要麻煩各位同學自行判斷了。<br>
+   </div>
+
+   <hr>
+
+   <div class='w-100 d-inline-flex flex-column p-3' id="1-5"> 
+      <div class='termheader'>
+         Ch 1 - 5
+      </div>
+
+      <!-- 找矩陣的 inverse 以及 解方程式 -->
+      <div>
+         <div class='termheader'>
+            找矩陣的 inverse 以及解聯立方程組
+         </div>
+
+
+
+         矩陣的 inverse 是使用 <code> inv()</code>像是課本 1-5 的例子 4，就是這樣計算的：
+
+      <pre>
+      <code-input>
+      A = [ 1 3 -2;2 5 -3; -3 2 -4]
+      inv(A)
+      </code-input>
+      </pre>
+
+      就可以輕鬆算出答案了。
+
+      <pre>
+      <code-output>
+      A =
+
+         1    3   -2
+         2    5   -3
+        -3    2   -4
+
+      ans =
+
+          14    -8   -1
+         -17    10    1
+         -19    11    1
+      </code-output>
+      </pre>
+
+      或者是利用 rref 的性質
+
+      <pre>
+      <code-input>
+      A = [ 1 3 -2;2 5 -3; -3 2 -4]
+      B = [ A, eye(3)]
+      rref(B)
+      </code-input>
+      </pre>
+
+      也可以看出 A 的 inverse matrix 就出現在 rref(B) 的右半側。
+
+      <pre>
+      <code-output>
+      A =
+
+         1   3  -2
+         2   5  -3
+        -3   2  -4
+
+      B =
+
+         1   3  -2   1   0   0
+         2   5  -3   0   1   0
+        -3   2  -4   0   0   1
+
+      ans =
+
+         1   0   0    14   -8   -1
+         0   1   0   -17   10    1
+         0   0   1   -19   11    1
+      </code-output>
+      </pre>
+
+      不過像是課本 1-5 例題 2 題這種給定 $A\vec{x}=\vec{b}$ 要求 $\vec{x}=A^{-1}\vec{b}$ 的題目，我們有兩種做法：
+
+      首先是確認我們的矩陣是否有 inverse matrix，確定好了之後，我們可以用 <code> inv(A) * b</code> 或者是 <code> A \ b</code> 來求解。
+
+      <pre>
+         <code-input>
+            A = [2 9;1 4]
+            b = [-5; 7]
+            v = A \ b
+            u = inv(A) * b
+         </code-input>
+      </pre>
+
+      看得出來，這兩種算法得到的答案是一樣的。
+
+      <pre>
+         <code-output>
+            A =
+
+               2   9
+               1   4
+
+            b =
+
+               -5
+                7
+
+            v =
+
+               83
+              -19
+
+            u =
+
+               83
+              -19
+         </code-output>
+      </pre>
+   </div>
+
+   <hr>
+
+   <!-- footer -->
+   <div>
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+         <a href="./index.html"> 回 Octave 教學首頁 </a>
+      </footer>
+   </div>
+</body>
+
+</html>
+<!doctype html>

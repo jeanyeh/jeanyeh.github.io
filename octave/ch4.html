@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+<title>Ch4</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        margin-top: 20px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+
+    /* ul {
+          list-style-type: none;
+        } */
+
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #FFFFFF;
+        /* #f9f2f4; */
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+<body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 4 Determinants
+        </span>
+
+        <span class='termheader'>
+            目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#4-1">4-1. 計算矩陣的determinant, 以及向量們的cross product，還有解方程式</a></li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="4-1">
+        <span class='termheader'>
+            Ch 4-1
+        </span>
+
+        <!-- determinant -->
+        <div> 
+            <div class='termheader'>
+                determinant
+            </div>
+
+            <span class='info'>
+                求矩陣的determinant，利用到的指令就是<code>det( )</code>
+            </span>
+
+            <br>
+            舉例來說，如果想找矩陣A的determinant，只要像下面這樣即可。
+            <pre>
+                <code-input>
+                    A = [2, -5, 3; 1, 3, 4; -2, 3, 7]
+                    det( A )
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    A =
+
+                        2         -5          3
+                        1          3          4
+                       -2          3          7
+
+                    ans = 120
+                </code-output>
+            </pre>
+
+            <span class="answer">
+                那麼就知道矩陣的determinant為120。
+            </span>
+        </div>
+
+        <!-- 向量的cross product -->
+        <div>
+            <div class='termheader'>
+                向量的cross product
+            </div>
+
+            <span class="'info">
+                向量的 cross product 只要利用函數 <code> cross( , ) </code> 即可。可以直接放入兩個向量，或是令成變數再做cross product都可以。
+                例如：我們想做兩個向量 $\vec{v}=[10, 4, -1]$ 跟 $\vec{u} = [-5, -2, 3]$ 的cross product，那麼只要輸入
+            </span>
+
+            <pre>
+                <code-input>
+                    cross( [10, 4, -1], [-5, -2, 3] )
+                </code-input>
+            </pre>
+
+            或是
+
+            <pre>
+                <code-input>
+                    v = [10, 4, -1]
+                    u = [-5, -2, 3]
+                    cross(v, u)
+                </code-input>
+            </pre>
+
+            最終都可以得到答案
+
+            <pre>
+            <code-output>
+                ans =
+
+                    10        -25          0
+            </code-output>
+            </pre>
+        </div>
+
+        <!-- 解方程式 -->
+        <div> 
+            <div class='termheader'>
+                解方程式
+            </div>
+
+            <span class='info'>
+                求 $f(x)=0$ 的解，主要是先定義什麼叫做函數$f(x)$，再利用指令<code>fzero( , )</code>。
+                <br>
+                
+                首先我們來解釋怎麼定義函數，舉例來說，如果我想令 $f(x)=x^2-4x+3$，那麼我會用
+                <pre>
+                    <code-input>
+                        f = @(x) x^2-4*x+3
+                    </code-input>
+                </pre>
+                其中，@後面的括號內放的是變數，也就是說，我定義的$f$內，只有『x』是變數。
+                括號後面就是正常的函數寫法。
+                <br><br>
+
+                再來，在解$f(x)=0$的時候，解出來的根可能不只一個，
+                所以 fzero 的括號內有兩件物品，第一項放的是函數，第二項放的是你希望找出來靠近哪邊的根。
+                <br><br>
+
+                舉例來說，我們都知道$x^2-4x+3=(x-3)(x-1)=0$，所以此函數的兩根是$x=1, ~x=3$。
+                所以靠近0的那個根是$x=1$，靠近3.5的那個根是$x=3$。
+                但是這邊要注意一件事，因為Octave是用數值方法去逼近解，所以建議不要給一個離得太遠的點，
+                例如選擇『離10最近的根』就會出現錯誤。
+            </span>
+
+            <pre>
+                <code-input>
+                    f = @(x) x^2-4*x+3
+                    x1 = fzero( f, 0 )
+                    x2 = fzero( f, 3.5 )
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    f =
+
+                        @(x) x ^ 2 - 4 * x + 3
+
+                    x1 = 1
+                    x2 = 3
+                </code-output>
+            </pre>
+
+        </div>
+
+        <!-- 解直線的交點 -->
+        <div> 
+            <div class='termheader'>
+                解直線的交點
+            </div>
+
+            <span class='info'>
+                基本上這就只是用上面解方程式的方法，稍做變化而已。舉例來說，如果我想解
+                $$\left\{\begin{array}{l}
+                x-2y=3\\
+                2x+3y=-1
+                \end{array}\right.$$
+                <br>
+                
+                這題目乍看跟前一塊解釋的解方程式毫無關係，但是只要轉念改寫題目成：
+                $$\left\{\begin{array}{l}
+                y=(x-3)/2\\
+                y=(-1-2x)/3
+                \end{array}\right.$$
+                也就是說，現在我們知道 
+                $$\frac{x-3}{2}=y=\frac{-1-2x}{3}$$
+                那麼當然有
+                $$f(x)=\frac{x-3}{2}-\frac{-1-2x}{3}=0$$
+                算出解來，代回原式，即可得到交點了。
+            </span>
+                
+            <pre>
+                <code-input>
+                    f = @(x) (x-3)/2 - (-1-2*x)/3
+                    x1 = fzero( f, 0 )
+                    y1 = ( x1 - 3 ) / 2
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    f =
+
+                        @(x) (x - 3) / 2 - (-1 - 2 * x) / 3
+
+                    x1 = 1
+                    y1 = -1
+                </code-output>
+            </pre>
+
+            <span class="answer">
+                所以兩直線的交點為 $(1, -1)$。
+            </span>
+
+        </div>
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁 </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

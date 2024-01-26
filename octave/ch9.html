@@ -1,0 +1,632 @@
+<!doctype html>
+<html>
+<title>Ch9</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+    integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        margin-top: 20px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+
+    /* ul {
+          list-style-type: none;
+        } */
+
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #FFFFFF;
+        /* #f9f2f4; */
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+<body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 9 Complex Scalar
+        </span>
+
+        <span class='termheader'>
+            目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#9-1">9-1. 複數 $i$ 的計算</a>
+                <ul>
+                    <li><a href="#9-1-1">複數的加減乘</a></li>
+                    <li><a href="#9-1-2">複數的conjugate</a></li>
+                    <li><a href="#9-1-3">複數的除以及呈現格式</a></li>
+                    <li><a href="#9-1-4">複數的長度(length)以及角度(argument)</a></li>
+                </ul>
+            </li>
+            <li><a href="#9-2">9-2. 複矩陣計算</a>
+                <ul>
+                    <li><a href="#9-2-1">Dot product</a></li>
+                    <li><a href="#9-2-2">Conjugate transpose</a></li>
+                </ul>
+            </li>
+            <li><a href="#9-3">9-3. Unitarily diagonalizable</a>
+            </li>
+            <li><a href="#9-4">9-4. Jordan canonical form</a>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="9-1">
+        <span class='termheader'>
+            Ch 9-1 複數 $i$ 的計算
+        </span>
+
+
+        <!-- 複數的加減乘-->
+        <div id="9-1-1"> 
+            <div class='termheader'>
+                複數的加減乘
+            </div>
+
+            <div class='info'>
+                複數 $i$ 直接打指令<code>i</code>就是了，剩下的就是直觀照打。
+            </div>
+            
+            
+            <pre>
+                <code-input>
+                    a = 2 + 3*i
+                    b = 5 + i
+                    4*a - 2*b
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    a =  2 + 3i
+                    b =  5 + 1i
+                    ans =  -2 + 10i
+                </code-output>
+            </pre>
+        </div>
+
+        <!-- 複數的conjugate -->
+        <div id="9-1-2">
+            <div class='termheader'>
+                複數的conjugate
+            </div>
+
+            <span class="'info">
+                找複數的conjugate，只要用到<code>conj</code>即可。
+            </span>
+
+            <pre>
+                <code-input>
+                    a = 3 + 5*i
+                    conj(a)
+                </code-input>
+            </pre>
+
+            可以得到答案
+
+            <pre>
+            <code-output>
+                a = 3 + 5i
+                ans = 3 - 5i
+            </code-output>
+            </pre>
+        </div>
+
+        <!-- 複數的除以及呈現格式-->
+        <div id="9-1-3"> 
+            <div class='termheader'>
+                複數的除以及呈現格式
+            </div>
+
+            <div class='info'>
+                其實在程式裡，複數的除法跟實數的除法沒有區別。
+                不過注意一下，由於$\displaystyle \frac{1}{z}=\frac{\bar{z}}{|z|^2}$，在這個部分的計算結果大部分都是分數。
+                所以稍微介紹一下輸出格式，記得在第一章的介紹裡曾提過，我們可以利用格式這個指令<code>format</code>來更改小數點後面的長度設定。
+                所以當格式選項為分數(rational number)時，使用<code>format rat</code>，octave會輸出分數。
+                特別特別要注意一件事：當格式選項為分數時，輸出值會是最接近的有理數，所以就算你問octave，$\sqrt{2}$的值，也會得到分數。
+                若是格式選項為『最多只顯示小數點後四位的小數表示』，使用<code>format short</code>。
+            </div>
+
+
+            <pre>
+                <code-input>
+                    sqrt(2)
+                    format rat
+                    sqrt(2)
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    ans = 1.4142
+                    ans = 8119/5741
+                </code-output>
+            </pre>
+
+            <pre>
+                <code-input>
+                    1 / ( 3 + 5*i )
+                    format rat
+                    1 / ( 3 + 5*i )
+                </code-input>
+            </pre>
+
+            輸出結果
+            <pre>
+                <code-output>
+                    ans =  0.088235 - 0.147059i
+                    ans = 3/34 - 5/34i
+                </code-output>
+            </pre>
+        </div>
+
+        <!-- 複數的長度(length)以及角度(argument) -->
+        <div id="9-1-4">
+            <div class='termheader'>
+                複數的長度(length)以及角度(argument)
+            </div>
+
+            <span class="'info">
+                找複數的長度，可以使用<code>abs()</code>，或<code>norm()</code>。
+            </span>
+
+            <pre>
+                <code-input>
+                    a = 3 + 5*i
+                    abs(a)
+                    norm(a)
+                </code-input>
+            </pre>
+
+            可以得到答案
+
+            <pre>
+            <code-output>
+                a = 3 + 5i
+                ans = 3.6056
+                ans = 3.6056
+            </code-output>
+            </pre>
+
+            <span class="'info">
+                找複數的角度，可以使用<code>arg()</code>，或<code>angle()</code>。
+                注意這邊得到的角度單位是徑度量，若是希望得到度度量的話，可以使用<code>rad2deg()</code>
+            </span>
+
+            <pre>
+                <code-input>
+                    a = -1 + sqrt(3)*i
+                    arg(a)
+                    rad2deg(arg(a))
+                </code-input>
+            </pre>
+
+            可以得到答案
+
+            <pre>
+            <code-output>
+                a = -1.0000 + 1.7321i
+                ans = 2.0944
+                ans = 120.00
+            </code-output>
+            </pre>
+        </div>
+
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="9-2">
+        <span class='termheader'>
+            Ch 9-2
+        </span>
+
+        <!-- dot product -->
+        <div id="9-2-1">
+            <div class='termheader'>
+                Dot Product
+            </div>
+
+            <span class="'info">
+                以使用octave做計算來說，你會發現一點差異都沒有，一樣是使用<code>dot(u, v)</code>。
+            </span>
+
+            <pre>
+                <code-input>
+                    v=[ 1 - i , 2 ]
+                    u=[ 2 , 3 ]
+                    dot( u , v )
+                    dot( v , u )
+                </code-input>
+            </pre>
+
+            就可以得到:
+
+            <pre>
+            <code-output>
+                v =
+
+                    1 - 1i   2 + 0i
+
+                u =
+
+                    2   3
+
+                ans =  8 - 2i
+                ans =  8 + 2i
+            </code-output>
+            </pre>
+
+        </div>
+
+        <!-- conjugate transpose -->
+        <div id="9-2-2">
+            <div class='termheader'>
+                Conjugate Transpose
+            </div>
+
+            <span class="'info">
+                Conjugate Transpose 其實是兩個步驟的事，正確的做法是結合 <code>conj()</code> 和 <code>transpose()</code>。
+                不過我們也可以利用一個符號來表示這兩個指令的結合<code>'</code>。
+            </span>
+
+            <pre>
+                <code-input>
+                    v=[ 1 - i , 2 ]
+                    conj(v)
+                    transpose(v)
+                </code-input>
+            </pre>
+
+            就可以得到:
+
+            <pre>
+            <code-output>
+                v =
+
+                    1 - 1i   2 + 0i
+                
+                ans =
+
+                    1 + 1i   2 - 0i
+
+                ans =
+
+                    1 - 1i
+                    2 + 0i
+            </code-output>
+            </pre>
+
+            兩者結合後：
+            <pre>
+                <code-input>
+                    v=[ 1 - i , 2]
+                    conj(transpose(v))
+                    v'
+                </code-input>
+            </pre>
+
+            兩者均可得到：
+
+            <pre>
+            <code-output>
+                v =
+
+                    1 - 1i   2 + 0i
+                
+                ans =
+
+                    1 + 1i
+                    2 - 0i
+                 
+                ans =
+                 
+                    1 + 1i
+                    2 - 0i
+            </code-output>
+            </pre>
+
+        </div>
+
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="9-3">
+        <span class='termheader'>
+            Ch 9-3 unitarily diagonalizable
+        </span>
+
+            <span class="'info">
+                以使用octave做計算來說，你會發現如果是可以unitarily diagonalizable的矩陣，以前的<code>[ U , D ] = eig( A )</code>直接就是答案了。
+            </span>
+
+            <pre>
+                <code-input>
+                    A=[1, 2-2*i, 0; 2+2*i, -1,0; 0, 0, 3]
+                    [ U , D ] = eig( A )
+                </code-input>
+            </pre>
+
+            就可以得到:
+
+            <pre>
+            <code-output>
+                A =
+
+                    1 + 0i   2 - 2i   0 + 0i
+                    2 + 2i  -1 + 0i   0 + 0i
+                    0 + 0i   0 + 0i   3 + 0i
+
+                U =
+
+                   -0.4082 + 0.4082i   0.5774 - 0.5774i        0 +      0i
+                    0.8165 +      0i   0.5774 +      0i        0 +      0i
+                         0 +      0i        0 +      0i   1.0000 +      0i
+
+                D =
+
+                Diagonal Matrix
+
+                   -3   0   0
+                    0   3   0
+                    0   0   3
+            </code-output>
+            </pre>
+
+            我們可以檢查一下
+            <pre>
+                <code-input>
+                    U' * U
+                </code-input>
+            </pre>
+
+            確實可以得到 identity matrix:
+
+            <pre>
+            <code-output>
+                ans =
+
+                    1.0000 +      0i   0.0000 + 0.0000i        0 +      0i
+                    0.0000 - 0.0000i   1.0000 +      0i        0 +      0i
+                         0 -      0i        0 -      0i   1.0000 +      0i
+            </code-output>
+            </pre>
+
+            當然我們依然可以使用精確的符號形式，但是得到的答案U不會直接是unitary matrix，自己要再轉換一下。
+
+            <pre>
+                <code-input>
+                    A=sym([1, 2-2*i, 0; 2+2*i, -1,0; 0, 0, 3])
+                    [ C , D ] = eig( A )
+                </code-input>
+            </pre>
+
+            <pre>
+            <code-output>
+                A = (sym 3×3 matrix)
+
+                    ⎡   1     2 - 2⋅ⅈ  0⎤
+                    ⎢                   ⎥
+                    ⎢2 + 2⋅ⅈ    -1     0⎥
+                    ⎢                   ⎥
+                    ⎣   0        0     3⎦
+
+                C = (sym 3×3 matrix)
+
+                    ⎡  1   ⅈ          ⎤
+                    ⎢- ─ + ─  1 - ⅈ  0⎥
+                    ⎢  2   2          ⎥
+                    ⎢                 ⎥
+                    ⎢   1       1    0⎥
+                    ⎢                 ⎥
+                    ⎣   0       0    1⎦
+
+                D = (sym 3×3 matrix)
+
+                    ⎡-3  0  0⎤
+                    ⎢        ⎥
+                    ⎢0   3  0⎥
+                    ⎢        ⎥
+                    ⎣0   0  3⎦
+            </code-output>
+            </pre>
+
+            <span class="'info">
+                再來把C做成unitary matrix的形式。p.s.<code>simplify()</code>只是把U寫成比較漂亮的形式而已，對於答案沒有影響。
+           </span>
+
+            <pre>
+                <code-input>
+                    U = C;
+                    U(:,1) = C(:,1) / norm( C(:,1) );
+                    U(:,2) = C(:,2) / norm( C(:,2) );
+                    U(:,3) = C(:,3) / norm( C(:,3) );
+                    U = simplify( U )
+                </code-input>
+            </pre>
+
+            <pre>
+            <code-output>
+                U = (sym 3×3 matrix)
+
+                    ⎡√6⋅(-1 + ⅈ)  √3⋅(1 - ⅈ)   ⎤
+                    ⎢───────────  ──────────  0⎥
+                    ⎢     6           3        ⎥
+                    ⎢                          ⎥
+                    ⎢    √6           √3       ⎥
+                    ⎢    ──           ──      0⎥
+                    ⎢    3            3        ⎥
+                    ⎢                          ⎥
+                    ⎣     0           0       1⎦
+            </code-output>
+            </pre>
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="9-4">
+        <span class='termheader'>
+            Ch 9-4 Jordan canonical form
+        </span>
+
+            <span class="'info">
+                 在計算矩陣A的Jordan canonical form時。由於此形式對於數值誤差很敏感，建議將數值輸入轉換為精確的符號形式。然後使用<code>[V, J] = jordan (A)</code>。
+            </span>
+
+            我們以課本的example 6為例。
+            
+            <pre>
+                <code-input>
+                    A = sym([2 5 0 0 1;0 2 0 0 0;0 0 -1 0 0;0 0 0 -1 0;0 0 0 0 -1])
+                    [V, J] = jordan(A)
+                </code-input>
+            </pre>
+
+            就可以得到:
+
+            <pre>
+            <code-output>
+                A = (sym 5×5 matrix)
+
+                    ⎡2  5  0   0   1 ⎤
+                    ⎢                ⎥
+                    ⎢0  2  0   0   0 ⎥
+                    ⎢                ⎥
+                    ⎢0  0  -1  0   0 ⎥
+                    ⎢                ⎥
+                    ⎢0  0  0   -1  0 ⎥
+                    ⎢                ⎥
+                    ⎣0  0  0   0   -1⎦
+
+                V = (sym 5×5 matrix)
+
+                    ⎡0  0  -1/3  5  0⎤
+                    ⎢                ⎥
+                    ⎢0  0   0    0  1⎥
+                    ⎢                ⎥
+                    ⎢1  0   0    0  0⎥
+                    ⎢                ⎥
+                    ⎢0  1   0    0  0⎥
+                    ⎢                ⎥
+                    ⎣0  0   1    0  0⎦
+
+                J = (sym 5×5 matrix)
+
+                    ⎡-1  0   0   0  0⎤
+                    ⎢                ⎥
+                    ⎢0   -1  0   0  0⎥
+                    ⎢                ⎥
+                    ⎢0   0   -1  0  0⎥
+                    ⎢                ⎥
+                    ⎢0   0   0   2  1⎥
+                    ⎢                ⎥
+                    ⎣0   0   0   0  2⎦
+            </code-output>
+            </pre>
+
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁 </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>

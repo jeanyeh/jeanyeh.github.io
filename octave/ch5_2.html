@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<title>ch 5-2</title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous' />
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<style>
+    body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        background-color: #f6f1f9;
+    }
+    
+    .header {
+        /* margin-left: 4%; */
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: Maroon;
+        font-weight: bolder;
+    }
+    
+    .termheader {
+        /* margin-left: 4%; */
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.2em;
+        font-weight: bolder
+    }
+    
+    .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+    /* ul {
+        list-style-type: none;
+      } */
+    
+    .question {
+        /* font-family: Menlo, Monaco, Consolas, "Courier New", monospace; */
+        background-color: #FFFFFF;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 105%;
+        /* display: block; */
+        color: #111;
+        border-radius: 10px 10px 10px 10px;
+    }
+
+    footer {
+        margin-bottom: 15px;
+    }
+    
+    code {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f9f2f4;
+        padding: 2px;
+        font-size: 105%;
+        color: #c7254e;
+    }
+    
+    code-input {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #000000;
+        padding: 0.5em 0.5em 0.5em 1em;
+        margin-top: 1em;
+        font-size: 105%;
+        display: block;
+        color: #FFFFFF;
+    }
+    
+    code-output {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        background-color: #f2f2f2;
+        border: 1px solid #eee;
+        border-left: 4px solid #707070;
+        max-width: 100%;
+        overflow: auto;
+        padding: 0.5em 0.5em 0.5em 1em;
+        word-wrap: break-word;
+        display: block;
+        margin-top: 1em;
+        color: #111;
+    }
+</style>
+</head>
+
+
+
+<body>
+
+    <div class='w-100 d-inline-flex flex-column p-3'>
+        <span class='header'>
+            Ch 5-2 Diagonalization
+        </span>
+
+        <span class="term">
+            在看習題解答前，建議先觀看<a href="ch5.html">Ch5的教學</a>。
+        </span>
+
+        <span class='termheader'>
+            習題目錄：
+        </span>
+
+
+        <ul>
+            <li><a href="#p9">9</a></li>
+            <li><a href="#p10">10</a></li>
+        </ul>
+    </div>
+
+    <br>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p9">
+        <span class='termheader'>
+          Problem 9
+        </span> 
+  
+        <span class='question'>
+            Determine whether the given matrix is diagonalizable.
+            $$\begin{vmatrix} 
+             1&2&6\\2&0&-4\\6&-4&3
+            \end{vmatrix}$$
+        </span>
+  
+        輸入
+        <pre>
+            <code-input>
+                A = [1, 2, 6; 2, 0, -4; 6, -4, 3]
+                [C, D] = eig(A)
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    1   2   6
+                    2   0  -4
+                    6  -4   3
+
+                C =
+
+                    -0.6019   0.5627   0.5667
+                     0.5346   0.8111  -0.2375
+                     0.5933  -0.1600   0.7889
+
+                D =
+
+                    Diagonal Matrix
+
+                      -6.6909        0        0
+                            0   2.1766        0
+                            0        0   8.5143
+            </code-output>
+        </pre>
+
+        <span class="answer">
+            當然其實由$C, D$就可以看出來矩陣$A$是可以diagonalize的。
+            但更精確地講，由$D$可以知道矩陣$A$的三個eigenvalue都不一樣，再利用 Theorem 5.3 可以確定矩陣$A$是可以diagonalize的。
+        </span>
+
+    </div>
+    <hr>
+
+    <div class='w-100 d-inline-flex flex-column p-3' id="p10">
+        <span class='termheader'>
+          Problem 10
+        </span> 
+  
+        <span class='question'>
+            Determine whether the given matrix is diagonalizable.
+            $$\begin{vmatrix} 
+             3&1&0\\0&3&1\\0&0&3
+            \end{vmatrix}$$
+        </span>
+  
+        輸入
+        <pre>
+            <code-input>
+                A = [3, 1, 0;0, 3, 1;0, 0, 3]
+                [C, D] = eig(A)
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                A =
+
+                    3   1   0
+                    0   3   1
+                    0   0   3
+
+                C =
+
+                       1.0000  -1.0000   1.0000
+                            0   0.0000  -0.0000
+                            0        0   0.0000
+
+                D =
+
+                Diagonal Matrix
+
+                    3   0   0
+                    0   3   0
+                    0   0   3
+            </code-output>
+        </pre>
+
+        <span class="answer">
+            當然其實由$C$就可以看出來矩陣$A$是不可以diagonalize的。但是如果我們想要有更準確的講法，我們可以看$A-3I$的rref。
+        </span>
+
+        <pre>
+            <code-input>
+                rref(A-3*eye(3))
+            </code-input>
+        </pre>
+
+        輸出結果
+        <pre>
+            <code-output>
+                ans =
+
+                    0   1   0
+                    0   0   1
+                    0   0   0
+            </code-output>
+        </pre>
+
+        <span class="answer">
+            因為$rref(A-3I)$有兩個pivot，所以eigenspace $E_{3}$ 的dimension為1，也就是說$\lambda=3$的geometric multiplicity 為1。
+            可是$D$的對角線上有三個3，意即$\lambda=3$的algebraic multiplicity 為3。
+            由Theorem 5.4 可知，矩陣$A$是不可以diagonalize的。
+        </span>
+
+    </div>
+    <hr>
+
+    <div>
+        <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+            <a href="./index.html"> 回 Octave 教學首頁  </a>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!doctype html>
