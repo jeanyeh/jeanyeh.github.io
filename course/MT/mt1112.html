@@ -1,0 +1,361 @@
+<html>
+  <head>
+    <title>數學解題方法Spring2023葉均承</title>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
+      crossorigin='anonymous'
+    />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+
+    <script id="MathJax-script" async 
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
+
+    <style>
+      body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        margin-left: 4%;
+        margin-bottom: 25px;
+        //background-color: #f6f1f9;
+        //font-size: 1.2em; 
+      }
+
+      .header {
+        margin-bottom: 20px;
+        font-size: 1.9em; 
+        color: Maroon;
+        font-weight: bolder;
+      }
+
+      .termheader {
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.5em; 
+        font-weight: bolder
+      }
+
+      .calendar {
+        /*background-color: snow; /* azure;*/
+        outline-color: Maroon;
+        border-collapse: separate;
+        border-spacing: 2px;
+        width: 95%;
+      }
+
+      .calendar th {
+        text-align: center;
+        border-width: 1px;
+        border-style: solid;
+      }
+
+      .calendar td {
+        border-width: 1px;
+        border-style: solid;
+        padding: 4px;
+      }
+
+      .calendar tr:nth-child(even){
+        background-color: snow; 
+      }
+
+      .calendar tr:nth-child(odd){
+        background-color: Gainsboro; /*EAECEE;*/
+      }
+
+      .calendar td:nth-child(4n+1){
+        text-align: center;
+      }
+
+      table {
+        vertical-align: middle;
+        //font-size: 1.2em; 
+      }
+
+      td {
+        padding: 4px;
+      }
+
+      footer {
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+
+
+  <body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+      <span class='header'>
+        <font style="font-size: 1.5em;">數學解題方法 Spring 2023</font>   <br>
+        Wednesday 13:30-16:20, MA613   
+      </span>
+
+      <span class='header'> 
+        課程資訊
+      </span> 
+
+      <span class=''> 
+        <table>
+
+          <tr> 
+            <th style="text-align: right">Instructor:</th>
+            <td>葉均承</td>
+          </tr>  
+            
+          <tr> 
+            <th style="text-align: right">Email:</th>
+            <td>
+              chunchenyeh [at] mail.nknu.edu.tw , 
+              請在標題上輸入 " [數解] 姓名 "
+            </td>
+          </tr>
+
+
+          <tr> 
+            <th style="text-align: right">Office:</th>
+            <td>MA714</td>
+          </tr>
+
+          <tr> 
+            <th style="text-align: right">Office hour:</th>
+            <td>二四 12:30-13:20, or by appointment</td>
+          </tr>
+
+          <tr>
+            <th style="text-align: right">Grade:</th>
+            <td>
+              課堂參與:60%，期末報告: 40%。 <br>
+              <font color="red"><b>舉手發言次數不到三次的，必定不會過！</b></font>
+            </td>
+          </tr>
+
+        </table>
+      </span>
+
+      <hr>
+
+      <span class="text">
+        <ul>
+          <li><a href="https://forms.gle/nEBeNHyKSW3oqz8G6">匿名非官方課堂意見調查</a> (這是給老師自己看的)</li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1n4pA8U5ihVxXzgCMoSXaOaB7DG3dEFUu/edit?usp=sharing&ouid=109375636932037718086&rtpof=true&sd=true">分組名單</a> (請自行填寫） </li>
+          <li><a href="../contest.html">線上資源 </a></li>
+        </ul>
+      </span>
+      <hr> 
+
+
+
+      <span class="header">
+        日程表
+      </span>
+
+      <span class="info">
+        <table class="calendar" border="1">
+
+<tr>
+  <th width="1%">週</th>
+  <th width="3%">日期</th>
+  <th width="45%" >範圍</th>
+  <th width="45%">公告</th>
+</tr>
+
+
+<tr>
+  <td>1</td>
+  <td>02/15</td>
+  <td> 課程介紹，所羅門王的寶藏，圓積木 </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>2</td>
+  <td>02/22</td>
+  <td>  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>3</td>
+  <td>03/01</td>
+  <td>  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>4</td>
+  <td>03/08</td>
+  <td>  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>5</td>
+  <td>03/15</td>
+  <td>  </td>
+  <td> 作業：從各種數學競賽裡，選一題分析類別及講解，並出一題相似題(相似題也要寫解答)。我們到時候會讓全班來玩相似題。(請製作投影片交到google classroom) *記得要註明組別以及參與組員姓名學號 </td>
+</tr>
+
+
+<tr>
+  <td>6</td>
+  <td>03/22</td>
+  <td>  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>7</td>
+  <td>03/29</td>
+  <td>  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>8</td>
+  <td>04/05</td>
+  <td bgcolor=#F5B7B1 style="text-align: center">清明連假</td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>9</td>
+  <td>04/12</td>
+  <td> 本週有實體課 </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>10</td>
+  <td>04/19</td>
+  <td> 本週不上實體課，請在下列影片中自行選三小時的影片觀看，並留下紀錄（筆記、計算、心得）<br>
+  1. <a href="https://www.bilibili.com/video/BV1wa41187Wf?p=1">陶哲軒 大師課 (講英文但有中文字幕)(全長一個半小時，共12集)</a>  <br>
+  2. <a href="https://ocw.nycu.edu.tw/course_detail-v.php?bgid=6&gid=0&nid=370"> 交大開放課程 郭君逸老師 邏輯思考與立體思維</a>
+</td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>11</td>
+  <td>04/26</td>
+  <td> 作業一課堂呈現<br>
+<a href="hw1/hw1_1-1.pdf">第一組</a>, 
+<a href="hw1/hw1_2.pdf">第二組</a>, 
+<a href="hw1/hw1_3-1.pdf">第三組</a>, 
+<!a href="hw1/hw1_4-1.pdf">第四組</a>,<br>
+ <!a href="hw1/hw1_5.pdf">第五組</a>, 
+<!a href="hw1/hw1_6.pdf">第六組</a>, 
+<a href="hw1/hw1_7-1.pdf">第七組</a>, 
+<a href="hw1/hw1_8-1.pdf">第八組</a> </td>
+  <td> <font color="red">繳交期末報告主題並附一到兩百字簡介(04/30前交到google classroom)</font> (內容需符合大學程度，每組要報告50分鐘) </td>
+</tr>
+
+
+<tr>
+  <td>12</td>
+  <td>05/03</td>
+  <td> <a href="https://docs.google.com/document/d/1TSJhB48xJxNNM--q95PrIA91D0GbNLN95CRvij6YWiw/edit?usp=sharing">討論期末主題</a> </td>
+  <td> <font color="red">期末報告主題討論是佔分的喔！請不要缺交</font>  </td>
+</tr>
+
+
+<tr>
+  <td>13</td>
+  <td>05/10</td>
+  <td>  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>14</td>
+  <td>05/17</td>
+  <td>  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>15</td>
+  <td>05/24</td>
+  <td>  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>16</td>
+  <td>05/31</td>
+  <td>
+    第一組<a href="final/final_1_report.pdf">(報告)</a><a href="final/final_1_slides.pdf">(投影片)</a><a href="https://forms.gle/unsa93gWpzWEr9BJ8">(評分表)</a>[撲克介紹],<br>
+    第七組<a href="final/final_7_report.pdf">(報告)</a><a href="final/final_7_slides-1.pdf">(投影片)</a><a href="https://forms.gle/XywXqFHSGBGVS2pr5">(評分表)</a>[生成函數],<br>
+    第二組<a href="final/final_2_report.pdf">(報告)</a><a href="final/final_2_slides-1.pdf">(投影片)</a><a href="https://forms.gle/bnqpWAZZBjcnZX4f9">(評分表)</a>[數學影像處理],<br>
+
+  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>17</td>
+  <td>06/07</td>
+  <td>
+    第八組<a href="final/final_8_report.pdf">(報告)</a><a href="final/final_8_slides-2.pdf">(投影片)</a><a href="https://forms.gle/TSCzCu3P9ztyyvRp9">(評分表)</a>[折紙與桌遊],<br>
+    第三組<a href="final/final_3_report-2.pdf">(報告)</a><a href="final/final_3_slides-2.pdf">(投影片)</a><a href="https://forms.gle/N7yExopNNXFBGY8b8">(評分表)</a>[黑暗騎士與英倫奶茶],<br>
+    第六組<!a href="final/final_6_report.pdf">(報告)</a><!a href="final/final_6_slides.pdf">(投影片)</a><!a href="">(評分表)</a>[],<br>
+  </td>
+  <td>  </td>
+</tr>
+
+
+<tr>
+  <td>18</td>
+  <td>06/14</td>
+  <td>
+    第五組<a href="final/final_5_report.pdf">(報告)</a><a href="final/final_5_slides-2.pdf">(投影片)</a><a href="https://forms.gle/CSCehkzb9CP8Thb37">(評分表)</a>[初探賽局理論],<br>
+    第四組<a href="final/final_4_report.pdf">(報告)</a><a href="final/final_4_slides-1.pdf">(投影片)</a><a href="https://forms.gle/eRs1a5tKwcPQTvjd8">(評分表)</a>[謎語與桌遊],<br>
+  </td>
+  <td>  </td>
+</tr>
+
+        </table>
+      </span>
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <a href='../../../index.html'>
+          (回個人首頁)
+        </a>
+
+        <a href="https://c.nknu.edu.tw/aca/UploadFile/userfiles/2/files/111行事曆-07修正後調整放假配合身障考試.pdf">
+          (111-2 行事曆)
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
