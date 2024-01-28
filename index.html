@@ -12,222 +12,91 @@
       integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
       crossorigin='anonymous'
     />
+    <link rel='stylesheet' href='style/style.css'>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Monaco, Arial, Helvetica, sans-serif;
-      background-color: #f9f3eb;
-    }
-
-    header {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      /*position: fixed;*/
-      width: 100%;
-
-      height: 80px;
-      padding: 0.6em;
-
-      color: #eee;
-      background-color: #cf4a03;
-    }
-
-    .page-header {
-        margin-top: 20px;
-        text-align: center;
-        margin-bottom: 10px;
-        font-size: 1.9em; 
-        color: Maroon;
-        font-weight: bolder;
-      }
-
-    main {
-      display: block;
-
-      padding: 1em;
-      padding-top: 5%;
-    }
-
-    label {
-      font-size: 200%;
-      font-weight: bold;
-
-      margin-left: 0.5em;
-    }
-
-    img {
-      display: inline-block;
-      height: 100%;
-    }
-
-
-    .term {
-        margin-left: 4%;
-        margin-bottom: 20px;
-      }
-
-
-    .right {
-      float: right;
-      margin-left: auto;
-      margin-right: 4%;
-    }
-
-    .btn {
-      padding: 0.2em 0.6em;
-
-      border: 1px solid #eee;
-      border-radius: 0.5em;
-
-      color: #eee;
-      text-decoration: none;
-    }
-
-    .active {
-      background-color: #eee;
-      color: #222;
-    }
-
-    table {
-        /*background-color: snow; /* azure;*/
-        /*outline-style: solid;
-        outline-width: 2px;*/
-        outline-color: Maroon;
-        border-collapse: separate;
-        border-spacing: 0 8px;
-        font-size: 1.2em; 
-      }
-
-      .table > tbody > tr > td {
-        vertical-align: middle;
-      }
-
-      td {
-        padding-left: 10px;
-      }
-  </style>
   </head>
 
   <body>
     <header>
-      <img src="https://w3.nknu.edu.tw/images/images/nknu_logo_02-new.png" alt="NKNU Logo">
-      <label>Jean Yeh</label>
+      <label class='h2 mx-4'>Jean Yeh</label>
 
       <span class='right'>
         <a class='btn  active' href="#">Home</a>
-        <a class='btn' href="info/publication.html">Publications</a>
-        <a class='btn' href="course/index.html">Teaching</a>
-        <a class='btn' href="links.html">Links</a>
+        <a class='btn' href="/info/publication.html">Publications</a>
+        <a class='btn' href="/course/index.html">Teaching</a>
+        <a class='btn' href="/links.html">Links</a>
       </span>
     </header>
 
     <main>
-      <div class='w-100 d-inline-flex flex-column p-3'>
-        <span class='page-header'>
-          <font style="font-size: 1.5em;">葉均承 </font>
-          Chun-Chen yeh (Jean Yeh)    
-        </span>
+      <section>
+        <div class='w-100 d-inline-flex flex-column p-3'>
+          <span class='page-header'>
+            <label class='h1'>葉均承</label> Chun-Chen yeh (Jean Yeh)    
+          </span>
 
-        <center>
-        <span class="term">
-          <table>
-  
-            <tr> 
-              <th  style="text-align: right" >就職:</th>
-              <td>
-                  <a href="https://w3.nknu.edu.tw/zh/">國立高雄師範大學</a> 
-                  <a href="https://dept.nknu.edu.tw/VB/zh/">數學系</a> <br>
-                  (Department of Mathematics, National Kaohsiung Normal University)
-              </td>
-            </tr>
-   
-    
-            <tr> 
-              <th style="text-align: right">職稱:</th>
-              <!--td>助理教授 (Assistant Professor)</td-->
-              <td>副教授 (Associate Professor)</td-->
-            </tr>
-            
-            <tr> 
-              <th style="text-align: right">辦公室:</th>
-              <td>致理大樓 714 室</td>
-            </tr>
-            
-            <tr> 
-              <th style="text-align: right">電話:</th>
-              <td>+886-7-7172930 ext.6822</td>
-            </tr>
-               
-            <tr> 
-              <th style="text-align: right">信箱:</th>
-              <td>chunchenyeh [at] mail.nknu.edu.tw</td>
-            </tr>
-            
-        
-  
-          </table>
-        </span>
-        </center>
-      </div>
+          <center>
+            <div class='cell'>
+              <label>就職</label>
+              <span>
+                <a href="https://w3.nknu.edu.tw/zh/">國立高雄師範大學</a> 
+                <a href="https://dept.nknu.edu.tw/VB/zh/">數學系</a> <br>
+                (Department of Mathematics, National Kaohsiung Normal University)
+              </span>
+            </div>
+            <div class='cell'>
+              <label>職稱</label>
+              <span>副教授 (Associate Professor)</span>
+            </div>
+            <div class='cell'>
+              <label>辦公室</label>
+              <span>致理大樓 714 室</span>
+            </div>
+            <div class='cell'>
+              <label>電話</label>
+              <span>+886-7-7172930 ext.6822</span>
+            </div>
+            <div class='cell'>
+              <label>信箱</label>
+              <span>chunchenyeh [at] mail.nknu.edu.tw</span>
+            </div>
+          </center>
+        </div>
 
-      <hr>
+        <div class='w-100 d-inline-flex flex-column p-3'>
+          <span class='page-header'>
+            <label class='h1'>Reaserch related</label>
+          </span>
 
-      <div class='w-100 d-inline-flex flex-column p-3'>
-        <span class='page-header'>
-          <font style="font-size: 1em;">Reaserch related </font>
-        </span>
-
-        <center>
-        <span class="term">
-          <table>
-
-            <!--tr> 
-              <th style="text-align: right">Link:</th>
-              <td><a href="https://mathscinet.ams.org/mathscinet/MRAuthorID/896924">MathSciNet</a></td>
-            </tr-->
-            
-            <tr> 
-              <td>
-                <a href="https://www.mathgenealogy.org/id.php?id=248021">Mathgenealogy</a>
-              </td>
-            </tr>
-
-            <tr> 
-              <td>Orcid: <a href="https://orcid.org/0000-0001-8298-8961"> 0000-0001-8298-8961</a>, 
-                <a href="https://scholar.google.com.tw/citations?user=95yPShUAAAAJ">google scholar</a>, 
-                <a href="https://www.scopus.com/authid/detail.uri?authorId=57195637733">scopus</a>, 
+          <center>
+            <div class='cell'>
+              <label></label>
+              <span><a href="https://www.mathgenealogy.org/id.php?id=248021">Mathgenealogy</a></span>
+            </div>
+            <div class='cell'>
+              <label></label>
+              <span>
+                <label>Orcid:</label>
+                <a href="https://orcid.org/0000-0001-8298-8961"> 0000-0001-8298-8961</a>,
+                <a href="https://scholar.google.com.tw/citations?user=95yPShUAAAAJ">google scholar</a>,
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57195637733">scopus</a>,
                 <a href="https://www.researchgate.net/profile/Jean_Yeh2">Research Gate</a>
-              </td>
-            </tr> 
-              
-            
-            <!--tr> 
-              <td>
-                <a href="https://dblp.org/pid/55/10715.html">dblp</a>
-              </td>
-            </tr-->
-            <tr> 
-              <td>
-                <a href="CV/publications.pdf">publications</a>, 
-                <a href="CV/JeanYehCV.pdf"> CV </a>
-              </td>
-            </tr>
-
-        
-  
-          </table>
-        </span>
-        </center>
-      </div>
+              </span>
+            </div>
+            <div class='cell'>
+              <label></label>
+              <span><a href="CV/publications.pdf">publications</a></span>
+            </div>
+            <div class='cell'>
+              <label></label>
+              <span><a href="CV/JeanYehCV.pdf"> CV </a></span>
+            </div>
+          </center>
+        </div>
+      </section>
     </main>
 
+    <footer>
+    </footer>
   </body>
 </html>
