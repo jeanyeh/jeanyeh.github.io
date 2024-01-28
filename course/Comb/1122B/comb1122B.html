@@ -1,0 +1,410 @@
+<html>
+  <head>
+    <title>組合數學Spring2024葉均承</title>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
+      crossorigin='anonymous'
+    />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+
+    <script id="MathJax-script" async 
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
+
+    <style>
+      body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        margin-left: 4%;
+        margin-bottom: 25px;
+      }
+
+      .header {
+        margin-bottom: 20px;
+      }
+
+      .termheader {
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.3em; 
+        font-weight: bolder
+      }
+
+      .calendar {
+        background-color: snow; /* azure;*/
+        outline-color: Maroon;
+        border-collapse: separate;
+        border-spacing: 2px;
+        width: 95%;
+      }
+
+      .calendar th {
+        text-align: center;
+        border-width: 1px;
+        border-style: solid;
+      }
+
+      .calendar td {
+        border-width: 1px;
+        border-style: solid;
+        padding: 4px;
+      }
+
+      .calendar td:nth-child(5n+1){
+        text-align: center;
+      }
+
+      table {
+        vertical-align: middle;
+      }
+
+      td {
+        padding: 4px;
+      }
+
+      footer {
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+
+  
+
+  <body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+      
+      <span class='header'>
+        <font color="Maroon"><h2>組合數學 Spring 2024</h2></font>   
+        <font color="Maroon"><h3>Tuesday 13:30-16:20, MA814 </h3></font>    
+      </span>
+
+      <span class='header'> 
+        <font color="Maroon"><h3>課程資訊</h3></font>
+        <table>
+
+          <tr> 
+            <th style="text-align: right">Instructor:</th>
+            <td>葉均承</td>
+          </tr>  
+            
+          <tr> 
+            <th style="text-align: right">Email:</th>
+            <td>
+              chunchenyeh [at] mail.nknu.edu.tw , 
+              請在標題上輸入 " [專題] 姓名 "
+            </td>
+          </tr>
+
+
+          <tr> 
+            <th style="text-align: right">Office:</th>
+            <td>MA714</td>
+          </tr>
+
+          <tr> 
+            <th style="text-align: right">Office hour:</th>
+            <td>二四 12:30-13:20, or by appointment</td>
+          </tr>
+
+          <tr> 
+            <th style="text-align: right">Textbook: 
+            </th>
+            <td> Richard P. Stanley, Enumerative Combinatorics (Volume 1), second edition<br>
+              <a href="https://math.mit.edu/~rstan/ec/errata_2ed.pdf">課本錯誤表（ERRATA）</a>
+            </td>
+          </tr>
+            
+
+          <tr>
+            <th style="text-align: right">Grade:</th>
+            <td>
+              作業：20% <br>
+              參與互動：10% (暫定，最後效果不好就回歸期考) <br>
+              期中考：35% <br>
+              期末考：35%
+            </td>
+          </tr>
+
+
+        </table>
+      </span>
+
+      <span class="text">
+        <a href="https://forms.gle/BNkpgr1jcHFBZkA56">匿名非官方課堂意見調查</a> (這是給老師自己看的)
+      </span>
+      <hr>
+
+      <span class="text">
+        <ul>
+          <li><b>助教: </b> 鄭謹祐</li>
+          <li><b>助教email: </b> 611031015 [at] mail.nknu.edu.tw</li>
+        </ul>
+      </span>
+      <hr>
+
+      <span class="info">
+      額外補充
+      <ul>
+      <li> <a href="http://www.math.nsysu.edu.tw/article/zhu/">離散數學漫談 by 朱緒鼎教授</a></li>
+      <li> <a href="http://episte.math.ntu.edu.tw/cgi/mathfield.pl?fld=dis">Episte Math - 離散數學類</a></li>
+      </ul>
+      </span>
+
+      <hr>
+
+      <span class="header">
+        <font color="Maroon"><h3>日程表</h3></font>
+      </span>
+
+      <span class="info">
+        <table class="calendar" border="1">
+        <tr>
+        <th width="1%">週</th>
+        <th width="3%">日期</th>
+        <th width="45%" >範圍</th>
+        <th width="25%">作業</th>
+        <th width="25%">宣告</th>
+        </tr>
+
+
+        <tr align="center">
+          <td>1</td>
+          <td>02/20</td>
+          <td align="left">  
+            <a href="../text_ec1/ec1_1-1.pdf">Sec 1.1 How to Count</a>
+          </td>
+          <td style="padding:8px;" align="left"> </td>
+          <td align="left"> </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>2</td>
+          <td>02/27</td>
+          <td align="left">  
+            <a href="../text_ec1/ec1_1-2.pdf">Sec 1.2 Sets and Multisets</a>
+          </td>
+          <td style="padding:8px;" align="left">
+            
+          </td>
+          <td align="left"> 
+          </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>3</td>
+          <td>03/05</td>
+          <td align="left">  
+            <a href="../text_ec1/ec1_1-3.pdf">Sec 1.3 Cycles and Inversions</a>
+          </td>
+          <td style="padding:8px;" align="left">
+            
+          </td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>4</td>
+          <td>03/12</td>
+          <td align="left">  
+            Sec 1.4 Descents
+          </td>
+          <td style="padding:8px;" align="left">
+            
+          </td>
+          <td align="left">  
+            
+          </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>5</td>
+          <td>03/19</td>
+          <td align="left"> 
+            Sec 1.4 Descents, <br>
+            Sec 1.5 Geometric Representations of Permutations
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>6</td>
+          <td>03/26</td>
+          <td align="left"> 
+            Sec 1.5 Geometric Representations of Permutations
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>7</td>
+          <td>04/02</td>
+          <td align="left">  
+            Sec 1.7 Permutations of multisets<br>
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>8</td>
+          <td>04/09</td>
+          <td align="left">  
+            Sec 1.8 Partition Identities
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>9</td>
+          <td>04/16</td>
+          <td align="center" colspan ="2" bgcolor="LightCyan">
+            <b>期中考   </b> (範圍： ) <!--a href="exam1_sol.pdf">(solution)</a--> 
+          </td>
+          <td>   </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>10</td>
+          <td>04/23</td>
+          <td align="left">  
+            Sec 1.8 Partition Identities
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>11</td>
+          <td>04/30</td>
+          <td align="left">  
+            Sec 1.9 The Twelvefold Way
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>12</td>
+          <td>05/07</td>
+          <td align="left">  
+            Sec 1.9 The Twelvefold Way, <br>
+            Sec 2.1 Inclusion-Exclusion
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>13</td>
+          <td>05/14</td>
+          <td align="left">  
+            Sec 2.1 Inclusion-Exclusion, <br>
+            Sec 2.2 Examples and Special Cases
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>14</td>
+          <td>05/21</td>
+          <td align="left">  
+            Sec 2.3 Permutations with restricted Position
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>15</td>
+          <td>05/28</td>
+          <td align="left">  
+            Sec 2.4 Ferrers Boards
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left"> 【期末學生教學意見回饋】開始填答 </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>16</td>
+          <td>06/04</td>
+          <td align="left">  
+            Sec 2.6 Involutions
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>17</td>
+          <td>06/11</td>
+          <td align="left">  
+            Sec 2.7 Determinants
+          </td>
+          <td style="padding:8px;" align="left"></td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>18</td>
+          <td>06/18</td>
+          <td align="center" colspan ="2" bgcolor="LightCyan"><b>Final Exam   </b> (範圍： )  <!--a href="exam2_sol.pdf">(solution)</a--> 
+          </td>
+          <td>  </td>
+          </tr>         
+
+
+
+        </table>
+      </span>
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <a href='../../index.html'>
+          (回首頁)
+        </a>
+
+        <a href="https://c.nknu.edu.tw/aca/UploadFile/userfiles/2/files/112上學期行事曆1120525依行政院修訂公告版.pdf">
+          (112-1 行事曆)
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
