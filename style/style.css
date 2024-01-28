@@ -78,6 +78,13 @@ a:hover {
   text-align: right;
 }
 
+.cell > nav {
+  display: inline-block;
+  width: 55px;
+
+  text-align: right;
+}
+
 .cell > span {
   display: inline-block;
   width: 100%;
@@ -91,6 +98,7 @@ a:hover {
 
   color: #5c0d0d;
   font-weight: bolder;
+  margin-bottom: 0.5em;
 }
 
 .right {
