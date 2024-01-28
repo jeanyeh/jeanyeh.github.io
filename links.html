@@ -12,157 +12,80 @@
       integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
       crossorigin='anonymous'
     />
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Monaco, Arial, Helvetica, sans-serif;
-      background-color: #f9f3eb;
-    }
-
-    header {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      /*position: fixed;*/
-      width: 100%;
-
-      height: 80px;
-      padding: 0.6em;
-
-      color: #eee;
-      background-color: #cf4a03;
-    }
-
-    .page-header {
-        margin-top: 20px;
-        text-align: center;
-        margin-bottom: 10px;
-        font-size: 1.9em; 
-        color: Maroon;
-        font-weight: bolder;
-      }
-
-    main {
-      display: block;
-
-      padding: 1em;
-      padding-top: 5%;
-    }
-
-    label {
-      font-size: 200%;
-      font-weight: bold;
-
-      margin-left: 0.5em;
-    }
-
-    img {
-      display: inline-block;
-      height: 100%;
-    }
-
-
-    .term {
-        margin-left: 4%;
-        margin-bottom: 20px;
-      }
-
-
-    .right {
-      float: right;
-      margin-left: auto;
-      margin-right: 4%;
-    }
-
-    .btn {
-      padding: 0.2em 0.6em;
-
-      border: 1px solid #eee;
-      border-radius: 0.5em;
-
-      color: #eee;
-      text-decoration: none;
-    }
-
-    .active {
-      background-color: #eee;
-      color: #222;
-    }
-
-    li {
-        margin: 0px 1% 20px 1%;
-        padding: 0px;
-    }
-
-  </style>
+    <link rel='stylesheet' href='/style/style.css'>
   </head>
 
   <body>
     <header>
-      <img src="https://w3.nknu.edu.tw/images/images/nknu_logo_02-new.png" alt="NKNU Logo">
-      <label>Jean Yeh</label>
+      <label class='h2 mx-4'>Jean Yeh</label>
 
       <span class='right'>
-        <a class='btn' href="index.html">Home</a>
-        <a class='btn' href="info/publication.html">Publications</a>
-        <a class='btn' href="course/index.html">Teaching</a>
-        <a class='btn  active' href="links.html">Links</a>
+        <a class='btn' href='/index.html'>Home</a>
+        <a class='btn' href='/publication/index.html'>Publications</a>
+        <a class='btn' href='/course/index.html'>Teaching</a>
+        <a class='btn active' href='#'>Links</a>
       </span>
     </header>
 
     <main>
-      <div class='w-100 d-inline-flex flex-column p-3'>
-        <span class='page-header'>
-          Useful Link  
-        </span>
+      <section>
+        <div class='w-100 d-inline-flex flex-column p-3'>
+          <span class='page-header mb-3'>
+            <label class='mx-4 h2'>常用連結</label>
+          </span>
 
-        <span>
-          <ul>
-            <li>
-              YouTube Channel:<br>
-              <a href="https://www.youtube.com/channel/UChkbXMTk7CcHMr36vxJ1F3Q" target="_blank">NCTS</a>,
-              <a href="https://www.youtube.com/@mathsinica2746" target="_blank">Math Sinica</a>,
-              <a href="https://www.youtube.com/c/mathnthu1962" target="_blank">NTHU Math</a>,
-            </li>
-            <li>
-              Open Courses:<br>
-              <a href="https://ocw.mit.edu/search/?d=Mathematics" target="_blank">MIT OpenCourseWare</a>,
-              <a href="https://www.viennot.org/" target="_blank">Viennot</a>,
-            </li>
-            <li>
-              <a href="https://mjl.clarivate.com/" target="_blank">search journals indexed in the Web of Science</a>
-            </li>
-            <li>
-              <a href="https://arxiv.org/" target="_blank">arXiv</a>
-            </li>
-            <li>
-              <a href="https://www.libgen.is" target="_blank">創世紀圖書館(Library Genesis)</a>
-            </li>
-            <li> 
-              <a href="https://lis.nknu.edu.tw/zh/research-resources/db_list" target="_blank">高師大資料庫年度訂購清單</a>
-            </li>
-            <li>
-              <a href="course/MT/contest.html" target="_blank">科展競賽相關</a>
-            </li>
-
-            <li>
-              <a href="https://www.kissscience.tw/" target="_blank">國科會的科普網站</a>
-            </li>
-            
-          </ul>
-        </span>
-        
-      </div>
-
-    
+          <span>
+            <div class='cell'>
+              <label>YouTube</label>
+              <span>
+                <a href="https://www.youtube.com/channel/UChkbXMTk7CcHMr36vxJ1F3Q" target="_blank">NCTS</a>,
+                <a href="https://www.youtube.com/@mathsinica2746" target="_blank">Math Sinica</a>,
+                <a href="https://www.youtube.com/c/mathnthu1962" target="_blank">NTHU Math</a>,
+              </span>
+            </div>
+            <div class='cell'>
+              <label>開放課程</label>
+              <span>
+                <a href="https://ocw.mit.edu/search/?d=Mathematics" target="_blank">MIT OpenCourseWare</a>,
+                <a href="https://www.viennot.org/" target="_blank">Viennot</a>,
+              </span>
+            </div>
+            <div class='cell'>
+              <label></label>
+              <span>
+                <a href="https://mjl.clarivate.com/" target="_blank">search journals indexed in the Web of Science</a>
+              </span>
+            </div>
+            <div class='cell'>
+              <label></label>
+              <span>
+                <a href="https://www.libgen.is" target="_blank">創世紀圖書館(Library Genesis)</a>
+              </span>
+            </div>
+            <div class='cell'>
+              <label></label>
+              <span>
+                <a href="https://lis.nknu.edu.tw/zh/research-resources/db_list" target="_blank">高師大資料庫年度訂購清單</a>
+              </span>
+            </div>
+            <div class='cell'>
+              <label></label>
+              <span>
+                <a href="course/MT/contest.html" target="_blank">科展競賽相關</a>
+              </span>
+            </div>
+            <div class='cell'>
+              <label></label>
+              <span>
+                <a href="https://www.kissscience.tw/" target="_blank">國科會的科普網站</a>
+              </span>
+            </div>
+          </span>
+        </div>
+      </section>
     </main>
 
+    <footer>
+    </footer>
   </body>
 </html>
