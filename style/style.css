@@ -50,7 +50,6 @@ footer {
 
 label {
   font-weight: bold;
-
   margin-right: 0.5em;
 }
 
@@ -99,10 +98,14 @@ a:hover {
 
 .page-header {
   font-size: 200%;
-
   color: #5c0d0d;
   font-weight: bolder;
   margin-bottom: 0.5em;
+}
+
+h4 {
+  color: #5c0d0d;
+  font-weight: bolder;
 }
 
 .right {
