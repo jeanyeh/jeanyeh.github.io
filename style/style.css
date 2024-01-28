@@ -28,6 +28,7 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
 
   padding: 1em;
   padding-top: 5%;
@@ -41,6 +42,9 @@ main > section {
 }
 
 footer {
+  background-color: #feefeb;
+  overflow: hidden;
+
   width: 100%;
 }
 
