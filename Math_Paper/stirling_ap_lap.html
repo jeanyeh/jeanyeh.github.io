@@ -1,0 +1,573 @@
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async 
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+
+<body>
+
+<title>Stirling-ap_lap</title>
+
+
+<h1> Stirling Permutation, ap, lap 統計量<font size="3"> <a href="./index.html"> (back to Data page)</a></font></h1>
+
+<h1>定義：</h1>
+<ul>
+
+<li>The ascent-plateau $ap(\pi)$ is the number of $i$ such that $\pi(i-1)<\pi(i)=\pi(i+1)$, where $i \in \{1, 2, ..., len(\pi)-1\}$.</li><br>
+
+<li>The left ascent-plateau $lap(\pi)$ is the number of $i$ such that $\pi(i-1)<\pi(i)=\pi(i+1)$, where $i \in \{0, 1, 2, ..., len(\pi)-1\}$ and $\pi(0)=0$.</li><br>
+
+</ul>
+
+<hr>
+The statistic of [ap, lap] for $\mathcal{S}_{ \{1, 1, 2, 2, ...., n, n\} }$ in <a href="multi_set_ap_lap.html"> link </a>
+<br><br>
+
+
+<a href="https://colab.research.google.com/drive/1KyNS5awow9oSS4Lf1UCnOMyGCKKSCbX0?authuser=2#scrollTo=9-4uDnIPQ6F-"> google colab</a><br>
+
+<hr>
+
+<h1>目錄：</h1>
+
+<ul>
+  <li><a href="#a=2, ap"> $ap(\pi)$, for $\pi \in \mathcal{Q}_n$</a></li>
+  <li><a href="#a=2, ap, lap"> ( $ap(\pi),lap(\pi)$ ), for $\pi \in \mathcal{Q}_n$</a></li>
+</ul>
+
+
+<hr>
+
+
+<h1><span id="a=2, ap"> $ap(\pi)$, for $\pi \in \mathcal{Q}_n$</span></h1>
+
+For $Ap_n(x)=\sum^n_{i=0}a_{n,i}x^i$, where $a_{n,i}$ is the number of $\pi \in \mathcal{S}_{ \{1, 1, 2, 2, ...., n, n\} }$ such that $ap(\pi)=i$. <br>
+
+$Ap_1(x)= 1 $, <br>
+$Ap_2(x)= 1 + 2  x$, <br>
+$Ap_3(x)= 1 + 10 x+ 4 x^2$, <br>
+$Ap_4(x)= 1 + 36 x+ 60 x^2+ 8 x^3$, <br>
+$Ap_5(x)= 1 + 116 x+ 516 x^2+ 296 x^3+ 16  x^4$, <br>
+$Ap_6(x)= 1 + 358 x+ 3508 x^2+ 5168 x^3+ 1328  x^4 + 32 x^5$, <br>
+$Ap_7(x)= 1 + 1086 x+ 21120 x^2+ 64240 x^3+  42960 x^4 + 5664 x^5+ 64 x^6$, <br>
+$Ap_8(x)= 1 + 3272 x+ 118632 x^2+ 660880 x^3+ 900560  x^4 + 320064 x^5+ 23488 x^6+ 128 x^7$, <br>
+$Ap_8(x)= 1 + 9832 x+ 638968 x^2+ 6049744 x^3+  14713840 x^4 + 10725184 x^5+ 2225728 x^6+ 95872 x^7+ 256 x^8$, <br>
+<br>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$ap(\pi)$</td>   <td>numbers</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 1 ">1</td>
+  <td rowspan=" 1 "> 1 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 2 ">2</td>
+  <td rowspan=" 2 "> 3 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 3 ">3</td>
+  <td rowspan=" 3 "> 15 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr>
+  <td>10</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td>4</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 4 ">4</td>
+  <td rowspan=" 4 "> 105 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>36</td> <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>60</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>8</td> <td>3</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 5 ">5</td>
+  <td rowspan=" 5 "> 945 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr>
+  <td>116</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td>516</td> <td>2</td> 
+</tr>
+
+<tr>
+  <td>296</td> <td>3</td> 
+</tr>
+
+<tr>
+  <td>16</td> <td>4</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 6 ">6</td>
+  <td rowspan=" 6 "> 10395 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>358</td> <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3508</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>5168</td> <td>3</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1328</td> <td>4</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>32</td> <td>5</td> 
+</tr>
+
+
+<tr>
+  <td rowspan=" 7 ">7</td>
+  <td rowspan=" 7 "> 135135 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr>
+  <td>1086</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td>21120</td> <td>2</td> 
+</tr>
+
+<tr>
+  <td>64240</td> <td>3</td> 
+</tr>
+
+<tr>
+  <td>42960</td> <td>4</td> 
+</tr>
+
+<tr>
+  <td>5664</td> <td>5</td> 
+</tr>
+
+<tr>
+  <td>64</td> <td>6</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 8 ">8</td>
+  <td rowspan=" 8 "> 2027025 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3272</td> <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>118632</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>660880</td> <td>3</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>900560</td> <td>4</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>320064</td> <td>5</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>23488</td> <td>6</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>128</td> <td>7</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 9 ">9</td>
+  <td rowspan=" 9 "> 34459425 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr>
+  <td>9832</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td>638968</td> <td>2</td> 
+</tr>
+
+<tr>
+  <td>6049744</td> <td>3</td> 
+</tr>
+
+<tr>
+  <td>14713840</td> <td>4</td> 
+</tr>
+
+<tr>
+  <td>10725184</td> <td>5</td> 
+</tr>
+
+<tr>
+  <td>2225728</td> <td>6</td> 
+</tr>
+
+<tr>
+  <td>95872</td> <td>7</td> 
+</tr>
+
+<tr>
+  <td>256</td> <td>8</td> 
+</tr>
+
+</table>
+
+
+
+<hr>
+
+
+
+<h1><span id="a=2, ap, lap">( $ap(\pi),lap(\pi)$ ), for $\pi \in \mathcal{Q}_n$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td> <td>numbers</td>  <td>$ap(\pi)$</td>  <td>$lap(\pi)$</td> 
+</tr>
+
+
+<tr>
+  <td rowspan=" 1 ">1</td>
+  <td rowspan=" 1 "> 1 </td>
+  <td>1</td> <td>0</td> <td>1</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 3 ">2</td>
+  <td rowspan=" 3 "> 3 </td>
+  <td>1</td> <td>1</td> <td>2</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td> <td>1</td> <td>1</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td> <td>0</td> <td>1</td>   
+</tr>
+
+<tr>
+  <td rowspan=" 5 ">3</td>
+  <td rowspan=" 5 "> 15 </td>
+  <td>1</td> <td>2</td> <td>3</td>   
+</tr>
+
+<tr>
+  <td>3</td> <td>2</td> <td>2</td>   
+</tr>
+
+<tr>
+  <td>7</td> <td>1</td> <td>2</td>   
+</tr>
+
+<tr>
+  <td>3</td> <td>1</td> <td>1</td>   
+</tr>
+
+<tr>
+  <td>1</td> <td>0</td> <td>1</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 7 ">4</td>
+  <td rowspan=" 7 "> 105 </td>
+  <td>1</td> <td>3</td> <td>4</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>7</td> <td>3</td> <td>3</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>29</td> <td>2</td> <td>3</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>31</td> <td>2</td> <td>2</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>29</td> <td>1</td> <td>2</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>7</td> <td>1</td> <td>1</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td> <td>0</td> <td>1</td>   
+</tr>
+
+<tr>
+  <td rowspan=" 9 ">5</td>
+  <td rowspan=" 9 "> 945 </td>
+  <td>1</td> <td>4</td> <td>5</td>   
+</tr>
+
+<tr>
+  <td>15</td> <td>4</td> <td>4</td>   
+</tr>
+
+<tr>
+  <td>101</td> <td>3</td> <td>4</td>   
+</tr>
+
+<tr>
+  <td>195</td> <td>3</td> <td>3</td>   
+</tr>
+
+<tr>
+  <td>321</td> <td>2</td> <td>3</td>   
+</tr>
+
+<tr>
+  <td>195</td> <td>2</td> <td>2</td>   
+</tr>
+
+<tr>
+  <td>101</td> <td>1</td> <td>2</td>   
+</tr>
+
+<tr>
+  <td>15</td> <td>1</td> <td>1</td>   
+</tr>
+
+<tr>
+  <td>1</td> <td>0</td> <td>1</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 11 ">6</td>
+  <td rowspan=" 11 "> 10395 </td>
+  <td>1</td> <td>5</td> <td>6</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>31</td> <td>5</td> <td>5</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>327</td> <td>4</td> <td>5</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1001</td> <td>4</td> <td>4</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2507</td> <td>3</td> <td>4</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2661</td> <td>3</td> <td>3</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2507</td> <td>2</td> <td>3</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1001</td> <td>2</td> <td>2</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>327</td> <td>1</td> <td>2</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>31</td> <td>1</td> <td>1</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td> <td>0</td> <td>1</td>   
+</tr>
+
+<tr>
+  <td rowspan=" 13 ">7</td>
+  <td rowspan=" 13 "> 135135 </td>
+  <td>1</td> <td>6</td> <td>7</td>   
+</tr>
+
+<tr>
+  <td>63</td> <td>6</td> <td>6</td>   
+</tr>
+
+<tr>
+  <td>1023</td> <td>5</td> <td>6</td>   
+</tr>
+
+<tr>
+  <td>4641</td> <td>5</td> <td>5</td>   
+</tr>
+
+<tr>
+  <td>16479</td> <td>4</td> <td>5</td>   
+</tr>
+
+<tr>
+  <td>26481</td> <td>4</td> <td>4</td>   
+</tr>
+
+<tr>
+  <td>37759</td> <td>3</td> <td>4</td>   
+</tr>
+
+<tr>
+  <td>26481</td> <td>3</td> <td>3</td>   
+</tr>
+
+<tr>
+  <td>16479</td> <td>2</td> <td>3</td>   
+</tr>
+
+<tr>
+  <td>4641</td> <td>2</td> <td>2</td>   
+</tr>
+
+<tr>
+  <td>1023</td> <td>1</td> <td>2</td>   
+</tr>
+
+<tr>
+  <td>63</td> <td>1</td> <td>1</td>   
+</tr>
+
+<tr>
+  <td>1</td> <td>0</td> <td>1</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 15 ">8</td>
+  <td rowspan=" 15 "> 2027025 </td>
+  <td>1</td> <td>7</td> <td>8</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>127</td> <td>7</td> <td>7</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3145</td> <td>6</td> <td>7</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>20343</td> <td>6</td> <td>6</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>98289</td> <td>5</td> <td>6</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>221775</td> <td>5</td> <td>5</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>439105</td> <td>4</td> <td>5</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>461455</td> <td>4</td> <td>4</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>439105</td> <td>3</td> <td>4</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>221775</td> <td>3</td> <td>3</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>98289</td> <td>2</td> <td>3</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>20343</td> <td>2</td> <td>2</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3145</td> <td>1</td> <td>2</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>127</td> <td>1</td> <td>1</td>   
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td> <td>0</td> <td>1</td>   
+</tr>
+
+
+</table>
+<br>
+
+</body>
+</html>

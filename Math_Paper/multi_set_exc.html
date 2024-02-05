@@ -1,0 +1,776 @@
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async 
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+
+<body>
+
+<title>Multi-set_exc</title>
+
+
+<h1> Excedance Number of Multi-Set<font size="3"> <a href="./index.html"> (back to Data page)</a></font></h1>
+
+<h1>定義：</h1>
+<ul>
+
+<li>$M=\{ 1^{a_1}, 2^{a_2}, ..., n^{a_n}\}$ is a multi-set, where $a_i \in \mathbb{N}$ and 1~n repeated a times n $M$. </li><br>
+<li>$N=\sum^n_{i=1}i\cdot a_i$</li><br>
+<li>$\pi = \pi_1\pi_2  \cdots \pi_{N}$ is one line permutation in $\mathcal{S}_M$</li><br>
+
+
+<ul>
+<li> The excedance set $EXC(\pi)= \Big| \{ i \in [N-1] \mid \pi_i > i \} \Big|$</li><br>
+<li> $exc(\pi)$= $ \Big| EXC(\pi) \Big|$</li><br>
+</ul>
+
+</ul>
+
+<a href="https://colab.research.google.com/drive/1sSGo1JtLajOnG2zCSHxHUYGXr-DMgChK?authuser=1#scrollTo=UWzj8mJ3yQle"> google colab</a><br>
+
+<hr>
+
+<h1>目錄：</h1>
+
+<ul>
+  <li><a href="#a=2"> $a_1=a_2=...=a_n=2$</a></li>
+  <li><a href="#a1=3, a=2"> $a_1=3, a_2=...=a_n=2$</a></li>
+  <li><a href="#a2=3, a=2"> $a_1=2, a_2=3, a_2=...=a_n=2$</a></li>
+  <li><a href="#ao=2, ae=3"> $a_{odd}=2, a_{even}=3$</a></li>
+  <li><a href="#a=3"> $a_1=a_2=...=a_n=3$</a></li>
+  <li><a href="#a1=2, a=3"> $a_1=2, a_2=...=a_n=3$</a></li>
+  <li><a href="#a2=2, a=3"> $a_1=3, a_2=2, a_2=...=a_n=3$</a></li>
+  <li><a href="#ao=3, ae=2"> $a_{odd}=3, a_{even}=2$</a></li>
+</ul>
+
+
+<hr>
+<h1><span id="a=2">$a_1=a_2=...=a_n=2$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$exc(\pi)$</td> <td>numbers</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="2">2</td>
+  <td rowspan="2">6</td>
+  <td>1</td><td>3</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>3</td>
+</tr>
+
+<tr>
+  <td rowspan="3">3</td>
+  <td rowspan="3">90</td>
+  <td>2</td><td>18</td>
+</tr>
+
+<tr>
+  <td>1</td><td>54</td>
+</tr>
+
+<tr>
+  <td>0</td><td>18</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="4">4</td>
+  <td rowspan="4">2520</td>
+  <td>3</td><td>180</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>1080</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>1080</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>180</td>
+</tr>
+
+<tr>
+  <td rowspan="5">5</td>
+  <td rowspan="5">113400</td>
+  <td>4</td><td>2700</td>
+</tr>
+
+<tr>
+  <td>3</td><td>27000</td>
+</tr>
+
+<tr>
+  <td>2</td><td>54000</td>
+</tr>
+
+<tr>
+  <td>1</td><td>27000</td>
+</tr>
+
+<tr>
+  <td>0</td><td>2700</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="6">6</td>
+  <td rowspan="6">7484400</td>
+  <td>5</td><td>56700</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>4</td><td>850500</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3</td><td>2835000</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>2835000</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>850500</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>56700</td>
+</tr>
+
+
+
+</table>
+<br>
+
+
+
+
+
+
+
+<hr>
+<h1><span id="a1=3, a=2">$a_1=3, a_2=...=a_n=2$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$exc(\pi)$</td> <td>numbers</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="2">2</td>
+  <td rowspan="2">10</td>
+  <td>1</td><td>4</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>6</td>
+</tr>
+
+<tr>
+  <td rowspan="3">3</td>
+  <td rowspan="3">210</td>
+  <td>2</td><td>30</td>
+</tr>
+
+<tr>
+  <td>1</td><td>120</td>
+</tr>
+
+<tr>
+  <td>0</td><td>60</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="4">4</td>
+  <td rowspan="4">7560</td>
+  <td>3</td><td>360</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>2700</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>3600</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>900</td>
+</tr>
+
+<tr>
+  <td rowspan="5">5</td>
+  <td rowspan="5">415800</td>
+  <td>4</td><td>6300</td>
+</tr>
+
+<tr>
+  <td>3</td><td>75600</td>
+</tr>
+
+<tr>
+  <td>2</td><td>189000</td>
+</tr>
+
+<tr>
+  <td>1</td><td>126000</td>
+</tr>
+
+<tr>
+  <td>0</td><td>18900</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="6">6</td>
+  <td rowspan="6">32432400</td>
+  <td>5</td><td>151200</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>4</td><td>2646000</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3</td><td>10584000</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>13230000</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>5292000</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>529200</td>
+</tr>
+
+
+
+</table>
+<br>
+
+
+
+
+
+
+
+
+<hr>
+<h1><span id="a2=3, a=2"> $a_1=2, a_2=3, a_2=...=a_n=2$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$exc(\pi)$</td> <td>numbers</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="2">2</td>
+  <td rowspan="2">10</td>
+  <td>1</td><td>6</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>4</td>
+</tr>
+
+<tr>
+  <td rowspan="3">3</td>
+  <td rowspan="3">210</td>
+  <td>2</td><td>40</td>
+</tr>
+
+<tr>
+  <td>1</td><td>130</td>
+</tr>
+
+<tr>
+  <td>0</td><td>40</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="4">4</td>
+  <td rowspan="4">7560</td>
+  <td>3</td><td>450</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>3060</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>3450</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>600</td>
+</tr>
+
+<tr>
+  <td rowspan="5">5</td>
+  <td rowspan="5">415800</td>
+  <td>4</td><td>7560</td>
+</tr>
+
+<tr>
+  <td>3</td><td>85680</td>
+</tr>
+
+<tr>
+  <td>2</td><td>196560</td>
+</tr>
+
+<tr>
+  <td>1</td><td>113400</td>
+</tr>
+
+<tr>
+  <td>0</td><td>12600</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="6">6</td>
+  <td rowspan="6">32432400</td>
+  <td>5</td><td>176400</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>4</td><td>2973600</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3</td><td>11289600</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>13053600</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>4586400</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>352800</td>
+</tr>
+
+
+</table>
+<br>
+
+
+
+
+
+
+
+
+<hr>
+<h1><span id="ao=2, ae=3"> $a_{odd}=2, a_{even}=3$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$exc(\pi)$</td> <td>numbers</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="2">2</td>
+  <td rowspan="2">10</td>
+  <td>1</td><td>6</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>4</td>
+</tr>
+
+<tr>
+  <td rowspan="3">3</td>
+  <td rowspan="3">210</td>
+  <td>2</td><td>40</td>
+</tr>
+
+<tr>
+  <td>1</td><td>130</td>
+</tr>
+
+<tr>
+  <td>0</td><td>40</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="4">4</td>
+  <td rowspan="4">25200</td>
+  <td>3</td><td>2520</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>11480</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>9800</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>1400</td>
+</tr>
+
+<tr>
+  <td rowspan="5">5</td>
+  <td rowspan="5">1663200</td>
+  <td>4</td><td>39200</td>
+</tr>
+
+<tr>
+  <td>3</td><td>397600</td>
+</tr>
+
+<tr>
+  <td>2</td><td>789600</td>
+</tr>
+
+<tr>
+  <td>1</td><td>397600</td>
+</tr>
+
+<tr>
+  <td>0</td><td>39200</td>
+</tr>
+
+</table>
+<br>
+
+
+
+
+
+
+
+<hr>
+<h1><span id="a=3">$a_1=a_2=...=a_n=3$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$exc(\pi)$</td> <td>numbers</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="2">2</td>
+  <td rowspan="2">20</td>
+  <td>1</td><td>10</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>10</td>
+</tr>
+
+<tr>
+  <td rowspan="3">3</td>
+  <td rowspan="3">1680</td>
+  <td>2</td><td>350</td>
+</tr>
+
+<tr>
+  <td>1</td><td>980</td>
+</tr>
+
+<tr>
+  <td>0</td><td>350</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="4">4</td>
+  <td rowspan="4">369600</td>
+  <td>3</td><td>29400</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>155400</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>155400</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>29400</td>
+</tr>
+
+
+</table>
+<br>
+
+
+
+
+
+<hr>
+<h1><span id="a1=2, a=3">$a_1=2, a_2=...=a_n=3$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$exc(\pi)$</td> <td>numbers</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="2">2</td>
+  <td rowspan="2">10</td>
+  <td>1</td><td>6</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>4</td>
+</tr>
+
+<tr>
+  <td rowspan="3">3</td>
+  <td rowspan="3">560</td>
+  <td>2</td><td>150</td>
+</tr>
+
+<tr>
+  <td>1</td><td>330</td>
+</tr>
+
+<tr>
+  <td>0</td><td>80</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="4">4</td>
+  <td rowspan="4">92400</td>
+  <td>3</td><td>9800</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>43680</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>34440</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>4480</td>
+</tr>
+
+<tr>
+  <td rowspan="5">5</td>
+  <td rowspan="5">33633600</td>
+  <td>4</td><td>1323000</td>
+</tr>
+
+<tr>
+  <td>3</td><td>9723000</td>
+</tr>
+
+<tr>
+  <td>2</td><td>15561000</td>
+</tr>
+
+<tr>
+  <td>1</td><td>6489000</td>
+</tr>
+
+<tr>
+  <td>0</td><td>537600</td>
+</tr>
+
+
+</table>
+<br>
+
+
+
+
+
+
+
+
+
+<hr>
+<h1><span id="a2=2, a=3">$a_1=3, a_2=2, a_2=...=a_n=3$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$exc(\pi)$</td> <td>numbers</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="2">2</td>
+  <td rowspan="2">10</td>
+  <td>1</td><td>4</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>6</td>
+</tr>
+
+<tr>
+  <td rowspan="3">3</td>
+  <td rowspan="3">560</td>
+  <td>2</td><td>120</td>
+</tr>
+
+<tr>
+  <td>1</td><td>320</td>
+</tr>
+
+<tr>
+  <td>0</td><td>120</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="4">4</td>
+  <td rowspan="4">92400</td>
+  <td>3</td><td>8400</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>40320</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>36960</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>6720</td>
+</tr>
+
+<tr>
+  <td rowspan="5">5</td>
+  <td rowspan="5">33633600</td>
+  <td>4</td><td>1176000</td>
+</tr>
+
+<tr>
+  <td>3</td><td>8971200</td>
+</tr>
+
+<tr>
+  <td>2</td><td>15372000</td>
+</tr>
+
+<tr>
+  <td>1</td><td>7308000</td>
+</tr>
+
+<tr>
+  <td>0</td><td>806400</td>
+</tr>
+
+
+</table>
+<br>
+
+
+
+
+
+
+
+
+
+<hr>
+<h1><span id="ao=3, ae=2">$a_{odd}=3, a_{even}=2$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>$exc(\pi)$</td> <td>numbers</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="2">2</td>
+  <td rowspan="2">10</td>
+  <td>1</td><td>4</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>6</td>
+</tr>
+
+<tr>
+  <td rowspan="3">3</td>
+  <td rowspan="3">560</td>
+  <td>2</td><td>120</td>
+</tr>
+
+<tr>
+  <td>1</td><td>320</td>
+</tr>
+
+<tr>
+  <td>0</td><td>120</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan="4">4</td>
+  <td rowspan="4">25200</td>
+  <td>3</td><td>1400</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td><td>9800</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td><td>11480</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>0</td><td>2520</td>
+</tr>
+
+<tr>
+  <td rowspan="5">5</td>
+  <td rowspan="5">7207200</td>
+  <td>4</td><td>211680</td>
+</tr>
+
+<tr>
+  <td>3</td><td>1740480</td>
+</tr>
+
+<tr>
+  <td>2</td><td>3302880</td>
+</tr>
+
+<tr>
+  <td>1</td><td>1740480</td>
+</tr>
+
+<tr>
+  <td>0</td><td>211680</td>
+</tr>
+
+</table>
+<br>
+
+</body>
+</html>

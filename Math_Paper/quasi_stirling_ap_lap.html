@@ -1,0 +1,121 @@
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async 
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+
+<body>
+
+<title>Quasi-Stirling-ap_lap</title>
+
+$
+\newcommand{\mq}{\mathcal{Q}}
+\newcommand{\ap}{{\rm ap\,}}
+\newcommand{\lap}{{\rm lap\,}}
+$
+
+<h1> Quasi-Stirling Permutation, ap, lap 統計量<font size="3"> <a href="./index.html"> (back to Data page)</a></font></h1>
+
+$\bar{\mq}_n$ is the set of all Quasi-Stirling permutation which is a permutation on $\{1^2, 2^2, 3^2, ..., n^2\}$ avoiding (1,2,1,2) and (2,1,2,1)
+
+<h1>定義：</h1>
+<ul>
+
+<li>The ascent-plateau $ap(\pi)$ is the number of $i$ such that $\pi(i-1)<\pi(i)=\pi(i+1)$, where $i \in \{1, 2, ..., len(\pi)-1\}$.</li><br>
+
+<li>The left ascent-plateau $lap(\pi)$ is the number of $i$ such that $\pi(i-1)<\pi(i)=\pi(i+1)$, where $i \in \{0, 1, 2, ..., len(\pi)-1\}$ and $\pi(0)=0$.</li><br>
+
+<li> $F_{lap}^n=\sum_{\rho\in \bar{\mq}_n} x^{\lap(\rho)}, ~
+F_{ap}^n=\sum_{\rho\in \bar{\mq}_n} x^{\ap(\rho)}$ </li>
+</ul>
+
+<hr>
+Theorem:
+
+$|\bar{\mq}_n| = n!C_n=\frac{(2n)!}{(n+1)!}$
+
+<br><br>
+
+
+<a href="https://colab.research.google.com/drive/1qYjkD5ysZFW78T-2MRNSbkL1CNMKe9Sc?authuser=2"> 20221024 google colab</a><br>
+
+<hr>
+
+<h1>目錄：</h1>
+
+<ul>
+  <li><a href="#a=2, ap"> $\ap(\pi)$, for $\pi \in \bar{\mq}_n$</a></li>
+  <li><a href="#a=2, lap"> $\lap(\pi)$ , for $\pi \in \bar{\mq}_n$</a></li>
+</ul>
+
+
+<hr>
+
+
+<h1><span id="a=2, ap"> $ap(\pi)$, for $\pi \in \bar{\mq}_n$</span></h1>
+
+For $F_{ap}^n=\sum_{\rho\in \bar{\mq}_n} x^{\ap(\rho)}$. <br><br>
+
+$F_{ap}^2(x)=2 x + 2$<br>
+
+$F_{ap}^3(x)=4 x^{2} + 16 x + 10$<br>
+
+$F_{ap}^4(x)=8 x^{3} + 88 x^{2} + 160 x + 80$<br>
+
+$F_{ap}^5(x)=16 x^{4} + 416 x^{3} + 1656 x^{2} + 2096 x + 856$<br>
+
+$F_{ap}^6(x)=32 x^{5} + 1824 x^{4} + 13984 x^{3} + 34144 x^{2} + 33504 x + 11552$ <br>
+
+$F_{ap}^7(x)=64 x^{6} + 7680 x^{5} + 105120 x^{4} + 442240 x^{3} + 787200 x^{2} + 631296 x + 188560$ <br>
+
+$ $
+
+
+
+
+
+<hr>
+
+
+
+<h1><span id="a=2, lap"> $\lap(\pi)$ , for $\pi \in \bar{\mq}_n$</span></h1>
+
+<br>
+
+$F_{lap}^n=\sum_{\rho\in \bar{\mq}_n} x^{\lap(\rho)}$<br><br>
+
+$F_{lap}^2(x)=x^{2} + 2 x + 1$<br>
+
+
+$F_{lap}^3(x)=x^{3} + 10 x^{2} + 13 x + 6$<br>
+
+$F_{lap}^4(x)=x^{4} + 36 x^{3} + 118 x^{2} + 132 x + 49$<br>
+
+$F_{lap}^5(x)=x^{5} + 116 x^{4} + 846 x^{3} + 1856 x^{2} + 1681 x + 540$<br>
+
+$F_{lap}^6(x)=x^{6} + 358 x^{5} + 5279 x^{4} + 20884 x^{3} + 34799 x^{2} + 26278 x + 7441$<br>
+
+$F_{lap}^7(x)=x^{7} + 1086 x^{6} + 30339 x^{5} + 204310 x^{4} + 562815 x^{3} + 752634 x^{2} + 487789 x + 123186$ <br>
+
+$ $
+
+</body>
+</html>

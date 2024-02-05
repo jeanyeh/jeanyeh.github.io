@@ -1,0 +1,109 @@
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async 
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+
+<body>
+
+<title>Quasi-Stirling Permutation</title>
+
+$
+\newcommand{\mq}{\mathcal{Q}}
+\newcommand{\asc}{{\rm asc\,}}
+\newcommand{\des}{{\rm des\,}}
+\newcommand{\plat}{{\rm plat\,}}
+\newcommand{\ap}{{\rm ap\,}}
+\newcommand{\lap}{{\rm lap\,}}
+$
+
+<h1>Quasi-Stirling Permutation, asc, des, plat 的統計量 <font size="3"> <a href="./index.html">(back to Data page)</a></font></h1>
+
+
+<h1>定義：</h1>
+$\bar{\mq}_n$ is the set of all Quasi-Stirling permutation which is a permutation on $\{1^2, 2^2, 3^2, ..., n^2\}$ avoiding (1,2,1,2) and (2,1,2,1)
+
+<hr>
+Theorem:
+
+$|\bar{\mq}_n| = n!C_n=\frac{(2n)!}{(n+1)!}$
+
+<br><br>
+
+
+<a href="https://colab.research.google.com/drive/1qYjkD5ysZFW78T-2MRNSbkL1CNMKe9Sc?authuser=2"> 20221024 google colab</a><br>
+
+<hr>
+
+<hr>
+
+<!--h1>目錄：</h1>
+<ul>
+  <li><a href="#result">Grammar result</a></li>
+  <li><a href="#data">Data</a></li>
+</ul>
+
+<hr>
+
+<h1><span id="result">Grammar result</span></h1-->
+
+$$F_{asc}^n=\sum_{\rho\in \bar{\mq}_n} x^{\asc(\rho)}, ~
+F_{plt}^n=\sum_{\rho\in \bar{\mq}_n} x^{\plat(\rho)}, ~
+F_{des}^n=\sum_{\rho\in \bar{\mq}_n} x^{\des(\rho)}, ~$$
+
+
+$F_{asc}^2(x)=3 x + 1$ <br>
+
+$F_{plt}^2(x)=2 x^{2} + 2 x$<br>
+
+$F_{des}^2(x)=3 x + 1$<br><br>
+
+
+$F_{asc}^3(x)=16 x^{2} + 13 x + 1$<br>
+
+$F_{plt}^3(x)=6 x^{3} + 18 x^{2} + 6 x$<br>
+
+$F_{des}^3(x)=16 x^{2} + 13 x + 1$<br><br>
+
+$F_{asc}^4(x)=125 x^{3} + 171 x^{2} + 39 x + 1$<br>
+
+$F_{plt}^4(x)=24 x^{4} + 144 x^{3} + 144 x^{2} + 24 x$<br>
+
+$F_{des}^4(x)=125 x^{3} + 171 x^{2} + 39 x + 1$<br><br>
+
+$F_{asc}^5(x)=1296 x^{4} + 2551 x^{3} + 1091 x^{2} + 101 x + 1$<br>
+
+$F_{plt}^5(x)=120 x^{5} + 1200 x^{4} + 2400 x^{3} + 1200 x^{2} + 120 x$<br>
+
+$F_{des}^5(x)=1296 x^{4} + 2551 x^{3} + 1091 x^{2} + 101 x + 1$<br><br>
+
+$F_{asc}^6(x)=16807 x^{5} + 43653 x^{4} + 28838 x^{3} + 5498 x^{2} + 243 x + 1$<br>
+
+$F_{plt}^6(x)=720 x^{6} + 10800 x^{5} + 36000 x^{4} + 36000 x^{3} + 10800 x^{2} + 720 x$<br>
+
+$F_{des}^6(x)=16807 x^{5} + 43653 x^{4} + 28838 x^{3} + 5498 x^{2} + 243 x + 1$<br><br>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

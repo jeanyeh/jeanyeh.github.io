@@ -1,0 +1,221 @@
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async 
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!--style>
+  tr { display: block; float: left; }
+  th, td { display: block; }
+</style-->
+
+
+</head>
+
+<body>
+
+
+<table border="1" style="text-align:center;" id="transposed">
+    <tbody>
+        <tr>
+            <td>n</td> <td>total</td>  <td>L</td> <td>numbers</td> 
+        </tr>
+
+        <tr>
+            <td rowspan=" 3">3</td>
+            <td rowspan=" 3"> 6</td>
+            <td>0</td><td>1</td>
+        </tr>
+        <tr>
+            <td>1</td><td>4</td>
+        </tr>
+        <tr>
+            <td>2</td><td>1</td>
+        </tr>
+        <tr>
+            <td rowspan="7 ">5</td>
+            <td rowspan="7 ">120 </td>
+            <td>0</td><td>1</td>
+        </tr>
+        <tr>
+            <td>1</td><td>12</td>
+        </tr>
+        <tr>
+            <td>2</td><td>23</td>
+        </tr>
+        <tr>
+            <td>3</td><td>48</td>
+        </tr>
+        <tr>
+            <td>4</td><td>23</td>
+        </tr>
+        <tr>
+            <td>5</td><td>12</td>
+        </tr>
+        <tr>
+            <td>6</td><td>1</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</body>
+
+
+<!-- language: lang-js -->
+<script>
+    console.time();
+    const transpose = m => m[0].map((x, i) => m.map(x => x[i]));
+    const table = document.getElementById("transposed");
+    const rows = Array.from(table.querySelectorAll("tr"));
+    const totalRowCount = rows.length;
+
+    // First, create an array of the rows and within each element, 
+    // an array of the cells; easier to deal with than NodeLists.
+
+    // This could be done more cleverly with map or reduce, but
+    // I like good old fashioned for loops.
+
+    const m = new Array(totalRowCount); 
+    for (let r = 0; r < rows.length; r++) {
+      const row = rows[r];
+      const cells = Array.from(row.querySelectorAll("td"));
+      m[r] = [];
+      for (let c = 0; c < cells.length; c++) {
+        const cell = cells[c];
+        let rowspan = cell.getAttribute("rowspan");
+        let colspan = cell.getAttribute("colspan");
+        rowspan = rowspan && parseInt(rowspan, 10);
+        colspan = colspan && parseInt(colspan, 10);
+
+        // Note that I'm swapping colspan and rowspan here in the
+        // cells of my array. I could do this after transposition,
+        // but felt like doing it here.
+        
+        // Note also that unlike in the duplicate question, I
+        // default the attribute to 1 rather than 0. I found that
+        // some browsers get messed up with spanning 0 rows/columns.
+        
+        cell.setAttribute("colspan", rowspan || 1);
+        cell.setAttribute("rowspan", colspan || 1);
+        
+        // I'm using a temporary object here to make it easier to
+        // access information about the cell later on, without adding
+        // that information to the DOM.
+        
+        m[r].push({
+          element: cell,
+          index: c,
+          rowspan: rowspan || 0,
+          colspan: colspan || 0
+        });
+      }
+    }
+
+    // Now m contains an array of arrays. Each of the 4 elements
+    // in the topmost array contains a different number of elements.
+    // The elements are objects containing the <td>, its index in 
+    // the row and the rowspan and colspan for that cell.
+
+    // So, we'll build another array of arrays, this time with 
+    // objects to represent the cells that are spanned.
+
+    let rowsToSpan = 0;
+    let colsToSpan = 0;
+    let cellsToInject = new Array(m.length);
+    for (let r = 0; r < m.length; r++) {
+      let colSpannedCells = m[r].filter(c => c.colspan && c.colspan > 1);
+      cellsToInject[r] = new Array(colSpannedCells.length);
+      for (let c = 0; c < colSpannedCells.length; c++) {
+        let cell = colSpannedCells[c];
+        cellsToInject[r].push({
+          index: cell.index,
+          cells: new Array(cell.colspan - 1)
+        });
+      }
+    }
+
+    // Now we have an array of arrays of the cells we want to inject, so we iterate 
+    // over them, splicing the "empty" cells into the array.
+    var r = 0;
+
+    // One might wonder why I'm using for..of here, where I didn't previously; good 
+    // question. :) I was playing around with performance (hence the console.time() and
+    // console.timeEnd()) and wanted to see the effect. This would work just as well
+    // with a normal for loop. 
+
+    for (let row of cellsToInject) {
+      if (row && row.length) {
+        var injectIndex = 0;
+        var injectCount = 0;
+        for (let col of row) {
+          if (col && col.cells.length) {
+            col.cells.fill({
+              element: null,
+              rowspan: null,
+              colspan: null
+            });
+            
+            // The trick here is to ensure we're taking account of previously
+            // injected cells to ensure the new set of cells are injected in
+            // the correct place.
+            
+            injectIndex = col.index + injectCount + 1;
+            Array.prototype.splice.apply(m[r], [injectIndex, 0, ...col.cells])
+            
+            // Keeping a running tally of the number of cells injected helps.
+            injectCount += col.cells.length;
+          }
+        }
+      }
+      r++;
+    }
+
+    // Now m is an array of arrays, with each element in the topmost
+    // array having an equal number of elements. This makes the transposition
+    // work better.
+
+    const transposed = transpose(m);
+
+    // Now we remove the tbody and inject our own.
+
+    table.removeChild(table.querySelector("tbody"));
+    let tbody = document.createElement("tbody");
+
+    // Just iterate over the transposed array, creating a row for each
+    // element, and iterate over the nested array, adding the element
+    // for each (where present) back in.
+
+    for (let rw of transposed) {
+      const row = document.createElement("tr");
+      for (let ce of rw) {
+        if (ce && ce.element) {
+          row.appendChild(ce.element);
+        }
+      }
+      tbody.appendChild(row);
+    }
+    table.appendChild(tbody);
+    console.timeEnd();
+</script>
+</html>

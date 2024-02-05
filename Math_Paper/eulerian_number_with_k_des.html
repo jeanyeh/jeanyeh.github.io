@@ -1,0 +1,233 @@
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async 
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+
+<body>
+
+<title>Eulerian numbers with k des</title>
+
+
+<h1>Eulerian numbers with k des <font size="3"> <a href="./index.html">(back to Data page)</a></font></h1>
+
+<h1>定義：</h1>
+(from "On the joint distribution of descents and signs of permutations")
+<ul>
+
+  <li>des($\omega$) = # $\{1 \leq i \leq n-1 \mid \omega(i) > \omega(i+1) \}$</li><br>
+
+  <li>$\genfrac{<}{>}{0pt}{}{n}{k} =$ # $\{ \omega \in \mathbb{S}_n \mid des(\omega) =k-1\}$</li><br>
+
+  <li>sign: The sign of a permutation is 1 if it can be written as a product of an even number of transpositions; otherwise the sign is −1. The sign of a permutation is well-deﬁned, and denoted by sgn($\omega$). It is also related to other statistics for permutations, e.g.,
+
+$sgn(\omega) = (−1)^{n−c(\omega)} = (−1)^{inv(\omega)}$ ,
+
+where $c(\omega)$ is the number of cycles of $\omega$, and $inv(\omega)$ is the number of inversions of $\omega$. </li><br>
+
+  <li>$\mathbb{S}_n^+$ denote the set of permutations of positive sign (also known as “even” permutations), and let $\mathbb{S}_n^- = \mathbb{S}_n -\mathbb{S}_n^+$denote the set of permutations with negative sign</li><br>
+
+  <li>$\genfrac{<}{>}{0pt}{}{n}{k}^+ =$ # $\{ \omega \in \mathbb{S}_n^+ \mid des(\omega) =k-1\}$, $\genfrac{<}{>}{0pt}{}{n}{k}^- =$ # $\{ \omega \in \mathbb{S}_n^- \mid des(\omega) =k-1\}$</li><br>
+
+</ul>
+
+<hr>
+<a href="eulerian_number_B_with_k_des.html">the type B Eulerian numbers with k des</a><br>
+
+<a href="https://colab.research.google.com/drive/1SwjGwGHvBakrwvjLX_R71Au8CiQmBzWH?authuser=2"> google colab</a><br>
+
+<hr>
+
+<h1>Triangle of the Eulerian numbers $\genfrac{<}{>}{0pt}{}{n}{k}$</h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n\k</td> <td>1</td> <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td> <td>9</td>  <td>10</td>  <td>11</td> 
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">1</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">2</td> <td>1</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">3</td> <td>1</td> <td>4</td> <td>1
+</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">4</td> <td>1</td> <td>11</td> <td>11</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">5</td> <td>1</td> <td>26</td> <td>66</td> <td>26</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">6</td> <td>1</td> <td>57</td> <td>302</td> <td>302</td> <td>57</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">7</td> <td>1</td> <td>120</td> <td>1,191</td> <td>2,416	</td> <td>1,191</td> <td>120</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">8</td> <td>1</td> <td>247</td> <td>4,293</td> <td>15,619</td> <td>15,619</td> <td>4,293</td> <td>247</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">9</td> <td>1</td> <td>502</td> <td>14,608</td> <td>88,234</td> <td>156,190</td> <td>88,234</td> <td>14,608</td> <td>502</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">10</td> <td>1</td> <td>1,013</td> <td>47,840</td> <td>455,192</td> <td>1,310,354	</td> <td>1,310,354</td> <td>455,192</td> <td>47,840</td> <td>1,013</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">11</td> <td>1</td> <td>2,036</td> <td>152,637</td> <td>2,203,488</td> <td>9,738,114</td> <td>15,724,248</td> <td>9,738,114</td> <td>2,203,488</td> <td>152,637</td> <td>2,036</td> <td>1</td>
+</tr>
+
+</table>
+
+<br>
+<hr>
+<br>
+
+<h1>Triangle of the positive Eulerian numbers $\genfrac{<}{>}{0pt}{}{n}{k}^+$</h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n\k</td> <td>1</td> <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td> <td>9</td>  <td>10</td>  <td>11</td> 
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">1</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">2</td> <td>1</td> <td>0</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">3</td> <td>1</td> <td>2</td> <td>0</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">4</td> <td>1</td> <td>5</td> <td>5</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">5</td> <td>1</td> <td>14</td> <td>20</td> <td>14</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">6</td> <td>1</td> <td>29</td> <td>147</td> <td>155</td> <td>28</td> <td>0</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">7</td> <td>1</td> <td>64</td> <td>586</td> <td>1208</td> <td>605</td> <td>56</td> <td>0</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">8</td> <td>1</td> <td>127</td> <td>2133</td> <td>7819</td> <td>7819</td> <td>2133</td> <td>127</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">9</td> <td>1</td> <td>262</td> <td>7288</td> <td>44074</td> <td>78190</td> <td>44074</td> <td>7288</td> <td>262</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">10</td> <td>1</td> <td>517</td> <td>23893</td> <td>227569</td> <td>655315</td> <td>655039</td> <td>227623</td> <td>23947</td> <td>496</td> <td>0</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">11</td> <td>1</td> <td>1044</td> <td>76332</td> <td>1101420</td> <td>4869558</td> <td>7862124</td> <td>4868556</td> <td>1102068</td> <td>76305</td> <td>992</td> <td>0</td>
+</tr>
+
+</table>
+
+<br>
+<hr>
+<br>
+
+<h1>Triangle of the negative Eulerian numbers $\genfrac{<}{>}{0pt}{}{n}{k}^-$</h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n\k</td> <td>1</td> <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td> <td>9</td>  <td>10</td>  <td>11</td> 
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">1</td> <td>0</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">2</td> <td>0</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">3</td> <td>0</td> <td>2</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">4</td> <td>0</td> <td>6</td> <td>6</td> <td>0</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">5</td> <td>0</td> <td>12</td> <td>36</td> <td>12</td> <td>0</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">6</td> <td>0</td> <td>28</td> <td>255</td> <td>247</td> <td>29</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">7</td> <td>0</td> <td>56</td> <td>605</td> <td>1208</td> <td>586</td> <td>64</td> <td>1</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">8</td> <td>0</td> <td>120</td> <td>2160</td> <td>7800</td> <td>7800</td> <td>2160</td> <td>120</td> <td>0</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">9</td> <td>0</td> <td>240</td> <td>7320</td> <td>44160</td> <td>78000</td> <td>44160</td> <td>7320</td> <td>240</td> <td>0</td>
+</tr>
+
+<tr style="background-color: #e6e6e6">
+<td style="background-color: #ffe4e1">10</td> <td>0</td> <td>496</td> <td>23947</td> <td>227623</td> <td>655039</td> <td>655315</td> <td>227569</td> <td>23893</td> <td>517</td> <td>1</td>
+</tr>
+
+<tr >
+<td style="background-color: #ffe4e1">11</td> <td>0</td> <td>992</td> <td>76305</td> <td>1102068</td> <td>4868556</td> <td>7862124</td> <td>4869558</td> <td>1101420</td> <td>76332</td> <td>1044</td> <td>1</td>
+</tr>
+
+</table>
+<br>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,446 @@
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async 
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+
+<body>
+
+<title>Multi-ap_lap</title>
+
+
+<h1> ap, lap Number of Multi-Set<font size="3"> <a href="./index.html"> (back to Data page)</a></font></h1>
+
+<h1>定義：</h1>
+<ul>
+
+<li>When $\pi \in \mathcal{S}_M$, where $M$ is $[n]$ repeated $k$ times. The ascent-plateau $ap(\pi)$ is the number of $i$ such that $\pi(i-1)<\pi(i)=\pi(i+1)=...=\pi(i+k-1)$, where $i \in \{1, 2, ..., len(\pi)-1\}$.</li><br>
+
+<li>The left ascent-plateau $lap(\pi)$ is the number of $i$ such that $\pi(i-1)<\pi(i)=\pi(i+1)=...=\pi(i+k-1)$, where $i \in \{0, 1, 2, ..., len(\pi)-1\}$ and $\pi(0)=0$.</li><br>
+
+</ul>
+
+<hr>
+The statistic of [ap, lap] for $\mathcal{Q}_n$ in <a href="stirling_set_ap_lap.html"> link </a>
+<br><br>
+
+<a href="https://colab.research.google.com/drive/1sSGo1JtLajOnG2zCSHxHUYGXr-DMgChK?usp=sharing"> google colab</a><br>
+
+<hr>
+
+<h1>目錄：</h1>
+
+<ul>
+  <li><a href="#a=2, ap"> $ap(\pi)$, for $\pi \in \mathcal{S}_{ \{1, 1, 2, 2, ...., n, n\} }$</a></li>
+  <li><a href="#a=2, ap, lap"> ( $ap(\pi),lap(\pi)$ ), for $\pi \in \mathcal{S}_{ \{1, 1, 2, 2, ...., n, n\} }$</a></li>
+
+  <li><a href="#a=3, ap"> $ap(\pi)$, for $\pi \in \mathcal{S}_M$, where $M$ is $[n]$ repeated 3 times.</a></li>
+</ul>
+
+<hr>
+
+
+<h1><span id="a=2, ap"> $ap(\pi)$, for $\pi \in \mathcal{S}_{ \{1, 1, 2, 2, ...., n, n\} }$</span></h1>
+
+For $Ap_n(x)=\sum^n_{i=0}a_{n,i}x^i$, where $a_{n,i}$ is the number of $\pi \in \mathcal{S}_{ \{1, 1, 2, 2, ...., n, n\} }$ such that $ap(\pi)=i$. <br>
+
+$Ap_1(x)=1$, <br>
+$Ap_2(x)=4+2 x$, <br>
+$Ap_3(x)=58+28x+4x^2$, <br>
+$Ap_4(x)=1600+768x+144x^2+8x^3$, <br>
+$Ap_5(x)=71296+ 34496 x+ 6936 x^2+ 656 x^3+ 16 x^4$, <br>
+$Ap_6(x)= 4675744 + 2274256 x+ 478336 x^2+ 53216 x^3+2816 x^4 + 32 x^5$, <br>
+
+<br>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>   <td>numbers</td>  <td>$ap(\pi)$</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 1 ">1</td>
+  <td rowspan=" 1 "> 1 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 2 ">2</td>
+  <td rowspan=" 2 "> 6 </td>
+  <td>4</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 3 ">3</td>
+  <td rowspan=" 3 "> 90 </td>
+  <td>58</td> <td>0</td> 
+</tr>
+
+<tr>
+  <td>28</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td>4</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 4 ">4</td>
+  <td rowspan=" 4 "> 2520 </td>
+  <td>1600</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>768</td> <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>144</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>8</td> <td>3</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 5 ">5</td>
+  <td rowspan=" 5 "> 113400 </td>
+  <td>71296</td> <td>0</td> 
+</tr>
+
+<tr>
+  <td>34496</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td>6936</td> <td>2</td> 
+</tr>
+
+<tr>
+  <td>656</td> <td>3</td> 
+</tr>
+
+<tr>
+  <td>16</td> <td>4</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 6 ">6</td>
+  <td rowspan=" 6 "> 7484400 </td>
+  <td>4675744</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2274256</td> <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>478336</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>53216</td> <td>3</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2816</td> <td>4</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>32</td> <td>5</td> 
+</tr>
+
+
+</table>
+
+
+
+<hr>
+
+
+
+<h1><span id="a=2, ap, lap">( $ap(\pi),lap(\pi)$ ), for $\pi \in \mathcal{S}_{ \{1, 1, 2, 2, ...., n, n\} }$</span></h1>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td> <td>numbers</td>  <td>$ap(\pi)$</td>  <td>$lap(\pi)$</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 1 ">1</td>
+  <td rowspan=" 1 "> 1 </td>
+  <td>1</td> <td>0</td>  <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 4 ">2</td>
+  <td rowspan=" 4 "> 6 </td>
+  <td>1</td> <td>1</td>  <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td> <td>1</td>  <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1</td> <td>0</td>  <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3</td> <td>0</td>  <td>0</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 6 ">3</td>
+  <td rowspan=" 6 "> 90 </td>
+  <td>1</td> <td>2</td>  <td>3</td> 
+</tr>
+
+<tr>
+  <td>3</td> <td>2</td>  <td>2</td> 
+</tr>
+
+<tr>
+  <td>7</td> <td>1</td>  <td>2</td> 
+</tr>
+
+<tr>
+  <td>21</td> <td>1</td>  <td>1</td> 
+</tr>
+
+<tr>
+  <td>10</td> <td>0</td>  <td>1</td> 
+</tr>
+
+<tr>
+  <td>48</td> <td>0</td>  <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 8 ">4</td>
+  <td rowspan=" 8 "> 2520 </td>
+  <td>1</td> <td>3</td>  <td>4</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>7</td> <td>3</td>  <td>3</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>29</td> <td>2</td>  <td>3</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>115</td> <td>2</td>  <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>119</td> <td>1</td>  <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>649</td> <td>1</td>  <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>211</td> <td>0</td>  <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1389</td> <td>0</td>  <td>0</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 10 ">5</td>
+  <td rowspan=" 10 "> 113400 </td>
+  <td>1</td> <td>4</td>  <td>5</td> 
+</tr>
+
+<tr>
+  <td>15</td> <td>4</td>  <td>4</td> 
+</tr>
+
+<tr>
+  <td>101</td> <td>3</td>  <td>4</td> 
+</tr>
+
+<tr>
+  <td>555</td> <td>3</td>  <td>3</td> 
+</tr>
+
+<tr>
+  <td>951</td> <td>2</td>  <td>3</td> 
+</tr>
+
+<tr>
+  <td>5985</td> <td>2</td>  <td>2</td> 
+</tr>
+
+<tr>
+  <td>4091</td> <td>1</td>  <td>2</td> 
+</tr>
+
+<tr>
+  <td>30405</td> <td>1</td>  <td>1</td> 
+</tr>
+
+<tr>
+  <td>7456</td> <td>0</td>  <td>1</td> 
+</tr>
+
+<tr>
+  <td>63840</td> <td>0</td>  <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 12 ">6</td>
+  <td rowspan=" 12 "> 7484400 </td>
+  <td>1</td> <td>5</td>  <td>6</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>31</td> <td>5</td>  <td>5</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>327</td> <td>4</td>  <td>5</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2489</td> <td>4</td>  <td>4</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>6332</td> <td>3</td>  <td>4</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>46884</td> <td>3</td>  <td>3</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>51032</td> <td>2</td>  <td>3</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>427304</td> <td>2</td>  <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>217827</td> <td>1</td>  <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>2056429</td> <td>1</td>  <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>404881</td> <td>0</td>  <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>4270863</td> <td>0</td>  <td>0</td> 
+</tr>
+
+
+
+</table>
+<br>
+
+
+
+<hr>
+
+
+<h1><span id="a=3, ap"> $ap(\pi)$, for $\pi \in \mathcal{S}_M$, where $M$ is $[n]$ repeated 3 times.</span></h1>
+
+For $Ap_n(x)=\sum^n_{i=0}a_{n,i}x^i$, where $a_{n,i}$ is the number of $\pi \in \mathcal{S}_M$ such that $ap(\pi)=i$. <br>
+
+
+$Ap_1(x)= 1 $, <br>
+$Ap_2(x)= 17 + 3 x$, <br>
+$Ap_3(x)= 1509 + 162 x+ 9 x^2$, <br>
+$Ap_4(x)= 340593 + 27801 x+ 1179 x^2+ 27  x^3$, <br>
+
+<br>
+
+<table border="1" cellpadding="5" style="text-align:center;">
+<tr style="background-color: #ffe4e1">
+  <td>n</td> <td>total</td>  <td>numbers</td>  <td>$ap(\pi)$</td>  
+</tr>
+
+<tr>
+  <td rowspan=" 1 ">1</td>
+  <td rowspan=" 1 "> 1 </td>
+  <td>1</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 2 ">2</td>
+  <td rowspan=" 2 "> 20 </td>
+  <td>17</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>3</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td rowspan=" 3 ">3</td>
+  <td rowspan=" 3 "> 1680 </td>
+  <td>1509</td> <td>0</td> 
+</tr>
+
+<tr>
+  <td>162</td> <td>1</td> 
+</tr>
+
+<tr>
+  <td>9</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td rowspan=" 4 ">4</td>
+  <td rowspan=" 4 "> 369600 </td>
+  <td>340593</td> <td>0</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>27801</td> <td>1</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>1179</td> <td>2</td> 
+</tr>
+
+<tr style="background-color: #e6e6e6">
+  <td>27</td> <td>3</td> 
+</tr>
+
+
+</table>
+
+</body>
+</html>
