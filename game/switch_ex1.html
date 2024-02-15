@@ -1,0 +1,103 @@
+
+
+<!doctype html>
+<HTML>
+<HEAD>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	<TITLE>Game II</TITLE>
+	<style>
+		#game {
+			display		: inline-block;
+			background	: #999;
+		}
+
+		.cell {
+			width	: 80px;
+			height	: 80px;
+			margin	: 0 4px 0 0;
+			display	: inline-block;
+			background	: black;
+		} 
+
+		.cell.flip {
+			background	: yellow;
+		}
+		.term {
+			display	     : inline-block;
+			//margin-left  : 4%;
+			margin-bottom: 20px;
+		}
+	</style>
+</HEAD>
+<BODY>
+	<script>
+		function GenerateGame(siz) {
+			var dom = document.getElementById('game');
+
+			for (var i = 0; i < siz; i++) {
+				var row = document.createElement('div');
+				row.className = 'row';
+
+				for (var j = 0; j < siz; j++) {
+					var cell = document.createElement('span');
+					cell.className = 'cell';
+					cell.id = `cell_${i}_${j}`;
+					cell.onclick = function(ev) {
+						var dom_id = this.id;
+
+						var x = parseInt(dom_id.split('_')[1]);
+						var y = parseInt(dom_id.split('_')[2]);
+
+						if (document.getElementById(`cell_${x-1}_${y}`) != undefined) {
+							document.getElementById(`cell_${x-1}_${y}`).classList.toggle('flip');
+						}
+
+						if (document.getElementById(`cell_${x+1}_${y}`) != undefined) {
+							document.getElementById(`cell_${x+1}_${y}`).classList.toggle('flip');
+						}
+
+						if (document.getElementById(`cell_${x}_${y-1}`) != undefined) {
+							document.getElementById(`cell_${x}_${y-1}`).classList.toggle('flip');
+						}
+						if (document.getElementById(`cell_${x}_${y+1}`) != undefined) {
+							document.getElementById(`cell_${x}_${y+1}`).classList.toggle('flip');
+						}
+						if (document.getElementById(`cell_${x}_${y}`) != undefined) {
+							document.getElementById(`cell_${x}_${y}`).classList.toggle('flip');
+						}
+					}
+
+					row.appendChild(cell);
+				}
+				dom.appendChild(row);
+			}
+	  
+			document.getElementById(`cell_${1}_${1}`).classList.toggle('flip');
+
+		}
+	</script>
+
+
+	<div>
+	  <span class="term">
+	    <font style="font-size: 1.2em;">
+今有排列成 5*5 方陣的燈泡，其控制開關發生了點小故障：當按下某一個燈泡的開關後，不止此燈泡本身會改變狀態（從亮變暗，或是從暗變亮），而且與此燈泡相鄰（指位於『同行且相鄰』或『同列且相鄰』）的燈泡也會改變狀態。<br> <br> 若一開始的燈泡狀態如下，是否能在經過一系列的開關操作之後，將所有燈泡點亮？
+	    </font>
+	  </span>
+	</div>
+	<div id='game'></div>
+	<script>GenerateGame(5)
+
+	</script>
+
+      <!--footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <br>
+        <a href='index.html'>
+          (回首頁)
+        </a>
+      </footer-->	
+
+</BODY>
+</HTML>
+

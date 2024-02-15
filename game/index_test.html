@@ -1,0 +1,261 @@
+<html>
+  <head>
+    <title>jean科展遊戲</title>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
+      crossorigin='anonymous'
+    />
+
+    <style>
+      body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+      }
+
+      .header {
+        margin-left: 4%;
+        margin-bottom: 20px;
+      }
+
+      .termheader {
+        margin-left: 4%;
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.3em; 
+        font-weight: bolder
+      }
+
+      .term {
+        margin-left: 4%;
+        margin-bottom: 20px;
+      }
+
+      table {
+        /*background-color: snow; /* azure;*/
+        /*outline-style: solid;
+        outline-width: 2px;*/
+        outline-color: Maroon;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+      ol.k {
+        list-style-type: lower-alpha;
+      }
+
+      ol li {
+        margin-bottom: 5px;
+      }
+
+
+    </style>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				//list-style: none;
+			}
+			
+			#friend {
+				width: 300px;
+				margin: 50px auto 0;
+
+			}
+			
+			#friend termheader {
+				width: 270px;
+				height: 35px;
+				line-height: 35px;
+				//padding-left: 30px;
+				//background: url(img/icon_lft.png) 10px no-repeat #74a400; 
+				font-size: 16px;
+				//font-weight: 100;
+				cursor: pointer;
+			}
+			
+			#friend termheader.hover {
+				background: 10px no-repeat snow;
+				list-style-type:  square
+			}
+			
+			#friend li {
+				margin-bottom: 1px;
+			}
+			
+			#friend li ul li {
+				width: 270px;
+				//padding-left: 30px;
+				height: 30px;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			
+			
+			#friend li ul .hover {
+				////background: #EFF4E0;
+			}
+			
+			#friend li ul .active {
+				//background: #FFC;
+			}
+			
+			#friend li ul {
+				display: none;
+			}
+			
+			#friend li ul.hover {
+				display: block;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				var oUl = document.getElementById('friend');
+				var aLi = oUl.getElementsByTagName('li');
+				var aH = oUl.getElementsByTagName('termheader');
+				var aUl = oUl.getElementsByTagName('ul');
+				var aLi = null;
+				var arrLi = [];
+
+				// 用於存放id=friend的ul標籤裡面的li標籤
+				for(var i = 0; i < aUl.length; i++) {
+					aLi = aUl[i].getElementsByTagName('li');
+					for(var j = 0; j < aLi.length; j++) {
+						arrLi.push(aLi[j]);  //將獲取到的節點存入數組裡面
+					}
+				}
+
+				for(var i = 0; i < aH.length; i++) {
+					//設定index屬性的值
+					aH[i].index = i;
+					//每一個termheader標籤被點選
+				    aH[i].onclick = function() {
+				    	
+                       //沒有class就給他類名hover，反之清空類名
+						if(this.className == '') {
+							this.className = 'hover';
+							aUl[this.index].className = 'hover';
+						} else {
+							this.className = '';
+							aUl[this.index].className = '';
+
+							var aLi = aUl[this.index].getElementsByTagName('li');
+							for(var i = 0; i < aLi.length; i++) {
+								aLi[i].className = '';
+								aLi[i].onOff = true;//設定標量值
+							}
+
+						}
+
+					};
+				}
+
+				for(var i = 0; i < arrLi.length; i++) {
+
+					arrLi[i].onOff = true;
+                    //標量值為true則代表滑鼠在上面，新增對應樣式
+					arrLi[i].onmouseover = function() {
+						if(this.onOff) {
+							this.className = 'active';
+						}
+					};
+					//設定滑鼠移出移除樣式
+					arrLi[i].onmouseout = function() {
+						if(this.onOff) {
+							this.className = '';
+						} else {
+							this.className = 'hover';
+						}
+					};
+
+					arrLi[i].onclick = function() {
+
+						for(var i = 0; i < arrLi.length; i++) {
+							if(this != arrLi[i]) {
+								arrLi[i].className = '';
+								arrLi[i].onOff = true;
+							}
+						}
+
+						if(this.onOff) {
+							this.className = 'hover';
+							this.onOff = false;
+						} else {
+							this.className = '';
+							this.onOff = true;
+						}
+					};
+				}
+
+			}
+		</script>
+  </head>
+
+  <body>
+
+		<ul id="friend">
+			<li>
+				<termheader>我的好友</termheader>
+				<ul>
+					<li>張一</li>
+					<li>張二</li>
+					<li>張三</li>
+				</ul>
+			</li>
+			<li>
+				<termheader>我的同事</termheader>
+				<ul>
+					<li>張四</li>
+					<li>張五</li>
+					<li>張六</li>
+					<li>張七</li>
+					<li>張八</li>
+				</ul>
+			</li>
+			<li>
+				<termheader>我的同學</termheader>
+				<ul>
+					<li>張九</li>
+					<li>張十</li>
+					<li>張十一</li>
+				</ul>
+			</li>
+		</ul>
+
+
+
+
+    <div class='w-100 d-inline-flex flex-column p-3'>
+      <span class="term">
+        <ol>
+          <li> 
+            <font style="font-size: 1.2em; font-weight: bolder">翻棋問題:</font>
+            <ol class="k">
+              <li>
+                type A (直橫型) : <a href="flipA.html">(自訂題型)</a>, <a href="flipA_ex1.html">(小測試)</a>
+              </li>
+
+              <li> 
+                type B (直橫斜型) : <a href="flipB.html">(自訂題型)</a>
+              </li>
+            </ol>
+          </li>  
+
+  
+
+          <li> 
+            <font style="font-size: 1.2em; font-weight: bolder">移動棋子:</font> <a href="chip.html">(自訂題型)</a> , <a href="chip_ex1.html">(小測試)</a>
+          </li>  
+
+          <li> 
+            <font style="font-size: 1.2em; font-weight: bolder">開關遊戲:</font> <a href="switch.html">(競賽題)</a>
+          </li>  	
+        </ol>
+      </span>
+    </div>
+  </body>
+</html>

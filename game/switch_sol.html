@@ -1,0 +1,112 @@
+
+
+<!doctype html>
+<HTML>
+<HEAD>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<TITLE>Game II</TITLE>
+	<style>
+		* {
+			box-sizing  : border-box;
+		}
+		#game {
+			display		: inline-block;
+			background	: #999;
+		}
+
+		.cell {
+			width	: 80px;
+			height	: 80px;
+			margin	: 0 2px 0 2px;
+			display	: inline-block;
+			background	: black;
+		}
+
+		.cell.flip {
+			background	: yellow;
+		}
+
+		.highlight {
+			background	: linear-gradient(
+				45deg,
+				#000 25%, #555 0, #000 50%,
+				#555 0, #000 75%, #555 0
+			)
+		}
+
+		.cell.flip.highlight {
+			background	: linear-gradient(
+				45deg,
+				#FF0 25%, #CC0 0, #FF0 50%,
+				#CC0 0, #FF0 75%, #CC0 0
+			)
+		}
+	</style>
+</HEAD>
+<BODY>
+	<script>
+		function GenerateGame(siz) {
+			var dom = document.getElementById('game');
+
+			for (var i = 0; i < siz; i++) {
+				var row = document.createElement('div');
+				row.className = 'row';
+
+				for (var j = 0; j < siz; j++) {
+					var cell = document.createElement('span');
+					cell.className = 'cell';
+					cell.id = `cell_${i}_${j}`;
+					cell.onclick = function(ev) {
+						var dom_id = this.id;
+
+						var x = parseInt(dom_id.split('_')[1]);
+						var y = parseInt(dom_id.split('_')[2]);
+
+						if (document.getElementById(`cell_${x-1}_${y}`) != undefined) {
+							document.getElementById(`cell_${x-1}_${y}`).classList.toggle('flip');
+						}
+
+						if (document.getElementById(`cell_${x+1}_${y}`) != undefined) {
+							document.getElementById(`cell_${x+1}_${y}`).classList.toggle('flip');
+						}
+
+						if (document.getElementById(`cell_${x}_${y-1}`) != undefined) {
+							document.getElementById(`cell_${x}_${y-1}`).classList.toggle('flip');
+						}
+						if (document.getElementById(`cell_${x}_${y+1}`) != undefined) {
+							document.getElementById(`cell_${x}_${y+1}`).classList.toggle('flip');
+						}
+						if (document.getElementById(`cell_${x}_${y}`) != undefined) {
+							document.getElementById(`cell_${x}_${y}`).classList.toggle('flip');
+						}
+					}
+
+					/* highlight */
+					if (i == 0 || i == 2 || i == 4) {
+						if (j == 0 || j == 1 || j == 3 || j == 4) {
+							cell.classList.toggle('highlight');
+						}
+					}
+
+					row.appendChild(cell);
+				}
+				dom.appendChild(row);
+			}
+		}
+	</script>
+	<div id='game'></div>
+	<script>GenerateGame(5)</script>
+
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <br>
+        <a href='switch.html'>
+          (回題目)
+        </a>
+        <!--a href='index.html'>
+          (回首頁)
+        </a-->
+      </footer>	
+
+</BODY>
+</HTML>
+
