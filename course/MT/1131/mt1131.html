@@ -1,0 +1,371 @@
+<html>
+  <head>
+    <title>數學思維與解題Fall2024葉均承</title>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
+      crossorigin='anonymous'
+    />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+
+    <script id="MathJax-script" async 
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
+
+    <style>
+      body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        margin-left: 4%;
+        margin-bottom: 25px;
+        //background-color: #f6f1f9;
+        //font-size: 1.2em; 
+      }
+
+      .header {
+        margin-bottom: 20px;
+        font-size: 1.9em; 
+        color: Maroon;
+        font-weight: bolder;
+      }
+
+      .termheader {
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.5em; 
+        font-weight: bolder
+      }
+
+      .calendar {
+        /*background-color: snow; /* azure;*/
+        outline-color: Maroon;
+        border-collapse: separate;
+        border-spacing: 2px;
+        width: 95%;
+      }
+
+      .calendar th {
+        text-align: center;
+        border-width: 1px;
+        border-style: solid;
+      }
+
+      .calendar td {
+        border-width: 1px;
+        border-style: solid;
+        padding: 4px;
+      }
+
+      .calendar tr:nth-child(even){
+        background-color: snow; 
+      }
+
+      .calendar tr:nth-child(odd){
+        background-color: Gainsboro; /*EAECEE;*/
+      }
+
+      .calendar td:nth-child(4n+1){
+        text-align: center;
+      }
+
+      table {
+        vertical-align: middle;
+        //font-size: 1.2em; 
+      }
+
+      td {
+        padding: 4px;
+      }
+
+      footer {
+        background-color: #ffffff;
+        overflow: hidden;
+        padding-bottom: 15px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  
+
+  <body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+      
+      <span class='header'>
+        <font color="Maroon"><h1>數學思維與解題 Fall 2022</h1></font>   
+        <font color="Maroon"><h2>Wednesday 13:30-16:20, MA807</h2></font>      
+      </span>
+
+      <span class='header'> 
+        <font color="Maroon"><h3>課程資訊</h3></font>
+        <table>
+
+          <tr> 
+            <th style="text-align: right">Instructor:</th>
+            <td>葉均承</td>
+          </tr>  
+            
+          <tr> 
+            <th style="text-align: right">Email:</th>
+            <td>
+              chunchenyeh [at] mail.nknu.edu.tw , 
+              請在標題上輸入 " [數思] 姓名 "
+            </td>
+          </tr>
+
+
+          <tr> 
+            <th style="text-align: right">Office:</th>
+            <td>MA714</td>
+          </tr>
+
+          <tr> 
+            <th style="text-align: right">Office hour:</th>
+            <td>二四 12:30-13:20, or by appointment</td>
+          </tr>
+            
+
+          <tr>
+            <th style="text-align: right">Grade:</th>
+              <td>
+                課堂參與:54% (每次上課佔5分)<br>
+                作業：16% <br>
+                期末報告: 30%。 <br>
+                <font color="red"><b>舉手發言次數不到三次的，必定不會過！</b></font>
+              </td>
+          </tr>
+
+
+        </table>
+      </span>
+
+      <hr>
+      <span class="text">
+        <ul>
+          <li>上課草稿紙可以不需要整理謄寫<font color="red">當天</font>繳交至googel classroom。若是想要整理或寫心得請在週六結束前繳交。</li>
+          <li>純粹抄投影片內容分數會很低。 </li>
+        </ul>
+      </span>
+
+      <hr>
+      <span class="text">
+        <ul>
+          <li><a href="https://forms.gle/nEBeNHyKSW3oqz8G6">匿名非官方課堂意見調查</a> (這是給老師自己看的)</li>
+          <li><!a href=" ">分組名單</a> (請自行填寫） </li>
+          <li><a href="../contest.html">線上資源 </a></li>
+        </ul>
+      </span>
+
+      <hr>
+
+      <span class="header">
+        <font color="Maroon"><h3>日程表</h3></font>
+      </span>
+
+      <span class="info">
+        <table class="calendar" border="1">
+        <tr>
+          <th width="1%">週</th>
+          <th width="3%">日期</th>
+          <th width="45%" >範圍</th>
+          <th width="45%">公告</th>
+        </tr>
+
+
+        <tr align="center">
+          <td>1</td>
+          <td>09/11</td>
+          <td align="left"> 課程介紹 </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>2</td>
+          <td>09/18</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>3</td>
+          <td>09/25</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>4</td>
+          <td>10/02</td>
+          <td align="left">  </td>
+          
+          <td align="left"> 作業一：EGMO的考古題翻譯、並從本次的題目中選一題分析類別及講解，並出一題相似題 </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>5</td>
+          <td>10/09</td>
+          <td align="left"> 作業一課堂呈現 </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>6</td>
+          <td>10/16</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>7</td>
+          <td>10/23</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>8</td>
+          <td>10/30</td>
+          <td align="left">  </td>
+          
+          <td align="left"> 作業二：EGMO的考古題翻譯、並從本次的題目中選一題分析類別及講解，並出一題相似題 </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>9</td>
+          <td>11/06</td>
+          <td align="left"> 作業二課堂呈現 </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>10</td>
+          <td>11/13</td>
+          <td align="left">  </td>
+          
+          <td align="left">  
+            <font color="red">繳交期末報告主題並附一到兩百字簡介(11/17前交到google classroom)</font> (內容需符合大學程度，每組要報告50分鐘)
+          </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>11</td>
+          <td>11/20</td>
+          <td align="left"> <!a href="">討論期末主題</a> </td>
+          <td align="left"> <font color="red">期末報告主題討論是佔分的喔！請不要缺交</font>  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>12</td>
+          <td>11/27</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>13</td>
+          <td>12/04</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>14</td>
+          <td>12/11</td>
+          <td align="left"> 期末報告 </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>15</td>
+          <td>12/18</td>
+          <td align="left"> 期末報告 </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>16</td>
+          <td>12/25</td>
+          <td align="left"> 期末報告 </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>17</td>
+          <td>01/01</td>
+          <td align="center" bgcolor=#feede9> 彈性教學
+          </td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>18</td>
+          <td>01/08</td>
+          <td align="center" bgcolor=#feede9> 彈性教學
+          </td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          
+
+        </table>
+      </span>
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <a href='../../index.html'>
+          (回首頁)
+        </a>
+
+        <a href="https://c.nknu.edu.tw/aca/UploadFile/userfiles/2/files/行事曆/高師大113上學期行事曆改校慶1130627版.pdf">
+          (113-1 行事曆)
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
