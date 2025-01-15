@@ -1,0 +1,393 @@
+<html>
+  <head>
+    <title>數學思維與解題Fall2024葉均承</title>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
+      crossorigin='anonymous'
+    />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+
+    <script id="MathJax-script" async 
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
+
+    <style>
+      body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        margin-left: 4%;
+        margin-bottom: 25px;
+        //background-color: #f6f1f9;
+        //font-size: 1.2em; 
+      }
+
+      .header {
+        margin-bottom: 20px;
+        font-size: 1.9em; 
+        color: Maroon;
+        font-weight: bolder;
+      }
+
+      .termheader {
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.5em; 
+        font-weight: bolder
+      }
+
+      .calendar {
+        /*background-color: snow; /* azure;*/
+        outline-color: Maroon;
+        border-collapse: separate;
+        border-spacing: 2px;
+        width: 95%;
+      }
+
+      .calendar th {
+        text-align: center;
+        border-width: 1px;
+        border-style: solid;
+      }
+
+      .calendar td {
+        border-width: 1px;
+        border-style: solid;
+        padding: 4px;
+      }
+
+      .calendar tr:nth-child(even){
+        background-color: snow; 
+      }
+
+      .calendar tr:nth-child(odd){
+        background-color: Gainsboro; /*EAECEE;*/
+      }
+
+      .calendar td:nth-child(4n+1){
+        text-align: center;
+      }
+
+      table {
+        vertical-align: middle;
+        //font-size: 1.2em; 
+      }
+
+      td {
+        padding: 4px;
+      }
+
+      footer {
+        background-color: #ffffff;
+        overflow: hidden;
+        padding-bottom: 15px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  
+
+  <body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+      
+      <span class='header'>
+        <font color="Maroon"><h1>數學思維與解題 Fall 2024</h1></font>   
+        <font color="Maroon"><h2>Wednesday 13:30-16:20, MA807</h2></font>      
+      </span>
+
+      <span class='header'> 
+        <font color="Maroon"><h3>課程資訊</h3></font>
+        <table>
+
+          <tr> 
+            <th style="text-align: right">Instructor:</th>
+            <td>葉均承</td>
+          </tr>  
+            
+          <tr> 
+            <th style="text-align: right">Email:</th>
+            <td>
+              chunchenyeh [at] mail.nknu.edu.tw , 
+              請在標題上輸入 " [數思] 姓名 "
+            </td>
+          </tr>
+
+
+          <tr> 
+            <th style="text-align: right">Office:</th>
+            <td>MA714</td>
+          </tr>
+
+          <tr> 
+            <th style="text-align: right">Office hour:</th>
+            <td>二四 12:30-13:20, or by appointment</td>
+          </tr>
+            
+
+          <tr>
+            <th style="text-align: right">Grade:</th>
+              <td>
+                課堂參與:50% (每次上課佔5分)<br>
+                作業：20% <br>
+                期末報告: 30%。 <br>
+                <font color="red"><b>舉手發言次數不到三次的，必定不會過！</b></font>
+              </td>
+          </tr>
+
+
+        </table>
+      </span>
+
+      <hr>
+      <span class="text">
+        <ul>
+          <li>上課草稿紙可以不需要整理謄寫<font color="red">當天</font>繳交至googel classroom。若是想要整理或寫心得請在週六結束前繳交。</li>
+          <li>純粹抄投影片內容分數會很低。 </li>
+        </ul>
+      </span>
+
+      <hr>
+      <span class="text">
+        <ul>
+          <li><a href="https://forms.gle/nEBeNHyKSW3oqz8G6">匿名非官方課堂意見調查</a> (這是給老師自己看的)</li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1vqh7LIRigmYZGttopG62b_tsGfWpM6B5/edit?usp=drive_link&ouid=109375636932037718086&rtpof=true&sd=true">分組名單</a> (請自行填寫） </li>
+          <li><a href="../contest.html">線上資源 </a></li>
+        </ul>
+      </span>
+
+      <hr>
+
+      <span class="header">
+        <font color="Maroon"><h3>日程表</h3></font>
+      </span>
+
+      <span class="info">
+        <table class="calendar" border="1">
+        <tr>
+          <th width="1%">週</th>
+          <th width="3%">日期</th>
+          <th width="45%" >範圍</th>
+          <th width="45%">公告</th>
+        </tr>
+
+
+        <tr align="center">
+          <td>1</td>
+          <td>09/11</td>
+          <td align="left"> 課程介紹 </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>2</td>
+          <td>09/18</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>3</td>
+          <td>09/25</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>4</td>
+          <td>10/02</td>
+          <td align="left"> 颱風假 </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>5</td>
+          <td>10/09</td>
+          <td align="left">  </td>
+          <td align="left"> 
+            作業一: 從 <a href="https://twsf.ntsec.gov.tw/Article.aspx?a=35&lang=1">國際科展歷屆得獎作品</a> 裡，將得獎作品的研究動機及研究目的找出、標注獎項、分析類別，並找一件作品講解。(第k組做 2025-k 年)(請製作投影片pdf檔交到單登 *記得要註明組別以及參與組員姓名學號）(每組上台20分鐘) </td>
+          </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>6</td>
+          <td>10/16</td>
+          <td align="left"> 
+            作業一課堂呈現：<br>
+            <a href="hw1/hw1_1.pdf">第一組 2024</a>, <a href="hw1/hw1_2.pdf">第二組 2023</a>, <a href="hw1/hw1_3.pdf">第三組 2022</a>, <a href="hw1/hw1_4.pdf">第四組 2021</a>, <a href="hw1/hw1_5.pdf">第五組 2020</a>,<br>
+            <a href="hw1/hw1_6.pdf">第六組 2019</a>, <a href="hw1/hw1_7.pdf">第七組 2018</a>, <a href="hw1/hw1_8.pdf">第八組 2017</a>, <a href="hw1/hw1_9.pdf">第九組 2016</a>
+
+          </td>          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>7</td>
+          <td>10/23</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>8</td>
+          <td>10/30</td>
+          <td align="left">  </td>
+          <td align="left"> 單登【學生期中文字意見回饋】開放中 </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>9</td>
+          <td>11/06</td>
+          <td align="left">  </td>
+          
+          <td align="left"> 作業二：EGMO的考古題翻譯、並從本次的題目中選一題分析類別及講解，並出一題相似題 </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>10</td>
+          <td>11/13</td>
+          <td align="left"> 
+            作業二課堂呈現：<br>
+            <a href="hw2/hw2_1.pdf">第一組 2014</a>, <a href="hw2/hw2_2-1.pdf">第二組 2015</a>, <a href="hw2/hw2_3.pdf">第三組 2016</a>, <a href="hw2/hw2_4.pdf">第四組 2017</a>, <a href="hw2/hw2_5.pdf">第五組 2018</a>,<br>
+            <a href="hw2/hw2_6.pdf">第六組 2019</a>, <a href="hw2/hw2_7.pdf">第七組 2020</a>, <a href="hw2/hw2_8.pdf">第八組 2021</a>, <a href="hw2/hw2_9.pdf">第九組 2022</a>
+
+          </td>
+          
+          <td align="left">  
+            <font color="red">繳交期末報告主題並附一到兩百字簡介(11/17前交到google classroom)</font> (內容需符合大學程度，每組要報告50分鐘)
+          </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>11</td>
+          <td>11/20</td>
+          <td align="left"> <a href="https://docs.google.com/document/d/1FAO2esAp5Sbql5H7ahEDqCEmjkQYARAV7bcWPcsTFbk/edit?usp=sharing">討論期末主題</a> </td>
+          <td align="left"> <font color="red">期末報告主題討論是佔分的喔！請不要缺交</font>  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>12</td>
+          <td>11/27</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>13</td>
+          <td>12/04</td>
+          <td align="left">  </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>14</td>
+          <td>12/11</td>
+          <td align="left"> 期末報告<br> 
+            第六組<a href="final/final_6_report.pdf">(報告)</a><a href="final/final_6_slides.pdf">(投影片)</a><a href="https://forms.gle/AYJbSojSiPkCyDJY8" target="_blank">(評分表)</a>[博弈的最佳策略-21點],<br>
+            第三組<a href="final/final_3_report-1.pdf">(報告)</a><a href="final/final_3_slides-1.pdf">(投影片)</a><a href="https://forms.gle/MJPZc9gMi2w73PVy7" target="_blank">(評分表)</a>[黃金比例],<br>    
+            第一組<a href="final/final_1_report-1.pdf">(報告)</a><a href="final/final_1_slides-1.pdf">(投影片)</a><a href="https://forms.gle/s5kGNwmaAv736AoH6" target="_blank">(評分表)</a>[生活中的數學],
+          </td>
+          
+          <td align="left"> 單登【期末學生教學意見回饋】 </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>15</td>
+          <td>12/18</td>
+          <td align="left"> 期末報告<br> 
+            第二組<a href="final/final_2_report-1.pdf">(報告)</a><a href="final/final_2_slides-1.pdf">(投影片)</a><a href="https://forms.gle/cjz3Dz4PxZE2BU4H7" target="_blank">(評分表)</a>[從三門問題出發—探討各種機率悖論],<br>
+            第七組<a href="final/final_7_report.pdf">(報告)</a><a href="final/final_7_slides-1.pdf">(投影片)</a><a href="https://forms.gle/tPoWB3EqfYWUmqdh7" target="_blank">(評分表)</a>[囚徒困境],<br>
+            第八組<a href="final/final_8_report-2.pdf">(報告)</a><a href="final/final_8_slides-2.pdf">(投影片)</a><a href="https://forms.gle/jtDufzv1xrqmyqdf8" target="_blank">(評分表)</a>[數學模型在傳染病擴散中的應用：以 SIR 模型為例]
+            </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>16</td>
+          <td>12/25</td>
+          <td align="left"> 期末報告<br> 
+            第五組<a href="final/final_5_report.pdf">(報告)</a><a href="final/final_5_slides-1.pdf">(投影片)</a><a href="https://forms.gle/rFKE728eR6NjtSzu7" target="_blank">(評分表)</a>[數學史],<br>
+            第四組<a href="final/final_4_report-1.pdf">(報告)</a><a href="final/final_4_slides.pdf">(投影片)</a><a href="https://forms.gle/ZjwFXzjPJQdE2yPw7" target="_blank">(評分表)</a>[德州撲克以及GTO理論],<br>
+            第九-1組<a href="final/final_9_report_lo.pdf">(報告)</a><a href="final/final_9_slides_lo-1.pdf">(投影片)</a><a href="https://forms.gle/6jRXPF1gAqqjmWi99" target="_blank">(評分表)</a>[回文數],<br>
+            第九-2組<a href="final/final_9_report_wu.pdf">(報告)</a><a href="final/final_9_slides_wu-1.pdf">(投影片)</a><a href="https://forms.gle/51ghKLkSEk1oEdC89" target="_blank">(評分表)</a>[美人投票實驗], 
+          </td>
+          
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>17</td>
+          <td>01/01</td>
+          <td align="center" bgcolor=#feede9> 彈性教學
+          </td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          <tr align="center">
+          <td>18</td>
+          <td>01/08</td>
+          <td align="center" bgcolor=#feede9> 彈性教學
+          </td>
+          <td align="left">  </td>
+          </tr>
+          
+          
+          
+
+        </table>
+      </span>
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <a href='../../index.html'>
+          (回首頁)
+        </a>
+
+        <a href="https://c.nknu.edu.tw/aca/UploadFile/userfiles/2/files/行事曆/高師大113上學期行事曆改校慶1130627版.pdf">
+          (113-1 行事曆)
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
