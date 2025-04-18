@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>毒巧克力遊戲</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background: #fffbe6;
+    }
+    h1 {
+      color: #d2691e;
+    }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(6, 50px);
+      grid-template-rows: repeat(5, 50px);
+      gap: 2px;
+      margin-top: 20px;
+    }
+    .cell {
+      width: 50px;
+      height: 50px;
+      background-image: url('chomp_chocolate.jpg');
+      background-size: cover;
+      cursor: pointer;
+    }
+    .eaten {
+      background-image: url('chomp_eaten.jpg');
+      cursor: not-allowed;
+    }
+    .poison {
+      background-image: url('chomp_poison.jpg');
+      background-size: cover;
+    }
+    .status {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>毒巧克力遊戲</h1>
+  <div class="board" id="board"></div>
+  <div class="status" id="status">輪到玩家 1</div>
+  <button onclick="resetGame()">重新開始</button>
+
+  <script>
+    const rows = 6;
+    const cols = 6;
+    let currentPlayer = 1;
+    let gameOver = false;
+
+    const board = document.getElementById("board");
+    const status = document.getElementById("status");
+
+    function createBoard() {
+      board.innerHTML = "";
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cell = document.createElement("div");
+          cell.className = "cell";
+          cell.dataset.row = r;
+          cell.dataset.col = c;
+          if (r === 0 && c === 0) {
+            cell.classList.add("poison");
+          }
+          cell.addEventListener("click", handleClick);
+          board.appendChild(cell);
+        }
+      }
+      gameOver = false;
+      currentPlayer = 1;
+      status.textContent = `輪到玩家 ${currentPlayer}`;
+    }
+
+    function handleClick(e) {
+      if (gameOver) return;
+      const r = parseInt(e.target.dataset.row);
+      const c = parseInt(e.target.dataset.col);
+      const cells = document.querySelectorAll(".cell");
+      const clicked = e.target;
+
+      if (clicked.classList.contains("eaten")) return;
+
+      if (clicked.classList.contains("poison")) {
+        clicked.classList.add("eaten");
+        status.textContent = `玩家 ${currentPlayer} 吃到毒巧克力，玩家 ${3 - currentPlayer} 獲勝！`;
+        gameOver = true;
+        return;
+      }
+
+      cells.forEach(cell => {
+        const cr = parseInt(cell.dataset.row);
+        const cc = parseInt(cell.dataset.col);
+        if (cr >= r && cc >= c) {
+          cell.classList.add("eaten");
+        }
+      });
+
+      currentPlayer = 3 - currentPlayer;
+      status.textContent = `輪到玩家 ${currentPlayer}`;
+    }
+
+    function resetGame() {
+      createBoard();
+    }
+
+    createBoard();
+  </script>
+</body>
+</html>
