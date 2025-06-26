@@ -7,31 +7,20 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 50px;
+      margin-top: 50px;
     }
-    h1 {
-      font-size: 48px;
-      color: #333;
-    }
-    p {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-    input[type="number"] {
-      padding: 10px;
+    input {
       font-size: 18px;
       width: 100px;
     }
     button {
-      padding: 10px 20px;
       font-size: 18px;
       margin-left: 10px;
-      cursor: pointer;
     }
-    .result {
-      margin-top: 40px;
-      font-size: 60px;
-      color: #007acc;
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: darkblue;
     }
   </style>
 </head>
@@ -39,11 +28,39 @@
 
   <h1>讀心術</h1>
   <h2>請你想一個 10 ~ 99 的整數</h2>
-  <p>
-  將這個數加上自己的十位及個位數，並經過計算後告訴我答案<br><br>
-  例如：想的是 15，則輸入 15 + 1 + 5 = 21</p>
+  <p>
+    將這個數加上自己的十位及個位數，並經過計算後告訴我答案<br><br>
+    例如：想的是 15，則輸入 15 + 1 + 5 = 21
+  </p>
 
-  <input type="number" id="inputNumber" min="10" max="99">
+  <input type="number" id="inputNumber" min="10" max="198">
   <button onclick="readMind()">讀心一下</button>
 
-  <div class="result" id="result"></div>
+  <div id="result"></div>
+
+  <script>
+    function readMind() {
+      const input = document.getElementById("inputNumber").value;
+      const num = parseInt(input);
+      const quotient = Math.floor(num / 11);
+      const remainder = num % 11;
+
+      let tens, units;
+
+      if (remainder % 2 === 0) {
+        units = remainder / 2;
+        tens = quotient;
+      } else {
+        units = (remainder + 11) / 2;
+        tens = quotient - 1;
+      }
+
+      const originalNumber = tens * 10 + units;
+
+      document.getElementById("result").textContent =
+        `你原本想的數字是：${originalNumber}`;
+    }
+  </script>
+
+</body>
+</html>
