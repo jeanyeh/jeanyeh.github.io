@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>我的簡歷</title>
+
+<style>
+  :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans TC", sans-serif; }
+  body { margin: 2rem auto; max-width: 800px; line-height: 1.6; }
+  header { margin-bottom: 1rem; }
+  h1 { margin: 0 0 .25rem 0; }
+  .controls { display: flex; gap: .5rem; margin: 1rem 0; }
+  details { border: 1px solid #ddd; border-radius: .5rem; padding: .5rem 1rem; margin: .75rem 0; }
+  summary { cursor: pointer; font-weight: 700; outline: none; }
+  /* 讓 summary 看起來像標題列 */
+  summary::marker { /* 移除預設小三角 (有些瀏覽器會保留) */ content: ""; }
+  summary::after { content: " ▸"; float: right; transition: transform .2s ease; }
+  details[open] summary::after { transform: rotate(90deg); }
+  /* 內容區 */
+  .content { margin: .75rem 0 0 0; }
+  /* 列印時全部展開 */
+  @media print {
+    details { border: none; padding: 0; }
+    summary::after { content: ""; }
+    details { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>葉小真 Jean Yeh</h1>
+    <div>教授｜組合數學・離散數學｜Taipei, TW｜jean@example.com</div>
+    <div class="controls">
+      <button id="expand">全部展開</button>
+      <button id="collapse">全部收合</button>
+      <button onclick="window.print()">列印</button>
+    </div>
+  </header>
+
+  <details open>
+    <summary>簡介 Profile</summary>
+    <div class="content">
+      專長於組合學、γ-正性多項式與其計數模型，具國際會議主講與課程設計經驗。
+    </div>
+  </details>
+
+  <details>
+    <summary>學歷 Education</summary>
+    <div class="content">
+      <ul>
+        <li>Ph.D. in Mathematics, Example University</li>
+        <li>B.S. in Mathematics, Example University</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>經歷 Experience</summary>
+    <div class="content">
+      <h4>Associate Professor, Example University (2019–present)</h4>
+      <ul>
+        <li>教授：線性代數、數值分析、數學思維</li>
+        <li>研究：Eulerian/Narayana 多項式、Hurwitz stability 等</li>
+      </ul>
+      <h4>Postdoc, Institute of Combinatorics (2016–2019)</h4>
+      <ul><li>指導主題：Stirling permutations 與生成函數</li></ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>代表著作 Selected Publications</summary>
+    <div class="content">
+      <ol>
+        <li>Title A, Journal, Year.</li>
+        <li>Title B, Journal, Year.</li>
+        <li>Title C, Journal, Year.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details>
+    <summary>教學與服務 Teaching & Service</summary>
+    <div class="content">
+      <ul>
+        <li>課程：數值分析（含電腦實作考）、組合計數、CFG 在枚舉中的應用</li>
+        <li>服務：國際研討會大會講者、期刊審稿</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>獎項與榮譽 Awards</summary>
+    <div class="content">
+      <ul>
+        <li>Best Paper Award, 2024</li>
+        <li>Teaching Excellence, 2023</li>
+      </ul>
+    </div>
+  </details>
+
+<script>
+  const allDetails = () => Array.from(document.querySelectorAll('details'));
+  document.getElementById('expand').addEventListener('click', () => {
+    allDetails().forEach(d => d.open = true);
+  });
+  document.getElementById('collapse').addEventListener('click', () => {
+    allDetails().forEach(d => d.open = false);
+  });
+</script>
+</body>
+</html>
