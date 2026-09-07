@@ -1,0 +1,391 @@
+<html>
+  <head>
+    <title>組合數學Fall2026葉均承</title>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
+      crossorigin='anonymous'
+    />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+
+    <script id="MathJax-script" async 
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
+
+    <style>
+      body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        margin-left: 4%;
+        margin-bottom: 25px;
+      }
+
+      .header {
+        margin-bottom: 20px;
+      }
+
+      .termheader {
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.3em; 
+        font-weight: bolder
+      }
+
+      .calendar {
+        background-color: snow; /* azure;*/
+        outline-color: Maroon;
+        border-collapse: separate;
+        border-spacing: 2px;
+        width: 95%;
+      }
+
+      .calendar th {
+        text-align: center;
+        border-width: 1px;
+        border-style: solid;
+      }
+
+      .calendar td {
+        border-width: 1px;
+        border-style: solid;
+        padding: 4px;
+      }
+
+      table {
+        vertical-align: middle;
+      }
+
+      td {
+        padding: 4px;
+      }
+
+      footer {
+        background-color: #ffffff;
+        overflow: hidden;
+        padding-bottom: 15px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  
+
+  <body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+      
+      <span class='header'>
+        <font color="Maroon"><h2>組合數學 Fall 2026</h2></font>   
+        <font color="Maroon"><h3>Tuesday 13:30-16:20, MA814 </h3></font>    
+      </span>
+
+      <span class='header'> 
+        <font color="Maroon"><h3>課程資訊</h3></font>
+        <table>
+
+          <tr> 
+            <th style="text-align: right">Instructor:</th>
+            <td>葉均承</td>
+          </tr>  
+            
+          <tr> 
+            <th style="text-align: right">Email:</th>
+            <td>
+              chunchenyeh [at] mail.nknu.edu.tw , 
+              請在標題上輸入 " [組合] 姓名 "
+            </td>
+          </tr>
+
+
+          <tr> 
+            <th style="text-align: right">Office:</th>
+            <td>MA714</td>
+          </tr>
+
+          <tr> 
+            <th style="text-align: right">Office hour:</th>
+            <td>二四 12:30-13:20, or by appointment</td>
+          </tr>
+
+          <tr> 
+            <th style="text-align: right">Background knowledge:</th>
+            <td> 
+              Richard A. Brualdi, <i>Introductory Combinatorics</i>
+            </td>
+          </tr>
+          
+          <tr> 
+            <th style="text-align: right">Textbook:</th>
+            <td> 
+              <a href="https://www.tenlong.com.tw/products/9789814460002">
+                Miklós Bóna, <i>A Walk Through Combinatorics: An Introduction to Enumeration and Graph Theory</i>
+              </a>, 3rd ed. (Later editions are also acceptable.)
+            </td>
+          </tr>
+          
+          <tr> 
+            <th style="text-align: right">References:</th>
+            <td> 
+              1. <a href="https://bookstore.ams.org/gsm-210/">
+                Bruce E. Sagan, <i>Combinatorics: The Art of Counting</i>
+              </a>, 
+              <a href="https://users.math.msu.edu/users/bsagan/Books/Aoc/GSM210.pdf">(pdf)</a><br>
+              2. <a href="https://www.ms.uky.edu/~sohum/putnam/enu_comb_stanley.pdf">
+                Richard P. Stanley, <i>Enumerative Combinatorics (Volume 1)</i>
+              </a>
+            </td>
+          </tr>
+          
+          <tr>
+            <th style="text-align: right">Grade:</th>
+            <td>
+              作業：30% <br>
+              <small style="color: #555;">
+                （每週課前自評勾選完成題數；每週第一節隨機抽查上黑板講解，若虛報或未準備則當次記 0 分。學期結算捨棄最低 1 次。）
+              </small><br>
+              期中考：35% <br>
+              期末考：35% 
+              <font color="red"><b>期末考原始成績低於 10 分（滿分 100 分）者，學期成績以不及格計！</b></font>
+            </td>
+          </tr>
+          
+          </table>
+          </span>
+          
+          <span class="text">
+            <a href="https://forms.gle/BNkpgr1jcHFBZkA56">匿名非官方課堂意見調查</a> (這是給老師自己看的)
+          </span>
+          <hr>
+          
+          <span class="header">
+            <font color="Maroon"><h3>日程表</h3></font>
+          </span>
+          
+          <span class="info">
+          <table class="calendar" border="1">
+          
+          <tr>
+            <th width="1%">週</th>
+            <th width="3%">日期</th>
+            <th width="45%">範圍</th>
+            <th width="25%">作業</th>
+            <th width="25%">宣告</th>
+          </tr>
+          
+          <tr align="left">
+            <td>1</td>
+            <td>09/08</td>
+            <td align="left">
+              Combinatorial Proofs and Bijections
+              <br>(Instructor's notes; selected problems from Stanley)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>2</td>
+            <td>09/15</td>
+            <td align="left">
+              Integer Partitions and Ferrers Diagrams
+              <br>(B&oacute;na Ch 5)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>3</td>
+            <td>09/22</td>
+            <td align="left">
+              Cycles in Permutations and Stirling Numbers of the First Kind
+              <br>(B&oacute;na Ch 6)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>4</td>
+            <td>09/29</td>
+            <td align="left">
+              Permutation Statistics and Eulerian Numbers
+              <br>(EC1 1.3-1.4)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>5</td>
+            <td>10/06</td>
+            <td align="left">
+              The Twelvefold Way
+              <br>(EC1 1.9)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>6</td>
+            <td>10/13</td>
+            <td align="left">
+              Ordinary Generating Functions
+              <br>(B&oacute;na Ch 8)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>7</td>
+            <td>10/20</td>
+            <td align="left">
+              Exponential Generating Functions
+              <br>(B&oacute;na Ch 8)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>8</td>
+            <td>10/27</td>
+            <td align="center" colspan="2" bgcolor="LightCyan">
+              <b>Exam</b> (範圍： ) **會考證明題
+              <!-- <a href="1151exam1_sol.pdf">(solution)</a> -->
+            </td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>9</td>
+            <td>11/03</td>
+            <td align="left">
+              Partially Ordered Sets and Hasse Diagrams
+              <br>(B&oacute;na Ch 16)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>10</td>
+            <td>11/10</td>
+            <td align="left">
+              Lattices and the M&ouml;bius Function
+              <br>(B&oacute;na Ch 16)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>11</td>
+            <td>11/17</td>
+            <td align="left">
+              M&ouml;bius Inversion and Inclusion-Exclusion
+              <br>(B&oacute;na Ch 16; Sagan Ch 5)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>12</td>
+            <td>11/24</td>
+            <td align="left">
+              Group Actions and Burnside's Lemma
+              <br>(B&oacute;na Ch 18)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>13</td>
+            <td>12/01</td>
+            <td align="left">
+              The P&oacute;lya Enumeration Theorem
+              <br>(B&oacute;na Ch 18; Sagan Ch 6; Brualdi Ch 14)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>14</td>
+            <td>12/08</td>
+            <td align="left">
+              Pattern Avoidance and Catalan Numbers
+              <br>(B&oacute;na Ch 14)
+            </td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>15</td>
+            <td>12/15</td>
+            <td align="left">Modern Enumerative Combinatorics</td>
+            <td style="padding:8px;" align="left"></td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>16</td>
+            <td>12/22</td>
+            <td align="center" colspan="2" bgcolor="LightCyan">
+              <b>Exam</b> (範圍： ) **會考證明題
+              <!-- <a href="1151exam1_sol.pdf">(solution)</a> -->
+            </td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>17</td>
+            <td>12/29</td>
+            <td align="center" colspan="2" bgcolor="#feede9">彈性教學</td>
+            <td align="left"></td>
+          </tr>
+          
+          <tr align="left">
+            <td>18</td>
+            <td>01/05</td>
+            <td align="center" colspan="2" bgcolor="#feede9">彈性教學</td>
+            <td align="left"></td>
+          </tr>
+          
+          </table>
+          </span>
+          
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <a href='../../index.html'>
+          (回首頁)
+        </a>
+
+        <a href="https://c.nknu.edu.tw/aca/UploadFile/userfiles/2/files/112上學期行事曆1120525依行政院修訂公告版.pdf">
+          (112-1 行事曆)
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
