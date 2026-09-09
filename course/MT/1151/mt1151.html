@@ -1,0 +1,487 @@
+<html>
+  <head>
+    <title>數學思維與解題Fall2026葉均承</title>
+    <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
+      crossorigin='anonymous'
+    />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+
+    <script id="MathJax-script" async 
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
+
+    <style>
+      body {
+        font-family: Monaco, Arial, Helvetica, sans-serif;
+        margin-left: 4%;
+        margin-bottom: 25px;
+        //background-color: #f6f1f9;
+        //font-size: 1.2em; 
+      }
+
+      .header {
+        margin-bottom: 20px;
+        font-size: 1.9em; 
+        color: Maroon;
+        font-weight: bolder;
+      }
+
+      .termheader {
+        margin-bottom: 5px;
+        color: Maroon;
+        font-size: 1.5em; 
+        font-weight: bolder
+      }
+
+      .calendar {
+        /*background-color: snow; /* azure;*/
+        outline-color: Maroon;
+        border-collapse: separate;
+        border-spacing: 2px;
+        width: 95%;
+      }
+
+      .calendar th {
+        text-align: center;
+        border-width: 1px;
+        border-style: solid;
+      }
+
+      .calendar td {
+        border-width: 1px;
+        border-style: solid;
+        padding: 4px;
+      }
+
+      .calendar tr:nth-child(even){
+        background-color: snow; 
+      }
+
+      .calendar tr:nth-child(odd){
+        background-color: Gainsboro; /*EAECEE;*/
+      }
+
+      .calendar td:nth-child(4n+1){
+        text-align: center;
+      }
+
+      table {
+        vertical-align: middle;
+        //font-size: 1.2em; 
+      }
+
+      td {
+        padding: 4px;
+      }
+
+      footer {
+        background-color: #ffffff;
+        overflow: hidden;
+        padding-bottom: 15px;
+        width: 100%;
+      }
+
+      /* ── 評分規則：可收合區塊，配合本頁 Maroon 色系 ── */
+      details.grade {
+        border: 1px solid Maroon;
+        width: 95%;
+        margin: 0.4em 0;
+      }
+      details.grade > summary {
+        cursor: pointer;
+        list-style: none;
+        padding: 8px 12px;
+        background-color: #feede9;
+        color: Maroon;
+        font-weight: bolder;
+      }
+      details.grade > summary::-webkit-details-marker { display: none; }
+      details.grade > summary::before { content: "\25B8\00a0"; }
+      details.grade[open] > summary::before { content: "\25BE\00a0"; }
+      details.grade .gbody { padding: 8px 14px; }
+      /* 內層（A/B/C/D）縮排一點，跟外層區隔 */
+      details.grade details.grade { width: 100%; }
+      table.gtable {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0.6em 0;
+      }
+      table.gtable th, table.gtable td {
+        border: 1px solid #999;
+        padding: 6px 8px;
+        vertical-align: top;
+        text-align: left;
+      }
+      table.gtable th { background-color: #feede9; white-space: nowrap; }
+    </style>
+  </head>
+
+  
+
+  <body>
+    <div class='w-100 d-inline-flex flex-column p-3'>
+      
+      <span class='header'>
+        <font color="Maroon"><h1>數學思維與解題 Fall 2026</h1></font>   
+        <font color="Maroon"><h2>Wednesday 13:30-16:20, MA804</h2></font>      
+      </span>
+
+      <span class='header'> 
+        <font color="Maroon"><h3>課程資訊</h3></font>
+        <table>
+
+          <tr> 
+            <th style="text-align: right">Instructor:</th>
+            <td>葉均承</td>
+          </tr>  
+            
+          <tr> 
+            <th style="text-align: right">Email:</th>
+            <td>
+              chunchenyeh [at] mail.nknu.edu.tw , 
+              請在標題上輸入 " [數思] 姓名 "
+            </td>
+          </tr>
+
+
+          <tr> 
+            <th style="text-align: right">Office:</th>
+            <td>MA714</td>
+          </tr>
+
+          <tr> 
+            <th style="text-align: right">Office hour:</th>
+            <td>二四 12:30-13:20, or by appointment</td>
+          </tr>
+            
+
+          <tr>
+          <th  style="text-align: right">Grade:</th>
+          <td>
+            課堂反思筆記：20%<br>
+            個人作業:40%<br>
+            期末分組報告:40%
+          </td>
+        </tr>
+      </table>
+    </span>
+
+      <!-- ── 完整評分規則（表格外，預設收合，點開看細則）── -->
+      <details class="grade">
+        <summary>完整評分規則</summary>
+        <div class="gbody">
+          <p>學期成績由 <b>A</b>、<b>B</b>、<b>D</b> 三項合計 100 分；<b>C</b> 不計分，用來認證 B 的作業確實是你自己完成、且你真的理解。</p>
+          <p><font color="red"><b>反思筆記「正分」不足 10 次者，期末總分最高以 59 分計。</b></font></p>
+          <p><b>AI 工具：</b>A、B 可使用，但內容須是你自己理解、能在 C 抽查與 D 問答中當面說明的；C、D 現場不得使用。</p>
+
+          <!-- A -->
+          <details class="grade">
+            <summary>A　課堂反思筆記（20%）</summary>
+            <div class="gbody">
+              <p>每週上課後繳交，幾句話即可。<b>兩級計分、不給中間分：</b></p>
+              <ul>
+                <li><b>1 分</b>｜寫出當天課堂有記憶點的一句話，證明你有到。</li>
+                <li><b>2.5 分</b>｜另就下列任一方向（可挑一個或數個）寫幾句，言之有物、非亂寫即可。</li>
+              </ul>
+              <p><b>可寫的方向：</b></p>
+              <ol>
+                <li>今天課堂上大家提到哪些數學？核心概念是什麼？請用數學語言解釋它。</li>
+                <li>課堂上哪一個轉折或證明最讓你驚訝？為什麼？</li>
+                <li>今天的題目，一開始最誤導你（或全班）的「直覺陷阱」是什麼？</li>
+                <li>延伸這個概念，舉一個生活中、或是以後你教書時可以用的新例子。</li>
+                <li>如果以後你要拿今天的內容去教國高中生，你覺得學生最容易卡在哪裡？你會給什麼「提示（hint）」而不是直接講答案？</li>
+                <li>今天你做過哪些嘗試（即使失敗）？試了哪個想法、為什麼行不通（或行得通）？解出來的話請說明你做了什麼；若卡住，請精確說出卡在哪。</li>
+                <li>關於今天的內容，你想對我說什麼？</li>
+              </ol>
+              <p><b>當週週日 23:59 截止，逾時不補繳</b>；第 1–13 週加總，<font color="red">滿分20分</font>。</p>
+            </div>
+          </details>
+
+          <!-- B -->
+          <details class="grade">
+            <summary>B　個人作業／四次（40%）</summary>
+            <div class="gbody">
+              <p>四次作業，每次從下列三類任選其一。<b>整學期三種類型都至少一次</b>，每份打字後繳交 <b>PDF</b>（純文字分量約半張 A4）。</p>
+              <ul>
+                <li><b>延伸型：</b>挑一個課堂主題往前多走一步——變形題、推廣、找出論證在哪裡崩掉、或套到新的生活情境。</li>
+                <li><b>探索型：</b>自己觀察或搜尋一個「生活中的數學」現象並加以分析。</li>
+                <li><b>教學型：</b>把一個主題做成教材——一份學習單、一段十分鐘講稿、或一張解說海報。</li>
+              </ul>
+              <p><b>自評計分</b>（對照下表）：達基本 ＝ <b>6 分</b>、達進階 ＝ <b>10 分</b>。教師略讀確認，並於 Part C 隨機抽查認證。</p>
+              <p>第 k 份截止於<b>第 2k+2 週</b>週日 23:59（即第 4、6、8、10 週）。<b>截止前可無限次撤回重交，逾時不補。</b></p>
+
+              <table class="gtable">
+                <tr><th>類型</th><th>未達標（0 分）</th><th>基本（6 分）</th><th>進階（10 分）</th></tr>
+                <tr>
+                  <td>延伸型</td>
+                  <td>只複述課堂結論、只換數字沒有新內容、或通用到看不出與本課主題的具體連結。</td>
+                  <td>針對一個明確的課堂主題，正確做了一個延伸動作（變形並解出／一次推廣／指出破綻／套到新情境），推理正確、是自己寫的。</td>
+                  <td>在基本之上至少一項：改變了結構或提出新問題（不只換數字）；推廣附「為什麼成立／何時失效」；破綻能說明「怎麼修」；新情境非顯而易見且自己驗算過。<br><small>判準：這一步是不是只有真的想過的人才寫得出來？</small></td>
+                </tr>
+                <tr>
+                  <td>探索型</td>
+                  <td>只抄維基／科普結論、沒有自己的分析、或現象與數學是硬湊。</td>
+                  <td>一個具體現象，指出其中的數學結構，用學過的語言正確分析，得到站得住的結論。</td>
+                  <td>在基本之上至少一項：現象是自己觀察／自己收集數據（附照片、量測、自己算的數字）；分析中做了估算或建模並檢查合理性；或指出「模型在哪裡會失準」。<br><small>判準：有沒有「自己動手量／算／驗」的痕跡？</small></td>
+                </tr>
+                <tr>
+                  <td>教學型</td>
+                  <td>把課本／投影片縮小重貼、沒有教學設計、或年段與難度明顯不搭。</td>
+                  <td>針對明確年段，教材數學正確，講解順序清楚。</td>
+                  <td>在基本之上至少一項：預判學生的具體卡點並設計對應 hint／鷹架（而非直接給答案）；有好的引入或表徵（圖、比喻、可操作物）讓抽象變具體；或附「學生常見錯誤想法」與怎麼回應。<br><small>判準：是否展現「站在學生角度」的教學設計，而不只是把內容抄小一號？</small></td>
+                </tr>
+              </table>
+            </div>
+          </details>
+
+          <!-- C -->
+          <details class="grade">
+            <summary>C　抽查認證（不計分）</summary>
+            <div class="gbody">
+              <p>C 不另計分，用來認證 B 的作業。通過，該次自評分數生效；未通過，依判定線歸零或砍半。</p>
+              <p><b>抽查方式</b></p>
+              <ul>
+                <li>時間：第 2k+3、2k+4 週（即第 5–6、7–8、9–10、11–12 週）的最後半小時。</li>
+                <li>抽籤：每份作業抽 5 人上台。<b>同一份作業窗內不重複抽；每換一份，全班重新入池。</b></li>
+                <li>定向：教師另有權指定至多 2 人受檢。</li>
+                <li>缺席：被抽中未到者，下週視為指定受檢；<font color="red">再未到，該份作業 0 分。</font></li>
+              </ul>
+              <p><b>固定問兩題</b></p>
+              <ul>
+                <li><b>歷程題：</b>「這份你當初怎麼想到的？你這一步為什麼這樣做？」</li>
+                <li><b>不可預演題：</b>當場在你的作業上改一個小條件——「如果把這裡改成 X，結論會怎樣？」你不會事先知道我改哪裡。<b>不要求答得完美，只看你能否在自己的內容上即時反應。</b></li>
+              </ul>
+              <p><b>判定線</b></p>
+              <table class="gtable">
+                <tr><th>抽查結果</th><th>判定</th></tr>
+                <tr><td>兩題都答得出</td><td>維持自評分數</td></tr>
+                <tr><td>看得出是自己做的，但明顯說不出自己的推理</td><td>該份<b>砍半</b>（僅限真的說不出；只是緊張、一問細節即答得出者，不砍）</td></tr>
+                <tr><td>講不出自己做了什麼／一問就垮／口頭與內容對不上</td><td><font color="red">該份 0 分，且四次作業全部觸發複查</font></td></tr>
+              </table>
+              <p style="background:#f6f6f6; border:1px solid #ccc; padding:.6em .9em;"><b>關於自評落差：</b>若查明「確為本人所作，只是自評過高」（例如自評進階、實為基本），則<b>改判為正確層級（基本 6 分），不歸零</b>。歸零僅適用於「無法認證為本人所作」。誠實自評不吃虧，往高報卻答不出來才會。</p>
+            </div>
+          </details>
+
+          <!-- D -->
+          <details class="grade">
+            <summary>D　期末分組報告（40%）</summary>
+            <div class="gbody">
+              <p>每組自訂與數學相關之題目（可延用個人作業內容），內容需符合大學程度，一組上台約 50 分鐘。</p>
+              <ul>
+                <li>11/17 前繳交題目與 100–200 字簡介到 Google Classroom。</li>
+                <li>第 11 週彼此觀摩題目、避免重複，教師給難易與方向建議（<font color="red">此討論佔分，請勿缺交</font>）。</li>
+                <li>第 13 週抽上台順序，第 14 週起依序上台。</li>
+              </ul>
+              <p><b>評分：</b>同儕互評 ＋ 組內貢獻互評。<b>每位組員上台時，須各自回答一題關於自己負責部分的提問</b>（個人認證，避免搭便車）。</p>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <hr>
+      <span class="text">
+        <ul>
+          <li>每週課後在 Google Classroom 繳交「課堂反思筆記」，幾句話即可（計分方式見上方「完整評分規則 → A」）。</li>
+          <li>個人作業請打字後繳交 PDF；<font color="red">純粹抄投影片／課堂結論，分數很低甚至退回。</font></li>
+          <li>會不定期於課末半小時抽人上台，就自己的作業接受提問（見「完整評分規則 → C」）。</li>
+        </ul>
+      </span>
+
+      <hr>
+      <span class="text">
+        <ul>
+          <li><a href="https://forms.gle/nEBeNHyKSW3oqz8G6">匿名非官方課堂意見調查</a> (這是給老師自己看的)</li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1vqh7LIRigmYZGttopG62b_tsGfWpM6B5/edit?usp=drive_link&ouid=109375636932037718086&rtpof=true&sd=true">分組名單</a> (請自行填寫） </li>
+          <li><a href="../contest.html">線上資源 </a></li>
+        </ul>
+      </span>
+
+      <hr>
+
+      <span class="header">
+        <font color="Maroon"><h3>日程表</h3></font>
+      </span>
+
+      <span class="info">
+        <table class="calendar" border="1">
+          <tr>
+            <th width="1%">週</th>
+            <th width="3%">日期</th>
+            <th width="45%" >範圍</th>
+            <th width="45%">公告</th>
+          </tr>
+  
+          <tr align="center">
+            <td>1</td>
+            <td>09/09</td>
+            <td align="left"> 課程介紹 </td>
+            <td align="left"> 公布評分標準 </td>
+          </tr>
+            
+          <tr align="center">
+            <td>2</td>
+            <td>09/16</td>
+            <td align="left">  </td>
+            <td align="left">  </td>
+          </tr>
+            
+          <tr align="center">
+            <td>3</td>
+            <td>09/23</td>
+            <td align="left">  </td>
+            <td align="left">  </td>
+          </tr>
+            
+          <tr align="center">
+            <td>4</td>
+            <td>09/30</td>
+            <td align="left">  </td>
+            <td align="left"> 作業一 截止（10/04 週日 23:59） </td>
+          </tr>
+            
+          <tr align="center">
+            <td>5</td>
+            <td>10/07</td>
+            <td align="left"> 作業一 抽查（課末半小時） </td>
+            <td align="left">  </td>
+          </tr>
+            
+          <tr align="center">
+            <td>6</td>
+            <td>10/14</td>
+            <td align="left"> 作業一 抽查（課末半小時） </td>          
+            <td align="left"> 作業二 截止（10/18 週日） </td>
+          </tr>
+            
+          <tr align="center">
+            <td>7</td>
+            <td>10/21</td>
+            <td align="left"> 作業二 抽查（課末半小時） </td>
+            <td align="left">  </td>
+          </tr>
+            
+          <tr align="center">
+            <td>8</td>
+            <td>10/28</td>
+            <td align="left"> 作業二 抽查（課末半小時） </td>
+            <td align="left"> 作業三 截止（11/01 週日）<br>單登【學生期中文字意見回饋】開放中 </td>
+          </tr>
+            
+          <tr align="center">
+            <td>9</td>
+            <td>11/04</td>
+            <td align="left"> 作業三 抽查（課末半小時） </td>
+            <td align="left">  </td>
+          </tr>
+            
+          <tr align="center">
+            <td>10</td>
+            <td>11/11</td>
+            <td align="left"> 作業三 抽查（課末半小時） </td>
+            <td align="left"> 作業四 截止（11/15 週日）<br>
+              <font color="red">期末報告主題＋100–200 字簡介，11/17 前交到 Google Classroom</font>（內容需符合大學程度，每組報告 50 分鐘） </td>
+          </tr>
+            
+          <tr align="center">
+            <td>11</td>
+            <td>11/18</td>
+            <td align="left"> 討論期末主題; 作業四 抽查（課末半小時） </td>
+            <td align="left"> <font color="red">期末報告主題討論是佔分的喔！請不要缺交</font> </td>
+          </tr>
+            
+          <tr align="center">
+            <td>12</td>
+            <td>11/25</td>
+            <td align="left"> 作業四 抽查（課末半小時） </td>
+            <td align="left"> </td>
+          </tr>
+            
+          <tr align="center">
+            <td>13</td>
+            <td>12/02</td>
+            <td align="left">  </td>
+            <td align="left"> 期末報告 抽上台順序 </td>
+          </tr>
+            
+          <tr align="center">
+            <td>14</td>
+            <td>12/09</td>
+            <td align="left"> 期末報告<br> 
+              第一組<!a href="final/final_1_report.pdf">(報告)</a><!a href="final/final_1_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],<br>
+              第二組<!a href="final/final_2_report.pdf">(報告)</a><!a href="final/final_2_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],<br>
+              第三組<!a href="final/final_3_report.pdf">(報告)</a><!a href="final/final_3_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],
+            </td>
+            <td align="left"> 單登【期末學生教學意見回饋】 </td>
+          </tr>
+            
+          <tr align="center">
+            <td>15</td>
+            <td>12/16</td>
+            <td align="left"> 期末報告<br> 
+              第四組<!a href="final/final_4_report.pdf">(報告)</a><!a href="final/final_4_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],<br>
+              第五組<!a href="final/final_5_report.pdf">(報告)</a><!a href="final/final_5_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],<br>
+              第六組<!a href="final/final_6_report.pdf">(報告)</a><!a href="final/final_6_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],
+            </td>
+            <td align="left">  </td>
+          </tr>
+            
+          <tr align="center">
+            <td>16</td>
+            <td>12/23</td>
+            <td align="left"> 期末報告<br> 
+              第七組<!a href="final/final_7_report.pdf">(報告)</a><!a href="final/final_7_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],<br>
+              第八組<!a href="final/final_8_report.pdf">(報告)</a><!a href="final/final_8_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],<br>
+              第九組<!a href="final/final_9_report.pdf">(報告)</a><!a href="final/final_9_slides.pdf">(投影片)</a><!a href="" target="_blank">(評分表)</a>[],<br>
+            </td>
+            <td align="left">  </td>
+          </tr>
+            
+          <tr align="center">
+            <td>17</td>
+            <td>12/30</td>
+            <td align="center" bgcolor=#feede9> 彈性教學 </td>
+            <td align="left">  </td>
+          </tr>
+            
+          <tr align="center">
+            <td>18</td>
+            <td>01/06</td>
+            <td align="center" bgcolor=#feede9> 彈性教學 </td>
+            <td align="left">  </td>
+          </tr>
+  
+        </table>
+      </span>
+      <footer class='fixed-bottom text-center text-muted overflow-hidden'>
+        <a href='../../index.html'>
+          (回首頁)
+        </a>
+
+        <a href="https://c.nknu.edu.tw/aca/UploadFile/userfiles/2/files/行事曆/高師大113上學期行事曆改校慶1130627版.pdf">
+          (113-1 行事曆)
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
