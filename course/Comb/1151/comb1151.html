@@ -84,6 +84,90 @@
         width: 100%;
       }
     </style>
+
+    <style id="topic-bank-styles">
+      #topic-bank {
+        --maroon: #800000; --ink: #232323; --muted: #616161;
+        --line: #c4c4c4; --link: #174c8d;
+        width: 95%; max-width: 95%; min-width: 0;
+        margin: 0 0 18px; border: 1px solid var(--line);
+        color: var(--ink); background: white;
+        font-family: Arial, Helvetica, "Microsoft JhengHei", "Noto Sans CJK TC", sans-serif;
+        font-size: 16px; line-height: 1.65;
+      }
+      #topic-bank, #topic-bank * { box-sizing: border-box; }
+      #topic-bank p { margin: 8px 0; }
+      #topic-bank h3 { color: var(--maroon); font-size: 17px; margin: 18px 0 8px; line-height: 1.4; }
+      #topic-bank a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+      #topic-bank a:focus-visible, #topic-bank summary:focus-visible,
+      #topic-bank .table-scroll:focus-visible { outline: 3px solid #315f91; outline-offset: 3px; }
+      #topic-bank details { margin: 10px 0; }
+      #topic-bank summary { display: list-item; cursor: pointer; padding: 9px 12px; font-weight: 600; color: var(--maroon); }
+      #topic-bank summary::marker { color: var(--maroon); }
+      #topic-bank > summary { font-size: 20px; padding: 9px 14px; background: #f7f3f2; }
+      #topic-bank .summary-meta { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 14px; }
+      #topic-bank .bank-inner { min-width: 0; padding: 10px 14px 16px; }
+      #topic-bank .bank-intro { font-size: 15px; margin: 0 0 12px; }
+      #topic-bank .support-panel, #topic-bank .topic-group { border: 1px solid #d0d0d0; }
+      #topic-bank .support-panel > summary { background: #f5f5f5; color: #3c3c3c; font-size: 15px; }
+      #topic-bank .support-content { padding: 8px 14px 14px; font-size: 15px; }
+      #topic-bank .topic-group > summary { font-size: 16px; background: #f6f6f6; }
+      #topic-bank .topic-group[open] > summary, #topic-bank .support-panel[open] > summary { border-bottom: 1px solid var(--line); }
+      #topic-bank .table-scroll { max-width: 100%; overflow-x: auto; }
+      #topic-bank table { border-collapse: collapse; width: 100%; }
+      #topic-bank th, #topic-bank td { border: 1px solid var(--line); vertical-align: top; text-align: left; padding: 9px 10px; }
+      #topic-bank thead th { background: #e8e8e8; font-weight: 600; }
+      #topic-bank tbody tr:nth-child(even) { background: #f5f5f5; }
+      #topic-bank tbody th { font-weight: 600; }
+      #topic-bank .topics { table-layout: fixed; min-width: 1030px; font-size: 14px; line-height: 1.65; }
+      #topic-bank .col-id { width: 5.5%; }
+      #topic-bank .col-diff { width: 5.5%; }
+      #topic-bank .col-class { width: 12%; }
+      #topic-bank .col-topic { width: 19%; }
+      #topic-bank .col-source { width: 23%; }
+      #topic-bank .col-focus { width: 35%; }
+      #topic-bank .topics th, #topic-bank .topics td { padding: 10px 9px; overflow-wrap: break-word; }
+      #topic-bank .topics tbody td:nth-child(3), #topic-bank .topic-title,
+      #topic-bank .rubric tbody th { hyphens: auto; }
+      #topic-bank .topics thead th { white-space: nowrap; }
+      #topic-bank .difficulty, #topic-bank .topic-id { white-space: nowrap; }
+      #topic-bank .topic-id { font-weight: 700; }
+      #topic-bank .topic-title { font-weight: 600; }
+      #topic-bank .source + .source { margin-top: 9px; }
+      #topic-bank .source a { font-weight: 600; }
+      #topic-bank .pages { font-size: 13px; color: var(--muted); }
+      #topic-bank .focus p { margin: 0 0 6px; }
+      #topic-bank .focus p:last-child { margin-bottom: 0; }
+      #topic-bank .sequence { font-size: 13px; }
+      #topic-bank .scope { color: var(--muted); font-size: 13px; }
+      #topic-bank .check { padding-left: 9px; border-left: 2px solid #c3b3ae; }
+      #topic-bank :target:not(details) { background: #fff3dc; scroll-margin-top: 16px; }
+      #topic-bank .materials { font-size: 14px; min-width: 650px; }
+      #topic-bank .materials th:first-child { width: 75px; }
+      #topic-bank .rubric { font-size: 14px; min-width: 700px; }
+      #topic-bank .rubric th:first-child { width: 16%; }
+      #topic-bank .rubric th:nth-child(2) { width: 45%; }
+      #topic-bank .record { font-size: 14px; }
+      #topic-bank .record th:first-child { width: 60px; }
+      #topic-bank .record td:nth-child(2) { width: 32%; }
+      #topic-bank .bpp-index { font-size: 14px; max-width: 650px; }
+      #topic-bank .bpp-index th:last-child { width: 120px; }
+      #topic-bank .small-note { color: var(--muted); font-size: 13px; }
+      @media (max-width: 650px) {
+        #topic-bank .summary-meta { display: block; margin: 3px 0 0 18px; }
+        #topic-bank > summary { font-size: 19px; }
+        #topic-bank .bank-inner { padding: 8px; }
+        #topic-bank .support-content { padding: 8px 10px 12px; }
+      }
+      @media print {
+        #topic-bank .topics, #topic-bank .materials, #topic-bank .rubric { min-width: 0; font-size: 10px; }
+        #topic-bank th, #topic-bank td { padding: 5px; }
+        #topic-bank .pages, #topic-bank .scope, #topic-bank .sequence { font-size: 9px; }
+        #topic-bank .table-scroll { overflow: visible; }
+        #topic-bank .topic-row { break-inside: avoid; }
+        #topic-bank summary { color: black; }
+      }
+    </style>
   </head>
 
   
@@ -124,56 +208,322 @@
             <td>二四 12:30-13:20, or by appointment</td>
           </tr>
 
-          <tr> 
-            <th style="text-align: right">Background knowledge:</th>
-            <td> 
-              Richard A. Brualdi, <i>Introductory Combinatorics</i>
-            </td>
-          </tr>
           
-          <tr> 
-            <th style="text-align: right">Textbook:</th>
-            <td> 
-              <a href="https://www.tenlong.com.tw/products/9789814460002">
-                Miklós Bóna, <i>A Walk Through Combinatorics: An Introduction to Enumeration and Graph Theory</i>
-              </a>, 3rd ed. (Later editions are also acceptable.)
-            </td>
-          </tr>
-          
-          <tr> 
-            <th style="text-align: right">References:</th>
-            <td> 
-              1. <a href="https://bookstore.ams.org/gsm-210/">
-                Bruce E. Sagan, <i>Combinatorics: The Art of Counting</i>
-              </a>, 
-              <a href="https://users.math.msu.edu/users/bsagan/Books/Aoc/GSM210.pdf">(pdf)</a><br>
-              2. <a href="https://www.ms.uky.edu/~sohum/putnam/enu_comb_stanley.pdf">
-                Richard P. Stanley, <i>Enumerative Combinatorics (Volume 1)</i>
-              </a>
-            </td>
-          </tr>
           
           <tr>
             <th style="text-align: right">Grade:</th>
             <td>
-              作業：30% <br>
-              <small style="color: #555;">
-                （每週課前自評勾選完成題數；每週第一節隨機抽查上黑板講解，若虛報或未準備則當次記 0 分。學期結算捨棄最低 1 次。）
-              </small><br>
-              期中考：35% <br>
-              期末考：35% 
-              <font color="red"><b>期末考原始成績低於 10 分（滿分 100 分）者，學期成績以不及格計！</b></font>
+              上台報告： 100% （每次報告 25 分鐘）
             </td>
           </tr>
           
           </table>
           </span>
+
+          <!-- 題庫開始：點選標題展開；預設收合。 -->
+<details id="topic-bank">
+<summary>題庫<span class="summary-meta">BPP ＋ 42 個專題 · 展開／收合</span></summary>
+<div class="bank-inner">
+<p class="bank-intro">BPP 依原書題號登記，例如 <b>BPP-63</b>；專題使用 <b>S01–S42</b>。每一列是一場報告的範圍；同一結果若採相同證明，不因題號不同而重複計入。題目有閱讀順序時，請依「報告重點」所列題號準備。</p>
+<details class="support-panel" id="requirements">
+<summary>報告要求與驗收方式</summary>
+<div class="support-content">
+<p>每場 25 分鐘，請保留問答時間。報告須有明確的主結果、一條完整證明，以及能說明構造或方法的例子；不以題目數量代替說明的完整性。</p>
+<div aria-label="報告驗收方式" class="table-scroll" role="region" tabindex="0">
+<table class="rubric"><thead><tr><th scope="col">報告類型</th><th scope="col">必須說清楚</th><th scope="col">不能拿來代替證明</th></tr></thead><tbody><tr><th lang="en" scope="row">Bijections / codes</th><td>說明 domain 與 codomain，驗證 maps 是 well-defined，並證明兩者互為 inverses；或給出完整的 injectivity 與 surjectivity 證明。若宣稱保留某個 statistic，也須證明此性質。</td><td>只驗算 n=2,3,4；只定義 f；把尚未驗證的 g 稱為 inverse map。</td></tr><tr><th lang="en" scope="row">Involutions / cancellation</th><td>說明 signed set 與配對規則，驗證 map 是 well-defined、sign-reversing，且操作兩次回到原物件；完整辨認 fixed points 或 exceptional cases。</td><td>只有配對圖，未證明構造合法，或沒有完整處理 exceptional cases。</td></tr><tr><th lang="en" scope="row">Generating functions / inversion</th><td>說明 coefficients 的 combinatorial interpretation、物件的組裝與拆解、initial conditions 與 empty objects、formal operations 的合法性，以及 coefficient extraction 的步驟。</td><td>只念公式或抄代數化簡；以數值吻合當成一般證明。</td></tr><tr><th lang="en" scope="row">Algorithms / existence proofs</th><td>說明 assumptions、invariant 與 termination；probabilistic method 則須說明 probability space、events 的估計，以及推出存在性的理由。</td><td>只跑成功例子而不證一般正確性；把 expectation 當成每個物件的實際值。</td></tr></tbody></table></div>
+<p>可以參考教材中的證明，但須註明來源，並能自行解釋每個關鍵步驟。程式枚舉可輔助驗算與找錯，不代替一般證明。引用其他結果時，須寫明其內容與適用條件；本題的核心證明不可省略。</p>
+<h3>修正與重講</h3>
+<table class="record"><thead><tr><th scope="col">記號</th><th scope="col">意義</th><th scope="col">處理</th></tr></thead><tbody>
+<tr><th scope="row">✓</th><td>核心正確，且能解釋。</td><td>通過。</td></tr>
+<tr><th scope="row">△</th><td>核心已成立，局部表述、符號或例子需補充。</td><td>當場修正，或依指定方式補充。</td></tr>
+<tr><th scope="row">X</th><td>構造不合法、核心論證缺漏，或無法解釋主要步驟。</td><td>依指定範圍修正並重講；仍使用原題號記錄。</td></tr>
+</tbody></table>
+<p class="small-note">日程表可記為「姓名：S04（X；需補 tail-swapping map 的 inverse 驗證）」，完成修正後更新同一題的紀錄。</p>
+</div></details>
+<details class="support-panel" id="materials">
+<summary>教材代號與完整名稱</summary>
+<div class="support-content">
+<p>教材來源以章節及 Theorem、Lemma、Proposition 等編號定位；頁碼均指書本或期刊印出的頁碼。EC1 僅列章節與結果編號。閱讀範圍包含主結果前所需的定義。</p>
+<div aria-label="教材對照表" class="table-scroll" role="region" tabindex="0"><table class="materials"><thead><tr><th scope="col">代號</th><th scope="col">完整名稱與版本</th></tr></thead><tbody><tr id="ref-BPP"><th scope="row">BPP</th><td>Richard P. Stanley, <i>Bijective Proof Problems</i>, 18 August 2009.</td></tr><tr id="ref-SAG"><th scope="row">SAG</th><td>Bruce E. Sagan, <i>Combinatorics: The Art of Counting</i>, Graduate Studies in Mathematics 210, American Mathematical Society, 2020.</td></tr><tr id="ref-EC1"><th scope="row">EC1</th><td>Richard P. Stanley, <i>Enumerative Combinatorics, Volume 1</i>, Second Edition.</td></tr><tr id="ref-EC2"><th scope="row">EC2</th><td>Richard P. Stanley, <i>Enumerative Combinatorics, Volume 2</i>, Second Edition, Cambridge University Press, 2024.</td></tr><tr id="ref-BON2"><th scope="row">BON2</th><td>Miklós Bóna, <i>A Walk Through Combinatorics: An Introduction to Enumeration and Graph Theory</i>, Second Edition, World Scientific, 2006.</td></tr><tr id="ref-BRU"><th scope="row">BRU</th><td>Richard A. Brualdi, <i>Introductory Combinatorics</i>, Fifth Edition, Pearson.</td></tr><tr id="ref-GS78"><th scope="row">GS78</th><td>Ira Gessel and Richard P. Stanley, “Stirling Polynomials,” <i>Journal of Combinatorial Theory, Series A</i> <b>24</b> (1978), 24–33.</td></tr></tbody></table></div>
+</div></details>
+<details class="support-panel" id="bpp">
+<summary>Stanley BPP：依原題號選題</summary>
+<div class="support-content">
+<p>BPP 依原題意給出 combinatorial proof；題意要求 bijection 者，須完成構造與驗證，不能只以相同 recurrence 或相同 generating function 代替。難度沿用原書 [1]、[2]、[3] 與 +、− 記號。原書標有 [u]、[?]、[*] 的題目不列入一般選題。</p>
+<table class="bpp-index"><thead><tr><th scope="col">原書分類</th><th scope="col">章節</th></tr></thead><tbody><tr><td>Elementary Combinatorics</td><td>§1</td></tr><tr><td>Permutations</td><td>§2</td></tr><tr><td>Partitions</td><td>§3</td></tr><tr><td>Trees</td><td>§4</td></tr><tr><td>Catalan Numbers</td><td>§5</td></tr><tr><td>Young Tableaux</td><td>§6</td></tr><tr><td>Lattice Paths and Tilings</td><td>§7</td></tr></tbody></table>
+<p class="small-note">登記時列出題號與子題；數題合報時，須有共同的模型或方法，並能在時限內完整說明。</p>
+</div></details>
+<p class="small-note">專題難度以 [1]、[2]、[3] 及 +、− 區分；閱讀範圍以每列的指定內容為準。</p>
+<details class="topic-group" id="group-1">
+<summary>Constructions, Involutions and Determinants<span class="summary-meta">S01–S06 · 6 題</span></summary>
+<div aria-label="Constructions, Involutions and Determinants 題目表" class="table-scroll" role="region" tabindex="0">
+<table class="topics"><colgroup><col class="col-id"/><col class="col-diff"/><col class="col-class"/><col class="col-topic"/><col class="col-source"/><col class="col-focus"/></colgroup>
+<thead><tr><th scope="col">題號</th><th scope="col">難度</th><th scope="col">分類／主題</th><th scope="col">題目內容</th><th scope="col">教材來源</th><th scope="col">報告重點</th></tr></thead>
+<tbody><tr class="topic-row" id="S01">
+<th scope="row"><a class="topic-id" href="#S01">S01</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Trees / codes</td><td class="topic-title">Prüfer code 與 Cayley’s formula</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §1.10，Theorem 1.10.3、Prüfer construction；Exercise 31<br/><span class="pages">pp. 24–25, 38.</span></div></td><td class="focus"><p>定義 encoding 與 decoding，各示範一例；證明任意長度 n−2 的 word over [n] 都能 decode 成 tree，並驗證兩個構造互為 inverses。</p><p class="check"><strong>驗收：</strong>Decoding 為什麼不會產生 cycle？下一個要接上的 leaf 如何唯一確定？</p><p class="scope">閱讀 tree 與 leaf 的定義，以及 SAG Lemma 1.10.1。與 BPP-128 採同一 Prüfer 證法時，視為同一報告內容。</p></td>
+</tr><tr class="topic-row" id="S02">
+<th scope="row"><a class="topic-id" href="#S02">S02</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Involutions</td><td class="topic-title">Ordered set partitions 的 sign-reversing involution</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §2.2，Lemma 2.2.1、Theorem 2.2.2<br/><span class="pages">pp. 44–48.</span></div></td><td class="focus"><p>以 ordered set partitions 解釋 ∑<sub>k</sub>(−1)<sup>k</sup>k!S(n,k)=(−1)<sup>n</sup>；完整定義 split／merge，證明 map 是 sign-reversing 且操作兩次回到原物件，並找出所有 fixed points。</p><p class="check"><strong>驗收：</strong>第一次操作後，為什麼第二次仍然會選中相同位置？</p><p class="scope">先說明 Stirling numbers of the second kind 與 set partitions 的定義。</p></td>
+</tr><tr class="topic-row" id="S03">
+<th scope="row"><a class="topic-id" href="#S03">S03</a></th>
+<td class="difficulty">[3−]</td>
+<td lang="en">Involution principle</td><td class="topic-title">Garsia–Milne Involution Principle</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §2.3，Lemma 2.3.1、Theorem 2.3.2<br/><span class="pages">pp. 49–50.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S02">S02</a> → 本題。</p><p>利用 directed paths，將兩個 signed sets 間的 bijection 轉成 fixed-point sets 間的 bijection；證明構造會終止、反向構造合法，並完成一個 finite example。</p><p class="check"><strong>驗收：</strong>從 fixed point 出發，為什麼不可能陷入 directed cycle？</p><p class="scope">範圍止於 Theorem 2.3.2，不包含後面的 partition identity 應用。</p></td>
+</tr><tr class="topic-row" id="S04">
+<th scope="row"><a class="topic-id" href="#S04">S04</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Paths / determinants</td><td class="topic-title">LGV lemma：兩條 paths 的 tail swapping</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §2.5，Lemma 2.5.2；一般形式見 Lemma 2.5.4<br/><span class="pages">pp. 55–59.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S02">S02</a> → 本題。</p><p>完整證明兩條 intersecting paths 交換 tails 的 cancellation argument，並算一個 2×2 determinant。一般 n 條 paths 的形式僅作延伸敘述。</p><p class="check"><strong>驗收：</strong>交換後再按同一規則操作，為什麼回到原 paths？Endpoints 的 compatibility condition 用在哪裡？</p><p class="scope">需熟悉 determinant expansion；主證 Lemma 2.5.2，一般形式見 Lemma 2.5.4。</p></td>
+</tr><tr class="topic-row" id="S05">
+<th scope="row"><a class="topic-id" href="#S05">S05</a></th>
+<td class="difficulty">[3−]</td>
+<td lang="en">Matrix-Tree Theorem</td><td class="topic-title">以 Laplacian 的 principal cofactor 計數 spanning trees</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §2.6，Proposition 2.6.2、Theorems 2.6.3–2.6.4<br/><span class="pages">pp. 61–64.</span></div></td><td class="focus"><p>建立 oriented incidence matrix 與 Laplacian 的關係。可引用 Cauchy–Binet Theorem；須證明相應 subdeterminant 在 spanning tree 情形為 ±1，否則為 0，並計算一個小 graph。</p><p class="check"><strong>驗收：</strong>每個非零的平方項為什麼恰對應一棵 spanning tree？</p><p class="scope">限 principal cofactor 版本；需熟悉 matrix multiplication、determinants 與 trees 的定義。</p></td>
+</tr><tr class="topic-row" id="S06">
+<th scope="row"><a class="topic-id" href="#S06">S06</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Rook theory</td><td class="topic-title">Ferrers boards 的 factorial factorization</td>
+<td><div class="source"><a href="#ref-EC1">EC1</a> §2.4，Theorem 2.4.1、Corollary 2.4.3</div></td><td class="focus"><p>證明 rook numbers 在 falling factorial basis 下的 product formula；用一個 3-column board 計算兩側，並由公式說明 rook equivalence 的判準。</p><p class="check"><strong>驗收：</strong>被 factorize 的是哪個 polynomial？為什麼不是 ordinary rook polynomial 的直接 linear factorization？</p><p class="scope">使用大二 permutations with forbidden positions 的背景；補讀 EC1 §2.3 的 rook numbers 定義。</p></td>
+</tr></tbody></table></div>
+</details><details class="topic-group" id="group-2">
+<summary>Generating Functions and q-Analogues<span class="summary-meta">S07–S09 · 3 題</span></summary>
+<div aria-label="Generating Functions and q-Analogues 題目表" class="table-scroll" role="region" tabindex="0">
+<table class="topics"><colgroup><col class="col-id"/><col class="col-diff"/><col class="col-class"/><col class="col-topic"/><col class="col-source"/><col class="col-focus"/></colgroup>
+<thead><tr><th scope="col">題號</th><th scope="col">難度</th><th scope="col">分類／主題</th><th scope="col">題目內容</th><th scope="col">教材來源</th><th scope="col">報告重點</th></tr></thead>
+<tbody><tr class="topic-row" id="S07">
+<th scope="row"><a class="topic-id" href="#S07">S07</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Gaussian binomials</td><td class="topic-title">Partitions in a rectangle 的 area generating function</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §3.2，Theorems 3.2.3、3.2.5<br/><span class="pages">pp. 77–79.</span></div></td><td class="focus"><p>定義 Gaussian binomial coefficient，以 rectangle 內 Ferrers diagram 的 cell 數作 area statistic，證明其 generating polynomial 符合 q-Pascal recurrence 及 initial conditions；完整計算 2×3 rectangle。</p><p class="check"><strong>驗收：</strong>Recurrence 中 q 的 exponent，對應刪去哪些 cells？</p><p class="scope">需說明 Ferrers diagram；不在同場加入 finite vector spaces 的計數。</p></td>
+</tr><tr class="topic-row" id="S08">
+<th scope="row"><a class="topic-id" href="#S08">S08</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Exponential Formula</td><td class="topic-title">由全部 labeled graphs 計數 connected graphs</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §4.5，Theorem 4.5.1<br/><span class="pages">pp. 131–132.</span></div><div class="source"><a href="#ref-EC2">EC2</a> §5.2，Example 5.2.1；§5.1，Proposition 5.1.7<br/><span class="pages">pp. 5–6, 11.</span></div></td><td class="focus"><p>證明將 nonempty components 以 unordered set 組裝，對應 Exponential Formula；將公式用於 labeled graphs，推導 connected graph 數的 recurrence，算到 n=4。</p><p class="check"><strong>驗收：</strong>為什麼要除以 k!？為什麼 component 不可以是 empty object？</p><p class="scope">使用已學的 EGF product rule；補讀 SAG Theorem 4.4.2。</p></td>
+</tr><tr class="topic-row" id="S09">
+<th scope="row"><a class="topic-id" href="#S09">S09</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Transfer matrices</td><td class="topic-title">Forbidden factors 與 rational generating functions</td>
+<td><div class="source"><a href="#ref-EC1">EC1</a> §4.7.1，Theorems 4.7.1–4.7.2；§4.7.3，Example 4.7.6</div></td><td class="focus"><p>以 alphabet {1,2,3} 上不含 factors 11、23 的 words 為例，建立 state digraph 與 transfer matrix；證明 matrix powers 的 combinatorial interpretation，推導 word 數的 generating function。</p><p class="check"><strong>驗收：</strong>Word length n 為什麼對應 n−1 次 transitions？Initial states、final states 與 empty word 如何處理？</p><p class="scope">使用 matrix multiplication 與 OGF；主例為 EC1 Example 4.7.6。</p></td>
+</tr></tbody></table></div>
+</details><details class="topic-group" id="group-3">
+<summary>Permutation Statistics and Pattern Avoidance<span class="summary-meta">S10–S16 · 7 題</span></summary>
+<div aria-label="Permutation Statistics and Pattern Avoidance 題目表" class="table-scroll" role="region" tabindex="0">
+<table class="topics"><colgroup><col class="col-id"/><col class="col-diff"/><col class="col-class"/><col class="col-topic"/><col class="col-source"/><col class="col-focus"/></colgroup>
+<thead><tr><th scope="col">題號</th><th scope="col">難度</th><th scope="col">分類／主題</th><th scope="col">題目內容</th><th scope="col">教材來源</th><th scope="col">報告重點</th></tr></thead>
+<tbody><tr class="topic-row" id="S10">
+<th scope="row"><a class="topic-id" href="#S10">S10</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Eulerian numbers</td><td class="topic-title">插入 maximum：recurrence 與 symmetry</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §4.2，Theorem 4.2.1(a)–(b)<br/><span class="pages">pp. 121–122.</span></div></td><td class="focus"><p>以 A(n,k) 計數恰有 k 個 descents 的 permutations。分析各 insertion slots，證明 recurrence、initial conditions 與 symmetry，並列出 n=4 的 polynomial。</p><p class="check"><strong>驗收：</strong>哪些 insertion slots 會增加一個 descent？為什麼兩類位置恰好涵蓋所有 slots？</p><p class="scope">本題不講 generating function 的推導；須明確固定 descents 的計數 convention。</p></td>
+</tr><tr class="topic-row" id="S11">
+<th scope="row"><a class="topic-id" href="#S11">S11</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Eulerian polynomials</td><td class="topic-title">Barred permutations 的 double counting</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §4.2，Theorems 4.2.4–4.2.5<br/><span class="pages">pp. 123–124.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S10">S10</a> → 本題。</p><p>在每個 descent 後至少放一道 bar，從兩種方式計數同一批 barred permutations，得到 Theorem 4.2.4，再推導 Theorem 4.2.5 的 EGF。</p><p class="check"><strong>驗收：</strong>相鄰的 bars 代表什麼？為什麼每一個 descent 都必須被隔開？</p><p class="scope">全程使用 A<sub>n</sub>(q)=∑<sub>π∈S<sub>n</sub></sub>q<sup>des(π)</sup>，不可中途改成 des+1。</p></td>
+</tr><tr class="topic-row" id="S12">
+<th scope="row"><a class="topic-id" href="#S12">S12</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Major index</td><td class="topic-title">Insertion-slot labeling 與 Mahonian distribution</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §3.2，Theorems 3.2.1–3.2.2；slot-labeling example<br/><span class="pages">pp. 74–77.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S10">S10</a> → 本題。</p><p>定義 major index；逐類說明插入 maximum 時，major index 的增量恰為 0,…,n−1，據此證明 generating polynomial 為 q-factorial，並與 inv 比較。</p><p class="check"><strong>驗收：</strong>Insertion 時哪些舊 descents 會平移？哪些位置會新增或取代 descent？</p><p class="scope">補讀 SAG Theorem 3.2.1 的 inv insertion argument。本題採 insertion recurrence 證明；BPP-70 的 bijection 任務另依其題意。</p></td>
+</tr><tr class="topic-row" id="S13">
+<th scope="row"><a class="topic-id" href="#S13">S13</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Alternating permutations</td><td class="topic-title">Euler numbers 與 sec x + tan x</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §4.1，Theorem 4.1.3 及其後推導<br/><span class="pages">pp. 119–121.</span></div></td><td class="focus"><p>按 maximum 的位置分解 alternating permutations，證明 binomial convolution；推導相應 differential equation 與 EGF，並交代 initial conditions。</p><p class="check"><strong>驗收：</strong>為什麼 recurrence 有因子 2？Up-down 與 down-up 的 convention 如何保持一致？</p><p class="scope">需 EGF 與簡單 differential equations；與 BPP-72／73 重複的部分，不另算新的報告內容。</p></td>
+</tr><tr class="topic-row" id="S14">
+<th scope="row"><a class="topic-id" href="#S14">S14</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Pattern avoidance</td><td class="topic-title">132-avoiding permutations 與 Catalan recurrence</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §1.12，Theorem 1.12.2<br/><span class="pages">pp. 28–30.</span></div></td><td class="focus"><p>定義 pattern containment。以 maximum 分割 permutation，證明兩側的大小限制、standardization 與反向組裝，從而得到 Catalan recurrence 及 initial conditions。</p><p class="check"><strong>驗收：</strong>把左右兩個較小的 permutations 組回去，為什麼不會產生跨越兩側的 132-pattern？</p><p class="scope">Catalan recurrence 可引用；本題重點是新的 permutation model，不重講基本 Catalan path 計數。</p></td>
+</tr><tr class="topic-row" id="S15">
+<th scope="row"><a class="topic-id" href="#S15">S15</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Stack sorting</td><td class="topic-title">一次 stack sorting 與 231-avoidance</td>
+<td><div class="source"><a href="#ref-BON2">BON2</a> §14.2，Proposition 14.20、Theorem 14.21<br/><span class="pages">pp. 319–321.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S14">S14</a> → 本題。</p><p>定義教材中的 stack-sorting map，完整跑一次例子，再證明 stack-sortable 與 231-avoiding 兩條件等價。</p><p class="check"><strong>驗收：</strong>遇到 231-pattern 時，哪一對 entries 的 output order 必定出錯？反方向如何保證？</p><p class="scope">限一次指定的 stack-sorting 操作，不包含兩次或其他 multi-stack models。</p></td>
+</tr><tr class="topic-row" id="S16">
+<th scope="row"><a class="topic-id" href="#S16">S16</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Stirling permutations</td><td class="topic-title">Double factorial 與 second-order Eulerian recurrence</td>
+<td><div class="source"><a href="#ref-GS78">GS78</a> §2，Theorem 2.1 的定義與 First proof 中的 Equation (6)，及其後總數討論<br/><span class="pages">pp. 26–28.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S10">S10</a> → 本題。</p><p>定義 Stirling permutations，藉插入相鄰的 nn 證明總數為 (2n−1)!!，再按 descents 分類推導 second-order Eulerian recurrence。</p><p class="check"><strong>驗收：</strong>為什麼 maximum 的兩個 copies 必相鄰？哪些 insertion slots 不改變 descent 數？</p><p class="scope">依 GS78 將 terminal position 算作一個 descent；只讀 §2 的 insertion argument 與總數討論。</p></td>
+</tr></tbody></table></div>
+</details><details class="topic-group" id="group-4">
+<summary>Posets and Möbius Inversion<span class="summary-meta">S17–S23 · 7 題</span></summary>
+<div aria-label="Posets and Möbius Inversion 題目表" class="table-scroll" role="region" tabindex="0">
+<table class="topics"><colgroup><col class="col-id"/><col class="col-diff"/><col class="col-class"/><col class="col-topic"/><col class="col-source"/><col class="col-focus"/></colgroup>
+<thead><tr><th scope="col">題號</th><th scope="col">難度</th><th scope="col">分類／主題</th><th scope="col">題目內容</th><th scope="col">教材來源</th><th scope="col">報告重點</th></tr></thead>
+<tbody><tr class="topic-row" id="S17">
+<th scope="row"><a class="topic-id" href="#S17">S17</a></th>
+<td class="difficulty">[1+]</td>
+<td lang="en">Posets / bijections</td><td class="topic-title">Order ideals 與 antichains</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §5.1，Proposition 5.1.2；§5.2 的 chains/antichains 定義<br><span class="pages">pp. 139–146.</span></br></div></td><td class="focus"><p>介紹 poset 與 Hasse diagram，建立 finite poset P 的 order ideals 與 antichains 之間的 bijection；在一個不是 total order 的小例子中列出兩邊。</p><p class="check"><strong>驗收：</strong>由 order ideal 的 maximal elements 能否恢復整個 order ideal？反方向得到的 subset 為什麼真是 antichain？</p><p class="scope">需區分 minimal／minimum 與 maximal／maximum。</p></td>
+</tr><tr class="topic-row" id="S18">
+<th scope="row"><a class="topic-id" href="#S18">S18</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Chains / antichains</td><td class="topic-title">Dilworth’s theorem：chain partitions</td>
+<td><div class="source"><a href="#ref-BRU">BRU</a> §5.6，Theorem 5.6.2；對照 Theorem 5.6.1<br/><span class="pages">pp. 150–152.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S17">S17</a> → 本題。</p><p>完整證明 finite poset 的最大 antichain 大小，等於將它分割成 chains 所需的最少 chains 數；給一個具體 poset 與 minimum chain partition。</p><p class="check"><strong>驗收：</strong>Inductive proof 的兩種情況是否涵蓋全部 posets？構造出的 chains 為什麼不重不漏？</p><p class="scope">主證 Theorem 5.6.2；Theorem 5.6.1 僅作對照，不將兩者混為 order reversal。</p></td>
+</tr><tr class="topic-row" id="S19">
+<th scope="row"><a class="topic-id" href="#S19">S19</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Möbius functions</td><td class="topic-title">Chains、Boolean lattices 與 product formula</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §5.4，Propositions 5.4.1–5.4.2、Theorem 5.4.4<br/><span class="pages">pp. 154–156.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S17">S17</a> → 本題。</p><p>從 recursive definition 計算 chain 與 Boolean lattice 的 Möbius function，證明 direct product 上的 product formula，並計算 C₂×C₁ 的例子。</p><p class="check"><strong>驗收：</strong>為什麼 direct product 的候選公式符合定義？μ(x,y) 的兩個 variables 各代表什麼？</p><p class="scope">依 SAG 的 convention，C₂ 是含三個 elements 的 chain，C₁ 含兩個 elements。</p></td>
+</tr><tr class="topic-row" id="S20">
+<th scope="row"><a class="topic-id" href="#S20">S20</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Incidence algebra</td><td class="topic-title">Incidence algebra 的 matrix realization</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §5.5，Proposition 5.5.3、Theorem 5.5.4<br/><span class="pages">pp. 157–160.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S17">S17</a>、<a class="topic-ref" href="#S19">S19</a> → 本題。</p><p>固定 linear extension，證明 convolution 對應 matrix multiplication；以一個 4-element poset 寫出 zeta matrix，實際求 inverse 並辨認 Möbius function。</p><p class="check"><strong>驗收：</strong>Matrix 的哪些 entries 必須為 0？為什麼 multiplication 後仍保留這些限制？</p><p class="scope">主證 Theorem 5.5.4 與所需的 inverse 關係，不逐一報告所有 algebra axioms。</p></td>
+</tr><tr class="topic-row" id="S21">
+<th scope="row"><a class="topic-id" href="#S21">S21</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Möbius inversion</td><td class="topic-title">Möbius Inversion Theorem 與條件計數</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §5.5，Theorems 5.5.5、5.5.7<br/><span class="pages">pp. 161–163.</span></div><div class="source"><a href="#ref-EC1">EC1</a> §3.7，Proposition 3.7.1</div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S19">S19</a> → 本題。</p><p>證明一種 summation direction 的 Möbius Inversion Theorem；以 Boolean lattice 解釋「至少滿足」與「恰滿足」條件的兩種計數，推出 inclusion-exclusion formula。</p><p class="check"><strong>驗收：</strong>交換 summation order 後，哪個 inner sum 化為 Kronecker delta？各 counting functions 的定義是否一致？</p><p class="scope">主證 Theorem 5.5.5 的一個形式，應用為 Theorem 5.5.7；需明確寫出 partial order 的方向。</p></td>
+</tr><tr class="topic-row" id="S22">
+<th scope="row"><a class="topic-id" href="#S22">S22</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Partition lattices</td><td class="topic-title">Partition lattice 的 Möbius function</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §5.2，Proposition 5.2.1(c)；§5.4，Proposition 5.4.6<br/><span class="pages">pp. 146–147, 157.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S19">S19</a> → 本題。</p><p>解釋 partition lattice 中 lower intervals 的 direct product decomposition，再證明 μ(Π<sub>n</sub>)=(−1)<sup>n−1</sup>(n−1)!；以 Π₃ 逐點計算核對。</p><p class="check"><strong>驗收：</strong>每個 block 的 factor 為什麼是 (|B|−1)!？Permutation 的 cycle structure 如何進入證明？</p><p class="scope">需先說明 refinement order；使用 SAG Proposition 5.2.1(c) 的 interval decomposition。</p></td>
+</tr><tr class="topic-row" id="S23">
+<th scope="row"><a class="topic-id" href="#S23">S23</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Distributive lattices</td><td class="topic-title">Birkhoff’s representation theorem</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §5.3，Propositions 5.3.5–5.3.6、Theorem 5.3.7<br/><span class="pages">pp. 151–153.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S17">S17</a> → 本題。</p><p>介紹 meet、join、distributive lattice 與 join-irreducible element；用一個 J(P) 例子說明表示，再構造 L 與 J(Irr(L)) 間互為 inverses 的 order-preserving maps。</p><p class="check"><strong>驗收：</strong>Distributive law 在哪一步不可省？一個 order-preserving bijection 是否就足以保證 poset isomorphism？</p><p class="scope">限 finite lattices，閱讀 Propositions 5.3.5–5.3.6 至 Theorem 5.3.7。</p></td>
+</tr></tbody></table></div>
+</details><details class="topic-group" id="group-5">
+<summary>Group Actions and Enumeration under Symmetry<span class="summary-meta">S24–S28 · 5 題</span></summary>
+<div aria-label="Group Actions and Enumeration under Symmetry 題目表" class="table-scroll" role="region" tabindex="0">
+<table class="topics"><colgroup><col class="col-id"/><col class="col-diff"/><col class="col-class"/><col class="col-topic"/><col class="col-source"/><col class="col-focus"/></colgroup>
+<thead><tr><th scope="col">題號</th><th scope="col">難度</th><th scope="col">分類／主題</th><th scope="col">題目內容</th><th scope="col">教材來源</th><th scope="col">報告重點</th></tr></thead>
+<tbody><tr class="topic-row" id="S24">
+<th scope="row"><a class="topic-id" href="#S24">S24</a></th>
+<td class="difficulty">[1+]</td>
+<td lang="en">Group actions</td><td class="topic-title">Orbit–Stabilizer Theorem 與 orbit sizes</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §6.1，Lemma 6.1.2<br/><span class="pages">pp. 189–192.</span></div></td><td class="focus"><p>以 square 的 vertex colorings 定義 group action、orbit 與 stabilizer；證明 Orbit–Stabilizer Theorem，找出至少兩種不同的 orbit sizes。</p><p class="check"><strong>驗收：</strong>為什麼不能一律用物件總數除以 group order？Fixed point 與 orbit 有何不同？</p><p class="scope">使用 finite groups；需先閱讀 SAG §6.1 的 group action 定義。</p></td>
+</tr><tr class="topic-row" id="S25">
+<th scope="row"><a class="topic-id" href="#S25">S25</a></th>
+<td class="difficulty">[2−]</td>
+<td lang="en">Burnside’s lemma</td><td class="topic-title">四珠 necklaces 在 rotations 下的計數</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §6.2，Lemmas 6.2.1–6.2.2 及 rotation-coloring example<br/><span class="pages">pp. 192–195.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S24">S24</a> → 本題。</p><p>以 double counting 證明 Burnside’s lemma，再列出四種 rotations 的 cycle structure 與 fixed colorings 數，求四珠 r 色 necklaces 的 rotation orbits 數。</p><p class="check"><strong>驗收：</strong>一個 coloring 被多少 group elements 固定？為什麼不能只數 conjugacy classes 而漏乘 class sizes？</p><p class="scope">本題只把 rotations 視為相同，不加入 reflections。</p></td>
+</tr><tr class="topic-row" id="S26">
+<th scope="row"><a class="topic-id" href="#S26">S26</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Cycle index</td><td class="topic-title">依 subset size 計數 orbits</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §6.3，Lemma 6.3.1、Theorem 6.3.2(a)<br/><span class="pages">pp. 197–199.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S25">S25</a> → 本題。</p><p>建立 C₄ 的 cycle index；證明將第 i 個 variable 代為 1+t<sup>i</sup>，可得到依 subset size 分類的 orbit generating polynomial。</p><p class="check"><strong>驗收：</strong>被 group element 固定的 subset，為什麼必須是若干完整 cycles 的 union？</p><p class="scope">主證 Lemma 6.3.1 與 Theorem 6.3.2(a)，不只列 cycle index 的定義。</p></td>
+</tr><tr class="topic-row" id="S27">
+<th scope="row"><a class="topic-id" href="#S27">S27</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Pólya enumeration</td><td class="topic-title">指定各 color 數量的 weighted enumeration</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §6.4，Theorem 6.4.2<br/><span class="pages">pp. 200–202.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S26">S26</a> → 本題。</p><p>證明 Redfield–Pólya Theorem 的 weight substitution formula；用 square 的 two-color colorings，取出指定各 color 數量的 coefficient，並與直接分類核對。</p><p class="check"><strong>驗收：</strong>長度 i 的 cycle 為什麼貢獻 x<sup>i</sup>+y<sup>i</sup>，而不是 (x+y)<sup>i</sup>？</p><p class="scope">主證 Theorem 6.4.2；採用的 group 及其對 vertices 的 action 必須明寫。</p></td>
+</tr><tr class="topic-row" id="S28">
+<th scope="row"><a class="topic-id" href="#S28">S28</a></th>
+<td class="difficulty">[3−]</td>
+<td lang="en">Cyclic sieving</td><td class="topic-title">Cyclic action on k-element multisets</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §6.6，Equation (6.12)、Theorem 6.6.2、Lemma 6.6.3、Corollary 6.6.4、Lemma 6.6.5<br/><span class="pages">pp. 209–213.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S07">S07</a>、<a class="topic-ref" href="#S24">S24</a> → 本題。</p><p>定義 cyclic sieving，證明教材的 multiset 例子：fixed-point count 等於指定 Gaussian polynomial 在 root of unity 的值；先示範 n=4、k=2。</p><p class="check"><strong>驗收：</strong>Polynomial 寫成 quotient 時，在 root of unity 代入的 0/0 如何處理？固定的是 multiset 還是 ordinary set？</p><p class="scope">需 roots of unity；範圍限 Theorem 6.6.2 與所列 lemmas，不展開一般 CSP 理論。</p></td>
+</tr></tbody></table></div>
+</details><details class="topic-group" id="group-6">
+<summary>Graphs, Matchings and Designs<span class="summary-meta">S29–S36 · 8 題</span></summary>
+<div aria-label="Graphs, Matchings and Designs 題目表" class="table-scroll" role="region" tabindex="0">
+<table class="topics"><colgroup><col class="col-id"/><col class="col-diff"/><col class="col-class"/><col class="col-topic"/><col class="col-source"/><col class="col-focus"/></colgroup>
+<thead><tr><th scope="col">題號</th><th scope="col">難度</th><th scope="col">分類／主題</th><th scope="col">題目內容</th><th scope="col">教材來源</th><th scope="col">報告重點</th></tr></thead>
+<tbody><tr class="topic-row" id="S29">
+<th scope="row"><a class="topic-id" href="#S29">S29</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Chromatic polynomials</td><td class="topic-title">Deletion–contraction 與 chromatic polynomial</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §3.8，Lemma 3.8.2、Theorem 3.8.3<br/><span class="pages">pp. 99–102.</span></div></td><td class="focus"><p>按一條 edge 的兩個 endpoints 是否同色分類，推導 deletion–contraction formula，證明 proper coloring 的數量是可用 color 數量的 polynomial，並完整計算 C₄。</p><p class="check"><strong>驗收：</strong>Edge contraction 與 endpoints 同色的 colorings 之間，如何建立對應？出現 multiple edges 時如何處理？</p><p class="scope">補讀 SAG §1.9 的 graph theory 定義；不涉及 Four-Color Theorem。</p></td>
+</tr><tr class="topic-row" id="S30">
+<th scope="row"><a class="topic-id" href="#S30">S30</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Combinatorial reciprocity</td><td class="topic-title">Chromatic polynomial 在 −1 與 acyclic orientations</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §3.8，Theorem 3.8.6<br/><span class="pages">pp. 103–104.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S29">S29</a> → 本題。</p><p>定義 acyclic orientation，證明相應的 deletion–contraction relation，導出 P(G,−1)=(−1)<sup>|V|</sup>a(G)，並在 triangle 上核對。</p><p class="check"><strong>驗收：</strong>一個 orientation 在什麼情形能沿新 edge 取兩種 directions？哪些 orientations 能與 contracted graph 配對？</p><p class="scope">主證 SAG Theorem 3.8.6；需要 digraph 與 directed cycle 的定義。</p></td>
+</tr><tr class="topic-row" id="S31">
+<th scope="row"><a class="topic-id" href="#S31">S31</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">SDRs</td><td class="topic-title">Hall’s theorem for SDRs</td>
+<td><div class="source"><a href="#ref-BRU">BRU</a> §§9.1–9.2，Lemma 9.2.1、Theorem 9.2.2<br/><span class="pages">pp. 322–328.</span></div></td><td class="focus"><p>定義 SDR 與 marriage condition，證明 necessity 與 sufficiency；sufficiency 須處理教材 inductive proof 的兩種情況，並舉成功與失敗例各一。</p><p class="check"><strong>驗收：</strong>選出部分 representatives 後，剩餘 set family 為什麼仍滿足 Hall’s condition？</p><p class="scope">限 finite set families；不包含 maximum matching algorithm。</p></td>
+</tr><tr class="topic-row" id="S32">
+<th scope="row"><a class="topic-id" href="#S32">S32</a></th>
+<td class="difficulty">[2−]</td>
+<td lang="en">Stable matchings</td><td class="topic-title">Deferred acceptance algorithm</td>
+<td><div class="source"><a href="#ref-BRU">BRU</a> §9.3，Theorem 9.3.1<br/><span class="pages">pp. 330–334.</span></div></td><td class="focus"><p>以三對或四對例子示範 deferred acceptance，證明 algorithm 會終止、得到 complete matching，且沒有 blocking pair。</p><p class="check"><strong>驗收：</strong>曾被拒絕的 proposer，為什麼不可能在最後形成 blocking pair？</p><p class="scope">限制兩側人數相等，且 preference lists 完整、strict；不包含 proposer-optimality。</p></td>
+</tr><tr class="topic-row" id="S33">
+<th scope="row"><a class="topic-id" href="#S33">S33</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Hall’s theorem</td><td class="topic-title">Latin rectangle completion</td>
+<td><div class="source"><a href="#ref-BRU">BRU</a> §10.4，Theorem 10.4.11<br/><span class="pages">pp. 386–387.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S31">S31</a> → 本題。</p><p>由各 columns 缺少的 symbols 構成 set family，以 double counting 驗證 Hall’s condition，得到下一個 row，再逐 row 補成 Latin square；完成一個 2×4 例子。</p><p class="check"><strong>驗收：</strong>為什麼任取 k 個 columns，missing-symbol sets 的 union 至少有 k 個 elements？</p><p class="scope">須先定義 Latin rectangle；不將結論擴張到任意 partial Latin square。</p></td>
+</tr><tr class="topic-row" id="S34">
+<th scope="row"><a class="topic-id" href="#S34">S34</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Steiner triple systems</td><td class="topic-title">Parameter restrictions 與 9-point construction</td>
+<td><div class="source"><a href="#ref-BRU">BRU</a> §10.3，Theorem 10.3.1；Theorem 10.3.2 後的 9-point construction<br/><span class="pages">pp. 362–367.</span></div></td><td class="focus"><p>取 λ=1，以 double counting 推出 v≡1 或 3 (mod 6) 的 necessary condition；由兩個 3-point systems 建立 9-point system，逐類驗證每對 points 恰落在一個 block。</p><p class="check"><strong>驗收：</strong>同 row、同 column 與不同 row、column 的 point pairs，分別由哪一類 block 唯一覆蓋？</p><p class="scope">主讀 Theorem 10.3.1 與 Theorem 10.3.2 後的 9-point example；不證一般 existence theorem。</p></td>
+</tr><tr class="topic-row" id="S35">
+<th scope="row"><a class="topic-id" href="#S35">S35</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">MOLS</td><td class="topic-title">Prime-order MOLS 的 explicit construction</td>
+<td><div class="source"><a href="#ref-BRU">BRU</a> §10.4，Theorems 10.4.1–10.4.3<br/><span class="pages">pp. 368–374.</span></div></td><td class="focus"><p>對 prime p，由 L<sub>r</sub>(i,j)=ri+j (mod p) 建立 p−1 個 Latin squares，證明 Latin property 與 pairwise orthogonality，並示範 p=3 或 5。</p><p class="check"><strong>驗收：</strong>兩個 ordered pairs 相同時，在哪裡用到 p 為 prime 與 r≠s？</p><p class="scope">限 prime order，不加入 prime-power order 的 finite-field construction。</p></td>
+</tr><tr class="topic-row" id="S36">
+<th scope="row"><a class="topic-id" href="#S36">S36</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Planar graph coloring</td><td class="topic-title">Five-Color Theorem 與 Kempe chains</td>
+<td><div class="source"><a href="#ref-BRU">BRU</a> §12.3，Theorems 12.3.1–12.3.2；另讀 Theorem 12.2.2<br><span class="pages">pp. 476–479.</span></br></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S29">S29</a> → 本題。</p><p>可引用 planar graph 有 degree≤5 的 vertex；證明 two-color connected component 換色後仍是 proper coloring，並以 induction 處理 degree 5 的情形，完成 Five-Color Theorem。</p><p class="check"><strong>驗收：</strong>為什麼兩條連接交錯 neighbors 的 Kempe chains 不可能同時出現？</p><p class="scope">需 plane embedding、Euler’s formula 與 BRU Theorem 12.2.2；主證 Theorems 12.3.1–12.3.2。</p></td>
+</tr></tbody></table></div>
+</details><details class="topic-group" id="group-7">
+<summary>Ramsey Theory and the Probabilistic Method<span class="summary-meta">S37–S39 · 3 題</span></summary>
+<div aria-label="Ramsey Theory and the Probabilistic Method 題目表" class="table-scroll" role="region" tabindex="0">
+<table class="topics"><colgroup><col class="col-id"/><col class="col-diff"/><col class="col-class"/><col class="col-topic"/><col class="col-source"/><col class="col-focus"/></colgroup>
+<thead><tr><th scope="col">題號</th><th scope="col">難度</th><th scope="col">分類／主題</th><th scope="col">題目內容</th><th scope="col">教材來源</th><th scope="col">報告重點</th></tr></thead>
+<tbody><tr class="topic-row" id="S37">
+<th scope="row"><a class="topic-id" href="#S37">S37</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Multicolor Ramsey theory</td><td class="topic-title">從 two-color 到 multicolor 的 existence proof</td>
+<td><div class="source"><a href="#ref-BON2">BON2</a> §13.2，Example 13.8、Theorem 13.9<br><span class="pages">pp. 292–294.</span></br></div></td><td class="focus"><p>先完成教材的 three-color example，再建立一般 multicolor Ramsey recurrence 與 inductive proof，說明 initial conditions 和各 parameters 的角色。</p><p class="check"><strong>驗收：</strong>選定 vertex 後，哪個 color class 的 neighbors 足以套用 induction hypothesis？</p><p class="scope">使用大二的 two-color Ramsey theory 背景；不包含 hypergraph 版本。</p></td>
+</tr><tr class="topic-row" id="S38">
+<th scope="row"><a class="topic-id" href="#S38">S38</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Probabilistic method</td><td class="topic-title">Erdős 的 Ramsey lower bound</td>
+<td><div class="source"><a href="#ref-BON2">BON2</a> §15.2，Theorem 15.5<br/><span class="pages">pp. 348–350.</span></div></td><td class="focus"><p>定義 random edge coloring，計算固定 k-element vertex set 所形成的 clique 為 monochromatic 的 probability，以 union bound 得到至少發生一個 bad event 的 probability 小於 1 的條件，推出 Theorem 的 lower bound。</p><p class="check"><strong>驗收：</strong>哪些 events 並不 independent？為什麼 union bound 仍然成立？</p><p class="scope">須交代 parameter ranges 與 rounding；範圍為 BON2 Theorem 15.5，不查最新紀錄。</p></td>
+</tr><tr class="topic-row" id="S39">
+<th scope="row"><a class="topic-id" href="#S39">S39</a></th>
+<td class="difficulty">[2]</td>
+<td lang="en">Expectation</td><td class="topic-title">保留超過一半 edges 的 bipartite subgraph</td>
+<td><div class="source"><a href="#ref-BON2">BON2</a> §15.4，Theorems 15.18、15.21–15.22<br/><span class="pages">pp. 357–360.</span></div></td><td class="focus"><p>以 edge set 非空的 finite simple graph 為對象，利用 random vertex bipartition 與各 edges 的 indicator variables，證明存在保留超過一半 edges 的 bipartite subgraph。</p><p class="check"><strong>驗收：</strong>為什麼只需 linearity of expectation，不需 independence？如何從 expectation 推出至少一個 outcome 存在？</p><p class="scope">閱讀 Theorems 15.18、15.21–15.22，完整說明得到 strict inequality 的理由。</p></td>
+</tr></tbody></table></div>
+</details><details class="topic-group" id="group-8">
+<summary>Young Tableaux and Symmetric Functions<span class="summary-meta">S40–S42 · 3 題</span></summary>
+<div aria-label="Young Tableaux and Symmetric Functions 題目表" class="table-scroll" role="region" tabindex="0">
+<table class="topics"><colgroup><col class="col-id"/><col class="col-diff"/><col class="col-class"/><col class="col-topic"/><col class="col-source"/><col class="col-focus"/></colgroup>
+<thead><tr><th scope="col">題號</th><th scope="col">難度</th><th scope="col">分類／主題</th><th scope="col">題目內容</th><th scope="col">教材來源</th><th scope="col">報告重點</th></tr></thead>
+<tbody><tr class="topic-row" id="S40">
+<th scope="row"><a class="topic-id" href="#S40">S40</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">Tableaux / weights</td><td class="topic-title">Bender–Knuth involution 與 Schur symmetry</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §7.2，SSYT 定義至 Proposition 7.2.1<br/><span class="pages">pp. 224–226.</span></div></td><td class="focus"><p>從 SSYT 的 weighted sum 定義 Schur function，建立交換相鄰 variables 的 Bender–Knuth involution；證明結果仍是 SSYT、對應的 weights 互換，且操作兩次回到原 tableau。</p><p class="check"><strong>驗收：</strong>哪些 i、i+1 必須保留不動？其餘 entries 交換後，為什麼仍滿足 columns strictly increasing？</p><p class="scope">需 Young diagrams 與 SSYT；只證 Proposition 7.2.1，不講 symmetric functions 的全部 bases。</p></td>
+</tr><tr class="topic-row" id="S41">
+<th scope="row"><a class="topic-id" href="#S41">S41</a></th>
+<td class="difficulty">[3−]</td>
+<td lang="en">RS correspondence</td><td class="topic-title">Permutations 與同 shape 的 SYT pairs</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §7.5，RS1–RS3、Theorem 7.5.2；Theorem 7.5.1 是計數結論<br/><span class="pages">pp. 240–243.</span></div></td><td class="focus"><p>介紹 SYT，說明 P 與 Q 各記錄什麼；示範 row insertion 與 reverse bumping，證明兩方向都是 well-defined 且互為 inverses，推出 ∑<sub>λ⊢n</sub>(f<sup>λ</sup>)²=n!。</p><p class="check"><strong>驗收：</strong>由 Q 如何找回最後插入的 cell？Reverse bumping 為什麼唯一？</p><p class="scope">限 permutation 版 RS，不加入 matrix 版 RSK 或 longest-subsequence theorem。</p></td>
+</tr><tr class="topic-row" id="S42">
+<th scope="row"><a class="topic-id" href="#S42">S42</a></th>
+<td class="difficulty">[2+]</td>
+<td lang="en">LIS</td><td class="topic-title">Schensted’s theorem：first-row length 等於 LIS length</td>
+<td><div class="source"><a href="#ref-SAG">SAG</a> §7.6，Theorem 7.6.1<br/><span class="pages">pp. 244–245.</span></div></td><td class="focus"><p class="sequence">閱讀順序：<a class="topic-ref" href="#S41">S41</a> → 本題。</p><p>在已知 RS insertion 的基礎上，證明 first-row length 等於 longest increasing subsequence 的長度；說明逐次 insertion 的 invariant 並完成一個例子。</p><p class="check"><strong>驗收：</strong>First row 本身是否必為原 permutation 的一條 subsequence？它真正記錄了什麼？</p><p class="scope">只證 Theorem 7.6.1 的 LIS 結論，不加入 LDS 與 transposition 的性質。</p></td>
+</tr></tbody></table></div>
+</details>
+</div>
+</details>
+          <!-- 題庫結束。 -->
+
           
           <span class="text">
             <a href="https://forms.gle/BNkpgr1jcHFBZkA56">匿名非官方課堂意見調查</a> (這是給老師自己看的)
           </span>
           <hr>
-          
+
+
           <span class="header">
             <font color="Maroon"><h3>日程表</h3></font>
           </span>
@@ -194,7 +544,6 @@
             <td>09/08</td>
             <td align="left">
               Combinatorial Proofs and Bijections
-              <br>(Instructor's notes; selected problems from Stanley)
             </td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
@@ -203,10 +552,7 @@
           <tr align="left">
             <td>2</td>
             <td>09/15</td>
-            <td align="left">
-              Integer Partitions and Ferrers Diagrams
-              <br>(B&oacute;na Ch 5)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -214,10 +560,7 @@
           <tr align="left">
             <td>3</td>
             <td>09/22</td>
-            <td align="left">
-              Cycles in Permutations and Stirling Numbers of the First Kind
-              <br>(B&oacute;na Ch 6)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -225,10 +568,7 @@
           <tr align="left">
             <td>4</td>
             <td>09/29</td>
-            <td align="left">
-              Permutation Statistics and Eulerian Numbers
-              <br>(EC1 1.3-1.4)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -236,10 +576,7 @@
           <tr align="left">
             <td>5</td>
             <td>10/06</td>
-            <td align="left">
-              The Twelvefold Way
-              <br>(EC1 1.9)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -247,10 +584,7 @@
           <tr align="left">
             <td>6</td>
             <td>10/13</td>
-            <td align="left">
-              Ordinary Generating Functions
-              <br>(B&oacute;na Ch 8)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -258,10 +592,7 @@
           <tr align="left">
             <td>7</td>
             <td>10/20</td>
-            <td align="left">
-              Exponential Generating Functions
-              <br>(B&oacute;na Ch 8)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -269,20 +600,15 @@
           <tr align="left">
             <td>8</td>
             <td>10/27</td>
-            <td align="center" colspan="2" bgcolor="LightCyan">
-              <b>Exam</b> (範圍： ) **會考證明題
-              <!-- <a href="1151exam1_sol.pdf">(solution)</a> -->
-            </td>
+            <td align="left"></td>
+            <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
           
           <tr align="left">
             <td>9</td>
             <td>11/03</td>
-            <td align="left">
-              Partially Ordered Sets and Hasse Diagrams
-              <br>(B&oacute;na Ch 16)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -290,10 +616,7 @@
           <tr align="left">
             <td>10</td>
             <td>11/10</td>
-            <td align="left">
-              Lattices and the M&ouml;bius Function
-              <br>(B&oacute;na Ch 16)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -301,10 +624,7 @@
           <tr align="left">
             <td>11</td>
             <td>11/17</td>
-            <td align="left">
-              M&ouml;bius Inversion and Inclusion-Exclusion
-              <br>(B&oacute;na Ch 16; Sagan Ch 5)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -312,10 +632,7 @@
           <tr align="left">
             <td>12</td>
             <td>11/24</td>
-            <td align="left">
-              Group Actions and Burnside's Lemma
-              <br>(B&oacute;na Ch 18)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -323,10 +640,7 @@
           <tr align="left">
             <td>13</td>
             <td>12/01</td>
-            <td align="left">
-              The P&oacute;lya Enumeration Theorem
-              <br>(B&oacute;na Ch 18; Sagan Ch 6; Brualdi Ch 14)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -334,10 +648,7 @@
           <tr align="left">
             <td>14</td>
             <td>12/08</td>
-            <td align="left">
-              Pattern Avoidance and Catalan Numbers
-              <br>(B&oacute;na Ch 14)
-            </td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -345,7 +656,7 @@
           <tr align="left">
             <td>15</td>
             <td>12/15</td>
-            <td align="left">Modern Enumerative Combinatorics</td>
+            <td align="left"></td>
             <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
@@ -353,10 +664,8 @@
           <tr align="left">
             <td>16</td>
             <td>12/22</td>
-            <td align="center" colspan="2" bgcolor="LightCyan">
-              <b>Exam</b> (範圍： ) **會考證明題
-              <!-- <a href="1151exam1_sol.pdf">(solution)</a> -->
-            </td>
+            <td align="left"></td>
+            <td style="padding:8px;" align="left"></td>
             <td align="left"></td>
           </tr>
           
@@ -382,10 +691,37 @@
           (回首頁)
         </a>
 
-        <a href="https://c.nknu.edu.tw/aca/UploadFile/userfiles/2/files/112上學期行事曆1120525依行政院修訂公告版.pdf">
-          (112-1 行事曆)
+        <a href="https://c.nknu.edu.tw/aca/UploadFile/userfiles/2/files/%E8%A1%8C%E4%BA%8B%E6%9B%86/%E9%AB%98%E5%B8%AB%E5%A4%A7115%E4%B8%8A%E8%A1%8C%E4%BA%8B%E6%9B%861141219%E5%85%AC%E5%91%8A%E7%89%88_pdf.pdf"  target="_blank">
+          (115-1 行事曆)
         </a>
       </footer>
     </div>
+
+    <script id="topic-bank-navigation">
+      // Open the necessary topic-bank panels for a topic or textbook link.
+      (() => {
+        const bank = document.getElementById('topic-bank');
+        if (!bank) return;
+        function reveal() {
+          let id;
+          try { id = decodeURIComponent(location.hash.slice(1)); }
+          catch (_) { return; }
+          if (!id) return;
+          const target = document.getElementById(id);
+          if (!target || !bank.contains(target)) return;
+          for (let node = target; node; node = node.parentElement) {
+            if (node.tagName === 'DETAILS') node.open = true;
+            if (node === bank) break;
+          }
+          requestAnimationFrame(() => target.scrollIntoView({block: 'start'}));
+        }
+        window.addEventListener('hashchange', reveal);
+        bank.addEventListener('click', event => {
+          const link = event.target.closest('a[href^="#"]');
+          if (link && link.hash === location.hash) reveal();
+        });
+        reveal();
+      })();
+    </script>
   </body>
 </html>
