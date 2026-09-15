@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>讀心術</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-    input {
-      font-size: 18px;
-      width: 100px;
-    }
-    button {
-      font-size: 18px;
-      margin-left: 10px;
-    }
-    #result {
-      margin-top: 20px;
-      font-size: 20px;
-      color: darkblue;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>讀心術｜數學思維與解題</title>
+<style>
+:root{color-scheme:light;--ink:#203c3a;--muted:#526763;--green:#226559;--line:#d9e1db;--paper:#fafbf7}
+*{box-sizing:border-box}body{margin:0;background:#f0f3ed;color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #bf8734;outline-offset:4px}
+.page{max-width:1180px;margin:auto;padding:26px 40px 20px}.topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #cbd6cc;padding-bottom:14px;gap:16px}.course{font-size:16px;letter-spacing:.12em;font-weight:600}.quiet{background:transparent;border:1px solid #b8c9be;border-radius:8px;color:var(--ink);padding:7px 14px;font-size:15px}.heading{margin:24px 0 26px;display:flex;align-items:baseline;gap:24px}h1{font-size:clamp(44px,5vw,64px);letter-spacing:.08em;margin:0;font-weight:700;line-height:1.25}.subtitle{color:var(--muted);font-size:22px;margin:0}
+.game{display:grid;grid-template-columns:1.1fr 1fr;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 36px #203c3a06}.instructions{padding:32px 34px}.section-label{font-size:15px;letter-spacing:.14em;color:var(--muted);font-weight:600;margin:0 0 24px}.step{display:grid;grid-template-columns:34px 1fr;gap:14px;margin:0 0 24px}.step-index{font-size:15px;border:1px solid #b5c8bd;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;margin-top:5px;font-variant-numeric:tabular-nums}.step h2{font-size:24px;font-weight:600;line-height:1.5;margin:0 0 5px}.step p{font-size:19px;color:var(--muted);margin:0}strong{color:var(--green);font-weight:700}.example{background:#eef2e9;border-radius:10px;padding:17px 20px;margin-top:28px}.example-label{color:var(--muted);font-size:16px;margin:0 0 6px}.equation{font-size:30px;letter-spacing:.025em;line-height:1.5;font-variant-numeric:tabular-nums}.example-note{font-size:16px;color:var(--muted);margin:4px 0 0}
+.interaction{padding:32px 34px;border-left:1px solid var(--line);background:#fff}.input-label{font-size:24px;font-weight:600;display:block;margin-bottom:16px}.entry{display:flex;gap:12px}input{min-width:0;width:100%;height:64px;font-size:30px;border:1.5px solid #9eafa4;border-radius:10px;padding:8px 16px;color:var(--ink);background:#fff;font-variant-numeric:tabular-nums}input::placeholder{font-size:19px;color:#707d75}input[aria-invalid=true]{border-color:#ad453b}.primary{flex-shrink:0;border:0;border-radius:10px;background:var(--green);color:white;padding:10px 22px;font-size:21px;font-weight:600}.primary:hover{background:#194f45}.error{font-size:16px;color:#a0372e;min-height:27px;margin:8px 0 14px}.result{min-height:195px;border:1px solid var(--line);background:#f5f7f1;border-radius:12px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px}.result-caption{margin:0;color:var(--muted);font-size:20px}.result-number{font-size:82px;font-weight:600;line-height:1.2;color:var(--green);font-variant-numeric:tabular-nums;letter-spacing:.04em}.waiting{font-size:42px;letter-spacing:.16em;color:#81958a}.again{display:block;margin:14px auto 0;background:none;border:0;color:var(--green);font-size:17px;padding:5px 16px;text-decoration:underline;text-underline-offset:5px}.footer{display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:14px;margin-top:18px}.footer p{margin:0}
+@media(min-width:1000px) and (min-height:850px){.page{padding-top:44px}.heading{margin-top:40px;margin-bottom:36px}.instructions,.interaction{padding-top:40px;padding-bottom:40px}}
+@media(max-width:760px){.page{padding:18px}.heading{display:block;margin:24px 0}.subtitle{font-size:18px;margin-top:8px}.game{grid-template-columns:1fr}.instructions,.interaction{padding:24px}.interaction{border-left:0;border-top:1px solid var(--line)}.step h2,.input-label{font-size:22px}.step p{font-size:17px}.footer{flex-wrap:wrap}.primary{padding:10px 16px;font-size:18px}.course{font-size:13px}.quiet{font-size:13px}.result{min-height:170px}}
+</style>
 </head>
 <body>
-
-  <h1>讀心術</h1>
-  <h2>請你想一個 10 ~ 99 的整數</h2>
-  <p>
-    將這個數加上自己的十位及個位數，並經過計算後告訴我答案<br><br>
-    例如：想的是 15，則輸入 15 + 1 + 5 = 21
-  </p>
-
-  <input type="number" id="inputNumber" min="10" max="198">
-  <button onclick="readMind()">讀心一下</button>
-
-  <div id="result"></div>
-
-  <script>
-    function readMind() {
-      const input = document.getElementById("inputNumber").value;
-      const num = parseInt(input);
-      const quotient = Math.floor(num / 11);
-      const remainder = num % 11;
-
-      let tens, units;
-
-      if (remainder % 2 === 0) {
-        units = remainder / 2;
-        tens = quotient;
-      } else {
-        units = (remainder + 11) / 2;
-        tens = quotient - 1;
-      }
-
-      const originalNumber = tens * 10 + units;
-
-      document.getElementById("result").textContent =
-        `你原本想的數字是：${originalNumber}`;
-    }
-  </script>
-
+<main class="page">
+<header class="topbar"><span class="course">課堂小遊戲</span><button class="quiet" id="fullscreen" type="button">全螢幕投影</button></header>
+<div class="heading"><h1>讀心術</h1><p class="subtitle">只告訴我計算結果，就能猜到你的數字。</p></div>
+<div class="game">
+<section class="instructions" aria-label="遊戲說明">
+<p class="section-label">先在心裡算一算</p>
+<div class="step"><span class="step-index" aria-hidden="true">1</span><div><h2>想一個 <strong>10～99</strong> 的整數</h2><p>先放在心裡，不要說出來。</p></div></div>
+<div class="step"><span class="step-index" aria-hidden="true">2</span><div><h2>加上它的<strong>十位數字</strong>與<strong>個位數字</strong></h2><p>原本的數 ＋ 十位數字 ＋ 個位數字</p></div></div>
+<div class="example"><p class="example-label">例如：心裡想的是 15</p><div class="equation">15 ＋ 1 ＋ 5 ＝ <strong>21</strong></div><p class="example-note">就輸入計算結果 21。</p></div>
+</section>
+<section class="interaction" aria-label="輸入答案與揭曉">
+<p class="section-label">讓我猜猜你想的數字</p>
+<form id="gameForm" novalidate><label for="inputNumber" class="input-label">你的計算結果是？</label><div class="entry"><input type="number" id="inputNumber" min="11" max="117" step="1" inputmode="numeric" placeholder="輸入結果" autocomplete="off" aria-describedby="error"><button class="primary" type="submit">讀心一下</button></div><p id="error" class="error" role="alert"></p></form>
+<div id="result" class="result" role="status" aria-live="polite" aria-atomic="true"><p class="result-caption">準備好了嗎？</p><div class="waiting" aria-hidden="true">···</div></div>
+<button class="again" id="reset" type="button">再玩一次</button>
+</section>
+</div>
+<footer class="footer"><p>想一個數 → 心算 → 揭曉</p><p>輸入後按 Enter，也能揭曉答案。</p></footer>
+</main>
+<script>
+const input=document.getElementById('inputNumber');
+const result=document.getElementById('result');
+const error=document.getElementById('error');
+function decode(num){
+ if(!Number.isInteger(num)||num<11||num>117)return null;
+ const quotient=Math.floor(num/11),remainder=num%11;
+ const units=remainder%2===0?remainder/2:(remainder+11)/2;
+ const tens=remainder%2===0?quotient:quotient-1;
+ if(tens<1||tens>9||units<0||units>9)return null;
+ return tens*10+units;
+}
+function waiting(){result.innerHTML='<p class="result-caption">準備好了嗎？</p><div class="waiting" aria-hidden="true">···</div>';}
+function readMind(){
+ const raw=input.value.trim();
+ const original=raw===''?null:decode(Number(raw));
+ if(original===null){waiting();error.textContent=raw===''?'請先輸入你的計算結果。':'這個結果不符合規則，請再檢查一次計算。';input.setAttribute('aria-invalid','true');input.focus();return;}
+ error.textContent='';input.removeAttribute('aria-invalid');
+ result.innerHTML='<p class="result-caption">你原本想的數字是</p><div class="result-number">'+original+'</div>';
+}
+document.getElementById('gameForm').addEventListener('submit',e=>{e.preventDefault();readMind();});
+input.addEventListener('input',()=>{error.textContent='';input.removeAttribute('aria-invalid');waiting();});
+document.getElementById('reset').addEventListener('click',()=>{input.value='';error.textContent='';input.removeAttribute('aria-invalid');waiting();input.focus();});
+const full=document.getElementById('fullscreen');
+if(!document.fullscreenEnabled)full.hidden=true;
+full.addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{full.textContent='請使用瀏覽器的全螢幕功能';}});
+document.addEventListener('fullscreenchange',()=>{full.textContent=document.fullscreenElement?'離開全螢幕':'全螢幕投影';});
+</script>
 </body>
 </html>
