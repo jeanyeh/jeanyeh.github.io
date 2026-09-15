@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#22364A">
+<title>跨越兩張牌｜牌陣配對挑戰</title>
+<style>
+  :root{
+    --page:#E7EBEF; --felt:#22364A; --felt-lo:#2C445C; --felt-txt:#C7DED5;
+    --ivory:#FBF7EF; --ink:#16232F; --muted:#5B6B77;
+    --gold:#E8B23A; --jade:#3FA786; --clay:#C05A3E; --line:#D3D9DF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--page); color:var(--ink);
+    font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+    line-height:1.7; -webkit-text-size-adjust:100%;
+  }
+  main{max-width:640px; margin:0 auto; padding:26px 16px 48px}
+  @media(min-width:820px){ main{max-width:1080px; padding:40px 28px 60px} }
+
+  header h1{font-size:clamp(26px,4.6vw,42px); margin:0 0 8px; font-weight:800; letter-spacing:.01em}
+  header p.rule{margin:0; color:var(--muted); font-size:clamp(14px,1.6vw,16px); max-width:760px}
+  header p.rule b{color:var(--ink); font-weight:700}
+
+  /* level chooser */
+  .levels{display:flex; flex-wrap:wrap; gap:7px; margin:20px 0 16px}
+  .levels button{
+    border:1px solid var(--line); background:#fff; color:var(--ink);
+    padding:8px 15px; min-height:44px; border-radius:999px; font:inherit; font-size:15px; cursor:pointer;
+    transition:background .12s, border-color .12s, transform .12s; touch-action:manipulation;
+  }
+  .levels button[aria-pressed="true"]{background:var(--ink); color:#fff; border-color:var(--ink)}
+  .levels button:active{transform:translateY(1px)}
+
+  .topline{display:flex; align-items:baseline; gap:12px; margin:0 2px 10px; font-size:15px}
+  .topline .k{color:var(--muted)}
+  .topline .v{font-weight:800; font-variant-numeric:tabular-nums}
+
+  /* felt table */
+  .table{
+    position:relative; border-radius:18px; padding:clamp(18px,2.4vw,30px) clamp(12px,2vw,26px);
+    background:radial-gradient(130% 100% at 50% 0%, var(--felt-lo), var(--felt) 72%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 28px rgba(20,35,47,.22);
+    overflow-x:auto; overscroll-behavior-x:contain;
+  }
+  .table-head{display:flex; justify-content:space-between; gap:16px; color:var(--felt-txt); font-size:14px; margin-bottom:14px}
+  .board{
+    display:grid;
+    grid-template-columns:repeat(var(--n,12), minmax(40px,92px));
+    gap:clamp(6px,1.1vw,14px);
+    justify-content:safe center; align-items:start; min-width:min-content;
+  }
+  .slot{
+    background:none; border:0; padding:0; font:inherit; cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; gap:7px; color:var(--felt-txt);
+    touch-action:manipulation;
+  }
+  .slot:focus-visible{outline:3px solid var(--gold); outline-offset:3px; border-radius:10px}
+  .cell{position:relative; width:100%; aspect-ratio:1 / 1.72; container-type:inline-size}
+  .pos{font-size:clamp(11px,1.1vw,13px); color:var(--felt-txt); opacity:.75; font-variant-numeric:tabular-nums}
+
+  .ghost{
+    position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:84%; aspect-ratio:5 / 7; border:1.6px dashed rgba(255,255,255,.24); border-radius:8px;
+  }
+  .card{
+    position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:84%; aspect-ratio:5 / 7; background:var(--ivory); color:var(--ink);
+    border:1.5px solid rgba(22,35,47,.32); border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,.28);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-variant-numeric:tabular-nums; user-select:none;
+  }
+  .card .num{font-size:clamp(15px,44cqi,34px); line-height:1}
+  /* a completed pair: front card on top; the card underneath shows a simple "card back" pattern */
+  .card.back{
+    bottom:15%; transform:translateX(-62%) rotate(-6deg); z-index:1;
+    background-color:#EFE7D3;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(22,35,47,.10) 0 1.5px, transparent 1.5px 7px),
+      repeating-linear-gradient(-45deg, rgba(22,35,47,.10) 0 1.5px, transparent 1.5px 7px);
+  }
+  .card.front{bottom:0; z-index:2}
+  .slot.selected .card{
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(232,178,58,.9), 0 6px 12px rgba(0,0,0,.3);
+    transform:translateX(-50%) translateY(-8px);
+  }
+  .card.dealt{animation:dealin .26s ease-out}
+  @keyframes dealin{from{transform:translateX(-50%) translateY(-10px); opacity:.2}}
+
+  .scroll-tip{margin:12px 2px 0; color:var(--felt-txt); font-size:13px; opacity:.85}
+
+  /* feedback */
+  .feedback{
+    display:flex; align-items:center; min-height:64px; margin-top:16px; padding:14px 18px;
+    background:#fff; border:1px solid var(--line); border-radius:12px; font-size:15px; font-weight:600;
+  }
+  .feedback.warn{border-color:#E0B49F; background:#FFF5EF; color:var(--clay)}
+  .feedback.win{border-color:#B7E2CF; background:#E6F6EE; color:#1E6B52}
+
+  /* controls */
+  .controls{display:flex; gap:10px; margin-top:14px}
+  .controls button{
+    flex:1 1 auto; border:1px solid var(--line); background:#fff; color:var(--ink);
+    padding:12px 14px; min-height:48px; border-radius:12px; font:inherit; font-size:16px; font-weight:600; cursor:pointer;
+    transition:background .12s, transform .12s; touch-action:manipulation;
+  }
+  .controls button.primary{background:var(--ink); color:#fff; border-color:var(--ink)}
+  .controls button:disabled{opacity:.45; cursor:default}
+  .controls button:active:not(:disabled){transform:translateY(1px)}
+
+  /* move history */
+  details.log{margin-top:22px; border-top:1px solid var(--line); padding-top:12px}
+  details.log summary{font-size:16px; font-weight:700; cursor:pointer; min-height:44px; display:flex; align-items:center; gap:8px; list-style:none}
+  details.log summary::-webkit-details-marker{display:none}
+  details.log summary::before{content:"▸"; color:var(--muted); transition:transform .12s}
+  details.log[open] summary::before{content:"▾"}
+  details.log .count{color:var(--muted); font-weight:600; font-size:14px}
+  .log-empty{color:var(--muted); margin:8px 2px}
+  ol.history{margin:10px 0 0; padding-left:22px}
+  ol.history li{padding:3px 0; font-variant-numeric:tabular-nums}
+
+  @media(prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>跨越兩張牌</h1>
+    <p class="rule">將 <b><span id="nText">12</span></b> 張牌排成一列，每次移動都要<b>恰好跨過兩張牌</b>（一疊算兩張、空位不算），設法把全部湊成 <b><span id="goalText">6</span></b> 對。</p>
+  </header>
+
+  <div class="levels" id="levels" role="group" aria-label="選擇牌數">
+    <button data-n="4">4 張</button>
+    <button data-n="6">6 張</button>
+    <button data-n="8">8 張</button>
+    <button data-n="10">10 張</button>
+    <button data-n="12" aria-pressed="true">12 張</button>
+    <button data-n="14">14 張</button>
+  </div>
+
+  <div class="topline">
+    <span><span class="k">已配對</span> <span class="v"><span id="pairs">0</span> / <span id="pairsTotal">6</span></span></span>
+  </div>
+
+  <div class="table">
+    <div class="table-head"><span>先點起點，再點要疊上的單牌</span><span>可向左或向右</span></div>
+    <div class="board" id="board" role="group" aria-label="牌列"></div>
+    <p class="scroll-tip" id="scrollTip">牌列維持一列；窄螢幕可左右滑動，或把手機橫放。</p>
+  </div>
+
+  <div class="feedback" id="feedback" role="status" aria-live="polite" aria-atomic="true">請選一張未配對的牌。</div>
+
+  <div class="controls">
+    <button id="btnUndo" disabled>上一步</button>
+    <button id="btnReset" class="primary">重新開始</button>
+  </div>
+
+  <details class="log" open>
+    <summary>移動紀錄 <span class="count" id="moveCount">（0 步）</span></summary>
+    <p class="log-empty" id="logEmpty">試著走出第一步。</p>
+    <ol class="history" id="history"></ol>
+  </details>
+</main>
+
+<script>
+'use strict';
+const $ = id=>document.getElementById(id);
+let N=12, piles=[], selected=null, snapshots=[], moves=[];
+
+/* ---- rules (positions fixed; empty slots count as zero cards) ---- */
+function between(state,a,b){ return state.slice(Math.min(a,b)+1,Math.max(a,b)).reduce((n,p)=>n+p.length,0); }
+function legalMove(state,a,b){ return a!==b && state[a].length===1 && state[b].length===1 && between(state,a,b)===2; }
+function pairsMade(){ return piles.filter(p=>p.length===2).length; }
+
+function setFeedback(text, cls){ const f=$('feedback'); f.textContent=text; f.className='feedback'+(cls?' '+cls:''); }
+function idleFeedback(){
+  if(pairsMade()===N/2) setFeedback(`完成！${N} 張全部湊成 ${N/2} 對，共 ${moves.length} 步（最少 ${N/2} 步）。`,'win');
+  else setFeedback('請選一張未配對的牌。');
+}
+
+function render(focusPos=null, dealtPos=null){
+  const board=$('board'); board.style.setProperty('--n', N); board.replaceChildren();
+  piles.forEach((p,i)=>{
+    const slot=document.createElement('button');
+    slot.type='button'; slot.className='slot'+(selected===i?' selected':'');
+    slot.dataset.i=i;
+    slot.setAttribute('aria-pressed', String(selected===i));
+    slot.setAttribute('aria-label',
+      '位置 '+(i+1)+'，'+(p.length===0?'空位':p.length===2?('已配對，牌 '+p.join('、')):('牌 '+p[0]))+(selected===i?'，已選取':''));
+
+    const cell=document.createElement('span'); cell.className='cell';
+    if(p.length===0){
+      const g=document.createElement('span'); g.className='ghost'; cell.appendChild(g);
+    } else if(p.length===1){
+      const c=document.createElement('span'); c.className='card front';
+      c.innerHTML='<span class="num">'+p[0]+'</span>'; cell.appendChild(c);
+    } else { // pair: back card (target, underneath) + front card (mover, on top)
+      const back=document.createElement('span'); back.className='card back'; back.setAttribute('aria-hidden','true');
+      const front=document.createElement('span'); front.className='card front'+(dealtPos===i?' dealt':'');
+      front.innerHTML='<span class="num">'+p[1]+'</span>';
+      cell.appendChild(back); cell.appendChild(front);
+    }
+    const pos=document.createElement('span'); pos.className='pos'; pos.textContent=i+1;
+    slot.appendChild(cell); slot.appendChild(pos);
+    slot.addEventListener('click',()=>choose(i));
+    board.appendChild(slot);
+  });
+
+  $('pairs').textContent=pairsMade();
+  $('pairsTotal').textContent=N/2;
+  $('nText').textContent=N;
+  $('goalText').textContent=N/2;
+  $('btnUndo').disabled = snapshots.length===0;
+  $('moveCount').textContent='（'+moves.length+' 步）';
+  $('logEmpty').hidden = moves.length>0;
+  const hist=$('history'); hist.replaceChildren();
+  moves.forEach(m=>{
+    const li=document.createElement('li');
+    li.textContent='牌 '+m.card+' → 牌 '+m.target+'（位置 '+(m.from+1)+' → '+(m.to+1)+'；跨越 '+m.crossed.join('、')+'）';
+    hist.appendChild(li);
+  });
+  $('scrollTip').style.display = N>=10 ? '' : 'none';
+  if(focusPos!==null && board.children[focusPos]) board.children[focusPos].focus({preventScroll:true});
+}
+
+function choose(i){
+  const p=piles[i];
+  if(p.length===0){ setFeedback('這是空位，請把牌疊到另一張未配對的牌上。','warn'); return; }
+  if(p.length===2){ setFeedback('這兩張已經配成一對，不能移動；跨過這一疊時算兩張。','warn'); return; }
+  if(selected===i){ selected=null; render(i); idleFeedback(); return; }         // tap again to cancel
+  if(selected===null){
+    selected=i; render(i);
+    setFeedback('已選牌 '+p[0]+'。請點落點：起點與落點之間必須恰好有兩張牌。');
+    return;
+  }
+  const a=selected;
+  if(!legalMove(piles,a,i)){
+    const c=between(piles,a,i);
+    setFeedback('這一步跨越了 '+c+' 張牌，必須恰好是 2 張。起點仍是牌 '+piles[a][0]+'（再點一次起點可取消）。','warn');
+    return;
+  }
+  // perform move
+  snapshots.push(piles.map(x=>x.slice()));
+  const crossed=piles.slice(Math.min(a,i)+1,Math.max(a,i)).flat();
+  moves.push({card:piles[a][0], target:piles[i][0], from:a, to:i, crossed});
+  piles[i]=[...piles[i], ...piles[a]];   // target stays at bottom, mover goes on top
+  piles[a]=[];
+  selected=null;
+  render(i, i);
+  if(pairsMade()===N/2) idleFeedback();
+  else setFeedback('配對完成：牌 '+moves.at(-1).card+' 疊上牌 '+moves.at(-1).target+'。請選下一張。');
+}
+
+function newGame(){ piles=Array.from({length:N},(_,i)=>[i+1]); selected=null; snapshots=[]; moves=[]; render(); }
+
+function setLevel(n){
+  N=n; newGame();
+  document.querySelectorAll('#levels button').forEach(b=>b.setAttribute('aria-pressed', String(Number(b.dataset.n)===n)));
+  idleFeedback();
+}
+
+$('levels').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) setLevel(Number(b.dataset.n)); });
+$('btnUndo').addEventListener('click', ()=>{
+  if(!snapshots.length) return;
+  piles=snapshots.pop(); moves.pop(); selected=null; render();
+  setFeedback('已回到上一步。');
+});
+$('btnReset').addEventListener('click', ()=>{
+  if(moves.length && !window.confirm('清除目前牌局與紀錄，重新開始？')) return;
+  newGame(); idleFeedback();
+  if($('board').children[0]) $('board').children[0].focus({preventScroll:true});
+  document.querySelector('.table').scrollLeft=0;
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape' && selected!==null){ const old=selected; selected=null; render(old); idleFeedback(); }
+});
+
+setLevel(12);
+</script>
+</body>
+</html>

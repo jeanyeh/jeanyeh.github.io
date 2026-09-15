@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#22364A">
+<title>跨越兩張牌｜課堂展示版</title>
+<style>
+  :root{
+    --page:#E7EBEF; --felt:#22364A; --felt-lo:#2C445C; --felt-txt:#C7DED5;
+    --ivory:#FBF7EF; --ink:#16232F; --muted:#5B6B77;
+    --gold:#E8B23A; --jade:#3FA786; --clay:#C05A3E; --line:#D3D9DF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--page); color:var(--ink);
+    font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+    line-height:1.7; -webkit-text-size-adjust:100%;
+  }
+  main{max-width:640px; margin:0 auto; padding:26px 16px 48px}
+  @media(min-width:820px){ main{max-width:1080px; padding:40px 28px 60px} }
+
+  .eyebrow{font-size:13px; letter-spacing:.14em; color:var(--muted); margin:0 0 6px}
+  header h1{font-size:clamp(26px,4.6vw,42px); margin:0 0 8px; font-weight:800; letter-spacing:.01em}
+  header p.rule{margin:0; color:var(--muted); font-size:clamp(14px,1.6vw,16px); max-width:760px}
+  header p.rule b{color:var(--ink); font-weight:700}
+
+  /* level chooser */
+  .levels{display:flex; flex-wrap:wrap; gap:7px; margin:20px 0 16px}
+  .levels button{
+    border:1px solid var(--line); background:#fff; color:var(--ink);
+    padding:8px 15px; min-height:44px; border-radius:999px; font:inherit; font-size:15px; cursor:pointer;
+    transition:background .12s, border-color .12s, transform .12s; touch-action:manipulation;
+  }
+  .levels button[aria-pressed="true"]{background:var(--ink); color:#fff; border-color:var(--ink)}
+  .levels button:active{transform:translateY(1px)}
+
+  .topline{display:flex; align-items:baseline; gap:12px; margin:0 2px 10px; font-size:15px}
+  .topline .k{color:var(--muted)}
+  .topline .v{font-weight:800; font-variant-numeric:tabular-nums}
+
+  /* felt table */
+  .table{
+    position:relative; border-radius:18px; padding:clamp(18px,2.4vw,30px) clamp(12px,2vw,26px);
+    background:radial-gradient(130% 100% at 50% 0%, var(--felt-lo), var(--felt) 72%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 28px rgba(20,35,47,.22);
+    overflow-x:auto; overscroll-behavior-x:contain;
+  }
+  .table-head{display:flex; justify-content:space-between; gap:16px; color:var(--felt-txt); font-size:14px; margin-bottom:14px}
+  .board{
+    display:grid;
+    grid-template-columns:repeat(var(--n,12), minmax(40px,92px));
+    gap:clamp(6px,1.1vw,14px);
+    justify-content:safe center; align-items:start; min-width:min-content;
+  }
+  .slot{
+    background:none; border:0; padding:0; font:inherit; cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; gap:7px; color:var(--felt-txt);
+    touch-action:manipulation;
+  }
+  .slot:focus-visible{outline:3px solid var(--gold); outline-offset:3px; border-radius:10px}
+  .cell{position:relative; width:100%; aspect-ratio:1 / 1.72; container-type:inline-size}
+  .pos{font-size:clamp(11px,1.1vw,13px); color:var(--felt-txt); opacity:.75; font-variant-numeric:tabular-nums}
+
+  .ghost{
+    position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:84%; aspect-ratio:5 / 7; border:1.6px dashed rgba(255,255,255,.24); border-radius:8px;
+  }
+  .card{
+    position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:84%; aspect-ratio:5 / 7; background:var(--ivory); color:var(--ink);
+    border:1.5px solid rgba(22,35,47,.32); border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,.28);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-variant-numeric:tabular-nums; user-select:none;
+  }
+  .card .num{font-size:clamp(15px,44cqi,34px); line-height:1}
+  /* a completed pair: front card on top; the card underneath shows a simple, numberless "card back" */
+  .card.back{
+    bottom:15%; transform:translateX(-62%) rotate(-6deg); z-index:1;
+    background-color:#EFE7D3;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(22,35,47,.10) 0 1.5px, transparent 1.5px 7px),
+      repeating-linear-gradient(-45deg, rgba(22,35,47,.10) 0 1.5px, transparent 1.5px 7px);
+  }
+  .card.front{bottom:0; z-index:2}
+  .slot.selected .card{
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(232,178,58,.9), 0 6px 12px rgba(0,0,0,.3);
+    transform:translateX(-50%) translateY(-8px);
+  }
+  .card.dealt{animation:dealin .26s ease-out}
+  @keyframes dealin{from{transform:translateX(-50%) translateY(-10px); opacity:.2}}
+
+  /* legal-target highlight + hint flash */
+  .slot.target .cell::after, .slot.hintto .cell::after{
+    content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:92%; aspect-ratio:5 / 6.6; border-radius:10px; pointer-events:none;
+  }
+  .slot.target .cell::after{ border:2.5px solid var(--jade); box-shadow:0 0 0 4px rgba(63,167,134,.22); animation:pulse 1.2s ease-in-out infinite }
+  .slot.hintto .cell::after{ border:2.5px dashed var(--jade); animation:pulse 1.2s ease-in-out infinite }
+  .slot.hintfrom .card{ border-color:var(--jade); box-shadow:0 0 0 3px rgba(63,167,134,.6), 0 4px 10px rgba(0,0,0,.3) }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+  .scroll-tip{margin:12px 2px 0; color:var(--felt-txt); font-size:13px; opacity:.85}
+
+  /* feedback */
+  .feedback{
+    display:flex; align-items:center; min-height:64px; margin-top:16px; padding:14px 18px;
+    background:#fff; border:1px solid var(--line); border-radius:12px; font-size:15px; font-weight:600;
+  }
+  .feedback.warn{border-color:#E0B49F; background:#FFF5EF; color:var(--clay)}
+  .feedback.win{border-color:#B7E2CF; background:#E6F6EE; color:#1E6B52}
+
+  /* controls */
+  .controls{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+  .controls button{
+    flex:1 1 auto; min-width:110px; border:1px solid var(--line); background:#fff; color:var(--ink);
+    padding:12px 14px; min-height:48px; border-radius:12px; font:inherit; font-size:16px; font-weight:600; cursor:pointer;
+    transition:background .12s, transform .12s; touch-action:manipulation;
+  }
+  .controls button.primary{background:var(--ink); color:#fff; border-color:var(--ink)}
+  .controls button:disabled{opacity:.45; cursor:default}
+  .controls button:active:not(:disabled){transform:translateY(1px)}
+
+  /* move history */
+  details.log{margin-top:22px; border-top:1px solid var(--line); padding-top:12px}
+  details.log summary{font-size:16px; font-weight:700; cursor:pointer; min-height:44px; display:flex; align-items:center; gap:8px; list-style:none}
+  details.log summary::-webkit-details-marker{display:none}
+  details.log summary::before{content:"▸"; color:var(--muted); transition:transform .12s}
+  details.log[open] summary::before{content:"▾"}
+  details.log .count{color:var(--muted); font-weight:600; font-size:14px}
+  .log-empty{color:var(--muted); margin:8px 2px}
+  ol.history{margin:10px 0 0; padding-left:22px}
+  ol.history li{padding:3px 0; font-variant-numeric:tabular-nums}
+
+  @media(prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">課堂展示版</p>
+    <h1>跨越兩張牌</h1>
+    <p class="rule">將 <b><span id="nText">12</span></b> 張牌排成一列，每次移動都要<b>恰好跨過兩張牌</b>（一疊算兩張、空位不算），設法把全部湊成 <b><span id="goalText">6</span></b> 對。選一張牌會亮出<b>可行落點</b>；可用「提示」看下一步、「自動解」看完整解法。</p>
+  </header>
+
+  <div class="levels" id="levels" role="group" aria-label="選擇牌數">
+    <button data-n="4">4 張</button>
+    <button data-n="6">6 張</button>
+    <button data-n="8">8 張</button>
+    <button data-n="10">10 張</button>
+    <button data-n="12" aria-pressed="true">12 張</button>
+    <button data-n="14">14 張</button>
+  </div>
+
+  <div class="topline">
+    <span><span class="k">已配對</span> <span class="v"><span id="pairs">0</span> / <span id="pairsTotal">6</span></span></span>
+  </div>
+
+  <div class="table">
+    <div class="table-head"><span>先點起點，再點綠框落點</span><span>可向左或向右</span></div>
+    <div class="board" id="board" role="group" aria-label="牌列"></div>
+    <p class="scroll-tip" id="scrollTip">牌列維持一列；窄螢幕可左右滑動，或把手機橫放。</p>
+  </div>
+
+  <div class="feedback" id="feedback" role="status" aria-live="polite" aria-atomic="true">選一張牌，會亮出可行的落點。</div>
+
+  <div class="controls">
+    <button id="btnHint">提示</button>
+    <button id="btnAuto">自動解</button>
+    <button id="btnUndo" disabled>上一步</button>
+    <button id="btnReset" class="primary">重新開始</button>
+  </div>
+
+  <details class="log" open>
+    <summary>移動紀錄 <span class="count" id="moveCount">（0 步）</span></summary>
+    <p class="log-empty" id="logEmpty">試著走出第一步。</p>
+    <ol class="history" id="history"></ol>
+  </details>
+</main>
+
+<script>
+'use strict';
+const $ = id=>document.getElementById(id);
+let N=12, piles=[], selected=null, snapshots=[], moves=[], busy=false, autoTimer=null, hintTimer=null;
+
+/* ---- rules (positions fixed; empty slots count as zero cards) ---- */
+function between(state,a,b){ return state.slice(Math.min(a,b)+1,Math.max(a,b)).reduce((n,p)=>n+p.length,0); }
+function legalMove(state,a,b){ return a!==b && state[a].length===1 && state[b].length===1 && between(state,a,b)===2; }
+function legalTargets(state,a){ const r=[]; if(!state[a]||state[a].length!==1) return r; for(let b=0;b<state.length;b++) if(legalMove(state,a,b)) r.push(b); return r; }
+function pairsMade(){ return piles.filter(p=>p.length===2).length; }
+
+/* ---- solver: BFS over count-signature; returns [[from,to],...] or null ---- */
+function bfsSolve(state){
+  const n=state.length, start=state.map(p=>p.length), key=c=>c.join('');
+  const goal=c=>c.every(x=>x===0||x===2)&&c.filter(x=>x===2).length===n/2;
+  const targetsFor=(c,i)=>{
+    const res=[]; if(c[i]!==1) return res; const R=[],L=[];
+    for(let j=i+1;j<n;j++) if(c[j]>0) R.push(j);
+    for(let j=i-1;j>=0;j--) if(c[j]>0) L.push(j);
+    for(const occ of [R,L]){
+      if(occ.length>=2 && c[occ[0]]===2 && c[occ[1]]===1) res.push(occ[1]);
+      if(occ.length>=3 && c[occ[0]]===1 && c[occ[1]]===1 && c[occ[2]]===1) res.push(occ[2]);
+    }
+    return [...new Set(res)];
+  };
+  const seen=new Map([[key(start),null]]); const q=[start];
+  while(q.length){
+    const c=q.shift();
+    if(goal(c)){ const path=[]; let cur=key(c); while(seen.get(cur)){ const [pk,mv]=seen.get(cur); path.push(mv); cur=pk; } return path.reverse(); }
+    for(let i=0;i<n;i++) for(const t of targetsFor(c,i)){
+      const nc=c.slice(); nc[t]=nc[i]+nc[t]; nc[i]=0; const k=key(nc);
+      if(!seen.has(k)){ seen.set(k,[key(c),[i,t]]); q.push(nc); }
+    }
+  }
+  return null;
+}
+
+function setFeedback(text, cls){ const f=$('feedback'); f.textContent=text; f.className='feedback'+(cls?' '+cls:''); }
+function idleFeedback(){
+  if(pairsMade()===N/2) setFeedback(`完成！${N} 張全部湊成 ${N/2} 對，共 ${moves.length} 步（最少 ${N/2} 步）。`,'win');
+  else setFeedback('選一張牌，會亮出可行的落點。');
+}
+
+function render(focusPos=null, dealtPos=null){
+  const board=$('board'); board.style.setProperty('--n', N); board.replaceChildren();
+  piles.forEach((p,i)=>{
+    const slot=document.createElement('button');
+    slot.type='button'; slot.className='slot'+(selected===i?' selected':''); slot.dataset.i=i;
+    slot.setAttribute('aria-pressed', String(selected===i));
+    slot.setAttribute('aria-label',
+      '位置 '+(i+1)+'，'+(p.length===0?'空位':p.length===2?('已配對，牌 '+p.join('、')):('牌 '+p[0]))+(selected===i?'，已選取':''));
+
+    const cell=document.createElement('span'); cell.className='cell';
+    if(p.length===0){
+      const g=document.createElement('span'); g.className='ghost'; cell.appendChild(g);
+    } else if(p.length===1){
+      const c=document.createElement('span'); c.className='card front';
+      c.innerHTML='<span class="num">'+p[0]+'</span>'; cell.appendChild(c);
+    } else {
+      const back=document.createElement('span'); back.className='card back'; back.setAttribute('aria-hidden','true');
+      const front=document.createElement('span'); front.className='card front'+(dealtPos===i?' dealt':'');
+      front.innerHTML='<span class="num">'+p[1]+'</span>';
+      cell.appendChild(back); cell.appendChild(front);
+    }
+    const pos=document.createElement('span'); pos.className='pos'; pos.textContent=i+1;
+    slot.appendChild(cell); slot.appendChild(pos);
+    slot.addEventListener('click',()=>choose(i));
+    board.appendChild(slot);
+  });
+
+  // legal-target highlight
+  if(selected!==null) for(const t of legalTargets(piles,selected)) board.children[t].classList.add('target');
+
+  $('pairs').textContent=pairsMade();
+  $('pairsTotal').textContent=N/2;
+  $('nText').textContent=N;
+  $('goalText').textContent=N/2;
+  $('btnHint').disabled = busy;
+  $('btnAuto').disabled = busy;
+  $('btnUndo').disabled = busy || snapshots.length===0;
+  $('moveCount').textContent='（'+moves.length+' 步）';
+  $('logEmpty').hidden = moves.length>0;
+  const hist=$('history'); hist.replaceChildren();
+  moves.forEach(m=>{
+    const li=document.createElement('li');
+    li.textContent='牌 '+m.card+' → 牌 '+m.target+'（位置 '+(m.from+1)+' → '+(m.to+1)+'；跨越 '+m.crossed.join('、')+'）';
+    hist.appendChild(li);
+  });
+  $('scrollTip').style.display = N>=10 ? '' : 'none';
+  if(focusPos!==null && board.children[focusPos]) board.children[focusPos].focus({preventScroll:true});
+}
+
+function pushSnapshot(){ snapshots.push({piles:piles.map(s=>s.slice()), log:moves.slice()}); }
+
+function doMove(from,to){
+  pushSnapshot();
+  const crossed=piles.slice(Math.min(from,to)+1,Math.max(from,to)).flat();
+  const mv={card:piles[from][0], target:piles[to][0], from, to, crossed};
+  piles[to]=[...piles[to], ...piles[from]];   // target stays at bottom, mover on top
+  piles[from]=[];
+  moves.push(mv);
+  selected=null;
+  render(to, to);
+  if(pairsMade()===N/2) setFeedback(`完成！${N} 張全部湊成 ${N/2} 對，共 ${moves.length} 步（最少 ${N/2} 步）。`,'win');
+  else setFeedback('配對完成：牌 '+mv.card+' 疊上牌 '+mv.target+'。請選下一張。');
+}
+
+function choose(i){
+  if(busy) return;
+  const p=piles[i];
+  if(selected!==null && legalTargets(piles,selected).includes(i)){ doMove(selected,i); return; }
+  if(p.length===1){
+    if(selected===i){ selected=null; render(i); idleFeedback(); return; }
+    selected=i; render(i);
+    const tg=legalTargets(piles,i);
+    if(tg.length===0) setFeedback('牌 '+p[0]+' 目前沒有合法落點，換一張試試。','warn');
+    else setFeedback('已選牌 '+p[0]+'，點亮起來的綠框落點疊上去。');
+  } else if(p.length===2){
+    if(selected!==null){ selected=null; render(); }
+    setFeedback('這是已完成的一對；跨過這一疊時算兩張。','warn');
+  } else {
+    if(selected!==null){ selected=null; render(); }
+    setFeedback('這是空位（不計張數）。','warn');
+  }
+}
+
+function hint(){
+  if(busy) return;
+  const path=bfsSolve(piles);
+  if(!path){ setFeedback('目前這個排法已無法完成——按「上一步」或「重新開始」。','warn'); return; }
+  if(!path.length){ setFeedback('已經完成了。','win'); return; }
+  const [f,t]=path[0]; selected=null; render();
+  const b=$('board'); b.children[f].classList.add('hintfrom'); b.children[t].classList.add('hintto');
+  setFeedback('建議：把牌 '+piles[f][0]+' 疊到牌 '+piles[t][0]+' 上（最短還需 '+path.length+' 步）。');
+  clearTimeout(hintTimer);
+  hintTimer=setTimeout(()=>{ const bb=$('board'); if(bb.children[f])bb.children[f].classList.remove('hintfrom'); if(bb.children[t])bb.children[t].classList.remove('hintto'); }, 2600);
+}
+
+function autoSolve(){
+  if(busy) return;
+  const path=bfsSolve(piles);
+  if(!path){ setFeedback('此盤面已無解，無法自動求解。','warn'); return; }
+  if(!path.length){ setFeedback('已經完成了。','win'); return; }
+  busy=true; selected=null; render(); setFeedback('自動示範解法中…');
+  let k=0;
+  const step=()=>{
+    if(k>=path.length){ busy=false; render(); return; }
+    const [f,t]=path[k++];
+    doMove(f,t);
+    if(pairsMade()===N/2){ busy=false; render(); return; }
+    autoTimer=setTimeout(step, 720);
+  };
+  autoTimer=setTimeout(step, 420);
+}
+
+function newGame(){ piles=Array.from({length:N},(_,i)=>[i+1]); selected=null; snapshots=[]; moves=[]; render(); }
+
+function setLevel(n){
+  clearTimeout(autoTimer); clearTimeout(hintTimer); busy=false;
+  N=n; newGame();
+  document.querySelectorAll('#levels button').forEach(b=>b.setAttribute('aria-pressed', String(Number(b.dataset.n)===n)));
+  idleFeedback();
+}
+
+$('levels').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) setLevel(Number(b.dataset.n)); });
+$('btnHint').addEventListener('click', hint);
+$('btnAuto').addEventListener('click', autoSolve);
+$('btnUndo').addEventListener('click', ()=>{
+  if(busy || !snapshots.length) return;
+  const s=snapshots.pop(); piles=s.piles.map(x=>x.slice()); moves=s.log.slice(); selected=null; render();
+  setFeedback('已回到上一步。');
+});
+$('btnReset').addEventListener('click', ()=>{
+  clearTimeout(autoTimer); clearTimeout(hintTimer);
+  const wasBusy=busy; busy=false;
+  if(moves.length && !wasBusy && !window.confirm('清除目前牌局與紀錄，重新開始？')){ render(); return; }
+  newGame(); idleFeedback();
+  if($('board').children[0]) $('board').children[0].focus({preventScroll:true});
+  document.querySelector('.table').scrollLeft=0;
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape' && selected!==null && !busy){ const old=selected; selected=null; render(old); idleFeedback(); }
+});
+
+setLevel(12);
+</script>
+</body>
+</html>
