@@ -25,7 +25,7 @@
       margin  : 2px;
       padding : 2px;
 
-      border : 2px solid black;
+      border : 4px solid #444444;
       background-image: url("https://i.stack.imgur.com/jGlzr.png");
 
       align-items     : center;
@@ -47,6 +47,10 @@
     .dark {
       background-color : #222222;
     }
+
+    .selected {
+      border : 4px red solid;
+    }
   </style>
   </HEAD>
 
@@ -59,24 +63,17 @@
     <button class='btn' onclick='init(3)'>重設</button>
     <br>
 
-    <div>
-      
-    </div>
-
-    <br>
-    <font style='font-weight: bold'>目前步數：</font> <span id="game-steps-value"></span> <span id="loss"></span>
-    <br>
     <br>
 
     <div id='rule'>
 			<font style='font-weight: bold'>規則：</font><br>
-			1. 棋子只能在棋盤中移動，且一格最多擺放一個棋子。<br>
-      2. 向左或向右移動時，每次最多跨越兩個棋子。<br>
-      <font style='font-weight: bold'>目標：</font><br>十步內將三顆白棋放到最左邊！
+			每次將相鄰兩個棋子互換位置。<br>
+      <font style='font-weight: bold'>目標：</font><br>
+      將黑白棋交錯排列
 		</div>
 
-    <script>
 
+    <script>
       function insert_chip(color) {
         let chip = document.createElement('div');
 
@@ -92,7 +89,6 @@
       }
 
       function init_board(size) {
-        insert_chip();
         for (let i = 0; i < size; i++) { insert_chip('dark'); }
         for (let i = 0; i < size; i++) { insert_chip('light'); }
       }
@@ -100,52 +96,46 @@
       function on_move_chess() {
         let chess_pos = index_of_chess(this);
 
-        if (chess_pos == space_pos) {
-          // click the space chip
-          return ;
-        }
+        if (selected_chess === undefined) {
+            selected_chess = chess_pos;
 
-        if (Math.abs(chess_pos - space_pos) > 3) {
-          return ;
-        }
+            this.classList.add('selected');
+            return;
+        } else {
+          let selected_dom = document.getElementById('board').children[selected_chess];
+          selected_dom.classList.remove('selected');
 
-        swap_chess(chess_pos);
-        gameStepsValue = document.getElementById("game-steps-value");
-        gameStepsValue.textContent = game_steps;
-        check_steps();
+          if (selected_chess === chess_pos + 1 || selected_chess === chess_pos - 1) {
+            swap_chess(chess_pos, selected_chess);
+          }
+
+          selected_chess = undefined;
+        }
       }
 
-      function swap_chess(chess_pos, regret=false) {
-        let chess = document.getElementById('board').children[chess_pos];
-        let space = document.getElementById('board').children[space_pos];
+      function swap_chess(x, y, regret=false) {
+        var dom_x = document.getElementById('board').children[x];
+        var dom_y = document.getElementById('board').children[y];
 
-        if (!regret) move_history.push(space_pos);
-        space.appendChild(chess.children[0]);
-        space_pos = chess_pos;
-        game_steps += 1;
+        var chess_x = dom_x.children[0].cloneNode(true);
+        var chess_y = dom_y.children[0].cloneNode(true);
+
+        dom_x.innerHTML = '';
+        dom_y.innerHTML = '';
+
+        dom_x.appendChild(chess_y);
+        dom_y.appendChild(chess_x);
+
+        if (!regret) {
+          move_history.push([x, y]);
+        }
       }
 
       function regret_chess() {
         let regret_pos = move_history.pop();
         if (regret_pos === undefined) { return ; }
 
-        swap_chess(regret_pos, true);
-
-        game_steps -= 2;
-        gameStepsValue = document.getElementById("game-steps-value");
-        gameStepsValue.textContent = game_steps;
-        check_steps();
-      }
-
-      function check_steps() {
-        if (game_steps > 10) {
-          document.getElementById('loss').innerHTML = 
-					`<h1 style='color:red'> 超過 十步 囉！</h1>`;
-        }
-        if (game_steps < 11) {
-          document.getElementById('loss').innerHTML = 
-					``;
-        }
+        swap_chess(regret_pos[0], regret_pos[1], true);
       }
 
       function index_of_chess(dom) {
@@ -162,20 +152,13 @@
 
         document.getElementById('board').innerHTML = '';
 
-        space_pos = 0;
         move_history = [];
         init_board(size);
-
-        game_steps = 0;
-        var gameStepsValue = document.getElementById("game-steps-value");
-        gameStepsValue.textContent = game_steps;
       }
 
-      var space_pos = 0;
       var move_history = [];
-      var game_steps = 0;
+      var selected_chess = undefined;
       init(3)
-
     </script>
   </BODY>
 </HTML>

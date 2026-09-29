@@ -59,16 +59,24 @@
     <button class='btn' onclick='init(3)'>重設</button>
     <br>
 
+    <div>
+      
+    </div>
+
     <br>
+    <font style='font-weight: bold'>目前步數：</font> <span id="game-steps-value"></span> <span id="loss"></span>
+    <br>
+    <br>
+
     <div id='rule'>
 			<font style='font-weight: bold'>規則：</font><br>
-      1. 黑子只能向右移動，白子只能向左，每次移動到最近的空格中。<br>
-      2. 每次最多只能跳一個棋子。<br>
-      <font style='font-weight: bold'>目標：</font><br>
-      將三顆白棋放到最左邊！
+			1. 棋子只能在棋盤中移動，且一格最多擺放一個棋子。<br>
+      2. 向左或向右移動時，每次最多跨越兩個棋子。<br>
+      <font style='font-weight: bold'>目標：</font><br>十步內將三顆白棋放到最左邊！
 		</div>
 
     <script>
+
       function insert_chip(color) {
         let chip = document.createElement('div');
 
@@ -84,8 +92,8 @@
       }
 
       function init_board(size) {
-        for (let i = 0; i < size; i++) { insert_chip('dark'); }
         insert_chip();
+        for (let i = 0; i < size; i++) { insert_chip('dark'); }
         for (let i = 0; i < size; i++) { insert_chip('light'); }
       }
 
@@ -97,20 +105,14 @@
           return ;
         }
 
-        let chess_color = this.children[0].classList.contains('light') ? 'light' : 'dark';
-
-        if (Math.abs(chess_pos - space_pos) > 2) {
+        if (Math.abs(chess_pos - space_pos) > 3) {
           return ;
         }
 
-        if (chess_color === 'light' && chess_pos > space_pos) {
-          swap_chess(chess_pos);
-        }
-
-        if (chess_color == 'dark' && chess_pos < space_pos) {
-          swap_chess(chess_pos);
-        }
-
+        swap_chess(chess_pos);
+        gameStepsValue = document.getElementById("game-steps-value");
+        gameStepsValue.textContent = game_steps;
+        check_steps();
       }
 
       function swap_chess(chess_pos, regret=false) {
@@ -120,6 +122,7 @@
         if (!regret) move_history.push(space_pos);
         space.appendChild(chess.children[0]);
         space_pos = chess_pos;
+        game_steps += 1;
       }
 
       function regret_chess() {
@@ -127,6 +130,22 @@
         if (regret_pos === undefined) { return ; }
 
         swap_chess(regret_pos, true);
+
+        game_steps -= 2;
+        gameStepsValue = document.getElementById("game-steps-value");
+        gameStepsValue.textContent = game_steps;
+        check_steps();
+      }
+
+      function check_steps() {
+        if (game_steps > 10) {
+          document.getElementById('loss').innerHTML = 
+					`<h1 style='color:red'> 超過 十步 囉！</h1>`;
+        }
+        if (game_steps < 11) {
+          document.getElementById('loss').innerHTML = 
+					``;
+        }
       }
 
       function index_of_chess(dom) {
@@ -143,14 +162,20 @@
 
         document.getElementById('board').innerHTML = '';
 
-        space_pos = size;
+        space_pos = 0;
         move_history = [];
         init_board(size);
+
+        game_steps = 0;
+        var gameStepsValue = document.getElementById("game-steps-value");
+        gameStepsValue.textContent = game_steps;
       }
 
       var space_pos = 0;
       var move_history = [];
+      var game_steps = 0;
       init(3)
+
     </script>
   </BODY>
 </HTML>

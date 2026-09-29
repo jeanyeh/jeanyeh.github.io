@@ -25,7 +25,7 @@
       margin  : 2px;
       padding : 2px;
 
-      border : 4px solid #444444;
+      border : 2px solid black;
       background-image: url("https://i.stack.imgur.com/jGlzr.png");
 
       align-items     : center;
@@ -47,10 +47,6 @@
     .dark {
       background-color : #222222;
     }
-
-    .selected {
-      border : 4px red solid;
-    }
   </style>
   </HEAD>
 
@@ -64,14 +60,13 @@
     <br>
 
     <br>
-
     <div id='rule'>
 			<font style='font-weight: bold'>規則：</font><br>
-			每次將相鄰兩個棋子互換位置。<br>
+      1. 黑子只能向右移動，白子只能向左，每次移動到最近的空格中。<br>
+      2. 每次最多只能跳一個棋子。<br>
       <font style='font-weight: bold'>目標：</font><br>
-      將黑白棋交錯排列
+      將三顆白棋放到最左邊！
 		</div>
-
 
     <script>
       function insert_chip(color) {
@@ -90,52 +85,48 @@
 
       function init_board(size) {
         for (let i = 0; i < size; i++) { insert_chip('dark'); }
+        insert_chip();
         for (let i = 0; i < size; i++) { insert_chip('light'); }
       }
 
       function on_move_chess() {
         let chess_pos = index_of_chess(this);
 
-        if (selected_chess === undefined) {
-            selected_chess = chess_pos;
-
-            this.classList.add('selected');
-            return;
-        } else {
-          let selected_dom = document.getElementById('board').children[selected_chess];
-          selected_dom.classList.remove('selected');
-
-          if (selected_chess === chess_pos + 1 || selected_chess === chess_pos - 1) {
-            swap_chess(chess_pos, selected_chess);
-          }
-
-          selected_chess = undefined;
+        if (chess_pos == space_pos) {
+          // click the space chip
+          return ;
         }
+
+        let chess_color = this.children[0].classList.contains('light') ? 'light' : 'dark';
+
+        if (Math.abs(chess_pos - space_pos) > 2) {
+          return ;
+        }
+
+        if (chess_color === 'light' && chess_pos > space_pos) {
+          swap_chess(chess_pos);
+        }
+
+        if (chess_color == 'dark' && chess_pos < space_pos) {
+          swap_chess(chess_pos);
+        }
+
       }
 
-      function swap_chess(x, y, regret=false) {
-        var dom_x = document.getElementById('board').children[x];
-        var dom_y = document.getElementById('board').children[y];
+      function swap_chess(chess_pos, regret=false) {
+        let chess = document.getElementById('board').children[chess_pos];
+        let space = document.getElementById('board').children[space_pos];
 
-        var chess_x = dom_x.children[0].cloneNode(true);
-        var chess_y = dom_y.children[0].cloneNode(true);
-
-        dom_x.innerHTML = '';
-        dom_y.innerHTML = '';
-
-        dom_x.appendChild(chess_y);
-        dom_y.appendChild(chess_x);
-
-        if (!regret) {
-          move_history.push([x, y]);
-        }
+        if (!regret) move_history.push(space_pos);
+        space.appendChild(chess.children[0]);
+        space_pos = chess_pos;
       }
 
       function regret_chess() {
         let regret_pos = move_history.pop();
         if (regret_pos === undefined) { return ; }
 
-        swap_chess(regret_pos[0], regret_pos[1], true);
+        swap_chess(regret_pos, true);
       }
 
       function index_of_chess(dom) {
@@ -152,12 +143,13 @@
 
         document.getElementById('board').innerHTML = '';
 
+        space_pos = size;
         move_history = [];
         init_board(size);
       }
 
+      var space_pos = 0;
       var move_history = [];
-      var selected_chess = undefined;
       init(3)
     </script>
   </BODY>
